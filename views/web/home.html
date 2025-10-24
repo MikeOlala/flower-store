@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flower Store | Trang chủ</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tiệm hoa nhà tớ</title>
+    <meta name="description" content="Hoa tươi & quà tặng cho mọi khoảnh khắc. Giao nhanh trong ngày." />
     <link rel="stylesheet" href="assets/style.css" />
+    <link rel="icon" href="favicon.png" />
 </head>
+
 <body>
+<<<<<<< Updated upstream
 <header>
     <nav>
         <h1 class="logo">🌷 Flower Store</h1>
@@ -18,36 +23,516 @@
         </ul>
     </nav>
 </header>
+=======
+>>>>>>> Stashed changes
 
-<section class="hero">
-    <h2>Chào mừng đến với Flower Store</h2>
-    <p>Hoa tươi mỗi ngày – Gửi yêu thương trọn vẹn</p>
-    <a href="product.html" class="btn">Mua ngay</a>
-</section>
+    <!-- ================= HEADER / NAV ================= -->
+    <header class="lv-header" data-sticky>
+        <div class="container header-inner">
+            <button class="lv-header__menu-btn" aria-label="Mở menu" data-open-drawer>
+                <span></span><span></span><span></span>
+            </button>
 
-<section class="featured">
-    <h3>Sản phẩm nổi bật</h3>
-    <div class="product-grid">
-        <div class="product-card">
-            <img src="images/rose.jpg" alt="Hoa hồng đỏ">
-            <h4>Hoa hồng đỏ</h4>
-            <p>250.000đ</p>
-        </div>
-        <div class="product-card">
-            <img src="images/tulip.jpg" alt="Tulip Hà Lan">
-            <h4>Tulip Hà Lan</h4>
-            <p>300.000đ</p>
-        </div>
-        <div class="product-card">
-            <img src="images/lily.jpg" alt="Hoa ly trắng">
-            <h4>Hoa ly trắng</h4>
-            <p>220.000đ</p>
-        </div>
-    </div>
-</section>
+            <a class="logo" href="/">
+                <span class="logo-mark">Hoa xinh</span>
+                <span class="logo-text">TIỆM HOA NHÀ TỚ</span>
+            </a>
 
-<footer>
-    <p>© 2025 Flower Store. All rights reserved.</p>
-</footer>
+            <nav class="lv-nav lv-nav--desktop" aria-label="Chính">
+                <ul class="lv-nav__list">
+                    <li class="active"><a href="/">TRANG CHỦ</a></li>
+                    <li><a href="/pages/about-us">GIỚI THIỆU</a></li>
+
+                    <!-- HOA GIẢ -->
+                    <li class="has-mega">
+                        <button class="lv-nav__btn" aria-expanded="false">
+                            HOA GIẢ
+                            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                                <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" />
+                            </svg>
+                        </button>
+                        <div class="mega" role="region" aria-label="Hoa giả">
+                            <div class="mega__grid">
+                                <a class="mega__item" href="/collections/hoa-lua">
+                                    <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Hoa Lụa</span>
+                                </a>
+                                <a class="mega__item" href="/collections/hoa-nhua">
+                                    <img src="https://images.unsplash.com/photo-1457089328109-e5d9bd499191?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Hoa Nhựa</span>
+                                </a>
+                                <a class="mega__item" href="/collections/hoa-giay">
+                                    <img src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Hoa Giấy</span>
+                                </a>
+                                <a class="mega__item" href="/collections/hoa-vai">
+                                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Hoa Vải</span>
+                                </a>
+                                <a class="mega__item" href="/collections/hop-hoa">
+                                    <img src="https://images.unsplash.com/photo-1442455952620-821cfea421e8?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Hộp Hoa</span>
+                                </a>
+                                <a class="mega__item" href="/collections/box-hoa">
+                                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Box Hoa</span>
+                                </a>
+                                <a class="mega__item" href="/collections/ke-hoa-chuc-mung">
+                                    <img src="https://images.unsplash.com/photo-1435783459217-ee7fe5414abe?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Kệ Hoa Chúc Mừng</span>
+                                </a>
+                                <a class="mega__item" href="/collections/hoa-tot-nghiep">
+                                    <img src="https://images.unsplash.com/photo-1491002052546-bf38f186af56?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Hoa Tốt Nghiệp</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- HOA TƯƠI -->
+                    <li class="has-mega">
+                        <button class="lv-nav__btn" aria-expanded="false">
+                            HOA TƯƠI
+                            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                                <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" />
+                            </svg>
+                        </button>
+                        <div class="mega" role="region" aria-label="Hoa tươi">
+                            <div class="mega__grid">
+                                <a class="mega__item" href="/collections/bo-hoa">
+                                    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Bó Hoa</span>
+                                </a>
+                                <a class="mega__item" href="/collections/hoa-tulip">
+                                    <img src="https://images.unsplash.com/photo-1523437113738-bbd3cc89fb19?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Hoa Tulip</span>
+                                </a>
+                                <a class="mega__item" href="/collections/binh-hoa">
+                                    <img src="https://images.unsplash.com/photo-1499871433707-09a6f9759d79?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Bình Hoa</span>
+                                </a>
+                                <a class="mega__item" href="/collections/gio-hoa">
+                                    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Giỏ Hoa</span>
+                                </a>
+                                <a class="mega__item" href="/collections/hop-hoa">
+                                    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Hộp Hoa</span>
+                                </a>
+                                <a class="mega__item" href="/collections/hoa-cuoi">
+                                    <img src="https://images.unsplash.com/photo-1491002052546-bf38f186af56?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Hoa Cưới</span>
+                                </a>
+                                <a class="mega__item" href="/collections/lan-ho-diep">
+                                    <img src="https://images.unsplash.com/photo-1499871433707-09a6f9759d79?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Lan Hồ Điệp</span>
+                                </a>
+                                <a class="mega__item" href="/collections/hoa-mau-don">
+                                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Hoa Mẫu Đơn</span>
+                                </a>
+                                <a class="mega__item" href="/collections/ke-hoa-chuc-mung">
+                                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Kệ Hoa Chúc Mừng</span>
+                                </a>
+                                <a class="mega__item" href="/collections/ke-hoa-chia-buon">
+                                    <img src="https://images.unsplash.com/photo-1457089328109-e5d9bd499191?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Kệ Hoa Chia Buồn</span>
+                                </a>
+                                <a class="mega__item" href="/collections/hoa-tot-nghiep">
+                                    <img src="https://images.unsplash.com/photo-1523437113738-bbd3cc89fb19?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Hoa Tốt Nghiệp</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- QUÀ TẶNG -->
+                    <li class="has-mega">
+                        <button class="lv-nav__btn" aria-expanded="false">
+                            QUÀ TẶNG
+                            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                                <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" />
+                            </svg>
+                        </button>
+                        <div class="mega" role="region" aria-label="Quà tặng">
+                            <div class="mega__grid">
+                                <a class="mega__item" href="/collections/set-qua-hoa">
+                                    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Set Quà & Hoa</span>
+                                </a>
+                                <a class="mega__item" href="/collections/nen-thom-1">
+                                    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Nến Thơm</span>
+                                </a>
+                                <a class="mega__item" href="/collections/tinh-dau">
+                                    <img src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Tinh Dầu</span>
+                                </a>
+                                <a class="mega__item" href="/collections/chocolate">
+                                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Chocolate</span>
+                                </a>
+                                <a class="mega__item" href="/collections/ruou">
+                                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?q=80&w=800&auto=format&fit=crop"
+                                        alt=""><span>Rượu</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li><a href="/contact">LIÊN HỆ</a></li>
+                </ul>
+            </nav>
+            <div class="lv-header__actions">
+                <a class="icon-btn" href="/account/login" aria-label="Đăng nhập">Login</a>
+                <a class="icon-btn cart" href="/cart" aria-label="Giỏ hàng">Cart
+                    <span class="cart__count" data-cart-count>0</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Drawer + overlay -->
+        <div class="drawer-overlay" data-drawer-overlay></div>
+        <aside class="drawer" aria-hidden="true" data-drawer>
+            <div class="drawer__head">
+                <strong>Danh mục</strong>
+                <button class="drawer__close" aria-label="Đóng" data-close-drawer>✕</button>
+            </div>
+            <div class="drawer__body">
+                <ul class="mb-menu">
+                    <li><a href="/">TRANG CHỦ</a></li>
+                    <li><a href="/pages/about-us">GIỚI THIỆU</a></li>
+
+                    <li class="mb-acc">
+                        <button class="mb-acc__btn" aria-expanded="false">HOA GIẢ</button>
+                        <ul class="mb-acc__panel">
+                            <li><a href="/collections/hoa-lua">Hoa Lụa</a></li>
+                            <li><a href="/collections/hoa-nhua">Hoa Nhựa</a></li>
+                            <li><a href="/collections/hoa-giay">Hoa Giấy</a></li>
+                            <li><a href="/collections/hoa-vai">Hoa Vải</a></li>
+                            <li><a href="/collections/hop-hoa">Hộp Hoa</a></li>
+                            <li><a href="/collections/box-hoa">Box Hoa</a></li>
+                            <li><a href="/collections/ke-hoa-chuc-mung">Kệ Hoa Chúc Mừng</a></li>
+                            <li><a href="/collections/hoa-tot-nghiep">Hoa Tốt Nghiệp</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="mb-acc">
+                        <button class="mb-acc__btn" aria-expanded="false">HOA TƯƠI</button>
+                        <ul class="mb-acc__panel">
+                            <li><a href="/collections/bo-hoa">Bó Hoa</a></li>
+                            <li><a href="/collections/hoa-tulip">Hoa Tulip</a></li>
+                            <li><a href="/collections/binh-hoa">Bình Hoa</a></li>
+                            <li><a href="/collections/gio-hoa">Giỏ Hoa</a></li>
+                            <li><a href="/collections/hop-hoa">Hộp Hoa</a></li>
+                            <li><a href="/collections/box-hoa">Box Hoa</a></li>
+                            <li><a href="/collections/hoa-cuoi">Hoa Cưới</a></li>
+                            <li><a href="/collections/lan-ho-diep">Lan Hồ Điệp</a></li>
+                            <li><a href="/collections/hoa-mau-don">Hoa Mẫu Đơn</a></li>
+                            <li><a href="/collections/ke-hoa-chuc-mung">Kệ Hoa Chúc Mừng</a></li>
+                            <li><a href="/collections/ke-hoa-chia-buon">Kệ Hoa Chia Buồn</a></li>
+                            <li><a href="/collections/hoa-tot-nghiep">Hoa Tốt Nghiệp</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="mb-acc">
+                        <button class="mb-acc__btn" aria-expanded="false">QUÀ TẶNG</button>
+                        <ul class="mb-acc__panel">
+                            <li><a href="/collections/set-qua-hoa">Set Quà & Hoa</a></li>
+                            <li><a href="/collections/nen-thom-1">Nến Thơm</a></li>
+                            <li><a href="/collections/tinh-dau">Tinh Dầu</a></li>
+                            <li><a href="/collections/chocolate">Chocolate</a></li>
+                            <li><a href="/collections/ruou">Rượu</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="/contact">LIÊN HỆ</a></li>
+                </ul>
+            </div>
+        </aside>
+    </header>
+
+    <!-- =================== HOME CONTENT =================== -->
+    <!-- Hero -->
+    <section id="hero" class="hero">
+        <div class="container hero-inner">
+            <div class="hero-text">
+                <h1>Tiệm hoa nhà tớ</h1>
+                <p>Hoa tươi mỗi ngày – Gửi yêu thương trọn vẹn</p>
+
+                <!-- ===== Thanh tìm kiếm  ===== -->
+                <form class="hero-search" action="/search">
+                    <input type="hidden" name="type" value="product" />
+                    <input class="hero-search__input" name="q" placeholder="Tìm bó hoa, giỏ hoa, lan hồ điệp..." />
+                    <button class="hero-search__btn" type="submit">Tìm kiếm</button>
+                </form>
+
+                <div class="hero-actions">
+                    <a class="btn btn--pink" href="#featured">Mua ngay</a>
+                    <a class="btn" href="#collections">Khám phá bộ sưu tập</a>
+                </div>
+            </div>
+            <div class="hero-media">
+                <img src="https://cdn.hstatic.net/files/200000846175/file/4217caf7a3e82eb677f9.jpg"
+                    alt="Bó hoa màu hồng" loading="eager">
+                <div class="ribbon">New </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections -->
+    <section id="collections" class="collections">
+        <div class="container">
+            <div class="section-head">
+                <h2>Bộ sưu tập</h2>
+                <p>Chọn theo chủ đề phù hợp khoảnh khắc của bạn.</p>
+            </div>
+            <div class="grid cards-3">
+                <a class="card cat-card" href="#">
+                    <img src="https://cdn.hstatic.net/products/200000846175/z6989445218221_57d0452f2eb21b99666070190ded44f0_c9487651717048f6a09b69d461c7a275_master.jpg"
+                        alt="Hoa sinh nhật">
+                    <div class="card-overlay"><span>Sinh nhật</span></div>
+                </a>
+                <a class="card cat-card" href="#">
+                    <img src="https://cdn.hstatic.net/products/200000846175/z7125821940268_11f49a61c8130af1bef29fe16078a1c6-min_cc92a1328d3746d6857fa807c859a73c_master.jpg"
+                        alt="Hoa kỷ niệm">
+                    <div class="card-overlay"><span>Kỷ niệm</span></div>
+                </a>
+                <a class="card cat-card" href="#">
+                    <img src="https://cdn.hstatic.net/products/200000846175/img_1011_927fb3672e584b06a0f9c77748291c9f_master.jpg"
+                        alt="Hoa cảm ơn">
+                    <div class="card-overlay"><span>Cảm ơn</span></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured products -->
+    <section id="featured" class="featured">
+        <div class="container">
+            <div class="section-head">
+                <h2>Sản phẩm nổi bật</h2>
+                <p>Thiết kế tinh tế, giao nhanh trong ngày tại TP.HCM.</p>
+            </div>
+
+            <div class="grid products">
+                <article class="product-card">
+                    <a class="product-media" href="#"><img
+                            src="https://product.hstatic.net/200000846175/product/z6454059063324_f36d425060774db64d16b8e3037abfbf_a0d1cd23517b437baf8793711e4e5016_master.jpg"
+                            alt=""></a>
+                    <div class="product-info">
+                        <h3 class="product-title"><a href="#">Bouquet Rosé</a></h3>
+                        <p class="product-price"><span class="price-current">850.000đ</span><span
+                                class="price-compare">990.000đ</span></p>
+                        <button class="btn btn--dark" data-add-to-cart>Thêm vào giỏ</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <a class="product-media" href="#"><img
+                            src="https://product.hstatic.net/200000846175/product/z5899444684976_f02b573b6cfb59b91bea244097e1f52d_9ee978bf14aa488b8df57f44b5681fba_master.jpg"
+                            alt=""></a>
+                    <div class="product-info">
+                        <h3 class="product-title"><a href="#">Pastel Garden</a></h3>
+                        <p class="product-price"><span class="price-current">1.150.000đ</span></p>
+                        <button class="btn btn--dark" data-add-to-cart>Thêm vào giỏ</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <a class="product-media" href="#"><img
+                            src="https://product.hstatic.net/200000846175/product/z5899444923636_701ba98ba5902408520cb8d69fc4ce0d_baba4bb7cb8d4983ace0f38d9135c197_master.jpg"
+                            alt=""></a>
+                    <div class="product-info">
+                        <h3 class="product-title"><a href="#">Sweet Peony</a></h3>
+                        <p class="product-price"><span class="price-current">790.000đ</span></p>
+                        <button class="btn btn--dark" data-add-to-cart>Thêm vào giỏ</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <a class="product-media" href="#"><img
+                            src="https://product.hstatic.net/200000846175/product/5-min_c1f605d2d445432ebfc23ed5dd28ddf9_2284b6b8669f4c9484be6cb44b444306_master.jpg"
+                            alt=""></a>
+                    <div class="product-info">
+                        <h3 class="product-title"><a href="#">Blush Classic</a></h3>
+                        <p class="product-price"><span class="price-current">920.000đ</span></p>
+                        <button class="btn btn--dark" data-add-to-cart>Thêm vào giỏ</button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="center"><a class="btn" href="#">Xem tất cả</a></div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container about-inner">
+            <div class="about-media">
+                <img src="https://file.hstatic.net/200000846175/article/6_d6bdb32719444cc5ad4a6193f4c065f1.png"
+                    alt="">
+            </div>
+            <div class="about-text">
+                <h2>Câu chuyện của chúng tôi</h2>
+                <p>La Vie Flower tin rằng mỗi bó hoa là một thông điệp. Chúng tôi chọn hoa theo mùa, phối màu tinh tế và
+                    đóng gói tỉ mỉ.</p>
+                <ul class="bullets">
+                    <li>Giao trong ngày tại nội thành</li>
+                    <li>Tư vấn phối màu theo yêu cầu</li>
+                    <li>Thiệp viết tay miễn phí</li>
+                </ul>
+                <a class="btn btn--pink" href="#contact">Liên hệ tư vấn</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter / CTA -->
+    <section class="cta">
+        <div class="container cta-inner">
+            <h3>Nhận ưu đãi 10% cho đơn đầu tiên</h3>
+            <form class="newsletter" onsubmit="event.preventDefault()">
+                <input type="email" placeholder="Email của bạn" aria-label="Email">
+                <button class="btn btn--dark" type="submit">Đăng ký</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="contact" class="lv-footer">
+        <div class="container footer-grid">
+            <div>
+                <a class="logo footer-logo" href="/">
+                    <span class="logo-mark">LV</span>
+                    <span class="logo-text">La Vie Flower</span>
+                </a>
+                <p class="muted">Hoa tươi &amp; quà tặng cho mọi khoảnh khắc. Giao nhanh trong ngày tại TP.HCM.</p>
+                <ul class="links">
+                    <li>Hotline: <a href="tel:+84888888888">0888 888 888</a></li>
+                    <li>Email: <a href="mailto:hello@lavieflower.vn">hello@lavieflower.vn</a></li>
+                    <li>Địa chỉ: Quận 1, TP.HCM</li>
+                </ul>
+                <ul class="socials">
+                    <li><a href="#" aria-label="Facebook">Facebook</a></li>
+                    <li><a href="#" aria-label="Instagram">Instagram</a></li>
+                    <li><a href="#" aria-label="TikTok">TikTok</a></li>
+                    <li><a href="#" aria-label="YouTube">YouTube</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Sản phẩm</h4>
+                <ul class="links">
+                    <li><a href="/collections/bo-hoa">Bó Hoa</a></li>
+                    <li><a href="/collections/binh-hoa">Bình Hoa</a></li>
+                    <li><a href="/collections/gio-hoa">Giỏ Hoa</a></li>
+                    <li><a href="/collections/hoa-cuoi">Hoa Cưới</a></li>
+                    <li><a href="/collections/lan-ho-diep">Lan Hồ Điệp</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Quà tặng</h4>
+                <ul class="links">
+                    <li><a href="/collections/set-qua-hoa">Set Quà & Hoa</a></li>
+                    <li><a href="/collections/nen-thom-1">Nến Thơm</a></li>
+                    <li><a href="/collections/tinh-dau">Tinh Dầu</a></li>
+                    <li><a href="/collections/chocolate">Chocolate</a></li>
+                    <li><a href="/collections/ruou">Rượu</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Chính sách</h4>
+                <ul class="links">
+                    <li><a href="/pages/shipping">Giao hàng</a></li>
+                    <li><a href="/pages/refund">Đổi trả</a></li>
+                    <li><a href="/pages/privacy">Bảo mật</a></li>
+                    <li><a href="/pages/terms">Điều khoản</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-note">
+            <small>© 2025 La Vie Flower. All rights reserved.</small>
+            <ul class="mini-links">
+                <li><a href="/sitemap.xml">Sitemap</a></li>
+                <li><a href="/contact">Liên hệ</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- ================= JS ================= -->
+    <script>
+        // Header shadow
+        (function () {
+            const header = document.querySelector('.lv-header');
+            const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+            onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+        })();
+
+        // Desktop mega toggles
+        document.querySelectorAll('.lv-nav__btn').forEach(btn => {
+            const parent = btn.closest('.has-mega');
+            btn.addEventListener('click', e => {
+                e.preventDefault();
+                const expanded = btn.getAttribute('aria-expanded') === 'true';
+                document.querySelectorAll('.lv-nav__btn[aria-expanded="true"]').forEach(b => {
+                    if (b !== btn) { b.setAttribute('aria-expanded', 'false'); b.closest('.has-mega')?.classList.remove('mega-open'); }
+                });
+                btn.setAttribute('aria-expanded', String(!expanded));
+                parent.classList.toggle('mega-open', !expanded);
+            });
+            document.addEventListener('click', (evt) => {
+                if (!parent.contains(evt.target)) {
+                    btn.setAttribute('aria-expanded', 'false');
+                    parent.classList.remove('mega-open');
+                }
+            });
+        });
+
+        // Drawer (mobile) + overlay
+        (function () {
+            const drawer = document.querySelector('[data-drawer]');
+            const overlay = document.querySelector('[data-drawer-overlay]');
+            const openBtn = document.querySelector('[data-open-drawer]');
+            const closeBtn = document.querySelector('[data-close-drawer]');
+
+            const open = () => {
+                drawer.setAttribute('aria-hidden', 'false');
+                overlay.classList.add('show');
+                document.body.classList.add('no-scroll');
+            };
+            const close = () => {
+                drawer.setAttribute('aria-hidden', 'true');
+                overlay.classList.remove('show');
+                document.body.classList.remove('no-scroll');
+            };
+            openBtn?.addEventListener('click', open);
+            closeBtn?.addEventListener('click', close);
+            overlay?.addEventListener('click', close);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+
+            // Accordion groups
+            document.querySelectorAll('.mb-acc').forEach(acc => {
+                const btn = acc.querySelector('.mb-acc__btn');
+                btn.addEventListener('click', () => {
+                    const openState = acc.hasAttribute('open');
+                    document.querySelectorAll('.mb-acc[open]').forEach(a => a.removeAttribute('open'));
+                    if (!openState) acc.setAttribute('open', '');
+                    btn.setAttribute('aria-expanded', String(!openState));
+                });
+            });
+        })();
+
+        // Demo: tăng badge giỏ hàng
+        document.addEventListener('click', (e) => {
+            const btn = e.target.closest('[data-add-to-cart]');
+            if (!btn) return;
+            const badge = document.querySelector('[data-cart-count]');
+            badge.textContent = String((+badge.textContent || 0) + 1);
+        });
+    </script>
 </body>
+
 </html>
