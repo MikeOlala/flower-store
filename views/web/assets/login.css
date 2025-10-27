@@ -67,8 +67,9 @@ body {
     background-color: white !important;
     border: 2px solid #b4845c !important;
     color: #b4845c !important;
-    border-radius: 8px;
+    border-radius: 10px;
     transition: all 0.3s ease;
+
 }
 
 .btn-outline-light:hover {
@@ -94,3 +95,30 @@ body {
     height: 1px;
     background: #eee;
 }
+.fa {
+    background: red;
+}
+.col {
+    text-align: center;
+}
+
+.forgot-password {
+    color: #c19163; /* màu be */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+.btn-floating i {
+    font-size: 30px;        /* tăng kích thước icon */
+    color: #b68969;         /* màu be đồng bộ */
+    transition: all 0.3s ease;
+}
+
+.btn-floating:hover i {
+    color: #8c6143;         /* be sậm hơn khi hover */
+    transform: scale(1.2);  /* phóng to nhẹ khi hover */
+}
+
