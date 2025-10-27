@@ -1,0 +1,96 @@
+/* ======= TOÀN TRANG ======= */
+body {
+    background-color: #fffaf3; /* Nền be sáng nhẹ */
+    font-family: 'Poppins', sans-serif;
+    color: #c49a6c; /* Màu chữ chính */
+}
+
+/* ======= LABEL (Email, Password) ======= */
+.form-label {
+    color: #c49a6c !important;
+    font-weight: 500;
+}
+
+/* ======= INPUT ======= */
+.form-control {
+    border: 1.5px solid #d9bfa3 !important;
+    border-radius: 10px;
+    background-color: #fffdf9;
+    color: #6b4f36;
+}
+
+.form-control:focus {
+    border-color: #b4845c !important;
+    box-shadow: 0 0 0 0.2rem rgba(180, 132, 92, 0.3);
+}
+
+/* ======= REMEMBER ME + FORGOT PASSWORD ======= */
+.form-check-label,
+.d-flex a {
+    color: #c49a6c !important;
+}
+
+.d-flex a:hover {
+    color: #b4845c !important;
+    text-decoration: underline;
+}
+
+/* ======= CHECKBOX ======= */
+.form-check-input {
+    border: 2px solid #c49a6c;
+    border-radius: 4px;
+}
+
+.form-check-input:checked {
+    background-color: #c49a6c !important;
+    border-color: #c49a6c !important;
+}
+
+/* ======= NÚT CHÍNH (SIGN IN) ======= */
+.btn-primary {
+    background-color: #b4845c !important; /* Nâu caramel */
+    border-color: #b4845c !important;
+    color: #fff !important;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #9c6b44 !important; /* Nâu đậm hơn khi hover */
+    border-color: #9c6b44 !important;
+}
+
+/* ======= NÚT MẠNG XÃ HỘI (FACEBOOK, TWITTER) ======= */
+.btn-outline-light {
+    background-color: white !important;
+    border: 2px solid #b4845c !important;
+    color: #b4845c !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background-color: #b4845c !important;
+    color: #fff !important;
+}
+
+/* ======= ĐƯỜNG KẺ OR ======= */
+.divider:before,
+.divider:after {
+    background-color: #e6d5c0 !important;
+}
+
+/* ======= TỔNG THỂ NHẸ NHÀNG ======= */
+::selection {
+    background-color: #b4845c;
+    color: white;
+}
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
