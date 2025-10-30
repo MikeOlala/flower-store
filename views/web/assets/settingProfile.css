@@ -1,0 +1,192 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    color: #4b2e05;
+    background-color: #fff8f5;
+    margin: 0;
+}
+
+/* Header cam nâu */
+.header {
+    background: linear-gradient(90deg, #d98963, #a05d2f);
+    height: 60px;
+    display:flex;
+    align-items:center;
+}
+
+/* Avatar */
+.avatar-section {
+    background: linear-gradient(180deg, #f7d7c1, #fff8f5);
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 3px solid #d9b89c;
+}
+
+.btn-edit {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.4);
+    color: white;
+    border: none;
+    border-radius: 0 0 50% 50%;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Profile items */
+.profile-item {
+    background-color: #fff;
+    padding: 15px;
+    border-bottom: 1px solid #f1e0d2;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.profile-item .action {
+    color: #a05d2f;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.profile-item .action:hover {
+    text-decoration: underline;
+}
+
+/* Section label */
+.section-label {
+    background-color: #f5ebe4;
+    color: #6b3e16;
+    font-size: 14px;
+    padding: 8px 15px;
+    font-weight: 600;
+}
+
+/* ===== MODAL STYLE ===== */
+.custom-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* modal-content */
+.modal-content {
+    background-color: #fff8f5;
+    padding: 20px;
+    border-radius: 12px;
+    width: 85%;
+    max-width: 420px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+}
+
+/* save button */
+.btn-save {
+    background-color: #a05d2f;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 8px 25px;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    background-color: #8c4a22;
+}
+
+/* ===== form-outline floating label styling ===== */
+.form-outline {
+    position: relative;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ensure input has padding so label doesn't overlap */
+/* ===== Floating Label Fix (chuẩn MDB) ===== */
+.form-outline {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-outline .form-control,
+.form-outline .form-select,
+.form-outline textarea {
+    padding: 12px;
+    border: 1.5px solid #d9b89c;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+}
+
+.form-outline .form-label {
+    position: absolute;
+    top: 12px;
+    left: 14px;
+    font-size: 1rem;
+    color: #6b3e16;
+    pointer-events: none;
+    background-color: transparent;
+    transition: all 0.25s ease;
+}
+
+/* Khi có focus hoặc có nội dung → label trượt lên */
+.form-outline.active .form-label,
+.form-outline input:focus ~ .form-label,
+.form-outline input:not(:placeholder-shown) ~ .form-label,
+.form-outline textarea:focus ~ .form-label,
+.form-outline textarea:not(:placeholder-shown) ~ .form-label,
+.form-outline select:focus ~ .form-label,
+.form-outline select:not([value=""]) ~ .form-label {
+    top: -8px;
+    left: 10px;
+    font-size: 0.8rem;
+    color: #a05d2f;
+    background-color: #fff8f5;
+    padding: 0 6px;
+}
+
+/* Hiệu ứng viền mượt khi focus */
+.form-outline .form-control:focus,
+.form-outline .form-select:focus,
+.form-outline textarea:focus {
+    border-color: #a05d2f !important;
+    box-shadow: 0 0 0 0.2rem rgba(160, 93, 47, 0.25);
+}
+/* when active (floating) */
+.form-outline.active .form-label,
+.form-outline .form-control:focus ~ .form-label,
+.form-outline .form-select:focus ~ .form-label,
+.form-outline .form-control:not(:placeholder-shown) ~ .form-label,
+.form-outline textarea:focus ~ .form-label,
+.form-outline textarea:not(:placeholder-shown) ~ .form-label {
+    top: -8px;
+    left: 10px;
+    font-size: 0.78rem;
+    color: #a05d2f;
+    background-color: #fff8f5;
+    padding: 0 6px;
+}
+
+/* focus styles */
+.form-outline .form-control:focus,
+.form-outline .form-select:focus,
+.form-outline textarea:focus {
+    outline: none;
+    border-color: #a05d2f !important;
+    box-shadow: 0 0 0 0.12rem rgba(160,93,47,0.18);
+}
