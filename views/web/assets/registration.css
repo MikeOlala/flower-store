@@ -1,0 +1,38 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    color: #4b2e05;
+}
+
+/* Hiệu ứng input */
+.form-outline input.form-control:focus {
+    border-color: #a05d2f !important;
+    box-shadow: 0 0 0 0.2rem rgba(160, 93, 47, 0.25);
+}
+
+/* Label màu nâu dịu */
+.form-label {
+    color: #6b3e16 !important;
+}
+
+/* Button hover */
+.btn:hover {
+    background-color: #8c4a22 !important;
+    transform: scale(1.03);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Thẻ card dịu mắt */
+.card {
+    border: none;
+}
+/* ===== Checkbox màu be dịu cho giao diện đăng ký ===== */
+.form-check-input {
+    width: 1.2em;
+    height: 1.2em;
+    border: 2px solid #d9b89c;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
