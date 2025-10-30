@@ -71,8 +71,18 @@
             --customer: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/customer-icon-service.svg?v=245);
             --cancel: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/cancel-while.svg?v=245);
             --bg-footer: url(https://file.hstatic.net/200000397757/file/wd-footer-bg_bd337816b3d64003b9fa0ca6f4b8b3fa.png);
+
         }
     </style>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Crimson Text:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=fallback"
         as="style" type="text/css" rel="preload stylesheet">
@@ -90,6 +100,7 @@
         type="text/javascript">
     <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/main-scripts.js?v=245" rel="preload" as="script"
         type="text/javascript">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script type="text/javascript"
         src="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"></script>
     <!-- Tất cả biến khởi tạo, check sử dụng-->
@@ -189,8 +200,8 @@
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-     <script defer src="components.js"></script>
-    
+    <script defer src="components.js"></script>
+
 </head>
 
 <body id="wandave-theme" class="index" data-theme="tbag-fashion">
@@ -204,7 +215,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSBT6HTK" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
+
     <nav id="menu-mobile" class="hidden-md">
         <button id="wanda-close-handle" class="wanda-close-handle" aria-label="Đóng" title="Đóng">
             <span class="mb-menu-cls" aria-hidden="true"><span class="bar animate"></span></span>Đóng
@@ -1781,7 +1792,7 @@
             <site-footer></site-footer>
         </div>
     </main>
-    
+
     <div class="modal" id="pro-qv-wanda">
     </div>
     <div class="modal" id="success-cart-wanda">
@@ -1920,57 +1931,74 @@
         let loadslider = () => {
             let timeSlide = parseInt("1000");
             let htmlslider = `
-            <div class="item"> 
-              
-                    <picture> 
-                        <source media="(max-width: 480px)"  srcset="https://cdn.hstatic.net/files/200000846175/file/4217caf7a3e82eb677f9.jpg" 
-                            data-srcset="https://cdn.hstatic.net/files/200000846175/file/4217caf7a3e82eb677f9.jpg"> 
-                        <source media="(min-width: 481px)" 
-                        data-srcset="https://cdn.hstatic.net/files/200000846175/file/caf51f824f9dc2c39b8c.jpg"  srcset="https://cdn.hstatic.net/files/200000846175/file/caf51f824f9dc2c39b8c.jpg">
-                        <img class="dt-width-100 lazyload" width="1920" height="550" alt="Vegetable 2"> 
-                    </picture>
-                <div class="d-flex align-items-center gap-3 mb-4 slider-text left-slide">
-                            
-                        <button
-                            class="btn border-0 position-absolute top-50 start-50 translate-middle text-white fw-bold text-center shadow-lg"
-                            style="backdrop-filter: blur(10px);
-                                   background: rgba(255, 255, 255, 0.12);
-                                   border-radius: 25px;
-                                   padding: 2.5rem 4rem;
-                                   z-index: 5;
-                                   text-shadow: 0 2px 10px rgba(0,0,0,.6);
-                                   font-family: 'Poppins', sans-serif;
-                                   transition: all 0.3s ease;">
-                            <h1 class="fw-bold mb-3 display-4" style="color:#fff;">Tiệm hoa nhà tớ</h1>
-                            <p class="lead mb-0" style="color:#fff; opacity:0.9;">Gửi hoa đẹp – Trao yêu thương.</p>
-                        </button>
-                
-                            
-                    <!-- Bó hoa 3D tương tác -->
-                    <button class="btn border-0 position-absolute end-0 bottom-0 me-5 mb-4 p-0 shadow-lg overflow-hidden"
-                    style="width: 300px;
-                           height: 300px;
-                           border-radius: 5%;
-                           backdrop-filter: blur(8px);
-                           background: rgba(255,255,255,0.12);
-                           transition: all 0.3s ease;
-                           margin-right: 100px;
-                           margin-bottom: 60px;
-                           z-index: 5;">                       
-                    <model-viewer src="assets/bouquet.glb"
-                      alt="Bó hoa 3D"
-                      camera-controls
-                      auto-rotate
-                      rotation-per-second="20deg"
-                      ar
-                      shadow-intensity="1"
-                      exposure="1.1"
-                      touch-action="pan-y"
-                      style="width:100%; height:100%; background:transparent;">
-                    </model-viewer>
-                    </button>
-                </div>
-            </div>     
+
+    <section 
+      class="relative min-h-screen flex items-center justify-center p-8 md:p-12 bg-cover bg-center bg-no-repeat" 
+      style="background-image: url('https://cdn.hstatic.net/files/200000846175/file/caf51f824f9dc2c39b8c.jpg');
+      ">
+            
+      <div class="absolute inset-0 bg-gradient-to-r from-pink-100/90 via-pink-100/50 to-transparent"></div>
+
+      <div class="container relative z-10">
+          <div class="grid md:grid-cols-2 gap-10 items-center max-w-7xl mx-auto">
+
+
+              <div class="text-left md:pl-10 lg:pl-16">
+                  <h1 class="text-5xl md:text-6xl font-bold mb-4 text-gray-900 drop-shadow-sm">
+                      Tiệm hoa nhà tớ
+                  </h1>
+                  <p class="text-lg md:text-xl text-gray-700 mb-10">
+                      Hoa tươi mỗi ngày – Gửi yêu thương trọn vẹn.
+                  </p>
+
+                  <div class="bg-white/90 rounded-full shadow-lg p-1 flex items-center mb-6 max-w-md mx-auto md:mx-0">
+                      <input 
+                          type="text" 
+                          placeholder="Tìm bó hoa, giỏ hoa, lan hồ điệp..." 
+                          class="flex-grow p-3 bg-transparent border-none focus:outline-none text-gray-700 placeholder-gray-400" 
+                      />
+                      <button class="bg-pink-400 hover:bg-pink-500 text-white font-semibold py-3 px-6 rounded-full transition duration-300">
+                          Tìm kiếm
+                      </button>
+                  </div>
+
+                  <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                      <button class="bg-pink-400 hover:bg-pink-500 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-md">
+                          Mua ngay
+                      </button>
+                      <button class="bg-white/90 border border-gray-300 text-gray-700 hover:bg-gray-100 font-semibold py-3 px-8 rounded-full shadow-md transition duration-300">
+                          Khám phá bộ sưu tập
+                      </button>
+                  </div>
+              </div>
+
+              <!-- PHẢI -->
+              <div class="flex justify-center md:justify-end">
+                  <div class="relative w-full max-w-sm h-96 overflow-hidden rounded-3xl shadow-2xl bg-white/70 backdrop-blur-sm transform transition-transform duration-500 hover:scale-[1.02]">
+
+                      <!-- Nhãn “New” -->
+                      <span class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10 shadow-md">
+                          New
+                      </span>
+
+                      <!-- Hoa 3D -->
+                      <model-viewer src="assets/bouquet.glb"
+                          alt="Bó hoa 3D"
+                          camera-controls
+                          auto-rotate
+                          rotation-per-second="20deg"
+                          ar
+                          shadow-intensity="1"
+                          exposure="1.1"
+                          touch-action="pan-y"
+                          style="width:349px;height:384px;background:transparent;margin:auto;">
+                      </model-viewer>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
+
                             `;
             $("#home-slider").append(htmlslider);
             $("#home-slider").slick({ slidesToShow: 1, slidesToScroll: 1, autoplay: true, autoplaySpeed: timeSlide, fade: true, speed: 500, arrows: false });
