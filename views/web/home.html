@@ -3,6 +3,7 @@
 
 <head>
 
+    
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
@@ -1920,6 +1921,7 @@
         let loadslider = () => {
             let timeSlide = parseInt("1000");
             let htmlslider = `
+<<<<<<< Updated upstream
             <div class="item"> 
               
                     <picture> 
@@ -1971,6 +1973,89 @@
                     </button>
                 </div>
             </div>     
+=======
+
+    <section 
+      class="relative min-h-screen flex items-center justify-center p-8 md:p-12 bg-cover bg-center bg-no-repeat" 
+      style="background-image: url('https://cdn.hstatic.net/files/200000846175/file/caf51f824f9dc2c39b8c.jpg');
+      ">
+            
+      <div class="absolute inset-0 bg-gradient-to-r from-[#F8EEE5]/90 via-[#F8EEE5]/50 to-transparent"></div>
+
+
+
+      <div class="container relative z-10">
+          <div class="grid md:grid-cols-2 gap-10 items-center max-w-7xl mx-auto">
+
+
+              <div class="text-left md:pl-10 lg:pl-16">
+                  <h1 class="text-5xl md:text-6xl font-bold mb-4 text-gray-900 drop-shadow-sm">
+                      Tiệm hoa nhà tớ
+                  </h1>
+                  <p class="text-lg md:text-xl text-gray-700 mb-10">
+                      Hoa tươi mỗi ngày – Gửi yêu thương trọn vẹn.
+                  </p>
+
+                  <div class="bg-white/90 rounded-full shadow-lg p-1 flex items-center mb-6 max-w-md mx-auto md:mx-0">
+                      <input 
+                          type="text" 
+                          placeholder="Tìm bó hoa, giỏ hoa, lan hồ điệp..." 
+                          class="flex-grow p-3 bg-transparent border-none focus:outline-none text-gray-700 placeholder-gray-400" 
+                      />
+                    <button 
+                        class="text-white font-semibold py-3 px-6 rounded-full transition duration-300"
+                        style="background-color: #B47C55;"
+                        onmouseover="this.style.backgroundColor='#9F6D4C'"
+                        onmouseout="this.style.backgroundColor='#B47C55'">
+                        Tìm kiếm
+                    </button>
+
+                  </div>
+
+                  <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <button 
+                        class="text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-md"
+                        style="background-color: #B47C55;"
+                        onmouseover="this.style.backgroundColor='#9F6D4C'"
+                        onmouseout="this.style.backgroundColor='#B47C55'">
+                        Mua ngay
+                    </button>
+
+                      <button class="bg-white/90 border border-gray-300 text-gray-700 hover:bg-gray-100 font-semibold py-3 px-8 rounded-full shadow-md transition duration-300">
+                          Khám phá bộ sưu tập
+                      </button>
+                  </div>
+              </div>
+
+              <!-- PHẢI -->
+              <div class="flex justify-center md:justify-end">
+                  <div class="relative w-full max-w-sm h-96 overflow-hidden rounded-3xl shadow-2xl bg-white/70 backdrop-blur-sm transform transition-transform duration-500 hover:scale-[1.02]">
+
+                      <!-- Nhãn “New” -->
+                      <span class="absolute top-4 left-4 bg-[#B47C55] text-white text-xs font-bold px-3 py-1 rounded-full z-10 shadow-md">
+                          New
+                        </span>
+
+
+                      <!-- Hoa 3D -->
+                      <model-viewer src="assets/bouquet.glb"
+                          alt="Bó hoa 3D"
+                          camera-controls
+                          auto-rotate
+                          rotation-per-second="20deg"
+                          ar
+                          shadow-intensity="1"
+                          exposure="1.1"
+                          touch-action="pan-y"
+                          style="width:349px;height:384px;background:transparent;margin:auto;">
+                      </model-viewer>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
+
+>>>>>>> Stashed changes
                             `;
             $("#home-slider").append(htmlslider);
             $("#home-slider").slick({ slidesToShow: 1, slidesToScroll: 1, autoplay: true, autoplaySpeed: timeSlide, fade: true, speed: 500, arrows: false });
