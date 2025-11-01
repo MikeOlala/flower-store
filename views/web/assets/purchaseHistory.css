@@ -1,0 +1,115 @@
+/* Dựa trên linkAccount.css, thêm filter bar */
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #4b2e05;
+    background-color: #fff8f5;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(90deg, #d98963, #a05d2f);
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+.back-btn { color: #fff; text-decoration: none; }
+.back-btn:hover { opacity: 0.9; }
+
+/* Container */
+.container {
+    max-width: 880px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 16px 24px;
+}
+
+/* Filter bar */
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+.filter-bar select {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    font-size: 15px;
+}
+
+/* Order card */
+.order-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    cursor: pointer;
+    transition: transform .08s ease, background-color .12s;
+}
+.order-item:hover {
+    background: #fff2e7;
+    transform: translateY(-1px);
+}
+
+/* Left part */
+.order-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.order-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+.order-info {
+    display: flex;
+    flex-direction: column;
+}
+.order-name { font-weight: 600; color: #4b2e05; }
+.order-date { font-size: 14px; color: #6b4a2a; }
+
+.order-status {
+    font-weight: 600;
+    font-size: 14px;
+}
+.order-status.delivered { color: #1b7d2a; }
+.order-status.shipping { color: #ff9500; }
+.order-status.cancelled { color: #a05d2f; }
+
+/* Modal */
+.custom-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1050;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.custom-modal[aria-hidden="false"] { display: flex; }
+
+.modal-content {
+    background-color: #fff8f5;
+    padding: 20px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.btn-cancel {
+    background: transparent;
+    border-radius: 24px;
+    padding: 8px 18px;
+}
