@@ -10,45 +10,161 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- CSS riêng -->
     <link rel="stylesheet" href="assets/purchaseHistory.css">
+<!-Đây là code dùng cho header và footer-->
+    <style>
+        :root {
+            /*--bg-soldout: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/hethang.png?v=245);*/
+            --bgshop: #000000;
+            --colorshop: #000000;
+            --colorshophover: #212020;
+            --bgfooter: #ffffff;
+            --colorfooter: #000000;
+            --colorbgmenumb: #ffffff;
+            --colortextmenumb: #000000;
+            --height-head: 72px;
+
+
+        }
+    </style>
+
+
+    <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/plugin-style.css?v=245" rel="preload stylesheet"
+          as="style" type="text/css">
+    <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/styles-new.scss.css?v=245" rel="preload stylesheet"
+          as="style" type="text/css">
+    <!--    <link rel="preload" as="image" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/logo.png?v=245">-->
+    <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/styles-index.scss.css?v=245"
+          rel="preload stylesheet" as="style" type="text/css">
+    <link rel="preload" as="image"
+          href="//cdn.hstatic.net/themes/200000846175/1001403720/14/slideshow_1_mob_large.jpg?v=245"
+          media="(max-width: 480px)">
+    <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245" rel="preload" as="script"
+          type="text/javascript">
+    <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/main-scripts.js?v=245" rel="preload" as="script"
+          type="text/javascript">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript"
+            src="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"></script>
+    <!-- Tất cả biến khởi tạo, check sử dụng-->
+    <script>
+        localStorage.setItem('shop_id', 'themes/200000846175/1001403720');
+        const tbag_varible = {
+            template: 'index',
+            navLeftText: '<button class="slick-prev slick-arrow custom-style" aria-label="Previous"><span class="arrow-custom arrow-left"><div class="arrow-top"></div><div class="arrow-bottom"></div></span></button>',
+            navRightText: '<button class="slick-next slick-arrow custom-style" aria-label="Next"><span class="arrow-custom arrow-right"><div class="arrow-top"></div><div class="arrow-bottom"></div></span></button>',
+            checklocation: "false",
+            checkproducthot: "true",
+            checkproductrelated: "true",
+            checkproductseen: "false",
+            heartactive: "//cdn.hstatic.net/themes/200000846175/1001403720/14/heart-fill.svg?v=245",
+            addtocart: "//cdn.hstatic.net/themes/200000846175/1001403720/14/add-to-cart.svg?v=245",
+            heart: "//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245",
+            sgnotify: "false",
+            recaptchajs: "https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-",
+            jsonmap: "https://file.hstatic.net/200000397757/file/hethongcuahang_f1ee212eddc04706b09d43518b50a964.json",
+            typepaginate: "default",
+            typeimage: false,
+            trash: "//cdn.hstatic.net/themes/200000846175/1001403720/14/trash.svg?v=245",
+            cancel: "//cdn.hstatic.net/themes/200000846175/1001403720/14/cancel.svg?v=245",
+            productjson: { "error": "json not allowed for this object" },
+            producthandle: "",
+            typerelated: "type",
+            vendorurl: "/collections/vendors?q=&view=related-product",
+            typeurl: "/collections/types?q=&view=related-product",
+            sortbydefault: ""
+        }
+        const formatMoney = '{{amount}} VND', _0x2c0xa = ["\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65", "\x69\x6E\x64\x65\x78\x4F\x66", "\x75\x73\x65\x72\x41\x67\x65\x6E\x74", "\x6C\x6F\x61\x64"];
+        function getScriptCcd(url, callback) { $.ajax({ type: "GET", url: url, success: callback, dataType: "script", cache: true }); }
+        function getdatasite(url, callback, slider) { $.ajax({ type: "GET", url: url, success: function (data) { callback.html(data) } }).done(() => { slider == 'true' ? Wanda.slidercallback() : '' }); }
+        if (navigator[_0x2c0xa[2]][_0x2c0xa[1]](_0x2c0xa[0]) == -1) {
+            $(function () {
+                const resultcss = `<link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/render-after.scss.css?v=245" rel="preload stylesheet" as="style" type="text/css"><link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/owl-carousel_modal.css?v=245" rel="preload stylesheet" as="style" type="text/css">`;
+                $('head').append(resultcss);
+            });
+            $(window).load(() => { getScriptCcd(tbag_varible.recaptchajs); })
+        }
+        if ((typeof Haravan) === 'undefined') { Haravan = {}; }
+    </script>
+
+    <script defer src='https://stats.hstatic.net/beacon.min.js' hrv-beacon-t='200000846175'></script>
+    <style>
+        .grecaptcha-badge {
+            visibility: hidden;
+        }
+    </style>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="components.js"></script>
 </head>
 <body>
+<site-header></site-header>
 <!-- Header -->
-<header class="header d-flex align-items-center px-3 py-2">
-    <a href="settingProfile.html" class="text-white fs-4 me-3 back-btn" title="Quay lại">
-        <i class="bi bi-arrow-left"></i>
-    </a>
-    <h5 class="m-0 text-white">Lịch sử mua hàng</h5>
-</header>
 
-<!-- Main content -->
-<main class="container mt-3">
-    <!-- Bộ lọc -->
-    <div class="filter-bar mb-3">
-        <label for="statusFilter" class="me-2 fw-semibold">Lọc theo trạng thái:</label>
-        <select id="statusFilter" class="form-select d-inline-block w-auto" onchange="filterOrders()">
-            <option value="all">Tất cả</option>
-            <option value="delivered">Đã giao</option>
-            <option value="shipping">Đang giao</option>
-            <option value="cancelled">Đã hủy</option>
-        </select>
-    </div>
 
-    <!-- Danh sách đơn hàng -->
-    <div id="orderList"></div>
-</main>
-
-<!-- Modal chi tiết -->
-<div id="orderModal" class="custom-modal" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal-content">
-        <h5 id="orderTitle" class="mb-2">Chi tiết đơn hàng</h5>
-        <div id="orderDetail" class="mb-3"></div>
-        <div class="d-flex justify-content-end">
-            <button class="btn btn-outline-secondary me-2 btn-cancel" onclick="closeModal()">Đóng</button>
+<!-- Layout chính -->
+<div class="main-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="img\avatar.jpg" alt="Avatar" class="sidebar-avatar">
+            <div class="sidebar-info">
+                <h4>Customer</h4>
+                <p>Thành viên từ 10/2025</p>
+                <span class="points">🌸 290 POINTS</span>
+            </div>
         </div>
-    </div>
-</div>
 
+        <div class="order-summary">
+            <h5>Tổng quan đơn hàng</h5>
+            <div class="summary-item">
+                <span>Tổng số đơn:</span>
+                <strong id="totalOrders">0</strong>
+            </div>
+            <div class="summary-item">
+                <span>Đã giao:</span>
+                <strong id="deliveredCount">0</strong>
+            </div>
+            <div class="summary-item">
+                <span>Đang giao:</span>
+                <strong id="shippingCount">0</strong>
+            </div>
+            <div class="summary-item">
+                <span>Đã hủy:</span>
+                <strong id="cancelledCount">0</strong>
+            </div>
+        </div>
+
+        <div class="spending-box">
+            <h5>Tổng chi tiêu</h5>
+            <p id="totalSpending">0 VND</p>
+        </div>
+
+        <div class="tips">
+            <p>💡 <strong>Mẹo:</strong> Mua thêm 5 đơn nữa để nhận <b>voucher 10%</b>!</p>
+        </div>
+    </aside>
+
+    <!-- Nội dung -->
+    <main class="content">
+        <h3>Lịch sử mua hàng</h3>
+
+        <!-- Bộ lọc -->
+        <div class="filter-bar">
+            <label for="statusFilter">Lọc theo trạng thái:</label>
+            <select id="statusFilter" onchange="filterOrders()">
+                <option value="all">Tất cả</option>
+                <option value="delivered">Đã giao</option>
+                <option value="shipping">Đang giao</option>
+                <option value="cancelled">Đã hủy</option>
+            </select>
+        </div>
+
+        <div id="orderList"></div>
+    </main>
+</div>
 <!-- JS -->
+
 <script src="fileJS/purchaseHistory.js"></script>
+<site-footer></site-footer>
 </body>
 </html>

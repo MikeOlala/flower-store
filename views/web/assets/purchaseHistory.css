@@ -1,115 +1,230 @@
-/* Dựa trên linkAccount.css, thêm filter bar */
-* { box-sizing: border-box; }
-
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    color: #4b2e05;
-    background-color: #fff8f5;
     margin: 0;
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff8ef;
+    color: #333;
 }
 
-/* Header */
-.header {
-    background: linear-gradient(90deg, #d98963, #a05d2f);
-    height: 60px;
+
+
+/* Layout */
+.main-container {
     display: flex;
+    max-width: 1200px;
+    margin: 25px auto;
+    gap: 20px;
+}
+
+/* Sidebar mới */
+.sidebar {
+    width: 25%;
+    background: linear-gradient(180deg, #fff7f0 0%, #fff 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
-.back-btn { color: #fff; text-decoration: none; }
-.back-btn:hover { opacity: 0.9; }
 
-/* Container */
-.container {
-    max-width: 880px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 16px 24px;
+/* Thông tin khách hàng */
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.sidebar-avatar {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #dba77b;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    background-color: #fff4eb; /* nền nhẹ để ảnh lỗi không lộ */
+    display: block;
+    margin: 0 auto;
+    object-position: center; /* căn giữa hình ảnh */
+}
+.sidebar-header {
+    position: relative;
 }
 
-/* Filter bar */
+
+.sidebar-info h4 {
+    margin: 10px 0 4px;
+    color: #5a2e0c;
+}
+.sidebar-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #8b6b50;
+}
+.sidebar-info .points {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #a05d2f;
+    background: #fff2e7;
+    border-radius: 20px;
+    padding: 3px 10px;
+}
+
+/* Khối tổng quan đơn hàng */
+.order-summary {
+    width: 100%;
+    background: #fffdfb;
+    border: 1px solid #f1d2b5;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.03);
+    margin-bottom: 20px;
+}
+.order-summary h5 {
+    margin: 0 0 10px;
+    color: #a05d2f;
+}
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    padding: 4px 0;
+    border-bottom: 1px dashed #eee;
+}
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+/* Tổng chi tiêu */
+.spending-box {
+    width: 100%;
+    background: linear-gradient(90deg, #f9e0ca, #fff);
+    border-radius: 12px;
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 20px;
+    color: #4b2e05;
+}
+.spending-box h5 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: #a05d2f;
+}
+.spending-box p {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0;
+}
+
+/* Tips */
+.tips {
+    font-size: 14px;
+    background: #fff4eb;
+    border-left: 4px solid #d98963;
+    border-radius: 8px;
+    padding: 10px;
+    color: #5a2e0c;
+    line-height: 1.5;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Content */
+/* Nội dung chính */
+.content {
+    flex: 1;
+    background: linear-gradient(180deg, #4b2e05 0%, #4b2e05 100%);
+    border-radius: 16px;
+    padding: 25px 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    color: #4b2e05;
+}
+
+/* Tiêu đề */
+.content h3 {
+    margin-bottom: 15px;
+    color: #5a2e0c;
+}
+
+/* Bộ lọc */
 .filter-bar {
+    margin-bottom: 25px;
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 18px;
+    font-weight: 500;
+    color: #5a2e0c;
 }
 .filter-bar select {
-    border-radius: 8px;
-    border: 1px solid #ccc;
     padding: 6px 12px;
-    font-size: 15px;
+    border-radius: 10px;
+    border: 1px solid #e3c7a6;
+    background-color: #fff7f0;
+    cursor: pointer;
+    color: #4b2e05;
+    font-weight: 500;
+    transition: 0.3s;
+}
+.filter-bar select:hover {
+    background-color: #fff2e7;
 }
 
-/* Order card */
-.order-item {
-    background: #fff;
-    border-radius: 10px;
-    padding: 14px;
-    margin-bottom: 12px;
+/* Thẻ đơn hàng */
+.order-card {
+    background-color: #fffdfb;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
-    cursor: pointer;
-    transition: transform .08s ease, background-color .12s;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: 0.25s;
+    padding: 14px 20px;
+    border: 1px solid #f3e1d2;
 }
-.order-item:hover {
-    background: #fff2e7;
-    transform: translateY(-1px);
+.order-card:hover {
+    transform: translateY(-3px);
+    background: #fff7f0;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
-
-/* Left part */
 .order-left {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
 }
 .order-img {
-    width: 70px;
-    height: 70px;
-    border-radius: 8px;
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
     object-fit: cover;
+    border: 2px solid #f1d2b5;
 }
 .order-info {
     display: flex;
     flex-direction: column;
+    line-height: 1.6;
 }
-.order-name { font-weight: 600; color: #4b2e05; }
-.order-date { font-size: 14px; color: #6b4a2a; }
-
+.order-name {
+    font-weight: 600;
+    color: #4b2e05;
+}
+.order-price {
+    font-size: 16px;
+    font-weight: 500;
+    color: #6a3f1e;
+}
 .order-status {
     font-weight: 600;
     font-size: 14px;
 }
 .order-status.delivered { color: #1b7d2a; }
-.order-status.shipping { color: #ff9500; }
-.order-status.cancelled { color: #a05d2f; }
+.order-status.shipping { color: #e58b0b; }
+.order-status.cancelled { color: #c44c2b; }
 
-/* Modal */
-.custom-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    z-index: 1050;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-.custom-modal[aria-hidden="false"] { display: flex; }
-
-.modal-content {
-    background-color: #fff8f5;
-    padding: 20px;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 480px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+/* Ngày đặt */
+.order-date small {
+    color: #7c5b42;
+    font-weight: 500;
 }
 
-.btn-cancel {
-    background: transparent;
-    border-radius: 24px;
-    padding: 8px 18px;
-}
+.order-status.delivered { color: #2a8b3a; }
+.order-status.shipping { color: #e38b00; }
+.order-status.cancelled { color: #c42b2b; }

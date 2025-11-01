@@ -1,82 +1,71 @@
-// Dữ liệu mẫu
 const orders = [
     {
         id: 1,
         name: "Bó hoa Whimsy well",
-        price: "910,000 VND",
-        date: "28/10/2025",
+        price: "910.000 VND",
+        img: "img/hoa 1.jpg",
         status: "shipping",
-        img:"img/hoa 2.jpg",
-        items: [
-            { name: "Hoa hướng dương", quantity: 5 }
-        ]
+        date: "30/10/2025"
     },
     {
         id: 2,
         name: "Giỏ hoa Bliss charm",
-        price: "1,450,000 VND",
-        date: "20/10/2025",
+        price: "1.450.000 VND",
+        img: "img/giỏ hoa.jpg",
         status: "delivered",
-        img: "img/hoa 1.jpg",
-        items: [
-            { name: "Hoa hồng Đà Lạt", quantity: 6 },
-            { name: "Hoa baby trắng", quantity: 2 }
-        ]
+        date: "20/10/2025"
     },
     {
         id: 3,
         name: "Hoa Tulip Everelle",
-        price: "1,880,500 VND",
-        date: "12/09/2025",
+        price: "1.880.500 VND",
+        img: "img/hoa 2.jpg",
         status: "delivered",
-        img: "img/giỏ hoa.jpg",
-        items: [
-            { name: "Hoa tulip trắng", quantity: 10 }
-        ]
-    }
-
-
+        date: "31/10/2025"
+    },
+    // {
+    //     id: 4,
+    //     name: "Bó hoa Dreamy Roses",
+    //     price: "1.250.000 VND",
+    //     img: "img/hoa4.jpg",
+    //     status: "cancelled",
+    //     date: "10/08/2025"
+    // }
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
     renderOrders(orders);
-
-    const modal = document.getElementById('orderModal');
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-    }
+    updateSidebarStats();
 });
 
-// Hiển thị danh sách đơn
+// Hiển thị danh sách đơn hàng
 function renderOrders(list) {
     const container = document.getElementById("orderList");
-    if (!container) return;
-    container.innerHTML = '';
+    container.innerHTML = "";
 
     list.forEach(order => {
-        const item = document.createElement('div');
-        item.className = 'order-item';
-        item.innerHTML = `
+        const div = document.createElement("div");
+        div.className = "order-card";
+        div.innerHTML = `
       <div class="order-left">
         <img src="${order.img}" alt="${order.name}" class="order-img">
         <div class="order-info">
           <div class="order-name">${order.name}</div>
-          <div class="order-date">Ngày đặt: ${order.date}</div>
+          <div class="order-price">${order.price}</div>
           <div class="order-status ${order.status}">
-            ${getStatusText(order.status)}
+            Trạng thái: ${getStatusText(order.status)}
           </div>
         </div>
       </div>
-      <div><strong>${order.price}</strong></div>
+      <div class="order-date">
+        <small>Ngày đặt: ${order.date}</small>
+      </div>
     `;
-        item.addEventListener('click', () => openModal(order));
-        container.appendChild(item);
+        container.appendChild(div);
     });
 }
 
-// Lọc trạng thái
+// Lọc theo trạng thái
 function filterOrders() {
     const value = document.getElementById("statusFilter").value;
     const filtered = value === "all" ? orders : orders.filter(o => o.status === value);
@@ -93,27 +82,22 @@ function getStatusText(status) {
     }
 }
 
-// Modal chi tiết đơn
-function openModal(order) {
-    const modal = document.getElementById('orderModal');
-    const title = document.getElementById('orderTitle');
-    const detail = document.getElementById('orderDetail');
+// Cập nhật thống kê sidebar
+function updateSidebarStats() {
+    const total = orders.length;
+    const delivered = orders.filter(o => o.status === "delivered").length;
+    const shipping = orders.filter(o => o.status === "shipping").length;
+    const cancelled = orders.filter(o => o.status === "cancelled").length;
 
-    title.textContent = `Chi tiết - ${order.name}`;
-    detail.innerHTML = `
-    <p><strong>Ngày đặt:</strong> ${order.date}</p>
-    <p><strong>Giá:</strong> ${order.price}</p>
-    <p><strong>Trạng thái:</strong> ${getStatusText(order.status)}</p>
-    <hr>
-    <p><strong>Sản phẩm:</strong></p>
-    <ul>
-      ${order.items.map(i => `<li>${i.name} - SL: ${i.quantity}</li>`).join('')}
-    </ul>
-  `;
-    modal.setAttribute('aria-hidden', 'false');
-}
+    document.getElementById("totalOrders").textContent = total;
+    document.getElementById("deliveredCount").textContent = delivered;
+    document.getElementById("shippingCount").textContent = shipping;
+    document.getElementById("cancelledCount").textContent = cancelled;
 
-function closeModal() {
-    const modal = document.getElementById('orderModal');
-    modal.setAttribute('aria-hidden', 'true');
+    const totalSpending = orders
+        .filter(o => o.status !== "cancelled")
+        .reduce((sum, o) => sum + parseInt(o.price.replace(/\D/g, "")), 0);
+
+    document.getElementById("totalSpending").textContent =
+        totalSpending.toLocaleString() + " VND";
 }
