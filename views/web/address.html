@@ -3,14 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Lịch sử mua hàng</title>
+    <title>Địa chỉ giao hàng</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- CSS riêng -->
-    <link rel="stylesheet" href="assets/purchaseHistory.css">
-<!-Đây là code dùng cho header và footer-->
+
+    <!-- CSS đồng bộ -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="components.js"></script>
+    <link rel="stylesheet" href="assets/address.css">
     <style>
         :root {
             /*--bg-soldout: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/hethang.png?v=245);*/
@@ -95,18 +97,23 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script defer src="components.js"></script>
+
 </head>
 <body>
 <site-header></site-header>
-<!-- Header -->
 
-
-<!-- Layout chính -->
 <div class="main-container">
+
+
     <!-- Sidebar -->
     <aside class="sidebar">
+        <div class="text-start mb-3">
+            <a href="profileCustomer.html" class="btn btn-outline-brown">
+                <i class="fa fa-arrow-left me-1"></i> Quay lại trang cài đặt
+            </a>
+        </div>
         <div class="sidebar-header">
-            <img src="img\avatar_1.jpg" alt="Avatar" class="sidebar-avatar">
+            <img src="img/avatar_1.jpg" alt="Avatar" class="sidebar-avatar">
             <div class="sidebar-info">
                 <h4>Customer</h4>
                 <p>Thành viên từ 10/2025</p>
@@ -115,56 +122,77 @@
         </div>
 
         <div class="order-summary">
-            <h5>Tổng quan đơn hàng</h5>
+            <h5>Tổng quan tài khoản</h5>
             <div class="summary-item">
-                <span>Tổng số đơn:</span>
-                <strong id="totalOrders">0</strong>
+                <span>Đơn hàng:</span><strong>3</strong>
             </div>
             <div class="summary-item">
-                <span>Đã giao:</span>
-                <strong id="deliveredCount">0</strong>
-            </div>
-            <div class="summary-item">
-                <span>Đang giao:</span>
-                <strong id="shippingCount">0</strong>
-            </div>
-            <div class="summary-item">
-                <span>Đã hủy:</span>
-                <strong id="cancelledCount">0</strong>
+                <span>Địa chỉ đã lưu:</span><strong>2</strong>
             </div>
         </div>
 
         <div class="spending-box">
-            <h5>Tổng chi tiêu</h5>
-            <p id="totalSpending">0 VND</p>
+            <h5>Điểm thưởng</h5>
+            <p>290 POINTS</p>
         </div>
 
         <div class="tips">
-            <p>💡 <strong>Mẹo:</strong> Mua thêm 5 đơn nữa để nhận <b>voucher 10%</b>!</p>
+            <p>💡 <strong>Mẹo:</strong> Hãy lưu nhiều địa chỉ để chọn nhanh khi thanh toán!</p>
         </div>
     </aside>
 
-    <!-- Nội dung -->
+    <!-- Content -->
     <main class="content">
-        <h3>Lịch sử mua hàng</h3>
+        <h3>Địa chỉ giao hàng</h3>
 
-        <!-- Bộ lọc -->
-        <div class="filter-bar">
-            <label for="statusFilter">Lọc theo trạng thái:</label>
-            <select id="statusFilter" onchange="filterOrders()">
-                <option value="all">Tất cả</option>
-                <option value="delivered">Đã giao</option>
-                <option value="shipping">Đang giao</option>
-                <option value="cancelled">Đã hủy</option>
-            </select>
+        <form id="addressForm" class="address-form">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label text-brown">Họ và tên</label>
+                    <input type="text" class="form-control input-beige" placeholder="Nguyễn Văn A" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label text-brown">Số điện thoại</label>
+                    <input type="tel" class="form-control input-beige" placeholder="0987654321" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label text-brown">Địa chỉ cụ thể</label>
+                <input type="text" class="form-control input-beige" placeholder="Số nhà, đường, phường/xã" required>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label text-brown">Thành phố / Tỉnh</label>
+                    <input type="text" class="form-control input-beige" placeholder="TP. Hồ Chí Minh" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label text-brown">Quận / Huyện</label>
+                    <input type="text" class="form-control input-beige" placeholder="Quận 1" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label text-brown">Ghi chú</label>
+                <textarea class="form-control input-beige" rows="3" placeholder="Ví dụ: Giao giờ hành chính"></textarea>
+            </div>
+
+            <div class="text-end">
+                <button type="submit" class="btn btn-brown">Lưu địa chỉ</button>
+            </div>
+        </form>
+
+        <!-- Danh sách địa chỉ đã lưu -->
+        <div id="savedAddresses" class="mt-4">
+            <h5 class="text-brown mb-3">Địa chỉ đã lưu</h5>
+            <div id="addressList"></div>
         </div>
-
-        <div id="orderList"></div>
     </main>
 </div>
-<!-- JS -->
 
-<script src="fileJS/purchaseHistory.js"></script>
 <site-footer></site-footer>
+<script src="../../MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/js/mdb.umd.min.js"></script>
+<script src="fileJS/address.js"></script>
 </body>
 </html>

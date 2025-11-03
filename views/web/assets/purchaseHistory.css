@@ -131,11 +131,11 @@ body {
 /* Nội dung chính */
 .content {
     flex: 1;
-    background: linear-gradient(180deg, #4b2e05 0%, #4b2e05 100%);
+    background: linear-gradient(180deg, #fff4eb 0%, #fff4eb 100%);
     border-radius: 16px;
     padding: 25px 28px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    color: #4b2e05;
+    color: #fff4eb;
 }
 
 /* Tiêu đề */
