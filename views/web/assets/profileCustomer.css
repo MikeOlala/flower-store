@@ -551,3 +551,7 @@ a.list-group-item, .list-group-item-action {
         min-width: 250px !important;
     }
 }
+.list-group-item {
+    pointer-events: auto !important;
+    cursor: pointer;
+}
