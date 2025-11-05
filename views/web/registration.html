@@ -2,76 +2,104 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Đăng ký - La Vie Est Belle</title>
+    <title>Đăng ký thành viên</title>
+    <!-- MDB & Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="../MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/css/mdb.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/registration.css">
-    <link rel="stylesheet" href="../../MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/css/mdb.min.css">
 </head>
 <body>
-<section class="vh-100"
-         style="background-image: url('img/background.png');
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;">
-    <div class="mask d-flex align-items-center h-100" style="background-color: rgba(255,255,255,0.75);">
-        <div class="container h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                    <div class="card shadow-lg" style="border-radius: 20px; background-color: #fff8f5;">
-                        <div class="card-body p-5">
-                            <h3 class="text-center mb-4" style="color:#7b4b2a; font-family:'Segoe UI', sans-serif;">Đăng ký thành viên</h3>
+<div class="register-container">
+    <h2 class="text-center mb-4">Đăng ký thành viên</h2>
 
-                            <form>
-
-                                <div data-mdb-input-init class="form-outline mb-4">
-                                    <input type="text" id="name" class="form-control form-control-lg" required />
-                                    <label class="form-label" for="name">Họ và tên</label>
-                                </div>
-
-                                <div data-mdb-input-init class="form-outline mb-4">
-                                    <input type="email" id="email" class="form-control form-control-lg" required />
-                                    <label class="form-label" for="email">Email</label>
-                                </div>
-
-                                <div data-mdb-input-init class="form-outline mb-4">
-                                    <input type="password" id="password" class="form-control form-control-lg" required />
-                                    <label class="form-label" for="password">Mật khẩu</label>
-                                </div>
-
-                                <div data-mdb-input-init class="form-outline mb-4">
-                                    <input type="password" id="repassword" class="form-control form-control-lg" required />
-                                    <label class="form-label" for="repassword">Nhập lại mật khẩu</label>
-                                </div>
-
-                                <div class="form-check d-flex justify-content-center mb-4">
-                                    <input class="form-check-input me-2" type="checkbox" value="" id="terms" required />
-                                    <label class="form-check-label" for="terms">
-                                        Tôi đồng ý với <a href="#!" style="color:#d9b89c;"><u>chính sách dịch vụ</u></a>
-                                    </label>
-                                </div>
-
-                                <div class="d-flex justify-content-center">
-                                    <button type="submit"
-                                            class="btn btn-lg text-white shadow-sm"
-                                            style="background-color:#a05d2f; border-radius:30px; padding:10px 40px;">
-                                        Đăng ký
-                                    </button>
-                                </div>
-
-                                <p class="text-center text-muted mt-4 mb-0">
-                                    Bạn đã có tài khoản?
-                                    <a href="login.html" style="color:#7b4b2a;"><u>Đăng nhập ngay</u></a>
-                                </p>
-
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="form-group">
+        <label for="fullname">Họ và tên</label>
+        <input type="text" id="fullname" placeholder="Nhập họ và tên">
     </div>
-</section>
 
-<script type="text/javascript" src="../../MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/js/mdb.umd.min.js"></script>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Nhập email">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Mật khẩu</label>
+        <input type="password" id="password" placeholder="Nhập mật khẩu">
+    </div>
+
+    <div class="form-group">
+        <label for="repassword">Nhập lại mật khẩu</label>
+        <input type="password" id="repassword" placeholder="Nhập lại mật khẩu">
+    </div>
+
+    <div class="checkbox-group">
+        <label>
+            <input type="checkbox" id="agree"> Tôi đồng ý với
+            <a href="#">chính sách dịch vụ</a>
+        </label>
+    </div>
+
+    <button class="btn-register w-1200" id="btnRegister">ĐĂNG KÝ</button>
+
+    <div class="login-link">
+        Bạn đã có tài khoản? <a href="login.html">Đăng nhập ngay</a>
+    </div>
+</div>
+
+<!-- Toast thông báo -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="../../MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/js/mdb.umd.min.js"></script>
+
+<script>
+    // Hàm hiển thị toast thông báo
+    function showToast(message, type = "success") {
+        const container = document.getElementById("toastContainer");
+        const toast = document.createElement("div");
+        toast.className = `toast-message ${type}`;
+        toast.innerHTML = `
+                <i class="bi ${type === 'success' ? 'bi-check-circle' : 'bi-exclamation-circle'} me-2"></i>
+                ${message}
+            `;
+        container.appendChild(toast);
+
+        setTimeout(() => toast.classList.add("show"), 100);
+        setTimeout(() => {
+            toast.classList.remove("show");
+            setTimeout(() => toast.remove(), 400);
+        }, 3000);
+    }
+
+    // Xử lý nút đăng ký
+    document.getElementById("btnRegister").addEventListener("click", () => {
+        const name = document.getElementById("fullname").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const pass = document.getElementById("password").value;
+        const repass = document.getElementById("repassword").value;
+        const agree = document.getElementById("agree").checked;
+
+        if (!name || !email || !pass || !repass) {
+            showToast("Vui lòng điền đầy đủ thông tin!", "error");
+            return;
+        }
+        if (pass !== repass) {
+            showToast("Mật khẩu không khớp!", "error");
+            return;
+        }
+        if (!agree) {
+            showToast("Vui lòng đồng ý với chính sách dịch vụ!", "error");
+            return;
+        }
+
+        // Nếu hợp lệ
+        showToast("Đăng ký thành công!", "success");
+
+        // (Tùy chọn) chuyển hướng sau 2 giây
+        setTimeout(() => window.location.href = "login.html", 2000);
+    });
+</script>
+<script src="../MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/js/mdb.es.min.js"></script>
+<script src="../MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/js/mdb.umd.min.js"></script>
 </body>
 </html>
