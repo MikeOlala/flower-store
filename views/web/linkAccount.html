@@ -19,22 +19,48 @@
     <a href="settingProfile.html" class="text-white fs-4 me-3 back-btn" title="Quay lại">
         <i class="bi bi-arrow-left"></i>
     </a>
-    <h5 class="m-0 text-white">Tài khoản liên kết</h5>
+    <!--    <h5 class="m-0 text-white">Tài khoản liên kết</h5>-->
 </header>
 
 <!-- Main content -->
-<main class="container mt-3" id="accountList" role="main">
-    <!-- JS sẽ render danh sách ở đây -->
-</main>
+<div class="link-wrapper">
+    <aside class="sidebar">
+        <a href="settingProfile.html" class="back-btn"><i class="bi bi-arrow-left"></i> Quay lại cài đặt</a>
+        <div class="user-card">
+            <img src="img\avatar_1.jpg"class="avatar" alt="avatar">
+            <h4>Customer</h4>
+            <p>Thành viên từ 10/2025</p>
+            <div class="points">🌸 290 POINTS</div>
+        </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="container py-4">
+        <!-- Danh sách tài khoản -->
+        <div id="accountList" class="account-list"></div>
+
+        <!-- Chi tiết tài khoản (thêm mới) -->
+        <div id="accountDetail" class="account-detail hidden">
+            <div class="detail-card">
+                <img id="detailIcon" class="detail-icon" src="" alt="icon">
+                <h4 id="detailName"></h4>
+                <p id="detailStatus" class="detail-status"></p>
+                <p id="detailDesc" class="detail-desc"></p>
+                <button class="btn-close-detail" onclick="closeDetail()">Đóng</button>
+            </div>
+        </div>
+    </main>
+
+</div>
 
 <!-- Modal -->
-<div id="linkModal" class="custom-modal" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="modal-content">
-        <h5 class="mb-2" id="linkTitle">Liên kết tài khoản</h5>
-        <p id="linkMessage" class="mb-3">Bạn có chắc chắn muốn liên kết tài khoản này không?</p>
-        <div class="d-flex justify-content-end">
-            <button class="btn btn-outline-secondary me-2 btn-cancel" onclick="closeModal()">Hủy</button>
-            <button id="confirmBtn" class="btn btn-primary btn-save">Xác nhận</button>
+<div id="linkModal" class="custom-modal" aria-hidden="true">
+    <div class="modal-content animate-scale">
+        <h5 id="linkTitle" class="fw-bold text-center mb-2">Liên kết tài khoản</h5>
+        <p id="linkMessage" class="text-center mb-4 text-secondary"></p>
+        <div class="modal-actions">
+            <button class="btn-cancel" onclick="closeModal()">Hủy</button>
+            <button id="confirmBtn" class="btn-save">Xác nhận</button>
         </div>
     </div>
 </div>
