@@ -3,15 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <title>Flower store</title>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/profileCustomer.css">
+
+    <!-- Font Awesome 6 (hỗ trợ toàn bộ icon mới) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- MDB & Bootstrap -->
     <link rel="stylesheet" href="../../MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/css/mdb.min.css">
     <link rel="stylesheet" href="../../MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/css/mdb.rtl.min.css">
+
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- MDB icon -->
-    <i class="fa-brands fa-facebook"></i>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/profileCustomer.css">
+    <style>
+        :root {
+            /*--bg-soldout: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/hethang.png?v=245);*/
+            --bgshop: #000000;
+            --colorshop: #000000;
+            --colorshophover: #212020;
+            --bgfooter: #ffffff;
+            --colorfooter: #000000;
+            --colorbgmenumb: #ffffff;
+            --colortextmenumb: #000000;
+            --height-head: 72px;
+
+
+        }
+    </style>
+
+
+    <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/plugin-style.css?v=245" rel="preload stylesheet"
+          as="style" type="text/css">
+    <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/styles-new.scss.css?v=245" rel="preload stylesheet"
+          as="style" type="text/css">
+<!--    <link rel="preload" as="image" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/logo.png?v=245">-->
+    <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/styles-index.scss.css?v=245"
+          rel="preload stylesheet" as="style" type="text/css">
+    <link rel="preload" as="image"
+          href="//cdn.hstatic.net/themes/200000846175/1001403720/14/slideshow_1_mob_large.jpg?v=245"
+          media="(max-width: 480px)">
+    <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245" rel="preload" as="script"
+          type="text/javascript">
+    <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/main-scripts.js?v=245" rel="preload" as="script"
+          type="text/javascript">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript"
+            src="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"></script>
+    <!-- Tất cả biến khởi tạo, check sử dụng-->
+    <script>
+        localStorage.setItem('shop_id', 'themes/200000846175/1001403720');
+        const tbag_varible = {
+            template: 'index',
+            navLeftText: '<button class="slick-prev slick-arrow custom-style" aria-label="Previous"><span class="arrow-custom arrow-left"><div class="arrow-top"></div><div class="arrow-bottom"></div></span></button>',
+            navRightText: '<button class="slick-next slick-arrow custom-style" aria-label="Next"><span class="arrow-custom arrow-right"><div class="arrow-top"></div><div class="arrow-bottom"></div></span></button>',
+            checklocation: "false",
+            checkproducthot: "true",
+            checkproductrelated: "true",
+            checkproductseen: "false",
+            heartactive: "//cdn.hstatic.net/themes/200000846175/1001403720/14/heart-fill.svg?v=245",
+            addtocart: "//cdn.hstatic.net/themes/200000846175/1001403720/14/add-to-cart.svg?v=245",
+            heart: "//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245",
+            sgnotify: "false",
+            recaptchajs: "https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-",
+            jsonmap: "https://file.hstatic.net/200000397757/file/hethongcuahang_f1ee212eddc04706b09d43518b50a964.json",
+            typepaginate: "default",
+            typeimage: false,
+            trash: "//cdn.hstatic.net/themes/200000846175/1001403720/14/trash.svg?v=245",
+            cancel: "//cdn.hstatic.net/themes/200000846175/1001403720/14/cancel.svg?v=245",
+            productjson: { "error": "json not allowed for this object" },
+            producthandle: "",
+            typerelated: "type",
+            vendorurl: "/collections/vendors?q=&view=related-product",
+            typeurl: "/collections/types?q=&view=related-product",
+            sortbydefault: ""
+        }
+        const formatMoney = '{{amount}} VND', _0x2c0xa = ["\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65", "\x69\x6E\x64\x65\x78\x4F\x66", "\x75\x73\x65\x72\x41\x67\x65\x6E\x74", "\x6C\x6F\x61\x64"];
+        function getScriptCcd(url, callback) { $.ajax({ type: "GET", url: url, success: callback, dataType: "script", cache: true }); }
+        function getdatasite(url, callback, slider) { $.ajax({ type: "GET", url: url, success: function (data) { callback.html(data) } }).done(() => { slider == 'true' ? Wanda.slidercallback() : '' }); }
+        if (navigator[_0x2c0xa[2]][_0x2c0xa[1]](_0x2c0xa[0]) == -1) {
+            $(function () {
+                const resultcss = `<link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/render-after.scss.css?v=245" rel="preload stylesheet" as="style" type="text/css"><link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/owl-carousel_modal.css?v=245" rel="preload stylesheet" as="style" type="text/css">`;
+                $('head').append(resultcss);
+            });
+            $(window).load(() => { getScriptCcd(tbag_varible.recaptchajs); })
+        }
+        if ((typeof Haravan) === 'undefined') { Haravan = {}; }
+    </script>
+
+    <script defer src='https://stats.hstatic.net/beacon.min.js' hrv-beacon-t='200000846175'></script>
+    <style>
+        .grecaptcha-badge {
+            visibility: hidden;
+        }
+    </style>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="components.js"></script>
+
 </head>
 <body>
+<site-header></site-header>
 <div class="container mb-4">
     <div class="row">
         <div class="col-4 pb-5">
@@ -29,14 +121,17 @@
             </div>
             <div class="wizard">
                 <nav class="list-group list-group-flush">
-                    <a class="list-group-item active" href="#">
+                    <a class="list-group-item active" href="purchaseHistory.html" target="_blank">
                         <div class="d-flex justify-content-between align-items-center">
-                            <div><i class="fa fa-shopping-bag mr-1 text-muted"></i>
+                            <div><i class="fa-solid fa-shopping-bag mr-1 text-muted"></i>
                                 <div class="d-inline-block font-weight-medium text-uppercase">Lịch sử mua hàng</div>
                             </div><span class="badge badge-secondary">6</span>
                         </div>
-                    </a><a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-profile-settings-page" target="__blank">
-                    <i class="fa fa-user text-muted"></i>Cài đặt hồ sơ</a><a class="list-group-item" href="#"><i class="fa fa-map-marker text-muted"></i>Địa chỉ</a>
+                    </a><a class="list-group-item" href="settingProfile.html" target="__blank">
+                    <i class="fa fa-user text-muted"></i>Cài đặt hồ sơ<a class="list-group-item" href="address.html">
+                    <i class="fa fa-map-marker text-muted"></i>Địa chỉ
+                </a>
+
                     <a class="list-group-item" href="#">
                         <div class="d-flex justify-content-between align-items-center">
                             <div><i class="fa fa-heart mr-1 text-muted"></i>
@@ -44,7 +139,7 @@
                             </div><span class="badge badge-secondary">3</span>
                         </div>
                     </a>
-                    <a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-account-tickets" target="__blank">
+                    <a class="list-group-item" href="linkAccount.html" target="__blank">
                         <div class="d-flex justify-content-between align-items-center">
                             <div><i class="fa fa-tag mr-1 text-muted"></i>
                                 <div class="d-inline-block font-weight-medium text-uppercase">Tài khoản liên kết</div>
@@ -86,7 +181,7 @@
                     <a class="cart-item-product" href="#">
                         <div class="cart-item-product-thumb"><img src="img\hoa 2.jpg" alt="Product"></div>
                         <div class="cart-item-product-info">
-                            <h4 class="cart-item-product-title">HP LaserJet Pro Laser Printer</h4>
+                            <h4 class="cart-item-product-title">Hoa Tulip Everelle</h4>
                             <div class="text-lg text-body font-weight-medium pb-1">1.880.500 VNĐ</div><span>Trạng thái: <span class="text-success font-weight-medium">Đã giao</span></span>
                         </div>
                     </a>
@@ -99,5 +194,8 @@
         </div>
     </div>
 </div>
+<site-footer></site-footer>
+
 </body>
+
 </html>
