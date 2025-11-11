@@ -593,7 +593,9 @@
                 <div class="sum-row muted"><span>Giảm giá</span><span>0 ₫</span></div>
                 <div class="sum-total"><span>Tổng cộng</span><span>1.210.000 ₫</span></div>
                 <div class="actions">
-                    <a class="btn secondary" href="home.html">Tiếp tục mua</a>
+                    <a class="btn secondary" href="home.html">Tiếp tục mua</a><a class="btn" id="ai-card-open" href="#"
+                        onclick="return false;">Tạo thiệp bằng AI</a>
+
                     <a class="btn" href="checkout.html">Thanh toán</a>
                 </div>
             </aside>
@@ -752,6 +754,511 @@
             display: none !important;
         }
     </style>
+
+    <!-- AI Card Modal (Demo web tĩnh) -->
+    <style>
+        :root {
+            --ink: #2b2926;
+            --muted: #7a6e65;
+            --rose: #a97155;
+            --rose-200: #ead9ca;
+            --bg: #fff8f1;
+            --bg-2: #faf3ea;
+        }
+
+        .ai-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(33, 26, 19, .45);
+            backdrop-filter: saturate(120%) blur(2px);
+            display: none;
+            z-index: 9998
+        }
+
+        .ai-modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            place-items: center;
+            z-index: 9999;
+            padding: 18px
+        }
+
+        .ai-card {
+            width: min(1080px, 96vw);
+            max-height: 88vh;
+            overflow: auto;
+            background: linear-gradient(180deg, #fff 0%, #fffdfc 50%, #ffffff 100%);
+            border: 1px solid #fff;
+            border-radius: 26px;
+            box-shadow: 0 20px 60px rgba(33, 26, 19, .18);
+            padding: 18px 18px 22px;
+        }
+
+        .ai-head {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(180deg, #ffffff 70%, rgba(255, 255, 255, 0));
+            z-index: 1;
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            margin: -6px -6px 8px;
+            padding: 10px 6px 12px
+        }
+
+        .ai-head h3 {
+            margin: 0;
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            letter-spacing: .2px;
+            color: var(--ink)
+        }
+
+        .ai-close {
+            border: 0;
+            background: #fff;
+            border: 1px solid var(--rose-200);
+            width: 38px;
+            height: 38px;
+            border-radius: 999px;
+            cursor: pointer;
+            line-height: 38px
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 18px;
+            align-items: start
+        }
+
+        @media(max-width:1024px) {
+            .ai-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .ai-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin: 8px 0
+        }
+
+        .ai-field label {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .ai-field input,
+        .ai-field select,
+        .ai-field textarea {
+            padding: 12px 14px;
+            border: 1px solid var(--rose-200);
+            border-radius: 16px;
+            background: #fff;
+            font-size: 14px;
+            color: var(--ink)
+        }
+
+        .ai-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+
+        .ai-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap
+        }
+
+        .ai-btn {
+            appearance: none;
+            border: 0;
+            background: var(--rose);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 18px;
+            padding: 12px 16px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(169, 113, 85, .28)
+        }
+
+        .ai-btn.secondary {
+            background: #fff;
+            color: var(--ink);
+            border: 1px solid var(--rose-200);
+            box-shadow: none
+        }
+
+        .ai-hint {
+            color: var(--muted);
+            font-size: 12.5px
+        }
+
+        .ai-canvas-wrap {
+            background: linear-gradient(180deg, #fff, #fffdfc);
+            border: 1px solid #f6e7da;
+            border-radius: 18px;
+            display: grid;
+            place-items: center;
+            min-height: 360px;
+            padding: 14px
+        }
+
+        canvas.ai-canvas {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 14px
+        }
+    </style>
+
+    <div class="ai-modal-backdrop" id="aiCardBackdrop"></div>
+    <div class="ai-modal" id="aiCardModal" role="dialog" aria-modal="true" aria-labelledby="aiCardTitle">
+        <div class="ai-card">
+            <div class="ai-head">
+                <h3 id="aiCardTitle">Tạo thiệp tự động</h3>
+                <button class="ai-close" id="aiCardClose" title="Đóng">✕</button>
+            </div>
+
+            <div class="ai-grid">
+                <!-- LEFT: form -->
+                <div>
+                    <div class="ai-field">
+                        <label>Người nhận</label>
+                        <input id="aiTo" placeholder="VD: Em Linh / Ba mẹ / Anh Tuấn">
+                    </div>
+
+                    <div class="ai-row">
+                        <div class="ai-field">
+                            <label>Dịp / Sự kiện</label>
+                            <select id="aiOccasion">
+                                <option value="sinh nhật">Sinh nhật</option>
+                                <option value="kỷ niệm">Kỷ niệm</option>
+                                <option value="chúc mừng">Chúc mừng</option>
+                                <option value="cảm ơn">Cảm ơn</option>
+                                <option value="ngày đặc biệt">Ngày đặc biệt</option>
+                                <option value="an ủi">An ủi</option>
+                            </select>
+                        </div>
+                        <div class="ai-field">
+                            <label>Giọng điệu</label>
+                            <select id="aiTone">
+                                <option value="ấm áp">Ấm áp</option>
+                                <option value="hài hước">Hài hước</option>
+                                <option value="trang trọng">Trang trọng</option>
+                                <option value="ngọt ngào">Ngọt ngào</option>
+                                <option value="động viên">Động viên</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="ai-row">
+                        <div class="ai-field">
+                            <label>Độ dài</label>
+                            <select id="aiLength">
+                                <option value="ngắn">Ngắn</option>
+                                <option value="vừa">Vừa</option>
+                                <option value="dài">Dài</option>
+                            </select>
+                        </div>
+                        <div class="ai-field">
+                            <label>Người gửi (ký tên)</label>
+                            <input id="aiFrom" placeholder="VD: Toàn / Gia đình mình">
+                        </div>
+                    </div>
+
+                    <div class="ai-field">
+                        <label>Lời nhắn thủ công (tùy chọn)</label>
+                        <textarea id="aiManual"
+                            placeholder="Nếu đã ghi lời chúc ở ô 'Ghi lời chúc kèm bó hoa', bấm 'Lấy lời nhắn từ giỏ' để dùng lại."></textarea>
+                        <div class="ai-actions">
+                            <button class="ai-btn secondary" id="aiGrabNote">Lấy lời nhắn từ giỏ</button>
+                            <span class="ai-hint">Mẹo: để trống phần này nếu muốn AI tự sinh toàn bộ.</span>
+                        </div>
+                    </div>
+
+                    <div class="ai-actions">
+                        <button class="ai-btn" id="aiGenerate">Sinh lời chúc</button>
+                        <button class="ai-btn secondary" id="aiRender">Vẽ thiệp</button>
+                        <button class="ai-btn secondary" id="aiDownload">Tải PNG</button>
+                    </div>
+                </div>
+
+                <!-- RIGHT: canvas preview -->
+                <div>
+                    <div class="ai-canvas-wrap">
+                        <canvas id="aiCanvas" width="900" height="600" aria-label="Xem trước thiệp"
+                            class="ai-canvas"></canvas>
+                    </div>
+                    <p class="ai-hint" style="margin-top:8px">
+                        Thiệp dùng tông nâu ấm của trang, kèm hoa 🌸·🌷.<br>Hình xuất PNG 900×600.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            // Helpers
+            const $ = s => document.querySelector(s);
+            const $$ = s => document.querySelectorAll(s);
+
+            const openBtn = $('#ai-card-open');
+            const modal = $('#aiCardModal');
+            const backdrop = $('#aiCardBackdrop');
+            const closeBtn = $('#aiCardClose');
+
+            const elTo = $('#aiTo');
+            const elFrom = $('#aiFrom');
+            const elOcc = $('#aiOccasion');
+            const elTone = $('#aiTone');
+            const elLen = $('#aiLength');
+            const elManual = $('#aiManual');
+            const grabNoteBtn = $('#aiGrabNote');
+            const genBtn = $('#aiGenerate');
+            const renderBtn = $('#aiRender');
+            const dlBtn = $('#aiDownload');
+            const canvas = $('#aiCanvas');
+            const ctx = canvas.getContext('2d');
+
+            function show() { modal.style.display = 'grid'; backdrop.style.display = 'block'; }
+            function hide() { modal.style.display = 'none'; backdrop.style.display = 'none'; }
+            openBtn?.addEventListener('click', show);
+            closeBtn?.addEventListener('click', hide);
+            backdrop?.addEventListener('click', hide);
+            window.addEventListener('keydown', (e) => { if (e.key === 'Escape') hide(); });
+
+            // Lấy lời chúc từ ô "Ghi lời chúc kèm bó hoa"
+            grabNoteBtn.addEventListener('click', () => {
+                const note = document.querySelector('.note textarea');
+                if (note && note.value.trim()) {
+                    document.getElementById('aiManual').value = note.value.trim();
+                } else {
+                    document.getElementById('aiManual').value = '—';
+                }
+            });
+
+            // Tạo lời chúc (demo AI logic cục bộ)
+            function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+            function getCartSummary() {
+                const names = [...$$('.cart-row .name')].map(x => x.textContent.trim());
+                const meta = [...$$('.cart-row .meta')].map(x => x.textContent.trim());
+                return { names, meta, count: names.length };
+            }
+
+            function buildMessage() {
+                const to = elTo.value.trim() || 'Bạn';
+                const from = elFrom.value.trim() || 'Mình';
+                const occ = elOcc.value;
+                const tone = elTone.value;
+                const len = elLen.value;
+
+                const { names, count } = getCartSummary();
+                const bouquet = count ? `bó ${count > 1 ? count + ' loại hoa' : 'hoa'} ${names[0] ?? ''}`.trim() : 'bó hoa';
+
+                const openers = {
+                    'ấm áp': [
+                        `Gửi ${to} thân mến,`,
+                        `${to} ơi,`,
+                        `Thương gửi ${to},`
+                    ],
+                    'hài hước': [
+                        `Hello ${to}, “ban công tim” mở cửa!`,
+                        `Ê ${to}, hoa tới kẻo… tim quá hạn 😆`,
+                        `${to} ơi, mở quà trước, cảm động sau nha!`
+                    ],
+                    'trang trọng': [
+                        `Kính gửi ${to},`,
+                        `Trân trọng gửi ${to},`,
+                        `Gửi ${to},`
+                    ],
+                    'ngọt ngào': [
+                        `Này ${to} dễ thương,`,
+                        `Cho ${to} của mình,`,
+                        `Gửi ${to}, người làm ngày thường hoá ngọt.`
+                    ],
+                    'động viên': [
+                        `Gửi ${to},`,
+                        `${to} ơi,`,
+                        `Thương gửi ${to},`
+                    ]
+                };
+
+                const bodies = {
+                    'sinh nhật': [
+                        `chúc bạn tuổi mới thật nhiều sức khoẻ, niềm vui và những điều nhiệm màu. ${bouquet} này thay mình gửi muôn vàn yêu thương!`,
+                        `mong mọi ước mơ của bạn nở rộ như những cánh hoa này. Chúc một năm rực rỡ và bình an!`,
+                        `một vòng quay nữa quanh mặt trời, mong bạn luôn rạng rỡ, ấm áp và được yêu thương đủ đầy.`
+                    ],
+                    'kỷ niệm': [
+                        `cảm ơn vì những ngày đã qua và cả chặng đường phía trước. Mong mỗi lần nhìn ${bouquet}, bạn lại nhớ đến nụ cười của chúng ta.`,
+                        `mỗi cánh hoa là một khoảnh khắc mình trân quý. Chúc ta luôn nắm tay nhau qua mọi mùa.`
+                    ],
+                    'chúc mừng': [
+                        `chúc mừng cột mốc tuyệt vời! Mong bạn tiếp tục toả sáng, bền bỉ và hạnh phúc trên hành trình mới.`,
+                        `thành quả ngọt lành như hương hoa. Rất tự hào về bạn!`
+                    ],
+                    'cảm ơn': [
+                        `cảm ơn vì sự quan tâm và giúp đỡ. Mong bó hoa nhỏ này gửi đến bạn điều ấm áp như bạn đã trao.`,
+                        `lời cảm ơn đôi khi khó nói hết — mong hương hoa nói giùm mình phần nào.`
+                    ],
+                    'ngày đặc biệt': [
+                        `mong hôm nay của bạn dịu dàng và đủ đầy. Hy vọng ${bouquet} khẽ chạm vào trái tim bạn.`,
+                        `chúc bạn một ngày đẹp như điều bạn xứng đáng.`
+                    ],
+                    'an ủi': [
+                        `có những ngày mây kéo đến — mong hương hoa này sẽ là chút nắng an yên cho bạn.`,
+                        `hãy cho mình được ở đây cùng bạn. Rồi mọi chuyện cũng sẽ dịu lại thôi.`
+                    ]
+                };
+
+                const closers = {
+                    'ấm áp': [
+                        `Thương mến, ${from}`,
+                        `Ôm bạn một cái thật chặt, ${from}`
+                    ],
+                    'hài hước': [
+                        `Ký tên: shipper cảm xúc – ${from}`,
+                        `Tặng hoa chống… xì-trét! – ${from}`
+                    ],
+                    'trang trọng': [
+                        `Trân trọng, ${from}`,
+                        `Thân ái, ${from}`
+                    ],
+                    'ngọt ngào': [
+                        `Yêu thương nhiều, ${from}`,
+                        `Ngàn nụ hôn gió, ${from}`
+                    ],
+                    'động viên': [
+                        `Mình luôn ở đây, ${from}`,
+                        `Vững vàng nhé, ${from}`
+                    ]
+                };
+
+                let text = `${pick(openers[tone])}\n\n${pick(bodies[occ])}\n\n${pick(closers[tone])}`;
+                const manual = elManual.value.trim();
+                if (manual && manual !== '—') {
+                    text = `${pick(openers[tone])}\n\n${manual}\n\n${pick(closers[tone])}`;
+                }
+
+                // Điều chỉnh độ dài
+                if (len === 'ngắn') {
+                    text = text.split('\n').slice(0, 3).join('\n');
+                } else if (len === 'dài') {
+                    text += `\n\nP/S: Cảm ơn bạn đã là chính mình. Mọi điều tốt đẹp đang tới gần — tin mình nhé!`;
+                }
+                return text;
+            }
+
+            let currentMessage = '';
+
+            const drawRoundedRect = (ctx, x, y, w, h, r) => {
+                const rr = Math.min(r, w / 2, h / 2);
+                ctx.beginPath();
+                ctx.moveTo(x + rr, y);
+                ctx.arcTo(x + w, y, x + w, y + h, rr);
+                ctx.arcTo(x + w, y + h, x, y + h, rr);
+                ctx.arcTo(x, y + h, x, y, rr);
+                ctx.arcTo(x, y, x + w, y, rr);
+                ctx.closePath();
+            };
+
+            function drawCard(message, withBorder) {
+                const W = canvas.width, H = canvas.height;
+                // Nền gradient nhạt
+                const g = ctx.createLinearGradient(0, 0, 0, H);
+                g.addColorStop(0, '#fff8f1');
+                g.addColorStop(0.45, '#faf3ea');
+                g.addColorStop(1, '#ffffff');
+                ctx.fillStyle = g;
+                ctx.fillRect(0, 0, W, H);
+
+                // Khung mờ
+                ctx.save();
+                const pad = 30;
+                drawRoundedRect(ctx, pad, pad, W - 2 * pad, H - 2 * pad, 26);
+                ctx.fillStyle = 'rgba(255,255,255,0.85)';
+                ctx.fill();
+
+                if (withBorder) {
+                    ctx.strokeStyle = 'rgba(234,217,202,0.9)';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                }
+                ctx.restore();
+
+                // Hoa trang trí góc
+                ctx.font = '48px serif';
+                ctx.globalAlpha = 0.9;
+                ctx.fillText('🌷', 48, 86);
+                ctx.fillText('🌸', W - 96, H - 48);
+                ctx.globalAlpha = 1;
+
+                // Tiêu đề
+                ctx.fillStyle = '#8a5c44';
+                ctx.font = 'bold 52px "Playfair Display", serif';
+                ctx.fillText('Gửi chút hương hoa', 48, 140);
+
+                // Nội dung
+                ctx.fillStyle = '#2b2926';
+                const bodyX = 48, bodyY = 180, bodyW = W - 96;
+                ctx.font = '20px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial';
+                wrapText(ctx, message, bodyX, bodyY, bodyW, 32);
+            }
+
+            function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+                const paragraphs = text.split('\\n');
+                for (const p of paragraphs) {
+                    const words = p.split(' ');
+                    let line = '';
+                    for (let i = 0; i < words.length; i++) {
+                        const test = line + words[i] + ' ';
+                        const m = ctx.measureText(test);
+                        if (m.width > maxWidth && i > 0) {
+                            ctx.fillText(line, x, y);
+                            line = words[i] + ' ';
+                            y += lineHeight;
+                        } else {
+                            line = test;
+                        }
+                    }
+                    ctx.fillText(line, x, y);
+                    y += lineHeight + 10;
+                }
+            }
+
+            // Events
+            document.getElementById('aiGenerate').addEventListener('click', () => {
+                currentMessage = buildMessage();
+                drawCard(currentMessage);
+            });
+
+            document.getElementById('aiRender').addEventListener('click', () => {
+                if (!currentMessage) currentMessage = buildMessage();
+                drawCard(currentMessage, true);
+            });
+
+            document.getElementById('aiDownload').addEventListener('click', () => {
+                const link = document.createElement('a');
+                const stamp = new Date().toISOString().slice(0, 10);
+                link.download = `thiep_${stamp}.png`;
+                link.href = document.getElementById('aiCanvas').toDataURL('image/png');
+                link.click();
+            });
+
+            // Khởi tạo xem trước
+            drawCard('Gõ thông tin ở trái, bấm "Sinh lời chúc" rồi "Vẽ thiệp" để xem trước.\\n\\n🌼 Gợi ý: nhập Người nhận, chọn Dịp & Giọng điệu.', false);
+        })();
+    </script>
+
 </body>
 
 </html>
