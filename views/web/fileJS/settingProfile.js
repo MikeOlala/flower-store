@@ -86,4 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
             reader.readAsDataURL(file);
         });
     }
+    function goToLinkedAccount() {
+        // Chuyển hướng sang trang tài khoản liên kết
+        window.location.href = "linkAccount.html";
+    }
+
 });
