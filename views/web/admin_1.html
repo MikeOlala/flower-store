@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Quản Trị | Hoa Tươi & Hoa Giả</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/admin_1.css">
+
+
+</head>
+<body>
+<div class="admin-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="img\logo_slogan_r.png" alt="Logo Hoa" class="logo-img">
+            <h2>Tiệm hoa nhà tớ</h2>
+        </div>
+        <nav class="nav">
+            <a href="#" class="active">🏠 Bảng điều khiển</a>
+            <a href="#">🌸 Quản lý sản phẩm</a>
+            <a href="#">🛒 Đơn hàng</a>
+            <a href="#">👥 Khách hàng</a>
+            <a href="#">💬 Phản hồi</a>
+            <a href="#">⚙️ Cài đặt</a>
+            <a href="#">🚪 Đăng xuất</a>
+        </nav>
+    </aside>
+
+    <!-- Nội dung chính -->
+    <main class="main-content">
+        <header class="topbar">
+            <h1>Bảng điều khiển quản trị</h1>
+            <div class="admin-info">
+                <span>Xin chào, Admin 🌷</span>
+            </div>
+        </header>
+
+        <!-- Dashboard tổng quát -->
+        <section class="dashboard">
+            <div class="card"><h3>🌹 Hoa tươi</h3><p>120 sản phẩm</p></div>
+            <div class="card"><h3>🌼 Hoa giả</h3><p>85 sản phẩm</p></div>
+            <div class="card"><h3>🛍️ Đơn hàng</h3><p>42 đang xử lý</p></div>
+            <div class="card"><h3>💰 Doanh thu</h3><p>45,200,000₫</p></div>
+        </section>
+
+        <!-- Biểu đồ thống kê -->
+
+        <div class="chart-container">
+            <h2>🌷 Thống kê doanh thu theo tháng</h2>
+            <div class="chart">
+                <div class="bar" style="--height: 220px; --color: #f4b183;" data-tooltip="120 triệu 🌹">
+                    <div class="flower">🌹</div>
+                    <!--                    <div class="mini-pie" style="&#45;&#45;percent: 70;"></div>-->
+                    <span>Tháng 1</span>
+                </div>
+                <div class="bar" style="--height: 160px; --color: #f7c7a6;" data-tooltip="95 triệu 🌸">
+                    <div class="flower">🌸</div>
+                    <!--                    <div class="mini-pie" style="&#45;&#45;percent: 50;"></div>-->
+                    <span>Tháng 2</span>
+                </div>
+                <div class="bar" style="--height: 230px; --color: #f8bfa8;" data-tooltip="135 triệu 🌷">
+                    <div class="flower">🌷</div>
+                    <!--                    <div class="mini-pie" style="&#45;&#45;percent: 75;"></div>-->
+                    <span>Tháng 3</span>
+                </div>
+                <div class="bar" style="--height: 180px; --color: #f9d3a8;" data-tooltip="110 triệu 🌻">
+                    <div class="flower">🌻</div>
+                    <!--                    <div class="mini-pie" style="&#45;&#45;percent: 60;"></div>-->
+                    <span>Tháng 4</span>
+                </div>
+                <div class="bar" style="--height: 130px; --color: #f5cba7;" data-tooltip="80 triệu 🌼">
+                    <div class="flower">🌼</div>
+                    <!--                    <div class="mini-pie" style="&#45;&#45;percent: 40;"></div>-->
+                    <span>Tháng 5</span>
+                </div>
+                <div class="bar" style="--height: 250px; --color: #e9a16b;" data-tooltip="150 triệu 🌺">
+                    <div class="flower">🌺</div>
+                    <!--                    <div class="mini-pie" style="&#45;&#45;percent: 90;"></div>-->
+                    <span>Tháng 6</span>
+                </div>
+            </div>
+        </div>
+        <!--Biểu đồ cột-->
+        <!-- Container tổng -->
+        <!-- Phần thống kê danh mục sản phẩm -->
+        <div class="chart-box">
+            <h3>🌷 Thống kê theo danh mục sản phẩm</h3>
+            <div class="pie-chart-container">
+                <div class="pie-chart" style="--p1:50; --p2:30; --p3:20;">
+                    <div class="slice slice1" data-tooltip="Hoa tươi: 50%"></div>
+                    <div class="slice slice2" data-tooltip="Hoa giả: 30%"></div>
+                    <div class="slice slice3" data-tooltip="Quà tặng: 20%"></div>
+                </div>
+                <div class="legend">
+                    <div><span class="color color1"></span>Hoa tươi</div>
+                    <div><span class="color color2"></span>Hoa giả</div>
+                    <div><span class="color color3"></span>Quà tặng</div>
+                </div>
+            </div>
+        </div>
+
+
+        <section class="table-section">
+            <h2>Danh sách sản phẩm</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Mã</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Loại</th>
+                    <th>Giá</th>
+                    <th>Tồn kho</th>
+                    <th>Trạng thái</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>SP001</td><td>Bó hoa hồng đỏ</td><td>Hoa tươi</td>
+                    <td>350,000₫</td><td>15</td><td class="status-active">Đang bán</td>
+                </tr>
+                <tr>
+                    <td>SP034</td><td>Bình hoa lavender</td><td>Hoa giả</td>
+                    <td>290,000₫</td><td>24</td><td class="status-active">Đang bán</td>
+                </tr>
+                <tr>
+                    <td>SP059</td><td>Giỏ hoa tulip</td><td>Hoa tươi</td>
+                    <td>410,000₫</td><td>0</td><td class="status-inactive">Hết hàng</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Ảnh hoa minh họa -->
+        <section class="gallery">
+            <h2>Hình ảnh hoa nổi bật</h2>
+            <div class="flower-gallery">
+                <img src="img\hoa 5.jpg" alt="Hoa 1">
+                <img src="img\hoa 6.jpg" alt="Hoa 2">
+                <img src="img\hoa 7.jpg" alt="Hoa 3">
+                <img src="img\hoa 8.jpg"alt="Hoa 4">
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>
