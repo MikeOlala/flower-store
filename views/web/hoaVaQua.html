@@ -167,61 +167,239 @@
         }
     </style>
     <style>
-        .flower-card {
-            border: none;
-            border-radius: 20px;
-            overflow: hidden;
+        :root {
+            --be-light: #f7f3ee;
+            --pink-soft: #f4c7c3;
+            --pink-strong: #f28b82;
+            --gray-text: #6b6b6b;
+            --shadow-soft: 0 8px 25px rgba(0, 0, 0, 0.06);
+            --radius-card: 20px;
+        }
+
+        /* Bọc phần danh sách, nền trắng – sạch */
+        .section-wrapper {
+            background: #ffffff;
+            padding: 32px 24px;
+            border-radius: 24px;
+        }
+
+        /* CARD dọc + nhỏ gọn */
+        .product-card-modern {
             background: #fff;
-            transition: all 0.35s ease;
-            cursor: pointer;
-        }
-
-        .flower-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-        }
-
-        .img-container {
+            border-radius: var(--radius-card);
             overflow: hidden;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
+            box-shadow: var(--shadow-soft);
+            transition: .3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .product-card-modern:hover {
+            transform: translateY(-6px);
+        }
+
+        /* Ảnh bên trái */
+        .product-img-box {
+            width: 100%;
+            height: 230px;
+            overflow: hidden;
             position: relative;
         }
 
-        .img-container img {
+        .product-img-box img {
             width: 100%;
-            height: 420px;
+            height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: .4s;
+            object-position: 50% 90%;
         }
 
-        .flower-card:hover img {
-            transform: scale(1.08);
+        .product-card-modern:hover img {
+            transform: scale(1.07);
         }
 
-        .btn-outline-dark {
-            border: 1px solid #222;
-            transition: all 0.3s ease;
-        }
-
-        .btn-outline-dark:hover {
-            background-color: #222;
-            color: #fff;
-        }
-
-        .tag {
+        /* Tag trend */
+        .product-tag {
             position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: #ff6b81;
-            color: #fff;
-            font-size: 0.8rem;
+            top: 12px;
+            left: 12px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: .78rem;
             font-weight: 600;
+            color: #fff;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .tag-new {
+            background: var(--pink-strong);
+        }
+
+        .tag-hot {
+            background: #ffb703;
+        }
+
+        .tag-best {
+            background: #00a8cc;
+        }
+
+        /* Wishlist */
+        .wishlist-btn {
+            position: absolute;
+            right: 14px;
+            top: 14px;
+            width: 34px;
+            height: 34px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-soft);
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .wishlist-btn i {
+            font-size: 1.1rem;
+            color: var(--gray-text);
+        }
+
+        .wishlist-btn:hover {
+            background: var(--pink-soft);
+            transform: scale(1.05);
+        }
+
+        /* Nội dung bên phải */
+        .product-info {
+            padding: 16px 18px 18px;
+            text-align: left;
+        }
+
+        /* Tiêu đề, mô tả */
+        .product-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .product-subtitle {
+            font-size: .86rem;
+            color: #999;
+            margin-bottom: 6px;
+        }
+
+        .product-desc {
+            color: var(--gray-text);
+            font-size: .9rem;
+            margin-bottom: 10px;
+        }
+
+        /* Giá + badge dịp */
+        .product-meta-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #d9735c;
+        }
+
+        .badge-occasion {
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: #f7f3ee;
+            font-size: .75rem;
+            color: #7a5a4b;
+        }
+
+        /* Rating + features icon */
+        .rating {
+            color: #f4b400;
+            font-size: .9rem;
+            margin-bottom: 4px;
+        }
+
+        .product-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: .8rem;
+            color: #7a7a7a;
+            margin-bottom: 10px;
+        }
+
+        .product-features span i {
+            margin-right: 4px;
+        }
+
+        /* Nút hành động */
+        .product-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .product-btn-main {
+            border-radius: 999px;
+            padding: 8px 20px;
+            font-size: .9rem;
+            transition: .25s;
+        }
+
+        .product-btn-outline {
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-size: .86rem;
+        }
+
+        /* Quick view */
+        .quick-view-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 12px;
             padding: 5px 12px;
-            border-radius: 20px;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            font-size: .76rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(4px);
+            border-radius: 999px;
+            box-shadow: var(--shadow-soft);
+            opacity: 0;
+            transition: .25s;
+        }
+
+        .product-card-modern:hover .quick-view-btn {
+            opacity: 1;
+        }
+
+        /* Layout khi màn hình lớn: ảnh trái – info phải */
+        @media (min-width: 768px) {
+            .product-card-modern {
+                flex-direction: row;
+            }
+
+            .product-img-box {
+                flex: 0 0 38%;
+                height: 240px;
+                border-radius: var(--radius-card) 0 0 var(--radius-card);
+            }
+
+            .product-info {
+                flex: 1;
+                padding: 18px 22px;
+            }
         }
     </style>
+
 
     <script type='text/javascript'>
         window.HaravanAnalytics = window.HaravanAnalytics || {};
@@ -274,88 +452,162 @@
     <site-header></site-header>
 
     <main>
-        <div class="container my-5">
-            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-                <h3 class="fw-bold text-dark">Set Quà & Hoa</h3>
-                <div class="text-muted">16 sản phẩm</div>
-            </div>
+        <h3 class="text-center fs-2">SET QUÀ & HOA</h3>
 
-            <!-- Bộ lọc -->
-            <div class="d-flex justify-content-between flex-wrap mb-4 gap-2">
-                <div class="d-flex gap-3">
-                    <select class="form-select rounded-pill px-3">
-                        <option>Thương Hiệu</option>
-                        <option>La Vie Est Belle</option>
-                        <option>Bloom</option>
-                    </select>
-                    <select class="form-select rounded-pill px-3">
-                        <option>Giá</option>
-                        <option>Thấp đến cao</option>
-                        <option>Cao đến thấp</option>
-                    </select>
-                </div>
+        <div class="section-wrapper mt-4">
+            <div class="row gy-4">
 
-                <div class="d-flex align-items-center gap-2">
-                    <label class="fw-semibold text-muted">Sắp xếp:</label>
-                    <select class="form-select rounded-pill px-3">
-                        <option>Sản phẩm nổi bật</option>
-                        <option>Mới nhất</option>
-                        <option>Giá tăng dần</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Lưới sản phẩm -->
-            <div class="row g-4">
-                <!-- Card 1 -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="flower-card shadow-sm">
-                        <div class="img-container">
-                            <span class="tag">New</span>
+                <!-- SẢN PHẨM 1 -->
+                <div class="col-12" data-aos="fade-up">
+                    <div class="product-card-modern">
+                        <div class="product-img-box">
+                            <span class="product-tag tag-new">New</span>
+                            <div class="wishlist-btn"><i class="bi bi-heart"></i></div>
                             <img src="https://cdn.hstatic.net/products/200000846175/stacked-2_bg_cleaned_b8ccbe07d4f849fb80d5a8efb46423cd_1024x1024.jpg"
-                                alt="Set hoa 1">
+                                alt="Set Hoa & Quà Nimai">
+                            <div class="quick-view-btn">Xem nhanh</div>
                         </div>
-                        <div class="card-body text-center p-4">
-                            <h5 class="fw-semibold mb-2">Set Hoa & Quà Nimai</h5>
-                            <p class="text-muted small">Hương thơm nhẹ nhàng - Thiết kế tối giản</p>
-                            <button class="btn btn-outline-dark rounded-pill px-4">Xem chi tiết</button>
+
+                        <div class="product-info">
+                            <div class="product-meta-top">
+                                <div class="product-price">690.000₫</div>
+                                <span class="badge-occasion">Phù hợp: Sinh nhật, cảm ơn</span>
+                            </div>
+
+                            <h5 class="product-title">Set Hoa &amp; Quà Nimai</h5>
+                            <p class="product-subtitle">Tone be - hồng nhẹ, hương thơm tinh tế.</p>
+
+                            <div class="rating">★★★★★ <span class="text-muted ms-1">(128 đánh giá)</span></div>
+
+                            <div class="product-features">
+                                <span><i class="bi bi-truck"></i>Giao trong 2h nội thành</span>
+                                <span><i class="bi bi-clock"></i>Chuẩn bị ~30 phút</span>
+                                <span><i class="bi bi-gift"></i>Thiệp viết tay miễn phí</span>
+                            </div>
+
+                            <p class="product-desc">
+                                Set quà kết hợp hoa tươi và quà tặng nhỏ, phù hợp gửi tặng người thân, bạn bè trong các
+                                dịp mừng,
+                                cảm ơn hoặc chúc mừng nhỏ xinh. Phong cách tối giản, sang nhưng không quá cầu kỳ.
+                            </p>
+
+                            <div class="product-actions">
+                                <button class="btn btn-dark product-btn-main">
+                                    <i class="bi bi-bag-plus me-1"></i>Thêm vào giỏ
+                                </button>
+                                <button class="btn btn-outline-dark product-btn-outline">
+                                    Xem chi tiết
+                                </button>
+                                <button class="btn btn-outline-secondary product-btn-outline">
+                                    <i class="bi bi-heart me-1"></i>Yêu thích
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="flower-card shadow-sm">
-                        <div class="img-container">
-                            <span class="tag" style="background-color:#ffb703;">Hot</span>
+                <!-- SẢN PHẨM 2 -->
+                <div class="col-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="product-card-modern">
+                        <div class="product-img-box">
+                            <span class="product-tag tag-hot">Hot</span>
+                            <div class="wishlist-btn"><i class="bi bi-heart"></i></div>
                             <img src="https://cdn.hstatic.net/products/200000846175/stcked-6_78b3da3372454315b4d7d1798804ae6b_1024x1024.jpg"
-                                alt="Set hoa 2">
+                                alt="Set Hoa Hồng Phấn">
+                            <div class="quick-view-btn">Xem nhanh</div>
                         </div>
-                        <div class="card-body text-center p-4">
-                            <h5 class="fw-semibold mb-2">Set Hoa Hồng Phấn</h5>
-                            <p class="text-muted small">Gam màu nhẹ nhàng, thanh lịch</p>
-                            <button class="btn btn-outline-dark rounded-pill px-4">Xem chi tiết</button>
+
+                        <div class="product-info">
+                            <div class="product-meta-top">
+                                <div class="product-price">750.000₫</div>
+                                <span class="badge-occasion">Phù hợp: Kỷ niệm, tặng người yêu</span>
+                            </div>
+
+                            <h5 class="product-title">Set Hoa Hồng Phấn</h5>
+                            <p class="product-subtitle">Gam hồng pastel nhẹ, nữ tính và lãng mạn.</p>
+
+                            <div class="rating">★★★★☆ <span class="text-muted ms-1">(236 đánh giá)</span></div>
+
+                            <div class="product-features">
+                                <span><i class="bi bi-truck"></i>Miễn phí giao nội thành</span>
+                                <span><i class="bi bi-emoji-heart-eyes"></i>Best-seller 6 tháng liền</span>
+                                <span><i class="bi bi-shield-check"></i>Bảo quản 2–3 ngày</span>
+                            </div>
+
+                            <p class="product-desc">
+                                Thiết kế tập trung vào hoa hồng phấn phối cùng các loại phụ kiện tông nude, tạo cảm giác
+                                mềm mại,
+                                ngọt ngào. Lý tưởng cho các dịp kỷ niệm, tỏ tình hoặc gửi lời yêu thương dịu dàng.
+                            </p>
+
+                            <div class="product-actions">
+                                <button class="btn btn-dark product-btn-main">
+                                    <i class="bi bi-bag-plus me-1"></i>Thêm vào giỏ
+                                </button>
+                                <button class="btn btn-outline-dark product-btn-outline">
+                                    Xem chi tiết
+                                </button>
+                                <button class="btn btn-outline-secondary product-btn-outline">
+                                    Lưu vào danh sách
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="col-md-4 col-sm-6">
-                    <div class="flower-card shadow-sm">
-                        <div class="img-container">
-                            <span class="tag" style="background-color:#00b4d8;">Best</span>
+                <!-- SẢN PHẨM 3 -->
+                <div class="col-12" data-aos="fade-up" data-aos-delay="200">
+                    <div class="product-card-modern">
+                        <div class="product-img-box">
+                            <span class="product-tag tag-best">Trending</span>
+                            <div class="wishlist-btn"><i class="bi bi-heart"></i></div>
                             <img src="https://cdn.hstatic.net/products/200000846175/stacked_2_bg_cleaned_bafc80e7cce44325b1a3bd350d129877_1024x1024.jpg"
-                                alt="Set hoa 3">
+                                alt="Set Hoa Xanh Biển">
+                            <div class="quick-view-btn">Xem nhanh</div>
                         </div>
-                        <div class="card-body text-center p-4">
-                            <h5 class="fw-semibold mb-2">Set Hoa Xanh Biển</h5>
-                            <p class="text-muted small">Mang hơi thở hiện đại, tinh tế</p>
-                            <button class="btn btn-outline-dark rounded-pill px-4">Xem chi tiết</button>
+
+                        <div class="product-info">
+                            <div class="product-meta-top">
+                                <div class="product-price">820.000₫</div>
+                                <span class="badge-occasion">Phù hợp: Khai trương, chúc mừng</span>
+                            </div>
+
+                            <h5 class="product-title">Set Hoa Xanh Biển</h5>
+                            <p class="product-subtitle">Sắc xanh hiện đại, sang và rất trendy.</p>
+
+                            <div class="rating">★★★★★ <span class="text-muted ms-1">(98 đánh giá)</span></div>
+
+                            <div class="product-features">
+                                <span><i class="bi bi-lightning-charge"></i>Đặt trước 3h để giao trong ngày</span>
+                                <span><i class="bi bi-recycle"></i>Hộp quà tái chế thân thiện môi trường</span>
+                                <span><i class="bi bi-stars"></i>Phong cách decor Bắc Âu</span>
+                            </div>
+
+                            <p class="product-desc">
+                                Tông xanh biển kết hợp be – trắng, tạo cảm giác hiện đại, tinh tế, phù hợp cho các dịp
+                                chúc mừng,
+                                khai trương hoặc tặng đối tác. Thiết kế nhấn vào sự sang trọng, gọn gàng, không quá rườm
+                                rà.
+                            </p>
+
+                            <div class="product-actions">
+                                <button class="btn btn-dark product-btn-main">
+                                    <i class="bi bi-bag-plus me-1"></i>Thêm vào giỏ
+                                </button>
+                                <button class="btn btn-outline-dark product-btn-outline">
+                                    Xem chi tiết
+                                </button>
+                                <button class="btn btn-outline-secondary product-btn-outline">
+                                    So sánh
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
+
 
     </main>
     <site-footer></site-footer>
