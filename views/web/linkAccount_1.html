@@ -1,16 +1,23 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tiệm Hoa nhà tớ</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tiệm Hoa nhà tớ</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tài khoản liên kết</title>
 
-    <!-- Bootstrap & Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <!-- CSS riêng -->
-    <link rel="stylesheet" href="assets/address_1.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/linkAccount_1.css">
     <!-Đây là code dùng cho header và footer-->
     <style>
         :root {
@@ -96,126 +103,70 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script defer src="components.js"></script>
-</head>
 
+</head>
 <body>
 <site-header></site-header>
-
-<div class="main-container">
+<div class="link-wrapper">
     <!-- Sidebar -->
     <aside class="sidebar">
-        <div class="sidebar-header">
-            <img src="img/avatar_1.jpg" alt="Avatar" class="sidebar-avatar">
-            <div class="sidebar-info">
-                <h4>Customer</h4>
-                <p>Thành viên từ 10/2025</p>
-                <span class="points">🌸 290 POINTS</span>
-            </div>
-        </div>
-
-        <div class="order-summary">
-            <h5>Tổng quan tài khoản</h5>
-            <div class="summary-item">
-                <span>Đơn hàng:</span><strong>3</strong>
-            </div>
-            <div class="summary-item">
-                <span>Địa chỉ đã lưu:</span><strong>2</strong>
-            </div>
-        </div>
-
-        <div class="spending-box">
-            <h5>Điểm thưởng</h5>
-            <p>290 POINTS</p>
-        </div>
-
-        <div class="tips">
-            <p>💡 <strong>Mẹo:</strong> Hãy lưu nhiều địa chỉ để chọn nhanh khi thanh toán!</p>
+        <a href="settingProfile.html" class="back-btn">
+            <i class="bi bi-arrow-left"></i> Quay lại cài đặt
+        </a>
+        <div class="user-card">
+            <img src="img/avatar.jpg" alt="avatar" class="avatar">
+            <h4>Customer</h4>
+            <p>Thành viên từ 10/2025</p>
+            <div class="points"><i class="bi bi-flower1"></i> 290 POINTS</div>
         </div>
     </aside>
 
-    <!-- Content -->
-    <main class="content">
-        <!-- Nút quay lại hồ sơ -->
-        <div class="text-start mb-3">
-            <a href="profileCustomer.html" class="btn btn-outline-brown">
-                <i class="fa fa-arrow-left me-1"></i> Quay lại hồ sơ
-            </a>
-        </div>
+    <!-- Main content -->
+    <main class="main-content">
+        <div class="main-card">
+            <h3 class="title">Tài khoản liên kết</h3>
+            <p class="desc">Quản lý và kết nối các ví điện tử, ngân hàng để thanh toán dễ dàng hơn</p>
 
-        <h3>Địa chỉ giao hàng</h3>
-
-        <!-- Form nhập địa chỉ -->
-        <form class="address-form">
-            <div class="form-row">
-                <div class="form-group">
-                    <input type="text" id="fullname" required>
-                    <label for="fullname">Họ và tên</label>
+            <div class="account-list">
+                <!-- Ngân hàng -->
+                <div class="linked-item">
+                    <div class="left">
+                        <i class="bi bi-bank icon-bank"></i>
+                        <div class="link-name">Liên kết Ngân hàng</div>
+                    </div>
+                    <div class="status linked">Đã liên kết</div>
                 </div>
-                <div class="form-group">
-                    <input type="tel" id="phone" required>
-                    <label for="phone">Số điện thoại</label>
+
+                <!-- MoMo -->
+                <div class="linked-item">
+                    <div class="left">
+                        <img src="img/MOMO-Logo-App.png" alt="MoMo" class="icon">
+                        <div class="link-name">Ví MoMo</div>
+                    </div>
+                    <div class="status not-linked">Chưa liên kết</div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <input type="text" id="address" required>
-                <label for="address">Địa chỉ cụ thể</label>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <input type="text" id="city" required>
-                    <label for="city">Thành phố / Tỉnh</label>
+                <!-- ZaloPay -->
+                <div class="linked-item">
+                    <div class="left">
+                        <img src="img/Logo FA-13.png" alt="ZaloPay" class="icon">
+                        <div class="link-name">ZaloPay</div>
+                    </div>
+                    <div class="status linked">Đã liên kết</div>
                 </div>
-                <div class="form-group">
-                    <input type="text" id="district" required>
-                    <label for="district">Quận / Huyện</label>
+
+                <!-- ViettelPay -->
+                <div class="linked-item">
+                    <div class="left">
+                        <img src="img/Logo-Viettelpay.jpg" alt="ViettelPay" class="icon">
+                        <div class="link-name">ViettelPay</div>
+                    </div>
+                    <div class="status not-linked">Chưa liên kết</div>
                 </div>
-            </div>
-
-            <div class="form-group">
-                <textarea id="note" rows="3"></textarea>
-                <label for="note">Ghi chú</label>
-            </div>
-
-            <div class="text-end">
-                <button type="button" class="btn btn-brown" disabled>Lưu địa chỉ</button>
-            </div>
-        </form>
-
-
-
-        <!-- Danh sách địa chỉ đã lưu (tĩnh) -->
-        <div id="savedAddresses" class="mt-4">
-            <h5 class="text-brown mb-3">Địa chỉ đã lưu</h5>
-
-            <div class="order-card">
-                <div>
-                    <strong class="order-name">Nguyễn Văn A</strong><br>
-                    <span class="order-price">📞 0987654321</span><br>
-                    <span>123 Lê Lợi, P. Bến Nghé, Q.1, TP. Hồ Chí Minh</span><br>
-                    <small class="text-muted">Nhận hàng buổi sáng</small>
-                </div>
-                <button class="btn btn-sm btn-outline-danger" disabled>
-                    <i class="bi bi-trash"></i>
-                </button>
-            </div>
-
-            <div class="order-card">
-                <div>
-                    <strong class="order-name">Trần Thị B</strong><br>
-                    <span class="order-price">📞 0901122334</span><br>
-                    <span>45 Trần Hưng Đạo, P.2, TP. Vũng Tàu</span><br>
-                    <small class="text-muted">Giao ngoài giờ hành chính</small>
-                </div>
-                <button class="btn btn-sm btn-outline-danger" disabled>
-                    <i class="bi bi-trash"></i>
-                </button>
             </div>
         </div>
     </main>
 </div>
-
 <site-footer></site-footer>
 </body>
 </html>
