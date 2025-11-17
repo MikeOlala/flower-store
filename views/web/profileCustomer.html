@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Flower store</title>
     <title>Tiệm Hoa nhà tớ</title>
 
     <!-- Font Awesome 6 (hỗ trợ toàn bộ icon mới) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- MDB & Bootstrap -->
-    <link rel="stylesheet" href="../../MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/css/mdb.min.css">
-    <link rel="stylesheet" href="../../MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/css/mdb.rtl.min.css">
-
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">-->
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/profileCustomer.css">
+
     <style>
         :root {
             /*--bg-soldout: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/hethang.png?v=245);*/
@@ -37,7 +31,7 @@
           as="style" type="text/css">
     <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/styles-new.scss.css?v=245" rel="preload stylesheet"
           as="style" type="text/css">
-<!--    <link rel="preload" as="image" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/logo.png?v=245">-->
+    <!--    <link rel="preload" as="image" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/logo.png?v=245">-->
     <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/styles-index.scss.css?v=245"
           rel="preload stylesheet" as="style" type="text/css">
     <link rel="preload" as="image"
@@ -100,100 +94,122 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script defer src="components.js"></script>
+    <link rel="stylesheet" href="assets/profileCustomer.css">
 
 </head>
 <body>
 <site-header></site-header>
-<div class="container mb-4">
-    <div class="row">
-        <div class="col-4 pb-5">
-            <!-- Account Sidebar-->
-            <div class="author-card pb-3">
-                <div class="author-card-cover" style="background-image: url('img/blush.jpg');"
-                ><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-award text-md"></i>&nbsp;290 points</a></div>
-                <div class="author-card-profile">
-                    <div class="author-card-avatar"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Daniel Adams">
-                    </div>
-                    <div class="author-card-details">
-                        <h5 class="author-card-name text-lg">Customer</h5><span class="author-card-position">Tham gia từ tháng 10 năm 2025</span>
-                    </div>
-                </div>
-            </div>
-            <div class="wizard">
-                <nav class="list-group list-group-flush">
-                    <a class="list-group-item active" href="purchaseHistory.html" target="_blank">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div><i class="fa-solid fa-shopping-bag mr-1 text-muted"></i>
-                                <div class="d-inline-block font-weight-medium text-uppercase">Lịch sử mua hàng</div>
-                            </div><span class="badge badge-secondary">6</span>
-                        </div>
-                    </a><a class="list-group-item" href="settingProfile.html" target="__blank">
-                    <i class="fa fa-user text-muted"></i>Cài đặt hồ sơ<a class="list-group-item" href="address.html">
-                    <i class="fa fa-map-marker text-muted"></i>Địa chỉ
-                </a>
+<div class="profile-container">
 
-                    <a class="list-group-item" href="#">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div><i class="fa fa-heart mr-1 text-muted"></i>
-                                <div class="d-inline-block font-weight-medium text-uppercase">Danh sách yêu thích</div>
-                            </div><span class="badge badge-secondary">3</span>
-                        </div>
-                    </a>
-                    <a class="list-group-item" href="linkAccount.html" target="__blank">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div><i class="fa fa-tag mr-1 text-muted"></i>
-                                <div class="d-inline-block font-weight-medium text-uppercase">Tài khoản liên kết</div>
-                            </div><span class="badge badge-secondary">4</span>
-                        </div>
-                    </a>
-                </nav>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <!--        <div class="author-card-cover" style="background-image: url('img/blush.jpg');">-->
+        <!--            <button class="btn">-->
+        <!--                <i class="fa-solid fa-award"></i> 290 points-->
+        <!--            </button>-->
+        <!--        </div>-->
+
+        <div class="author-card-profile">
+            <div class="author-card-avatar">
+                <img src="img\avatar_1.jpg"alt="">
+            </div>
+            <div class="author-card-details">
+                <div class="sidebar-info">
+                    <h4>Customer</h4>
+                    <p>Thành viên từ 10/2025</p>
+                    <span class="points">🌸 290 POINTS</span>
+                </div>
             </div>
         </div>
-        <!-- Wishlist-->
-        <div class="col-8 pb-5">
-            <!-- Item-->
-            <div class="cart-item d-md-flex justify-content-between"><span class="remove-item"><i class="fa fa-times"></i></span>
-                <div class="px-3 my-3">
-                    <a class="cart-item-product" href="#">
-                        <div class="cart-item-product-thumb"><img src="img\hoa 1.jpg" alt="Product"></div>
-                        <div class="cart-item-product-info">
-                            <h4 class="cart-item-product-title">Bó hoa Whimsy well </h4>
-                            <div class="text-lg text-body font-weight-medium pb-1">910.000 VNĐ</div><span>Trạng thái: <span class="text-warning font-weight-medium">Đang giao</span></span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- Item-->
-            <div class="cart-item d-md-flex justify-content-between"><span class="remove-item"><i class="fa fa-times"></i></span>
-                <div class="px-3 my-3">
-                    <a class="cart-item-product" href="#">
-                        <div class="cart-item-product-thumb"><img src="img\giỏ hoa.jpg" alt="Product"></div>
-                        <div class="cart-item-product-info">
-                            <h4 class="cart-item-product-title">Giỏ hoa Bliss charm</h4>
-                            <div class="text-lg text-body font-weight-medium pb-1">1,450.000 VNĐ </div><span>Trạng thái: <span class="text-success font-weight-medium">Đã giao</span></span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <!-- Item-->
-            <div class="cart-item d-md-flex justify-content-between"><span class="remove-item"><i class="fa fa-times"></i></span>
-                <div class="px-3 my-3">
-                    <a class="cart-item-product" href="#">
-                        <div class="cart-item-product-thumb"><img src="img\hoa 2.jpg" alt="Product"></div>
-                        <div class="cart-item-product-info">
-                            <h4 class="cart-item-product-title">Hoa Tulip Everelle</h4>
-                            <div class="text-lg text-body font-weight-medium pb-1">1.880.500 VNĐ</div><span>Trạng thái: <span class="text-success font-weight-medium">Đã giao</span></span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="custom-control custom-checkbox">
-                <input class="custom-control-input" type="checkbox" checked="" id="inform-me">
-                <label class="custom-control-label" for="inform-me">Inform me when item from my wishlist is available</label>
-            </div>
+
+        <!-- Sidebar Menu -->
+        <div class="sidebar-menu list-group-flush">
+
+            <a class="list-group-item" href="purchaseHistory_1.html">
+                <span><i class="fa-solid fa-bag-shopping"></i> Lịch sử mua hàng</span>
+                <span class="badge">6</span>
+            </a>
+
+            <a class="list-group-item" href="settingProfile.html">
+                <span><i class="fa-solid -bag-shopping"></i>Cài đặt hồ sơ</span>
+            </a>
+
+            <a class="list-group-item" href="address_1.html">
+                <span><i class="fa-solid fa-location-dot"></i> Địa chỉ</span>
+            </a>
+
+            <a class="list-group-item" href="#">
+                <span><i class="fa-solid fa-heart"></i> Danh sách yêu thích</span>
+                <span class="badge">3</span>
+            </a>
+
+            <a class="list-group-item" href="linkAccount.html">
+                <span><i class="fa-solid fa-tag"></i> Tài khoản liên kết</span>
+                <span class="badge">4</span>
+            </a>
+
         </div>
     </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- ITEM 1 -->
+        <div class="cart-item">
+            <span class="remove-item"><i class="fa-solid fa-xmark"></i></span>
+
+            <div class="cart-item-product-thumb">
+                <img src="img/hoa 1.jpg" alt="">
+            </div>
+
+            <div class="cart-item-product-info">
+                <h4>Bó hoa Whimsy well</h4>
+                <div>910.000 VNĐ</div>
+                <div>Trạng thái: <span style="color:#e89f32;">Đang giao</span></div>
+            </div>
+        </div>
+
+        <!-- ITEM 2 -->
+        <div class="cart-item">
+            <span class="remove-item"><i class="fa-solid fa-xmark"></i></span>
+
+            <div class="cart-item-product-thumb">
+                <img src="img/giỏ hoa.jpg" alt="">
+            </div>
+
+            <div class="cart-item-product-info">
+                <h4>Giỏ hoa Bliss charm</h4>
+                <div>1.450.000 VNĐ</div>
+                <div>Trạng thái: <span style="color:#4CAF50;">Đã giao</span></div>
+            </div>
+        </div>
+
+        <!-- ITEM 3 -->
+        <div class="cart-item">
+            <span class="remove-item"><i class="fa-solid fa-xmark"></i></span>
+
+            <div class="cart-item-product-thumb">
+                <img src="img/hoa 2.jpg" alt="">
+            </div>
+
+            <div class="cart-item-product-info">
+                <h4>Hoa Tulip Everelle</h4>
+                <div>1.880.500 VNĐ</div>
+                <div>Trạng thái: <span style="color:#4CAF50;">Đã giao</span></div>
+            </div>
+        </div>
+
+        <!--        &lt;!&ndash; WISHLIST CHECK &ndash;&gt;-->
+        <!--        <label class="wishlist-checkbox">-->
+        <!--            <input type="checkbox" checked>-->
+        <!--            Inform me when item from my wishlist is available-->
+        <!--        </label>-->
+
+    </div>
+
 </div>
+
 <site-footer></site-footer>
 
 </body>
