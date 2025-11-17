@@ -2,6 +2,7 @@
 <html lang="vi">
 
 <head>
+    <title>Tiệm Hoa nhà tớ</title>
 
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
@@ -70,6 +71,306 @@
             --customer: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/customer-icon-service.svg?v=245);
             --cancel: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/cancel-while.svg?v=245);
             --bg-footer: url(https://file.hstatic.net/200000397757/file/wd-footer-bg_bd337816b3d64003b9fa0ca6f4b8b3fa.png);
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --rose: #a97155;
+            /* nâu chủ đạo */
+            --rose-600: #8a5c44;
+            /* hover */
+            --rose-200: #ead9ca;
+            /* nhạt */
+            --ink: #2b2926;
+            /* text chính */
+            --muted: #7a6e65;
+            /* text phụ */
+            --card: #ffffffcc;
+            /* glass */
+            --ring: rgba(169, 113, 85, .35);
+            --shadow: 0 10px 30px rgba(169, 113, 85, .18), 0 8px 24px rgba(0, 0, 0, .06);
+            --radius: 22px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: linear-gradient(180deg, #fff8f1 0%, #faf3ea 38%, #ffffff 100%);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: inherit
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #ffd7e6, #fff);
+            box-shadow: inset 0 2px 8px rgba(255, 255, 255, .7), inset 0 -3px 12px rgba(0, 0, 0, .06);
+            display: grid;
+            place-items: center
+        }
+
+        .brand-logo svg {
+            width: 22px;
+            height: 22px;
+            opacity: .8
+        }
+
+        .brand-name {
+            font-family: "Playfair Display", serif;
+            font-size: 22px;
+            letter-spacing: .2px
+        }
+
+
+        .page-title {
+            font-family: "Playfair Display", serif;
+            font-size: 38px;
+            line-height: 1.2;
+            margin: 12px 0 8px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 15px;
+            text-align: center;
+        }
+
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 24px
+        }
+
+        @media (max-width: 980px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+
+        .card {
+            background: var(--card);
+            backdrop-filter: blur(8px);
+            border: 1px solid #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow)
+        }
+
+        /* Cart table */
+        .cart {
+            padding: 10px
+        }
+
+        .cart-head {
+            display: grid;
+            grid-template-columns: 6fr 2fr 2fr 40px;
+            gap: 10px;
+            padding: 14px 18px;
+            color: var(--muted);
+            font-weight: 600
+        }
+
+        .cart-row {
+            display: grid;
+            grid-template-columns: 6fr 2fr 2fr 40px;
+            gap: 10px;
+            align-items: center;
+            padding: 14px 18px;
+            border-top: 1px dashed #f0cddd
+        }
+
+        .prod {
+            display: flex;
+            gap: 14px;
+            align-items: center
+        }
+
+        .photo {
+            width: 78px;
+            height: 78px;
+            border-radius: 16px;
+            overflow: hidden;
+            flex: 0 0 auto;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .06)
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .name {
+            font-weight: 600
+        }
+
+        .meta {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 3px
+        }
+
+
+        .qty-pill {
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid var(--rose-200);
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-weight: 700;
+            gap: 8px
+        }
+
+        .price {
+            font-weight: 700
+        }
+
+        .remove {
+            display: grid;
+            place-items: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid #ead9ca;
+            background: #fff
+        }
+
+
+        /* Summary */
+        .summary {
+            position: sticky;
+            top: 14px;
+            padding: 18px
+        }
+
+        .sum-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0
+        }
+
+        .sum-row.muted {
+            color: var(--muted)
+        }
+
+        .sum-total {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px dashed #f0cddd;
+            margin-top: 14px;
+            padding-top: 14px;
+            font-weight: 800
+        }
+
+
+        .code {
+            display: flex;
+            gap: 10px;
+            margin: 12px 0
+        }
+
+        .code input {
+            flex: 1;
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--rose-200);
+            background: #fff;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7)
+        }
+
+        .btn {
+            appearance: none;
+            border: 0;
+            background: var(--rose);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 16px;
+            padding: 12px 16px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px var(--ring);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center
+        }
+
+        .btn:hover {
+            background: var(--rose-600)
+        }
+
+        .btn.secondary {
+            background: #fff;
+            color: var(--ink);
+            border: 1px solid var(--rose-200);
+            box-shadow: none
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 14px
+        }
+
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+            padding: 16px 18px
+        }
+
+        .section-title svg {
+            opacity: .7
+        }
+
+
+        .note {
+            padding: 0 18px 18px
+        }
+
+        .note textarea {
+            width: 100%;
+            min-height: 86px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--rose-200);
+            resize: vertical
+        }
+
+
+        .badge {
+            background: #fff;
+            color: var(--rose-600);
+            border: 1px solid var(--rose-200);
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 12px
         }
     </style>
     <link
@@ -188,9 +489,9 @@
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
+
     <script defer src="components.js"></script>
-    
+
 </head>
 
 <body id="wandave-theme" class="index" data-theme="tbag-fashion">
@@ -204,15 +505,109 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSBT6HTK" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
+
 
     <div id="site-overlay" class="site-overlay active"></div>
     <main>
         <site-header></site-header>
-        
+
+        <h1 class="page-title ">Giỏ hàng của bạn</h1>
+        <p class="subtitle">Hoa tươi mỗi ngày – Đóng gói cẩn thận, giao trong 2–4h nội thành.</p>
+
+        <div class="grid">
+            <!-- LEFT: CART LIST -->
+            <section class="card cart">
+                <div class="cart-head" role="row">
+                    <div>Sản phẩm</div>
+                    <div>Số lượng</div>
+                    <div>Thành tiền</div>
+                    <div></div>
+                </div>
+
+                <!-- Hàng 1 -->
+                <div class="cart-row">
+                    <div class="prod">
+                        <div class="photo"><img
+                                src="https://cdn.hstatic.net/products/200000846175/stcked-6_78b3da3372454315b4d7d1798804ae6b_1024x1024.jpg"
+                                alt="Bó Hồng Phấn – Soft Rose"></div>
+                        <div>
+                            <div class="name">Bó Hồng Phấn – Soft Rose</div>
+                            <div class="meta">Màu hồng phấn • Size M</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="qty-pill" aria-label="Số lượng">1</div>
+                    </div>
+                    <div class="price">520.000 ₫</div>
+                    <div>
+                        <div class="remove" title="Xoá">✕</div>
+                    </div>
+                </div>
+
+                <!-- Hàng 2 -->
+                <div class="cart-row">
+                    <div class="prod">
+                        <div class="photo"><img
+                                src="https://cdn.hstatic.net/products/200000846175/rowan27_2371bf7c7c244c6f8357c9634eefd534_1024x1024.jpg"
+                                alt="Tulip Blush"></div>
+                        <div>
+                            <div class="name">Tulip Blush</div>
+                            <div class="meta">Hồng pastel • 15 cành</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="qty-pill" aria-label="Số lượng">1</div>
+                    </div>
+                    <div class="price">690.000 ₫</div>
+                    <div>
+                        <div class="remove" title="Xoá">✕</div>
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="https://cdn.hstatic.net/products/200000846175/stacked-2_bg_cleaned_b8ccbe07d4f849fb80d5a8efb46423cd_1024x1024.jpg">
+                        <path d="M20 7v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7" stroke="#e26aa1" stroke-width="1.4" />
+                        <path d="M8 7V5a4 4 0 0 1 8 0v2" stroke="#e26aa1" stroke-width="1.4" />
+                    </svg>
+                    Ghi lời chúc kèm bó hoa
+                </div>
+                <div class="note">
+                    <textarea placeholder="VD: Chúc mừng sinh nhật em ✨"></textarea>
+                </div>
+            </section>
+
+            <!-- RIGHT: SUMMARY -->
+            <aside class="card summary" aria-label="Tổng kết đơn hàng">
+                <div class="section-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="https://cdn.hstatic.net/products/200000846175/stcked-6_78b3da3372454315b4d7d1798804ae6b_1024x1024.jpg">
+                        <path d="M12 3l2.7 5.4 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.3l6-.9L12 3z" stroke="#e26aa1"
+                            stroke-width="1.2" />
+                    </svg>
+                    Tóm tắt đơn hàng
+                </div>
+                <div class="code">
+                    <input placeholder="Nhập mã giảm giá" disabled>
+                    <a class="btn secondary" href="#" aria-disabled="true" onclick="return false;">Áp dụng</a>
+                </div>
+                <div class="sum-row muted"><span>Tạm tính</span><span>1.210.000 ₫</span></div>
+                <div class="sum-row muted"><span>Phí giao (ước tính)</span><span>0 ₫</span></div>
+                <div class="sum-row muted"><span>Giảm giá</span><span>0 ₫</span></div>
+                <div class="sum-total"><span>Tổng cộng</span><span>1.210.000 ₫</span></div>
+                <div class="actions">
+                    <a class="btn secondary" href="home.html">Tiếp tục mua</a><a class="btn" id="ai-card-open" href="#"
+                        onclick="return false;">Tạo thiệp bằng AI</a>
+
+                    <a class="btn" href="checkout.html">Thanh toán</a>
+                </div>
+            </aside>
+        </div>
+        </div>
+
+
+
         <site-footer></site-footer>
     </main>
-    
+
     <div class="modal" id="pro-qv-wanda">
     </div>
     <div class="modal" id="success-cart-wanda">
@@ -248,7 +643,7 @@
                             <td class="text-right" id="total-view-cart"></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><a href="/cart" class="wanda-checkout-url btn">Thanh toán</a></td>
+                            <td colspan="2"><a href="cart.html" class="wanda-checkout-url btn">Thanh toán</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -345,7 +740,7 @@
     <div class="modal-backdrop fade"></div>
     <!-- Đây là suggest sale popup -->
     <div class="suggest-notify anislideOutDown sales_animated"></div>
-  
+
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script type="text/javascript" src="//cdn.hstatic.net/themes/200000846175/1001403720/14/pluginscript.js?v=245"
         defer></script>
@@ -360,6 +755,511 @@
             display: none !important;
         }
     </style>
+
+    <!-- AI Card Modal (Demo web tĩnh) -->
+    <style>
+        :root {
+            --ink: #2b2926;
+            --muted: #7a6e65;
+            --rose: #a97155;
+            --rose-200: #ead9ca;
+            --bg: #fff8f1;
+            --bg-2: #faf3ea;
+        }
+
+        .ai-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(33, 26, 19, .45);
+            backdrop-filter: saturate(120%) blur(2px);
+            display: none;
+            z-index: 9998
+        }
+
+        .ai-modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            place-items: center;
+            z-index: 9999;
+            padding: 18px
+        }
+
+        .ai-card {
+            width: min(1080px, 96vw);
+            max-height: 88vh;
+            overflow: auto;
+            background: linear-gradient(180deg, #fff 0%, #fffdfc 50%, #ffffff 100%);
+            border: 1px solid #fff;
+            border-radius: 26px;
+            box-shadow: 0 20px 60px rgba(33, 26, 19, .18);
+            padding: 18px 18px 22px;
+        }
+
+        .ai-head {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(180deg, #ffffff 70%, rgba(255, 255, 255, 0));
+            z-index: 1;
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            margin: -6px -6px 8px;
+            padding: 10px 6px 12px
+        }
+
+        .ai-head h3 {
+            margin: 0;
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            letter-spacing: .2px;
+            color: var(--ink)
+        }
+
+        .ai-close {
+            border: 0;
+            background: #fff;
+            border: 1px solid var(--rose-200);
+            width: 38px;
+            height: 38px;
+            border-radius: 999px;
+            cursor: pointer;
+            line-height: 38px
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 18px;
+            align-items: start
+        }
+
+        @media(max-width:1024px) {
+            .ai-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .ai-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin: 8px 0
+        }
+
+        .ai-field label {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .ai-field input,
+        .ai-field select,
+        .ai-field textarea {
+            padding: 12px 14px;
+            border: 1px solid var(--rose-200);
+            border-radius: 16px;
+            background: #fff;
+            font-size: 14px;
+            color: var(--ink)
+        }
+
+        .ai-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px
+        }
+
+        .ai-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap
+        }
+
+        .ai-btn {
+            appearance: none;
+            border: 0;
+            background: var(--rose);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 18px;
+            padding: 12px 16px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(169, 113, 85, .28)
+        }
+
+        .ai-btn.secondary {
+            background: #fff;
+            color: var(--ink);
+            border: 1px solid var(--rose-200);
+            box-shadow: none
+        }
+
+        .ai-hint {
+            color: var(--muted);
+            font-size: 12.5px
+        }
+
+        .ai-canvas-wrap {
+            background: linear-gradient(180deg, #fff, #fffdfc);
+            border: 1px solid #f6e7da;
+            border-radius: 18px;
+            display: grid;
+            place-items: center;
+            min-height: 360px;
+            padding: 14px
+        }
+
+        canvas.ai-canvas {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 14px
+        }
+    </style>
+
+    <div class="ai-modal-backdrop" id="aiCardBackdrop"></div>
+    <div class="ai-modal" id="aiCardModal" role="dialog" aria-modal="true" aria-labelledby="aiCardTitle">
+        <div class="ai-card">
+            <div class="ai-head">
+                <h3 id="aiCardTitle">Tạo thiệp tự động</h3>
+                <button class="ai-close" id="aiCardClose" title="Đóng">✕</button>
+            </div>
+
+            <div class="ai-grid">
+                <!-- LEFT: form -->
+                <div>
+                    <div class="ai-field">
+                        <label>Người nhận</label>
+                        <input id="aiTo" placeholder="VD: Em Linh / Ba mẹ / Anh Tuấn">
+                    </div>
+
+                    <div class="ai-row">
+                        <div class="ai-field">
+                            <label>Dịp / Sự kiện</label>
+                            <select id="aiOccasion">
+                                <option value="sinh nhật">Sinh nhật</option>
+                                <option value="kỷ niệm">Kỷ niệm</option>
+                                <option value="chúc mừng">Chúc mừng</option>
+                                <option value="cảm ơn">Cảm ơn</option>
+                                <option value="ngày đặc biệt">Ngày đặc biệt</option>
+                                <option value="an ủi">An ủi</option>
+                            </select>
+                        </div>
+                        <div class="ai-field">
+                            <label>Giọng điệu</label>
+                            <select id="aiTone">
+                                <option value="ấm áp">Ấm áp</option>
+                                <option value="hài hước">Hài hước</option>
+                                <option value="trang trọng">Trang trọng</option>
+                                <option value="ngọt ngào">Ngọt ngào</option>
+                                <option value="động viên">Động viên</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="ai-row">
+                        <div class="ai-field">
+                            <label>Độ dài</label>
+                            <select id="aiLength">
+                                <option value="ngắn">Ngắn</option>
+                                <option value="vừa">Vừa</option>
+                                <option value="dài">Dài</option>
+                            </select>
+                        </div>
+                        <div class="ai-field">
+                            <label>Người gửi (ký tên)</label>
+                            <input id="aiFrom" placeholder="VD: Tên của bạn">
+                        </div>
+                    </div>
+
+                    <div class="ai-field">
+                        <label>Lời nhắn thủ công (tùy chọn)</label>
+                        <textarea id="aiManual"
+                            placeholder="Nếu đã ghi lời chúc ở ô 'Ghi lời chúc kèm bó hoa', bấm 'Lấy lời nhắn từ giỏ' để dùng lại."></textarea>
+                        <div class="ai-actions">
+                            <button class="ai-btn secondary" id="aiGrabNote">Lấy lời nhắn từ giỏ</button>
+                            <span class="ai-hint">Mẹo: để trống phần này nếu muốn AI tự sinh toàn bộ.</span>
+                        </div>
+                    </div>
+
+                    <div class="ai-actions">
+                        <button class="ai-btn" id="aiGenerate">Sinh lời chúc</button>
+                        <button class="ai-btn secondary" id="aiRender">Vẽ thiệp</button>
+                        <button class="ai-btn secondary" id="aiDownload">Tải PNG</button>
+                    </div>
+                </div>
+
+                <!-- RIGHT: canvas preview -->
+                <div>
+                    <div class="ai-canvas-wrap">
+                        <canvas id="aiCanvas" width="900" height="600" aria-label="Xem trước thiệp"
+                            class="ai-canvas"></canvas>
+                    </div>
+                    <p class="ai-hint" style="margin-top:8px">
+                        Thiệp dùng tông nâu ấm của trang, kèm hoa 🌸·🌷.<br>Hình xuất PNG 900×600.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            // Helpers
+            const $ = s => document.querySelector(s);
+            const $$ = s => document.querySelectorAll(s);
+
+            const openBtn = $('#ai-card-open');
+            const modal = $('#aiCardModal');
+            const backdrop = $('#aiCardBackdrop');
+            const closeBtn = $('#aiCardClose');
+
+            const elTo = $('#aiTo');
+            const elFrom = $('#aiFrom');
+            const elOcc = $('#aiOccasion');
+            const elTone = $('#aiTone');
+            const elLen = $('#aiLength');
+            const elManual = $('#aiManual');
+            const grabNoteBtn = $('#aiGrabNote');
+            const genBtn = $('#aiGenerate');
+            const renderBtn = $('#aiRender');
+            const dlBtn = $('#aiDownload');
+            const canvas = $('#aiCanvas');
+            const ctx = canvas.getContext('2d');
+
+            function show() { modal.style.display = 'grid'; backdrop.style.display = 'block'; }
+            function hide() { modal.style.display = 'none'; backdrop.style.display = 'none'; }
+            openBtn?.addEventListener('click', show);
+            closeBtn?.addEventListener('click', hide);
+            backdrop?.addEventListener('click', hide);
+            window.addEventListener('keydown', (e) => { if (e.key === 'Escape') hide(); });
+
+            // Lấy lời chúc từ ô "Ghi lời chúc kèm bó hoa"
+            grabNoteBtn.addEventListener('click', () => {
+                const note = document.querySelector('.note textarea');
+                if (note && note.value.trim()) {
+                    document.getElementById('aiManual').value = note.value.trim();
+                } else {
+                    document.getElementById('aiManual').value = '—';
+                }
+            });
+
+            // Tạo lời chúc (demo AI logic cục bộ)
+            function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+            function getCartSummary() {
+                const names = [...$$('.cart-row .name')].map(x => x.textContent.trim());
+                const meta = [...$$('.cart-row .meta')].map(x => x.textContent.trim());
+                return { names, meta, count: names.length };
+            }
+
+            function buildMessage() {
+                const to = elTo.value.trim() || 'Bạn';
+                const from = elFrom.value.trim() || 'Mình';
+                const occ = elOcc.value;
+                const tone = elTone.value;
+                const len = elLen.value;
+
+                const { names, count } = getCartSummary();
+                const bouquet = count ? `bó ${count > 1 ? count + ' loại hoa' : 'hoa'} ${names[0] ?? ''}`.trim() : 'bó hoa';
+
+                const openers = {
+                    'ấm áp': [
+                        `Gửi ${to} thân mến,`,
+                        `${to} ơi,`,
+                        `Thương gửi ${to},`
+                    ],
+                    'hài hước': [
+                        `Hello ${to}, “ban công tim” mở cửa!`,
+                        `Ê ${to}, hoa tới kẻo… tim quá hạn 😆`,
+                        `${to} ơi, mở quà trước, cảm động sau nha!`
+                    ],
+                    'trang trọng': [
+                        `Kính gửi ${to},`,
+                        `Trân trọng gửi ${to},`,
+                        `Gửi ${to},`
+                    ],
+                    'ngọt ngào': [
+                        `Này ${to} dễ thương,`,
+                        `Cho ${to} của mình,`,
+                        `Gửi ${to}, người làm ngày thường hoá ngọt.`
+                    ],
+                    'động viên': [
+                        `Gửi ${to},`,
+                        `${to} ơi,`,
+                        `Thương gửi ${to},`
+                    ]
+                };
+
+                const bodies = {
+                    'sinh nhật': [
+                        `chúc bạn tuổi mới thật nhiều sức khoẻ, niềm vui và những điều nhiệm màu. ${bouquet} này thay mình gửi muôn vàn yêu thương!`,
+                        `mong mọi ước mơ của bạn nở rộ như những cánh hoa này. Chúc một năm rực rỡ và bình an!`,
+                        `một vòng quay nữa quanh mặt trời, mong bạn luôn rạng rỡ, ấm áp và được yêu thương đủ đầy.`
+                    ],
+                    'kỷ niệm': [
+                        `cảm ơn vì những ngày đã qua và cả chặng đường phía trước. Mong mỗi lần nhìn ${bouquet}, bạn lại nhớ đến nụ cười của chúng ta.`,
+                        `mỗi cánh hoa là một khoảnh khắc mình trân quý. Chúc ta luôn nắm tay nhau qua mọi mùa.`
+                    ],
+                    'chúc mừng': [
+                        `chúc mừng cột mốc tuyệt vời! Mong bạn tiếp tục toả sáng, bền bỉ và hạnh phúc trên hành trình mới.`,
+                        `thành quả ngọt lành như hương hoa. Rất tự hào về bạn!`
+                    ],
+                    'cảm ơn': [
+                        `cảm ơn vì sự quan tâm và giúp đỡ. Mong bó hoa nhỏ này gửi đến bạn điều ấm áp như bạn đã trao.`,
+                        `lời cảm ơn đôi khi khó nói hết — mong hương hoa nói giùm mình phần nào.`
+                    ],
+                    'ngày đặc biệt': [
+                        `mong hôm nay của bạn dịu dàng và đủ đầy. Hy vọng ${bouquet} khẽ chạm vào trái tim bạn.`,
+                        `chúc bạn một ngày đẹp như điều bạn xứng đáng.`
+                    ],
+                    'an ủi': [
+                        `có những ngày mây kéo đến — mong hương hoa này sẽ là chút nắng an yên cho bạn.`,
+                        `hãy cho mình được ở đây cùng bạn. Rồi mọi chuyện cũng sẽ dịu lại thôi.`
+                    ]
+                };
+
+                const closers = {
+                    'ấm áp': [
+                        `Thương mến, ${from}`,
+                        `Ôm bạn một cái thật chặt, ${from}`
+                    ],
+                    'hài hước': [
+                        `Ký tên: shipper cảm xúc – ${from}`,
+                        `Tặng hoa chống… xì-trét! – ${from}`
+                    ],
+                    'trang trọng': [
+                        `Trân trọng, ${from}`,
+                        `Thân ái, ${from}`
+                    ],
+                    'ngọt ngào': [
+                        `Yêu thương nhiều, ${from}`,
+                        `Ngàn nụ hôn gió, ${from}`
+                    ],
+                    'động viên': [
+                        `Mình luôn ở đây, ${from}`,
+                        `Vững vàng nhé, ${from}`
+                    ]
+                };
+
+                let text = `${pick(openers[tone])}\n\n${pick(bodies[occ])}\n\n${pick(closers[tone])}`;
+                const manual = elManual.value.trim();
+                if (manual && manual !== '—') {
+                    text = `${pick(openers[tone])}\n\n${manual}\n\n${pick(closers[tone])}`;
+                }
+
+                // Điều chỉnh độ dài
+                if (len === 'ngắn') {
+                    text = text.split('\n').slice(0, 3).join('\n');
+                } else if (len === 'dài') {
+                    text += `\n\nP/S: Cảm ơn bạn đã là chính mình. Mọi điều tốt đẹp đang tới gần — tin mình nhé!`;
+                }
+                return text;
+            }
+
+            let currentMessage = '';
+
+            const drawRoundedRect = (ctx, x, y, w, h, r) => {
+                const rr = Math.min(r, w / 2, h / 2);
+                ctx.beginPath();
+                ctx.moveTo(x + rr, y);
+                ctx.arcTo(x + w, y, x + w, y + h, rr);
+                ctx.arcTo(x + w, y + h, x, y + h, rr);
+                ctx.arcTo(x, y + h, x, y, rr);
+                ctx.arcTo(x, y, x + w, y, rr);
+                ctx.closePath();
+            };
+
+            function drawCard(message, withBorder) {
+                const W = canvas.width, H = canvas.height;
+                // Nền gradient nhạt
+                const g = ctx.createLinearGradient(0, 0, 0, H);
+                g.addColorStop(0, '#fff8f1');
+                g.addColorStop(0.45, '#faf3ea');
+                g.addColorStop(1, '#ffffff');
+                ctx.fillStyle = g;
+                ctx.fillRect(0, 0, W, H);
+
+                // Khung mờ
+                ctx.save();
+                const pad = 30;
+                drawRoundedRect(ctx, pad, pad, W - 2 * pad, H - 2 * pad, 26);
+                ctx.fillStyle = 'rgba(255,255,255,0.85)';
+                ctx.fill();
+
+                if (withBorder) {
+                    ctx.strokeStyle = 'rgba(234,217,202,0.9)';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                }
+                ctx.restore();
+
+                // Hoa trang trí góc
+                ctx.font = '48px serif';
+                ctx.globalAlpha = 0.9;
+                ctx.fillText('🌷', 48, 86);
+                ctx.fillText('🌸', W - 96, H - 48);
+                ctx.globalAlpha = 1;
+
+                // Tiêu đề
+                ctx.fillStyle = '#8a5c44';
+                ctx.font = 'bold 52px "Playfair Display", serif';
+                ctx.fillText('Gửi chút hương hoa', 48, 140);
+
+                // Nội dung
+                ctx.fillStyle = '#2b2926';
+                const bodyX = 48, bodyY = 180, bodyW = W - 96;
+                ctx.font = '20px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial';
+                wrapText(ctx, message, bodyX, bodyY, bodyW, 32);
+            }
+
+            function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+                const paragraphs = text.split('\\n');
+                for (const p of paragraphs) {
+                    const words = p.split(' ');
+                    let line = '';
+                    for (let i = 0; i < words.length; i++) {
+                        const test = line + words[i] + ' ';
+                        const m = ctx.measureText(test);
+                        if (m.width > maxWidth && i > 0) {
+                            ctx.fillText(line, x, y);
+                            line = words[i] + ' ';
+                            y += lineHeight;
+                        } else {
+                            line = test;
+                        }
+                    }
+                    ctx.fillText(line, x, y);
+                    y += lineHeight + 10;
+                }
+            }
+
+            // Events
+            document.getElementById('aiGenerate').addEventListener('click', () => {
+                currentMessage = buildMessage();
+                drawCard(currentMessage);
+            });
+
+            document.getElementById('aiRender').addEventListener('click', () => {
+                if (!currentMessage) currentMessage = buildMessage();
+                drawCard(currentMessage, true);
+            });
+
+            document.getElementById('aiDownload').addEventListener('click', () => {
+                const link = document.createElement('a');
+                const stamp = new Date().toISOString().slice(0, 10);
+                link.download = `thiep_${stamp}.png`;
+                link.href = document.getElementById('aiCanvas').toDataURL('image/png');
+                link.click();
+            });
+
+            // Khởi tạo xem trước
+            drawCard('Gõ thông tin ở trái, bấm "Sinh lời chúc" rồi "Vẽ thiệp" để xem trước.\\n\\n🌼 Gợi ý: nhập Người nhận, chọn Dịp & Giọng điệu.', false);
+        })();
+    </script>
+
 </body>
 
 </html>
