@@ -123,3 +123,28 @@ h2 {
 .toast-message.success {
     background-color: #5cb85c;
 }
+/* 🔙 Nút quay về trang chủ */
+.home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #6b4f36;
+    color: #fff;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: 0.25s ease;
+    z-index: 999;
+}
+
+.home-button:hover {
+    background-color: #4b3621;
+    transform: translateY(-2px);
+}
+
