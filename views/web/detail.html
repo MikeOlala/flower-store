@@ -163,6 +163,55 @@
             max-height: 460px;
         }
 
+        /* Slider */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            overflow: hidden;
+            border-radius: 18px;
+        }
+
+        .slider-track {
+            display: flex;
+            width: 300%;
+            transition: transform 0.45s ease;
+        }
+
+        .slider-track img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+
+        /* Buttons */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            font-size: 32px;
+            padding: 6px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .slider-btn:hover {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .slider-btn.prev {
+            left: 10px;
+        }
+
+        .slider-btn.next {
+            right: 10px;
+        }
+
         .badge {
             position: absolute;
             top: 14px;
@@ -633,6 +682,39 @@
         } catch (e) { };
         //]]>
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentSlide = 0;
+
+            const track = document.querySelector(".slider-track");
+            const slides = document.querySelectorAll(".slider-track img");
+            const totalSlides = slides.length;
+
+            const nextBtn = document.querySelector(".slider-btn.next");
+            const prevBtn = document.querySelector(".slider-btn.prev");
+
+            track.style.width = `${totalSlides * 100}%`;
+
+            slides.forEach((img) => {
+                img.style.flex = "0 0 40%";
+            });
+
+            function goToSlide(index) {
+                currentSlide = (index + totalSlides) % totalSlides;
+                track.style.transform = `translateX(-${currentSlide * 40}%)`;
+            }
+
+            nextBtn.addEventListener("click", function () {
+                goToSlide(currentSlide + 1);
+            });
+
+            prevBtn.addEventListener("click", function () {
+                goToSlide(currentSlide - 1);
+            });
+        });
+    </script>
+
+
     <script
         type="application/ld+json">{"@context":"http://schema.org","@type":"WebSite","name":"lavieestbelle.vn","url":"https://lavieestbelle.vn","potentialAction":{"@type":"SearchAction","target":"https://lavieestbelle.vn/search?&q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 
@@ -669,12 +751,27 @@
             <section class="product-card">
                 <!-- Ảnh bó hoa -->
                 <div class="product-image-wrapper">
-                    <!-- Đổi src ảnh cho phù hợp -->
-                    <img src="https://i.pinimg.com/736x/4c/e8/31/4ce831be8a5461c45b8e3dc582a4c49d.jpg"
-                        alt="Bó hoa hồng pastel dịu dàng">
+
+                    <!-- Slider khung -->
+                    <div class="slider-container">
+                        <div class="slider-track">
+                            <img src="https://i.pinimg.com/736x/4c/e8/31/4ce831be8a5461c45b8e3dc582a4c49d.jpg"
+                                alt="Ảnh 1">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3kHrhNqwFBcIuNtNSP4nuzVmOiGQ-qMaNAawXlSg_23WAG__z"
+                                alt="Ảnh 2">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg4o9V5rsMzJJaduUBcAmzEgXEHDFUbXP0YuzDbPcPnB35lbh1"
+                                alt="Ảnh 3">
+                        </div>
+
+                        <!-- Nút điều hướng -->
+                        <button class="slider-btn prev">❮</button>
+                        <button class="slider-btn next">❯</button>
+                    </div>
+
                     <div class="badge">Best seller</div>
                     <div class="badge-secondary">Giao trong 2h tại TP.HCM</div>
                 </div>
+
 
                 <!-- Thông tin bó hoa -->
                 <div class="product-info">
@@ -692,7 +789,8 @@
                     </div>
 
                     <p class="product-short-desc">
-                        Bó hoa tone cam - vàng rực rỡ như hoàng hôn, dành cho những dịp cần nhiều năng lượng tích cực: chúc mừng, tốt nghiệp, khai trương nhỏ.
+                        Bó hoa tone cam - vàng rực rỡ như hoàng hôn, dành cho những dịp cần nhiều năng lượng tích cực:
+                        chúc mừng, tốt nghiệp, khai trương nhỏ.
                     </p>
 
                     <div class="product-meta">
@@ -822,7 +920,7 @@
             <section class="section-card">
                 <h2 class="section-title">Viết đánh giá của bạn</h2>
                 <p class="section-subtitle">
-                    Hãy chia sẻ trải nghiệm của bạn để Tiệm hoa nhà tớ có thể phục vụ tốt hơn nhé. 
+                    Hãy chia sẻ trải nghiệm của bạn để Tiệm hoa nhà tớ có thể phục vụ tốt hơn nhé.
                 </p>
 
                 <form class="review-form" action="#" method="post">

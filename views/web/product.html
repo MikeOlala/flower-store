@@ -314,6 +314,46 @@
         .btn-ghost:hover {
             background: #f7e6d5;
         }
+
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        .page-btn {
+            background: #f4e1d1;
+            border: 1px solid #d8c1b0;
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #6c5845;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .page-btn:hover {
+            background: #e9d2bd;
+        }
+
+        .page-number {
+            padding: 8px 12px;
+            background: #fff;
+            border: 1px solid #d8c1b0;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #6c5845;
+            transition: 0.2s;
+        }
+
+        .page-number.active {
+            background: var(--accent-dark);
+            color: #fff;
+            border-color: var(--accent-dark);
+        }
     </style>
 
     <script defer src="components.js"></script>
@@ -962,6 +1002,18 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="pagination-container">
+        <button class="page-btn" id="prevPage">‹</button>
+        <button class="page-btn" id="prevPage">1</button>
+        <button class="page-btn" id="prevPage">2</button>
+        <button class="page-btn" id="prevPage">...</button>
+        <button class="page-btn" id="prevPage">9</button>
+        <button class="page-btn" id="prevPage">10</button>
+        <div class="page-numbers" id="paginationNumbers"></div>
+        <button class="page-btn" id="nextPage">›</button>
     </div>
 
     <!-- FOOTER -->
