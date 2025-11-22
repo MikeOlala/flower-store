@@ -47,6 +47,7 @@
             max-width: 95%;
             box-sizing: border-box;
             animation: fadeInSlide 1s ease-out;
+            position: relative;
         }
 
         /* 🌼 Logo */
@@ -252,11 +253,45 @@
                 font-size: 1.3rem;
             }
         }
+        /* 🔙 Nút quay về trang chủ */
+        .home-button {
+            position: absolute;
+            top: 20px;       /* Đẩy nút lên cao hơn một chút */
+            left: 20px;      /* Đẩy nút sang trái một chút */
+            background-color: #6b4f36;
+            color: #fff;
+            padding: 12px 14px;
+            border-radius: 12px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: 0.25s ease;
+            z-index: 10;
+        }
+
+        .home-button:hover {
+            background-color: #4b3621;
+            transform: translateY(-2px);
+        }
+
+
     </style>
 </head>
 
 <body>
+
+<!--<a href="home.html" class="home-button">-->
+<!--    <i class="bi bi-house-door-fill"></i>-->
+<!--</a>-->
 <div class="login-container">
+    <!-- Nút quay về trang chủ -->
+    <a href="home.html" class="home-button">
+        <i class="bi bi-house-door-fill"></i>
+    </a>
     <div class="login-logo">
         <img src="assets/logo.jpg" alt="Logo">
     </div>
@@ -280,7 +315,7 @@
                 <input type="checkbox" id="remember" checked>
                 <label for="remember">Lưu mật khẩu</label>
             </div>
-            <a href="#!">Quên mật khẩu?</a>
+            <a href="ForgotPassword.html">Quên mật khẩu?</a>
         </div>
 
         <!-- Submit button -->
