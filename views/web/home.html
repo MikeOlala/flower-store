@@ -36,7 +36,6 @@
     <link rel="canonical" href="https://lavieestbelle.vn/" />
     <meta name="robots" content="index,follow,noodp">
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="La Vie Est Belle ( Flower & Gift)" />
     <meta property="og:image"
         content="http://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg" />
     <meta property="og:image"
@@ -45,9 +44,6 @@
         content="https://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg" />
     <meta property="og:image:secure_url"
         content="http://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg" />
-    <meta property="og:image:alt" content="La Vie Est Belle ( Flower &amp; Gift)" />
-    <meta property="og:url" content="https://lavieestbelle.vn/" />
-    <meta property="og:site_name" content="La Vie Est Belle - Flower & Gift" /><!-- Shop id asset -->
     <style>
         :root {
             --bg-soldout: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/hethang.png?v=245);
@@ -73,12 +69,615 @@
 
         }
     </style>
-    <style>
-        html,
-        body {
-            height: 100%;
+  <style>
+        :root {
+            --primary: #c99366;
+            --primary-dark: #aa6a3f;
+            --brown-main: #3c2922;
+            --brown-soft: #6c5845;
+            --bg-light: #faf5ef;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.16);
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-light);
+            color: var(--brown-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(250, 245, 239, 0.95) 0%, rgba(255, 243, 235, 0.9) 100%),
+                        url('https://images.unsplash.com/photo-1487070183336-b863922373d4?w=1600') center/cover;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(201, 147, 102, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, -30px) rotate(180deg); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--brown-main), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.5rem;
+            color: var(--brown-soft);
+            margin-bottom: 2.5rem;
+            font-style: italic;
+        }
+
+        .hero-search {
+            background: white;
+            border-radius: 60px;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            background: transparent;
+        }
+
+        .hero-search button {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(201, 147, 102, 0.3);
+        }
+
+        .hero-search button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 147, 102, 0.4);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 8px 20px rgba(201, 147, 102, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(201, 147, 102, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--brown-main);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .hero-card {
+            position: relative;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.6s ease;
+        }
+
+        .hero-badge {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--brown-main);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--brown-soft);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            aspect-ratio: 1;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%);
+            padding: 2rem 1.5rem;
+            color: white;
+            transition: all 0.4s ease;
+        }
+
+        .category-card:hover .category-overlay {
+            background: linear-gradient(180deg, rgba(201, 147, 102, 0.9) 0%, rgba(170, 106, 63, 0.95) 100%);
+        }
+
+        .category-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 5rem 0;
+            background: var(--bg-light);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-actions {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .action-btn {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .action-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--brown-main);
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .product-add {
+            width: 100%;
+            padding: 0.875rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .product-add:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(201, 147, 102, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--brown-main);
+        }
+
+        .feature-desc {
+            color: var(--brown-soft);
+            line-height: 1.7;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .newsletter-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1.25rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 1.25rem 3rem;
+            background: white;
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+        }
+
+        /* Instagram Section */
+        .instagram {
+            padding: 5rem 0;
+            background: var(--bg-light);
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .instagram-item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .instagram-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .instagram-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .instagram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(201, 147, 102, 0.9), rgba(170, 106, 63, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .instagram-item:hover .instagram-overlay {
+            opacity: 1;
+        }
+
+        .instagram-icon {
+            font-size: 3rem;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-card {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text p {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .newsletter h2 {
+                font-size: 2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.8s ease-out;
         }
     </style>
 
@@ -242,1555 +841,282 @@
         </ul>
     </nav>
     <div id="site-overlay" class="site-overlay active"></div>
+    <site-header></site-header>
     <main>
-        <site-header></site-header>
-        <section id="home-slider">
-        </section>
-        <div data-aos="fade-up">
-            <section id="section-four-banner" class="pd-top-30" data-include="section-four-banner">
-                <div class="">
-                    <div id="owl-banner" class="d-flex-owl slick-callback" data-slides-md="4" data-slides-tablet="4"
-                        data-slides-xs="1" data-slides-md-scroll="1" data-slides-tablet-scroll="1"
-                        data-slides-xs-scroll="1" data-dots="false" data-autoplay="2000" data-infinite="true"
-                        data-custom-arrows="true">
-                        <div class="item">
+        <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text animate">
+                    <h1>Tiệm Hoa Nhà Tớ</h1>
+                    <p>Hoa tươi mỗi ngày – Gửi yêu thương trọn vẹn</p>
+                    
+                    <div class="hero-search">
+                        <input type="text" placeholder="Tìm bó hoa, giỏ hoa, lan hồ điệp...">
+                        <button>Tìm kiếm</button>
+                    </div>
 
-                            <div class="banner-hover">
-                                <a href="https://lavieestbelle.myharavan.com/collections/bo-hoa" class="img-cat">
-                                    <picture>
-                                        <source
-                                            data-srcset="https://file.hstatic.net/200000846175/file/z5900937479779_23a78c66588e62ae16962ab99bf0d410.jpg">
-                                        <img class="dt-width-100 lazyload"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                            width="393" height="393" alt="Banner 1">
-                                    </picture>
-                                    <div class="banner-content text-left">
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="bigtitle">
-                                <a href="https://lavieestbelle.myharavan.com/collections/bo-hoa">
-                                    BÓ HOA
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="item">
-
-                            <div class="banner-hover">
-                                <a href="https://lavieestbelle.myharavan.com/collections/binh-hoa" class="img-cat">
-                                    <picture>
-                                        <source
-                                            data-srcset="https://file.hstatic.net/200000846175/file/z5899444875229_e1c7d0304e0a53ca2be88b52766f04e6.jpg">
-                                        <img class="dt-width-100 lazyload"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                            width="393" height="393" alt="">
-                                    </picture>
-                                    <div class="banner-content text-left">
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="bigtitle">
-                                <a href="https://lavieestbelle.myharavan.com/collections/binh-hoa">
-                                    BÌNH HOA
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="item">
-
-                            <div class="banner-hover">
-                                <a href="https://lavieestbelle.myharavan.com/collections/hoa-tulip" class="img-cat">
-                                    <picture>
-                                        <source
-                                            data-srcset="https://file.hstatic.net/200000846175/file/d7a376e45096e9c8b087-min.jpg">
-                                        <img class="dt-width-100 lazyload"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                            width="393" height="393" alt="">
-                                    </picture>
-                                    <div class="banner-content text-left">
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="bigtitle">
-                                <a href="https://lavieestbelle.myharavan.com/collections/hoa-tulip">
-                                    HOA TULIP
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="item">
-
-                            <div class="banner-hover">
-                                <a href="https://lavieestbelle.myharavan.com/collections/gio-hoa" class="img-cat">
-                                    <picture>
-                                        <source
-                                            data-srcset="https://file.hstatic.net/200000846175/file/z5900937515947_82c85e8a4d5c70527c21e29fce363cef.jpg">
-                                        <img class="dt-width-100 lazyload"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                            width="393" height="393" alt="Banner 4">
-                                    </picture>
-                                    <div class="banner-content text-left">
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="bigtitle">
-                                <a href="https://lavieestbelle.myharavan.com/collections/gio-hoa">
-                                    GIỎ HOA
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="item">
-
-                            <div class="banner-hover">
-                                <a href="https://lavieestbelle.myharavan.com/collections/box-hoa" class="img-cat">
-                                    <picture>
-                                        <source
-                                            data-srcset="https://file.hstatic.net/200000846175/file/untitled-8_f341364151ef456c89b87393748a434b.png">
-                                        <img class="dt-width-100 lazyload"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                            width="393" height="393" alt="Banner 5">
-                                    </picture>
-                                    <div class="banner-content text-left">
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="bigtitle">
-                                <a href="https://lavieestbelle.myharavan.com/collections/box-hoa">
-                                    BOX HOA
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="item">
-
-                            <div class="banner-hover">
-                                <a href="https://lavieestbelle.myharavan.com/collections/hop-hoa" class="img-cat">
-                                    <picture>
-                                        <source
-                                            data-srcset="https://file.hstatic.net/200000846175/file/d4814aba80c9399760d8-min.jpg">
-                                        <img class="dt-width-100 lazyload"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                            width="393" height="393" alt="">
-                                    </picture>
-                                    <div class="banner-content text-left">
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="bigtitle">
-                                <a href="https://lavieestbelle.myharavan.com/collections/hop-hoa">
-                                    HỘP HOA
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="item">
-
-                            <div class="banner-hover">
-                                <a href="https://lavieestbelle.myharavan.com/collections/hoa-cuoi" class="img-cat">
-                                    <picture>
-                                        <source
-                                            data-srcset="https://file.hstatic.net/200000846175/file/z5899444826287_34ad1d3a0b20eade7fd205656674c367.jpg">
-                                        <img class="dt-width-100 lazyload"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                            width="393" height="393" alt="">
-                                    </picture>
-                                    <div class="banner-content text-left">
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="bigtitle">
-                                <a href="https://lavieestbelle.myharavan.com/collections/hoa-cuoi">
-                                    HOA CƯỚI CẦM TAY
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="item">
-
-                            <div class="banner-hover">
-                                <a href="https://lavieestbelle.myharavan.com/collections/lan-ho-diep" class="img-cat">
-                                    <picture>
-                                        <source
-                                            data-srcset="https://file.hstatic.net/200000846175/file/z5899444684804_c4148929b8f6ab395f69a93f4953035e.jpg">
-                                        <img class="dt-width-100 lazyload"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                            width="393" height="393" alt="">
-                                    </picture>
-                                    <div class="banner-content text-left">
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="bigtitle">
-                                <a href="https://lavieestbelle.myharavan.com/collections/lan-ho-diep">
-                                    LAN HỒ ĐIỆP
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="item">
-
-                            <div class="banner-hover">
-                                <a href="https://lavieestbelle.myharavan.com/collections/ke-hoa-chuc-mung"
-                                    class="img-cat">
-                                    <picture>
-                                        <source
-                                            data-srcset="https://file.hstatic.net/200000846175/file/89b70a6cc51f7c41250e-min.jpg">
-                                        <img class="dt-width-100 lazyload"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC"
-                                            width="393" height="393" alt="">
-                                    </picture>
-                                    <div class="banner-content text-left">
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="bigtitle">
-                                <a href="https://lavieestbelle.myharavan.com/collections/ke-hoa-chuc-mung">
-                                    KỆ HOA CHÚC MỪNG
-                                </a>
-                            </div>
-
-                        </div>
+                    <div class="hero-buttons">
+                        <a href="#products" class="btn btn-primary">
+                            Mua ngay
+                            <span>→</span>
+                        </a>
+                        <a href="#categories" class="btn btn-secondary">
+                            Khám phá bộ sưu tập
+                        </a>
                     </div>
                 </div>
-            </section>
+
+                <div class="hero-image animate">
+                    <div class="hero-card">
+                        <span class="hero-badge">New</span>
+                        <model-viewer src="assets/bouquet.glb"
+                          alt="Bó hoa 3D"
+                          camera-controls
+                          auto-rotate
+                          rotation-per-second="20deg"
+                          ar
+                          shadow-intensity="1"
+                          exposure="1.1"
+                          touch-action="pan-y"
+                          style="width:349px;height:384px;background:transparent;margin:auto;">
+                      </model-viewer>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div data-aos="fade-up">
-            <section id="section-collection1" class="pd-top-30 d-none-button-mb" data-include="section-collection-1">
-                <div class="">
-                    <div class="top-title">
-                        <h2 class="title-section">
-                            <a href="/collections/bo-hoa"><span>SẢN PHẨM BEST SELLER</span></a>
-                        </h2>
-                        <p>
+    </section>
 
-                        </p>
-                    </div>
-                    <div id="owl-collection1" class="d-flex-owl slick-callback" data-row="2" data-slides-md="4"
-                        data-slides-tablet="3" data-slides-xs="2" data-slides-md-scroll="5"
-                        data-slides-tablet-scroll="3" data-slides-xs-scroll="2" data-dots="false" data-autoplay="false"
-                        data-infinite="true" data-custom-arrows="true">
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/pure-blossom" title="Pure Blossom" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//cdn.hstatic.net/products/200000846175/z7055354732845_839654631ffda217c68a105a32e32e03-min_dc93e1d5a6ad42ada88d1d7e4cec57b9_1024x1024.jpg"
-                                            alt="Pure Blossom" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="pure-blossom" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
+    <!-- Categories Section -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <div class="section-header animate">
+                <h2 class="section-title">Danh Mục Nổi Bật</h2>
+                <p class="section-subtitle">Khám phá các bộ sưu tập hoa tươi đẹp nhất</p>
+            </div>
 
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1160110641,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/pure-blossom">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/pure-blossom" title="Pure Blossom">
-                                            Pure Blossom
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                5,000,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/tender-rose" title="Tender Rose" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//cdn.hstatic.net/products/200000846175/z7112091909873_dd141000ba9e17340830c59c2efdc97a-min_dd91cdf31c9a4f0b82a14f35b77b7cdb_1024x1024.jpg"
-                                            alt="Tender Rose" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="tender-rose" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1160366941,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/tender-rose">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/tender-rose" title="Tender Rose">
-                                            Tender Rose
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                6,660,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/happy-bloom" title="Happy Bloom" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//cdn.hstatic.net/products/200000846175/z7077857936039_e67a1446e9fa7522ca89409f4267cfb9-min_240b2f39ae6e432ab9c52f9eeed3ea97_1024x1024.jpg"
-                                            alt="Happy Bloom" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="happy-bloom" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1160110633,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/happy-bloom">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/happy-bloom" title="Happy Bloom">
-                                            Happy Bloom
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                3,000,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/cinderella" title="Cinderella" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//cdn.hstatic.net/products/200000846175/z7020437293995_31b6dc8b2dcdbe0dd35c7fd39b31bedb_2b1165d18dda445cb5047777f109b590_1024x1024.jpg"
-                                            alt="Cinderella" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="cinderella" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1159233018,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/cinderella">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/cinderella" title="Cinderella">
-                                            Cinderella
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                4,000,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/orchid-rouge" title="Orchid Rouge" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//product.hstatic.net/200000846175/product/z6454059063324_f36d425060774db64d16b8e3037abfbf_a0d1cd23517b437baf8793711e4e5016_1024x1024.jpg"
-                                            alt="Orchid Rouge" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="orchid-rouge" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1149015018,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/orchid-rouge">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/orchid-rouge" title="Orchid Rouge">
-                                            Orchid Rouge
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                1,800,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/aurora" title="Aurora" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//cdn.hstatic.net/products/200000846175/z7039619228663_b582dcb38712353b5eba1a8fa51b8420_af5596a5dd574d8fbb7712373803a638_1024x1024.jpg"
-                                            alt="Aurora" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="aurora" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1159232990,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/aurora">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/aurora" title="Aurora">
-                                            Aurora
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                2,800,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/big-heart" title="Big Heart" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//product.hstatic.net/200000846175/product/5-min_c1f605d2d445432ebfc23ed5dd28ddf9_2284b6b8669f4c9484be6cb44b444306_1024x1024.jpg"
-                                            alt="Big Heart" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="big-heart" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1122322270,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/big-heart">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/big-heart" title="Big Heart">
-                                            Big Heart
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                5,500,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/bloom-joy" title="Bloom Joy" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//cdn.hstatic.net/products/200000846175/z6989445218221_57d0452f2eb21b99666070190ded44f0_c9487651717048f6a09b69d461c7a275_1024x1024.jpg"
-                                            alt="Bloom Joy" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="bloom-joy" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1160110628,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/bloom-joy">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/bloom-joy" title="Bloom Joy">
-                                            Bloom Joy
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                2,000,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
+            <div class="categories-grid">
+                <div class="category-card animate">
+                    <img src="https://file.hstatic.net/200000846175/file/z5900937479779_23a78c66588e62ae16962ab99bf0d410.jpg" alt="Bó hoa">
+                    <div class="category-overlay">
+                        <h3 class="category-name">BÓ HOA</h3>
                     </div>
                 </div>
-            </section>
+
+                <div class="category-card animate">
+                    <img src="https://file.hstatic.net/200000846175/file/z5899444875229_e1c7d0304e0a53ca2be88b52766f04e6.jpg" alt="Bình hoa">
+                    <div class="category-overlay">
+                        <h3 class="category-name">BÌNH HOA</h3>
+                    </div>
+                </div>
+
+                <div class="category-card animate">
+                    <img src="https://file.hstatic.net/200000846175/file/d7a376e45096e9c8b087-min.jpg" alt="Hoa Tulip">
+                    <div class="category-overlay">
+                        <h3 class="category-name">HOA TULIP</h3>
+                    </div>
+                </div>
+
+                <div class="category-card animate">
+                    <img src="https://file.hstatic.net/200000846175/file/z5900937515947_82c85e8a4d5c70527c21e29fce363cef.jpg" alt="Giỏ hoa">
+                    <div class="category-overlay">
+                        <h3 class="category-name">GIỎ HOA</h3>
+                    </div>
+                </div>
+
+                <div class="category-card animate">
+                    <img src="https://file.hstatic.net/200000846175/file/untitled-8_f341364151ef456c89b87393748a434b.png" alt="Box hoa">
+                    <div class="category-overlay">
+                        <h3 class="category-name">BOX HOA</h3>
+                    </div>
+                </div>
+
+                <div class="category-card animate">
+                    <img src="https://file.hstatic.net/200000846175/file/z5899444826287_34ad1d3a0b20eade7fd205656674c367.jpg" alt="Hoa cưới">
+                    <div class="category-overlay">
+                        <h3 class="category-name">HOA CƯỚI</h3>
+                    </div>
+                </div>
+
+                <div class="category-card animate">
+                    <img src="https://file.hstatic.net/200000846175/file/z5899444684804_c4148929b8f6ab395f69a93f4953035e.jpg" alt="Lan hồ điệp">
+                    <div class="category-overlay">
+                        <h3 class="category-name">LAN HỒ ĐIỆP</h3>
+                    </div>
+                </div>
+
+                <div class="category-card animate">
+                    <img src="https://file.hstatic.net/200000846175/file/89b70a6cc51f7c41250e-min.jpg" alt="Kệ hoa">
+                    <div class="category-overlay">
+                        <h3 class="category-name">KỆ HOA</h3>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div data-aos="fade-up">
-            <section id="section-collection-2" class="pd-top-30 d-none-button-mb" data-include="section-collection-2">
-                <div class="">
-                    <div class="top-title">
-                        <h2 class="title-section">
-                            <a href="/collections/hop-hoa"><span>SẢN PHẨM NỔI BẬT</span></a>
-                        </h2>
-                        <p></p>
+    </section>
 
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <div class="section-header animate">
+                <h2 class="section-title">Sản Phẩm Best Seller</h2>
+                <p class="section-subtitle">Những bó hoa được yêu thích nhất</p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card animate">
+                    <div class="product-image">
+                        <img src="https://cdn.hstatic.net/products/200000846175/z7055354732845_839654631ffda217c68a105a32e32e03-min_dc93e1d5a6ad42ada88d1d7e4cec57b9_1024x1024.jpg" alt="Pure Blossom">
+                        <div class="product-actions">
+                            <button class="action-btn" title="Yêu thích">♥</button>
+                            <button class="action-btn" title="Xem nhanh">👁</button>
+                        </div>
                     </div>
-                    <div id="owl-collection" class="d-flex-owl slick-callback" data-row="2" data-slides-md="4"
-                        data-slides-tablet="3" data-slides-xs="2" data-slides-md-scroll="5"
-                        data-slides-tablet-scroll="3" data-slides-xs-scroll="2" data-dots="false" data-autoplay="false"
-                        data-infinite="true" data-custom-arrows="true">
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/botanical-symphony" title="Botanical Symphony"
-                                        class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//product.hstatic.net/200000846175/product/untitled-1-min_6c06e0ce18d2458eb98e1dde6034330a_1024x1024.png"
-                                            alt="Botanical Symphony" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="botanical-symphony" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1143126508,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/botanical-symphony">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/botanical-symphony" title="Botanical Symphony">
-                                            Botanical Symphony
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                3,600,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/fossil-fleur" title="Fossil Fleur" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//product.hstatic.net/200000846175/product/img_9726_2_ef09aaf0f5de4925960b5df29ba43a8a_1024x1024.jpg"
-                                            alt="Fossil Fleur" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="fossil-fleur" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1125264631,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/fossil-fleur">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/fossil-fleur" title="Fossil Fleur">
-                                            Fossil Fleur
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                2,000,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/wild-elegance" title="Wild Elegance" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//product.hstatic.net/200000846175/product/z5899444778603_fb7e338699d42acf6a088b7309ae4ad9_24528134abf04153b220df89eb6ba6c9_1024x1024.jpg"
-                                            alt="Wild Elegance" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="wild-elegance" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1131167174,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/wild-elegance">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/wild-elegance" title="Wild Elegance">
-                                            Wild Elegance
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                2,000,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/ephemeral-radiance" title="Ephemeral Radiance"
-                                        class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//product.hstatic.net/200000846175/product/z5899444923636_701ba98ba5902408520cb8d69fc4ce0d_baba4bb7cb8d4983ace0f38d9135c197_1024x1024.jpg"
-                                            alt="Ephemeral Radiance" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="ephemeral-radiance" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1131028554,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/ephemeral-radiance">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/ephemeral-radiance" title="Ephemeral Radiance">
-                                            Ephemeral Radiance
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                3,500,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/rustic-foliage" title="Rustic Foliage" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//product.hstatic.net/200000846175/product/z5899444684976_f02b573b6cfb59b91bea244097e1f52d_9ee978bf14aa488b8df57f44b5681fba_1024x1024.jpg"
-                                            alt="Rustic Foliage" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="rustic-foliage" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1131028439,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/rustic-foliage">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/rustic-foliage" title="Rustic Foliage">
-                                            Rustic Foliage
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                2,300,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/bloom-brilliance" title="Bloom Brilliance" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//product.hstatic.net/200000846175/product/dscf0122-min_c289d6c10cfd4d33a7e10069056ee6eb_1024x1024.jpg"
-                                            alt="Bloom Brilliance" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="bloom-brilliance" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1129372960,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/bloom-brilliance">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/bloom-brilliance" title="Bloom Brilliance">
-                                            Bloom Brilliance
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                2,500,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/petalune" title="Petalune" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//product.hstatic.net/200000846175/product/fb7c50fac5f870a629e9_250e7d72f5ca44f58bae73a33bf5cddb_1024x1024.jpg"
-                                            alt="Petalune" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="petalune" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1153045164,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/petalune">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/petalune" title="Petalune">
-                                            Petalune
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                12,000,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/blue-horizon" title="Blue Horizon" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//product.hstatic.net/200000846175/product/z5752513750763_0f4a57e58a21581e054b6965cf17daaa-min_2d055599c9e4440aa5883ff8e3d01bc8_1024x1024.jpg"
-                                            alt="Blue Horizon" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="blue-horizon" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1128191446,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/blue-horizon">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/blue-horizon" title="Blue Horizon">
-                                            Blue Horizon
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                3,000,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Pure Blossom</h3>
+                        <div class="product-price">5,000,000 VND</div>
+                        <button class="product-add">Thêm vào giỏ</button>
                     </div>
                 </div>
-            </section>
+
+                <div class="product-card animate">
+                    <div class="product-image">
+                        <img src="https://cdn.hstatic.net/products/200000846175/z7112091909873_dd141000ba9e17340830c59c2efdc97a-min_dd91cdf31c9a4f0b82a14f35b77b7cdb_1024x1024.jpg" alt="Tender Rose">
+                        <div class="product-actions">
+                            <button class="action-btn" title="Yêu thích">♥</button>
+                            <button class="action-btn" title="Xem nhanh">👁</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Tender Rose</h3>
+                        <div class="product-price">6,660,000 VND</div>
+                        <button class="product-add">Thêm vào giỏ</button>
+                    </div>
+                </div>
+
+                <div class="product-card animate">
+                    <div class="product-image">
+                        <img src="https://cdn.hstatic.net/products/200000846175/z7077857936039_e67a1446e9fa7522ca89409f4267cfb9-min_240b2f39ae6e432ab9c52f9eeed3ea97_1024x1024.jpg" alt="Happy Bloom">
+                        <div class="product-actions">
+                            <button class="action-btn" title="Yêu thích">♥</button>
+                            <button class="action-btn" title="Xem nhanh">👁</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Happy Bloom</h3>
+                        <div class="product-price">3,000,000 VND</div>
+                        <button class="product-add">Thêm vào giỏ</button>
+                    </div>
+                </div>
+
+                <div class="product-card animate">
+                    <div class="product-image">
+                        <img src="https://cdn.hstatic.net/products/200000846175/z7020437293995_31b6dc8b2dcdbe0dd35c7fd39b31bedb_2b1165d18dda445cb5047777f109b590_1024x1024.jpg" alt="Cinderella">
+                        <div class="product-actions">
+                            <button class="action-btn" title="Yêu thích">♥</button>
+                            <button class="action-btn" title="Xem nhanh">👁</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Cinderella</h3>
+                        <div class="product-price">4,000,000 VND</div>
+                        <button class="product-add">Thêm vào giỏ</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div data-aos="fade-up">
-            <section id="section-collection" class="pd-top-30 d-none-button-mb" data-include="section-collection-1">
-                <div class="">
-                    <div class="top-title">
-                        <h2 class="title-section">
-                            <a href="/collections/hoa-tulip"><span>HOA GIẢ</span></a>
-                        </h2>
-                        <p>
+    </section>
 
-                        </p>
-                    </div>
-                    <div id="owl-collection" class="d-flex-owl slick-callback" data-row="2" data-slides-md="4"
-                        data-slides-tablet="3" data-slides-xs="2" data-slides-md-scroll="5"
-                        data-slides-tablet-scroll="3" data-slides-xs-scroll="2" data-dots="false" data-autoplay="false"
-                        data-infinite="true" data-custom-arrows="true">
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/lovely-hue" title="Lovely Hue" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//cdn.hstatic.net/products/200000846175/z7125819453804_46fa310cda71fa2d3ff2a1cc0808c9f5-min_59ff2066b3ca4d6c8bd05df3243b1dc7_1024x1024.jpg"
-                                            alt="Lovely Hue" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="lovely-hue" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1160479922,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/lovely-hue">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/lovely-hue" title="Lovely Hue">
-                                            Lovely Hue
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                10,900,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/chic-petals" title="Chic Petals" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//cdn.hstatic.net/products/200000846175/z7125670258551_014b6ac263a92a1923a4f0ea481c81c0-min_84f76b4525a045078a1b46670d0d81ae_1024x1024.jpg"
-                                            alt="Chic Petals" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="chic-petals" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1160479518,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/chic-petals">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/chic-petals" title="Chic Petals">
-                                            Chic Petals
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                10,900,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/pearl-bloom" title="Pearl Bloom" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//cdn.hstatic.net/products/200000846175/z7125821940268_11f49a61c8130af1bef29fe16078a1c6-min_cc92a1328d3746d6857fa807c859a73c_1024x1024.jpg"
-                                            alt="Pearl Bloom" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="pearl-bloom" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1160478085,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/pearl-bloom">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/pearl-bloom" title="Pearl Bloom">
-                                            Pearl Bloom
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                10,900,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/tulip-serengeti" title="Tulip Serengeti" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//product.hstatic.net/200000846175/product/z5930290652722_bbb5be37fa727be59a770db4f1ad3b18_d472ba9a3c164d099ee157dd285de503_1024x1024.jpg"
-                                            alt="Tulip Serengeti" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="tulip-serengeti" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1131574299,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/tulip-serengeti">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/tulip-serengeti" title="Tulip Serengeti">
-                                            Tulip Serengeti
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                4,100,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/tulip-muse-1" title="Tulip Muse" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//cdn.hstatic.net/products/200000846175/img_1009_87bf802aa355423ca42a1b0cf28117ea_1024x1024.jpg"
-                                            alt="Tulip Muse" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="tulip-muse-1" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1160381556,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/tulip-muse-1">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/tulip-muse-1" title="Tulip Muse">
-                                            Tulip Muse
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                7,000,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/whispers-of-spring" title="Whispers of Spring"
-                                        class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//product.hstatic.net/200000846175/product/z5930289355549_8cfae03a4554330c8bf406f5da27cfb8_c1fb215026ec4ed0a80cf3612c181e8b_1024x1024.jpg"
-                                            alt="Whispers of Spring" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="whispers-of-spring" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1131574267,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/whispers-of-spring">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/whispers-of-spring" title="Whispers of Spring">
-                                            Whispers of Spring
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                3,500,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/elaris" title="Elaris" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//cdn.hstatic.net/products/200000846175/727a6391a39a29c4708b_200776dbc9624191bd10408ed39dd5e3_1024x1024.jpg"
-                                            alt="Elaris" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="elaris" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1159233027,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/elaris">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/elaris" title="Elaris">
-                                            Elaris
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                1,300,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex-column">
-                            <div class="product-block item">
-                                <div class="product-img ">
-                                    <a href="/products/tulipa" title="Tulipa" class="image-resize ">
-                                        <img class="lazyload dt-width-100 img-first" width="260" height="260"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//cdn.hstatic.net/products/200000846175/img_1011_927fb3672e584b06a0f9c77748291c9f_1024x1024.jpg"
-                                            alt="Tulipa" />
-                                    </a>
-                                    <div class="product-wishlist">
-                                        <button data-original-title="Yêu thích" class="wishlist-loop"
-                                            data-handle="tulipa" data-toggle="tooltip">
-                                            <img width="20" height="20"
-                                                src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
-                                                alt="Yêu thích"> Yêu thích
-                                        </button>
-                                    </div>
-
-                                    <div class="product-icon-action">
-                                        <div class="add-to-cart">
-                                            <button onclick="Wanda.addtocartmodal(1160381505,1)"
-                                                class="inline-block icon-addcart margin_right_10 box-shadow"
-                                                href="javascript:void(0)">Thêm vào giỏ</button>
-                                        </div>
-                                        <div class="quick-view">
-                                            <button href="javascript:void(0)" class="btn_quickview icon-quickview"
-                                                data-url="/products/tulipa">Xem nhanh</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-detail">
-                                    <h3 class="pro-name">
-                                        <a href="/products/tulipa" title="Tulipa">
-                                            Tulipa
-                                        </a>
-                                    </h3>
-                                    <div class="box-pro-prices">
-                                        <p class="pro-price">
-                                            <span>
-                                                7,000,000 VND </span>
-                                        </p>
-                                    </div>
-                                    <ul class="list-variants-img d-flex d-flex-wrap"></ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item animate">
+                    <div class="feature-icon">🌸</div>
+                    <h3 class="feature-title">Hoa Tươi 100%</h3>
+                    <p class="feature-desc">Nhập khẩu trực tiếp, đảm bảo độ tươi mới tuyệt đối</p>
                 </div>
-            </section>
 
+                <div class="feature-item animate">
+                    <div class="feature-icon">🚚</div>
+                    <h3 class="feature-title">Giao Hàng Nhanh</h3>
+                    <p class="feature-desc">Giao hàng trong 2-4 giờ tại TP.HCM</p>
+                </div>
+
+                <div class="feature-item animate">
+                    <div class="feature-icon">💝</div>
+                    <h3 class="feature-title">Thiết Kế Độc Đáo</h3>
+                    <p class="feature-desc">Mỗi bó hoa đều là tác phẩm nghệ thuật riêng</p>
+                </div>
+
+                <div class="feature-item animate">
+                    <div class="feature-icon">⭐</div>
+                    <h3 class="feature-title">Dịch Vụ 5 Sao</h3>
+                    <p class="feature-desc">Hỗ trợ 24/7, tư vấn tận tình</p>
+                </div>
+            </div>
         </div>
-        <div data-aos="fade-up">
-            <section id="section-blog-wanda" class="pd-top-15 d-block-button-mb" data-include="section-blog-home">
-                <div class="">
-                    <div class="top-title">
-                        <h2 class="title-section">
-                            <span>CHUYỆN HOA LÁ</span>
-                        </h2>
-                        <p>
-                        </p>
-                    </div>
-                    <div id="owl-blog-wanda" class="d-flex-owl slick-callback row-left-list" data-slides-md="3"
-                        data-slides-tablet="2" data-slides-xs="1" data-slides-md-scroll="1"
-                        data-slides-tablet-scroll="1" data-slides-xs-scroll="1" data-dots="false" data-autoplay="false"
-                        data-infinite="true" data-custom-arrows="true">
-                        <div class="artile-item">
-                            <div class="blog-post">
-                                <div class="blog-post-image">
-                                    <a href="/blogs/news/nhung-loai-hoa-nhap-khau-duoc-ua-chuong">
-                                        <img class="lazyload dt-width-100" height="194" width="381"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//file.hstatic.net/200000846175/article/z5540882848663_9b1e4dca48a108a7e915348827ffa1ac_c6f961e16fe3444fa636fe8424c07251_master.jpg"
-                                            alt="Những loại hoa nhập khẩu được ưa chuộng">
-                                    </a>
-                                </div>
-                                <div class="blog-post-content">
-                                    <h3 class="blog-title text-center">
-                                        <a href="/blogs/news/nhung-loai-hoa-nhap-khau-duoc-ua-chuong">Những loại hoa
-                                            nhập khẩu được ưa chuộng</a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="artile-item">
-                            <div class="blog-post">
-                                <div class="blog-post-image">
-                                    <a href="/blogs/news/y-nghia-ve-cac-mau-sac-cua-hoa-hong-ecuador">
-                                        <img class="lazyload dt-width-100" height="194" width="381"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//file.hstatic.net/200000846175/article/6_d6bdb32719444cc5ad4a6193f4c065f1_master.png"
-                                            alt="Ý nghĩa về các màu sắc của hoa hồng Ecuador">
-                                    </a>
-                                </div>
-                                <div class="blog-post-content">
-                                    <h3 class="blog-title text-center">
-                                        <a href="/blogs/news/y-nghia-ve-cac-mau-sac-cua-hoa-hong-ecuador">Ý nghĩa về các
-                                            màu sắc của hoa hồng Ecuador</a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="artile-item">
-                            <div class="blog-post">
-                                <div class="blog-post-image">
-                                    <a href="/blogs/news/cau-chuyen-ve-hoa">
-                                        <img class="lazyload dt-width-100" height="194" width="381"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//file.hstatic.net/200000846175/article/d480x280_done-min_825c8be534d84094bf1fa9eb58ccc2a5_master.png"
-                                            alt="Cách chăm sóc hoa tươi cắt cành thả bình">
-                                    </a>
-                                </div>
-                                <div class="blog-post-content">
-                                    <h3 class="blog-title text-center">
-                                        <a href="/blogs/news/cau-chuyen-ve-hoa">Cách chăm sóc hoa tươi cắt cành thả
-                                            bình</a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="artile-item">
-                            <div class="blog-post">
-                                <div class="blog-post-image">
-                                    <a href="/blogs/news/hoa-tulip-su-gia-cua-tinh-yeu">
-                                        <img class="lazyload dt-width-100" height="194" width="381"
-                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                            data-src="//file.hstatic.net/200000846175/article/tulip_8c7967c9aaf14ed0a6190c128ee0e305_master.png"
-                                            alt="Hoa tulip- Sứ giả của tình yêu">
-                                    </a>
-                                </div>
-                                <div class="blog-post-content">
-                                    <h3 class="blog-title text-center">
-                                        <a href="/blogs/news/hoa-tulip-su-gia-cua-tinh-yeu">Hoa tulip- Sứ giả của tình
-                                            yêu</a>
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    </section>
 
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Đăng Ký Nhận Ưu Đãi</h2>
+            <p>Nhận ngay mã giảm giá 10% cho đơn hàng đầu tiên</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Nhập email của bạn...">
+                <button type="submit">Đăng ký ngay</button>
+            </form>
         </div>
-        <div data-aos="fade-up">
-            <section id="section-instagram" class="pd-top-30" data-include="section-instagram">
-                <div class="top-title-instar">
-                    <h2 class="title-section d-flex-center js-center d-flex">
-                        <span>FOLLOW US ON INSTAGRAM</span>
-                    </h2>
-                </div>
-                <div id="owl-instar" class="d-flex-owl slick-callback" data-slides-md="4" data-slides-tablet="4"
-                    data-slides-xs="2" data-slides-md-scroll="1" data-slides-tablet-scroll="1" data-slides-xs-scroll="1"
-                    data-dots="false" data-autoplay="true" data-infinite="true" data-custom-arrows="true">
-                    <div class="item">
-                        <a href="/">
-                            <img class="dt-width-100 lazyload" height="360" width="360"
-                                data-src="//file.hstatic.net/200000846175/file/untitled-17_e9df1513d5094e93a17620ce62836d02_large.png"
-                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                alt="1">
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="/">
-                            <img class="dt-width-100 lazyload" height="360" width="360"
-                                data-src="//file.hstatic.net/200000846175/file/untitled-19_3cd940d31f114594880318e2c90bb0ba_large.png"
-                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                alt="1">
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="/">
-                            <img class="dt-width-100 lazyload" height="360" width="360"
-                                data-src="//file.hstatic.net/200000846175/file/untitled-20_d3e041d87d7246af8e26f6935032a81a_large.png"
-                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                alt="1">
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="/">
-                            <img class="dt-width-100 lazyload" height="360" width="360"
-                                data-src="//file.hstatic.net/200000846175/file/untitled-21_e3ffb83959f14f208f4984f3b87da53d_large.png"
-                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                alt="1">
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="/">
-                            <img class="dt-width-100 lazyload" height="360" width="360"
-                                data-src="//file.hstatic.net/200000846175/file/untitled-16_2ba9c6b35b2c46ee822d865d12e28622_large.png"
-                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                alt="1">
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="/">
-                            <img class="dt-width-100 lazyload" height="360" width="360"
-                                data-src="//file.hstatic.net/200000846175/file/untitled-36_cf056d68db774f65b98812e661a3cc00_large.png"
-                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                alt="1">
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="/">
-                            <img class="dt-width-100 lazyload" height="360" width="360"
-                                data-src="//file.hstatic.net/200000846175/file/untitled-26_ac9812d74486474b9191e5ecb6d78449_large.png"
-                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
-                                alt="1">
-                        </a>
+    </section>
+
+    <!-- Instagram Section -->
+    <section class="instagram">
+        <div class="container">
+            <div class="section-header animate">
+                <h2 class="section-title">Follow Us On Instagram</h2>
+                <p class="section-subtitle">@tiemhoa.nhato</p>
+            </div>
+
+            <div class="instagram-grid">
+                <div class="instagram-item animate">
+                    <img src="https://file.hstatic.net/200000846175/file/untitled-17_e9df1513d5094e93a17620ce62836d02_large.png" alt="Instagram 1">
+                    <div class="instagram-overlay">
+                        <span class="instagram-icon">📷</span>
                     </div>
                 </div>
-            </section>
-            <site-footer></site-footer>
+
+                <div class="instagram-item animate">
+                    <img src="https://file.hstatic.net/200000846175/file/untitled-19_3cd940d31f114594880318e2c90bb0ba_large.png" alt="Instagram 2">
+                    <div class="instagram-overlay">
+                        <span class="instagram-icon">📷</span>
+                    </div>
+                </div>
+
+                <div class="instagram-item animate">
+                    <img src="https://file.hstatic.net/200000846175/file/untitled-20_d3e041d87d7246af8e26f6935032a81a_large.png" alt="Instagram 3">
+                    <div class="instagram-overlay">
+                        <span class="instagram-icon">📷</span>
+                    </div>
+                </div>
+
+                <div class="instagram-item animate">
+                    <img src="https://file.hstatic.net/200000846175/file/untitled-21_e3ffb83959f14f208f4984f3b87da53d_large.png" alt="Instagram 4">
+                    <div class="instagram-overlay">
+                        <span class="instagram-icon">📷</span>
+                    </div>
+                </div>
+
+                <div class="instagram-item animate">
+                    <img src="https://images.unsplash.com/photo-1487070183336-b863922373d4?w=400" alt="Instagram 8">
+                    <div class="instagram-overlay">
+                        <span class="instagram-icon">📷</span>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
     </main>
+    <site-footer></site-footer>
 
     <div class="modal" id="pro-qv-wanda">
     </div>
@@ -1924,100 +1250,308 @@
     <div class="modal-backdrop fade"></div>
     <!-- Đây là suggest sale popup -->
     <div class="suggest-notify anislideOutDown sales_animated"></div>
-    <script async>
-        var checkapp = false;
-
-        let loadslider = () => {
-            let timeSlide = parseInt("1000");
-            let htmlslider = `
-
-    <section 
-      class="relative min-h-screen flex items-center justify-center p-8 md:p-12 bg-cover bg-center bg-no-repeat" 
-      style="background-image: url('https://cdn.hstatic.net/files/200000846175/file/caf51f824f9dc2c39b8c.jpg');
-      ">
-            
-      <div class="absolute inset-0 bg-gradient-to-r from-[#FFF9F5]/95 via-[#FFF3EB]/70 to-transparent"></div>
-
-      <div class="container relative z-10">
-          <div class="grid md:grid-cols-2 gap-10 items-center max-w-7xl mx-auto">
-
-
-              <div class="text-left md:pl-10 lg:pl-16">
-                  <h1 class="text-5xl md:text-6xl font-bold mb-4 text-gray-900 drop-shadow-sm">
-                      Tiệm hoa nhà tớ
-                  </h1>
-                  <p class="text-lg md:text-xl text-gray-700 mb-10">
-                      Hoa tươi mỗi ngày – Gửi yêu thương trọn vẹn.
-                  </p>
-
-                  <div class="bg-white/90 rounded-full shadow-lg p-1 flex items-center mb-6 max-w-md mx-auto md:mx-0">
-                      <input 
-                          type="text" 
-                          placeholder="Tìm bó hoa, giỏ hoa, lan hồ điệp..." 
-                          class="flex-grow p-3 bg-transparent border-none focus:outline-none text-gray-700 placeholder-gray-400" 
-                      />
-                      <button class="bg-[#A36B4F] hover:bg-[#8C5942] text-white font-semibold py-3 px-6 rounded-full transition duration-300">
-                          Tìm kiếm
-                      </button>
-                  </div>
-
-                  <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                      <button class="bg-[#A36B4F] hover:bg-[#8C5942] text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-md">
-                         Mua ngay
-                        </button>
-                      <button class="bg-white/90 border border-gray-300 text-gray-700 hover:bg-gray-100 font-semibold py-3 px-8 rounded-full shadow-md transition duration-300">
-                           <a href="product.html">
-                            Khám phá bộ sưu tập
-                            </a>
-                      </button>
-                  </div>
-              </div>
-
-              <!-- PHẢI -->
-              <div class="flex justify-center md:justify-end">
-                  <div class="relative w-full max-w-sm h-96 overflow-hidden rounded-3xl shadow-2xl bg-white/70 backdrop-blur-sm transform transition-transform duration-500 hover:scale-[1.02]">
-
-                      <!-- Nhãn “New” -->
-                      <span class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10 shadow-md">
-                          New
-                      </span>
-
-                      <!-- Hoa 3D -->
-                      <model-viewer src="assets/bouquet.glb"
-                          alt="Bó hoa 3D"
-                          camera-controls
-                          auto-rotate
-                          rotation-per-second="20deg"
-                          ar
-                          shadow-intensity="1"
-                          exposure="1.1"
-                          touch-action="pan-y"
-                          style="width:349px;height:384px;background:transparent;margin:auto;">
-                      </model-viewer>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </section>
-                            `;
-            $("#home-slider").append(htmlslider);
-            $("#home-slider").slick({ slidesToShow: 1, slidesToScroll: 1, autoplay: true, autoplaySpeed: timeSlide, fade: true, speed: 500, arrows: false });
-        }
-        let loadasyncdefer = () => {
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
-        function resolveAfter5Seconds() {
-            return new Promise(resolve => {
-                if (tbag_varible.template == 'index') {
-                    setTimeout(() => {
-                        loadslider()
-                    }, 100);
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
-                setTimeout(() => { loadasyncdefer() }, 200);
-            })
-        };
-        function asyncCall() {
-            resolveAfter5Seconds();
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.animate');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.8s ease-out';
+                observer.observe(el);
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add to cart functionality
+        const addToCartButtons = document.querySelectorAll('.product-add');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.closest('.product-info').querySelector('.product-name').textContent;
+                
+                // Animation effect
+                this.textContent = 'Đã thêm! ✓';
+                this.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+                
+                setTimeout(() => {
+                    this.textContent = 'Thêm vào giỏ';
+                    this.style.background = 'linear-gradient(135deg, var(--primary), var(--primary-dark))';
+                }, 2000);
+                
+                // Show notification
+                showNotification(`Đã thêm "${productName}" vào giỏ hàng!`);
+            });
+        });
+
+        // Wishlist functionality
+        const wishlistButtons = document.querySelectorAll('.action-btn');
+        wishlistButtons.forEach(button => {
+            if (button.title === 'Yêu thích') {
+                button.addEventListener('click', function() {
+                    this.style.color = this.style.color === 'red' ? '' : 'red';
+                    this.textContent = this.style.color === 'red' ? '❤' : '♥';
+                });
+            }
+        });
+
+        // Newsletter form
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                if (email) {
+                    showNotification('Đăng ký thành công! Kiểm tra email để nhận mã giảm giá.');
+                    this.reset();
+                }
+            });
         }
+
+        // Search functionality
+        const searchButton = document.querySelector('.hero-search button');
+        const searchInput = document.querySelector('.hero-search input');
+        
+        if (searchButton && searchInput) {
+            searchButton.addEventListener('click', () => {
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm) {
+                    showNotification(`Đang tìm kiếm: "${searchTerm}"...`);
+                    // Here you would typically redirect to a search results page
+                    console.log('Searching for:', searchTerm);
+                }
+            });
+
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    searchButton.click();
+                }
+            });
+        }
+
+        // Category cards click
+        const categoryCards = document.querySelectorAll('.category-card');
+        categoryCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const categoryName = this.querySelector('.category-name').textContent;
+                showNotification(`Đang chuyển đến ${categoryName}...`);
+                // Here you would typically redirect to the category page
+            });
+        });
+
+        // Quick view functionality
+        const quickViewButtons = document.querySelectorAll('.action-btn[title="Xem nhanh"]');
+        quickViewButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const productName = this.closest('.product-card').querySelector('.product-name').textContent;
+                showNotification(`Xem nhanh: ${productName}`);
+                // Here you would typically open a modal with product details
+            });
+        });
+
+        // Notification function
+        function showNotification(message) {
+            // Remove existing notification if any
+            const existingNotif = document.querySelector('.notification');
+            if (existingNotif) {
+                existingNotif.remove();
+            }
+
+            // Create notification
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #4CAF50, #45a049);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 50px;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+                z-index: 10000;
+                animation: slideInRight 0.3s ease-out;
+                max-width: 400px;
+                font-weight: 600;
+            `;
+
+            document.body.appendChild(notification);
+
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease-out';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Add notification animations to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes slideOutRight {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+
+            /* Parallax effect for hero */
+            .hero {
+                background-attachment: fixed;
+            }
+
+            /* Hover effect for images */
+            img {
+                transition: filter 0.3s ease;
+            }
+
+            .product-card:hover img,
+            .category-card:hover img {
+                filter: brightness(1.1);
+            }
+
+            /* Custom scrollbar */
+            ::-webkit-scrollbar {
+                width: 10px;
+            }
+
+            ::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+                border-radius: 10px;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: var(--primary-dark);
+            }
+
+            /* Selection color */
+            ::selection {
+                background: var(--primary);
+                color: white;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Lazy loading images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            // Observe all images with data-src
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Add floating animation to hero badge
+        const heroBadge = document.querySelector('.hero-badge');
+        if (heroBadge) {
+            setInterval(() => {
+                heroBadge.style.transform = 'scale(1.05) rotate(5deg)';
+                setTimeout(() => {
+                    heroBadge.style.transform = 'scale(1) rotate(0deg)';
+                }, 200);
+            }, 2000);
+        }
+
+        // Instagram items click
+        const instagramItems = document.querySelectorAll('.instagram-item');
+        instagramItems.forEach(item => {
+            item.addEventListener('click', () => {
+                window.open('https://www.instagram.com/tiemhoa.lavieestbelle/', '_blank');
+            });
+        });
+
+        // Performance optimization: Debounce function
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Optimize scroll events
+        let lastScrollTop = 0;
+        const handleScroll = debounce(() => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Add/remove class based on scroll direction
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down
+                document.body.classList.add('scrolled-down');
+            } else {
+                // Scrolling up
+                document.body.classList.remove('scrolled-down');
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, 100);
+
+        window.addEventListener('scroll', handleScroll);
+
+        console.log('🌸 La Vie Est Belle - Website loaded successfully!');
     </script>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script type="text/javascript" src="//cdn.hstatic.net/themes/200000846175/1001403720/14/pluginscript.js?v=245"
