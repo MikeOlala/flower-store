@@ -23,6 +23,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;   /* 🔥 quan trọng để icon canh đúng */
 }
 
 .sidebar-header {
@@ -60,6 +61,34 @@ body {
     border-radius: 20px;
     padding: 3px 10px;
 }
+
+/* 🔙 Nút quay về trang chủ */
+
+.home-button {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    background-color: #5a3825;
+    color: #fff;
+    padding: 8px 10px;       /* 🔥 nhỏ hơn phiên bản trước */
+    border-radius: 10px;
+    font-size: 1.45rem;      /* 🔥 giảm nhẹ kích cỡ icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transition: 0.25s ease;
+    z-index: 9999;
+}
+
+.home-button:hover {
+    background-color: #3b2418;
+    transform: translateY(-2px);
+}
+
+
 
 /* Tổng quan đơn hàng */
 .order-summary {

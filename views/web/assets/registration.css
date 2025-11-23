@@ -17,6 +17,7 @@ body {
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
     width: 400px;
     text-align: center;
+    position: relative;
 }
 
 h2 {
@@ -125,9 +126,9 @@ h2 {
 }
 /* 🔙 Nút quay về trang chủ */
 .home-button {
-    position: fixed;
-    top: 20px;
-    left: 20px;
+    position: absolute;
+    top: 20px;       /* Đẩy nút lên cao hơn một chút */
+    left: 20px;      /* Đẩy nút sang trái một chút */
     background-color: #6b4f36;
     color: #fff;
     padding: 12px 14px;
@@ -140,11 +141,10 @@ h2 {
     text-decoration: none;
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     transition: 0.25s ease;
-    z-index: 999;
+    z-index: 10;
 }
 
 .home-button:hover {
     background-color: #4b3621;
     transform: translateY(-2px);
 }
-
