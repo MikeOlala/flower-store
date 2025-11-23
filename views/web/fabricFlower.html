@@ -246,6 +246,38 @@
                         <h4 class="title-section">
                             <a href="/collections/bo-hoa"><span>HOA VẢI</span></a>
                         </h4>
+                        <!-- FILTER NGẮN GỌN -->
+                        <div class="filter-bar">
+                            <div class="filter-label-main">Bộ lọc</div>
+                            <div class="filter-controls">
+                                <select id="topicFilter" class="filter-select">
+                                    <option value="all">Chủ đề: Tất cả</option>
+                                    <option value="pastel">Pastel</option>
+                                    <option value="chúc mừng">Chúc mừng</option>
+                                    <option value="tỏ tình">Tỏ tình</option>
+                                    <option value="khai trương">Khai trương</option>
+                                    <option value="rustic">Rustic</option>
+                                    <option value="size nhỏ">Size nhỏ</option>
+                                </select>
+
+                                <select id="colorFilter" class="filter-select">
+                                    <option value="all">Màu: Tất cả</option>
+                                    <option value="pastel">Pastel</option>
+                                    <option value="neutral">Trắng / Be</option>
+                                    <option value="warm">Cam / Vàng / Đỏ</option>
+                                    <option value="rustic">Rustic / Nâu</option>
+                                    <option value="bright">Rực rỡ</option>
+                                </select>
+
+                                <select id="priceFilter" class="filter-select">
+                                    <option value="all">Giá: Tất cả</option>
+                                    <option value="0-600">Dưới 600.000đ</option>
+                                    <option value="600-800">600.000đ - 800.000đ</option>
+                                    <option value="800-1000">800.000đ - 1.000.000đ</option>
+                                    <option value="1000plus">Trên 1.000.000đ</option>
+                                </select>
+                            </div>
+                        </div>
                         <p>
 
                         </p>
@@ -627,6 +659,17 @@
             </section>
         
     </main>
+    <!-- PAGINATION -->
+    <div class="pagination-container">
+        <button class="page-btn" id="prevPage">‹</button>
+        <button class="page-btn" id="prevPage">1</button>
+        <button class="page-btn" id="prevPage">2</button>
+        <button class="page-btn" id="prevPage">...</button>
+        <button class="page-btn" id="prevPage">9</button>
+        <button class="page-btn" id="prevPage">10</button>
+        <div class="page-numbers" id="paginationNumbers"></div>
+        <button class="page-btn" id="nextPage">›</button>
+    </div>
     <site-footer></site-footer>
     <div class="modal" id="pro-qv-wanda">
     </div>
@@ -796,6 +839,101 @@
     <style>
         img[src*="//sstatic1.histats.com/0.gif"] {
             display: none !important;
+        }
+        /* FILTER BAR – ngắn gọn, hiện đại */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 18px;
+            padding: 10px 16px;
+            background: #faf3ea;
+            border-radius: 999px;
+            box-shadow: 0 4px 14px rgba(160, 130, 100, 0.15);
+            border: 1px solid rgba(210, 180, 160, 0.5);
+        }
+
+        .filter-label-main {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--brown-soft);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .filter-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-select {
+            min-width: 150px;
+            border-radius: 999px;
+            border: 1px solid rgba(198, 149, 112, 0.7);
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            color: #634638;
+            background: #fff;
+            outline: none;
+        }
+
+        .filter-select:focus {
+            border-color: var(--accent-dark);
+            box-shadow: 0 0 0 1px rgba(201, 147, 102, 0.4);
+        }
+
+        @media (max-width: 640px) {
+            .filter-bar {
+                border-radius: 18px;
+                padding: 10px 12px;
+            }
+
+            .filter-label-main {
+                width: 100%;
+            }
+        }
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            margin-top: 30px;
+            margin-bottom: 40px;
+        }
+
+        .page-btn {
+            background: #f4e1d1;
+            border: 1px solid #d8c1b0;
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #6c5845;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .page-btn:hover {
+            background: #e9d2bd;
+        }
+
+        .page-number {
+            padding: 8px 12px;
+            background: #fff;
+            border: 1px solid #d8c1b0;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #6c5845;
+            transition: 0.2s;
+        }
+
+        .page-number.active {
+            background: var(--accent-dark);
+            color: #fff;
+            border-color: var(--accent-dark);
         }
     </style>
 </body>
