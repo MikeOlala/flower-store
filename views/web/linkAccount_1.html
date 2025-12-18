@@ -34,6 +34,22 @@
 
         }
     </style>
+      <style>
+            .breadcrumb {
+                font-size: 13px;
+                color: var(--text-muted);
+                margin-top: 20px;
+                margin-left: 60px;
+            }
+
+            .breadcrumb a {
+                color: var(--text-muted);
+            }
+
+            .breadcrumb span {
+                margin: 0 4px;
+            }
+        </style>
 
 
     <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/plugin-style.css?v=245" rel="preload stylesheet"
@@ -107,13 +123,16 @@
 </head>
 <body>
 <site-header></site-header>
+<nav class="breadcrumb">
+        <a href="home.html">Trang chủ</a>
+        <span>/</span>
+        <a href="profileCustomer.html">Trang cá nhân</a>
+        <span>/</span>
+        <span>Tài khoản liên kết</span>
+    </nav>
 <div class="link-wrapper">
     <!-- Sidebar -->
     <aside class="sidebar">
-        <!-- Nút quay về trang chủ -->
-        <a href="profileCustomer.html" class="home-button">
-            <i class="bi bi-house-door-fill"></i>
-        </a>
         <div class="user-card">
             <img src="img/avatar.jpg" alt="avatar" class="avatar">
             <h4>Customer</h4>

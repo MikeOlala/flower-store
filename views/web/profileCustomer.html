@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Flower store</title>
+
     <title>Tiệm Hoa nhà tớ</title>
 
     <!-- Font Awesome 6 (hỗ trợ toàn bộ icon mới) -->
@@ -21,11 +21,8 @@
             --colorbgmenumb: #ffffff;
             --colortextmenumb: #000000;
             --height-head: 72px;
-
-
         }
     </style>
-
 
     <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/plugin-style.css?v=245" rel="preload stylesheet"
           as="style" type="text/css">
@@ -812,6 +809,34 @@
 
 <site-footer></site-footer>
 
-</body>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var orderCards = document.querySelectorAll('.orders-section .order-card');
+    var totalOrders = orderCards.length;
+    var totalSpending = 0;
 
+    orderCards.forEach(function(card){
+        var priceEl = card.querySelector('.order-price');
+        if (!priceEl) return;
+        var text = priceEl.textContent || '';
+        // Lấy toàn bộ chữ số trong chuỗi (bỏ dấu chấm, chữ VND, ...).
+        var digits = text.replace(/[^0-9]/g, '');
+        if (digits) {
+            totalSpending += parseInt(digits, 10);
+        }
+    });
+
+    var totalOrdersEl = document.getElementById('totalOrders');
+    var totalSpendingEl = document.getElementById('totalSpending');
+
+    if (totalOrdersEl) {
+        totalOrdersEl.textContent = totalOrders;
+    }
+    if (totalSpendingEl) {
+        totalSpendingEl.textContent = totalSpending.toLocaleString('vi-VN') + ' VND';
+    }
+});
+</script>
+
+</body>
 </html>

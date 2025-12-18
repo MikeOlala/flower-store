@@ -295,7 +295,7 @@
         }
 
         .product-price {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--accent-dark);
             font-weight: 600;
         }
@@ -303,7 +303,7 @@
         .product-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 4px;
+            gap: 6px;
             font-size: 0.78rem;
             margin-top: 2px;
             max-height: 36px;
@@ -311,7 +311,7 @@
         }
 
         .tag {
-            padding: 2px 8px;
+            padding: 3px 10px;
             border-radius: 999px;
             background: #f4e1d1;
             color: #7b5641;
@@ -320,6 +320,89 @@
         .tag-highlight {
             background: linear-gradient(135deg, var(--accent), var(--accent-dark));
             color: #fff;
+        }
+
+        /* FEATURED COLLECTION - Mới */
+        .featured-collection {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .featured-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .featured-card.large {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .featured-card.large {
+                grid-column: span 1;
+            }
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .featured-card.small .featured-image {
+            height: 300px;
+        }
+
+        .featured-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 30px 20px 20px;
+        }
+
+        .featured-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .featured-desc {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .featured-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .featured-btn:hover {
+            background: var(--accent-dark);
         }
 
         /* MODAL CHI TIẾT SẢN PHẨM */
