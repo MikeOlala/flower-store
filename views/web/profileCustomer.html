@@ -103,10 +103,9 @@
     <input type="radio" name="tab" id="tab-orders">
     <input type="radio" name="tab" id="tab-address">
     <input type="radio" name="tab" id="tab-linked">
-    <!--    <input type="radio" name="tab" id="tab-settings">-->
+<!--    <input type="radio" name="tab" id="tab-settings">-->
 
-    <!-- ĐỔI class container -> profile-container -->
-    <div class="profile-container">
+    <div class="container">
 
         <!-- SIDEBAR -->
         <aside class="sidebar">
@@ -122,7 +121,7 @@
                 <label for="tab-orders" class="menu-item">Lịch sử mua hàng</label>
                 <label for="tab-address" class="menu-item">Địa chỉ</label>
                 <label for="tab-linked" class="menu-item">Tài khoản Liên kết</label>
-                <!--                <label for="tab-settings" class="menu-item">Cài đặt</label>-->
+<!--                <label for="tab-settings" class="menu-item">Cài đặt</label>-->
             </nav>
         </aside>
 
@@ -131,6 +130,8 @@
 
             <!-- ========== TAB PROFILE ========== -->
             <section class="content-section profile-section">
+
+
                 <div class="card profile-card">
                     <h2 class="section-title">Thông tin khách hàng</h2>
 
@@ -163,10 +164,6 @@
                         <label class="field-label">Địa chỉ mặc định</label>
                         <input class="field-input" type="text" value="Thành phố Hồ Chí Minh">
 
-                        <label class="field-label">Cập nhật mật khẩu</label>
-                        <input class="field-input" type="text" value="">
-
-
                         <div style="margin-top:10px;">
                             <button class="btn btn-primary">Lưu thông tin</button>
                         </div>
@@ -181,18 +178,6 @@
                 <div class="card">
                     <h2 class="section-title">Lịch sử mua hàng</h2>
                     <h3>Lịch sử mua hàng</h3>
-
-                    <!-- Tổng quan đơn hàng -->
-                    <div class="orders-summary">
-                        <div class="summary-item">
-                            <span class="summary-label">Tổng số đơn hàng</span>
-                            <span class="summary-value" id="totalOrders">0</span>
-                        </div>
-                        <div class="summary-item">
-                            <span class="summary-label">Tổng số chi tiêu</span>
-                            <span class="summary-value" id="totalSpending">0 VND</span>
-                        </div>
-                    </div>
 
                     <!-- Bộ lọc -->
                     <div class="filter-bar">
@@ -250,32 +235,6 @@
                 </div>
                 <style>
                     /* Content */
-                    .orders-summary {
-                        margin: 10px 0 20px;
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 16px;
-                    }
-                    .summary-item {
-                        background-color: #fffdfb;
-                        border-radius: 12px;
-                        padding: 10px 14px;
-                        border: 1px solid #f3e1d2;
-                        min-width: 220px;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 4px;
-                    }
-                    .summary-label {
-                        font-size: 14px;
-                        color: #7c5b42;
-                    }
-                    .summary-value {
-                        font-size: 18px;
-                        font-weight: 700;
-                        color: #4b2e05;
-                    }
-
                     .content {
                         flex: 1;
                         background: linear-gradient(180deg, #fff7f0 0%, #fffdfb 100%);
@@ -424,75 +383,76 @@
                 <div class="card">
                     <h2 class="section-title">Địa chỉ giao hàng</h2>
                     <!-- Content -->
-                    <!-- Form nhập địa chỉ -->
-                    <form class="address-form">
-                        <div class="form-row">
+                        <!-- Form nhập địa chỉ -->
+                        <form class="address-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="fullname" required>
+                                    <label for="fullname">Họ và tên</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" id="phone" required>
+                                    <label for="phone">Số điện thoại</label>
+                                </div>
+                            </div>
+
                             <div class="form-group">
-                                <input type="text" id="fullname" required>
-                                <label for="fullname">Họ và tên</label>
+                                <input type="text" id="address" required>
+                                <label for="address">Địa chỉ cụ thể</label>
                             </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="city" required>
+                                    <label for="city">Thành phố / Tỉnh</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" id="district" required>
+                                    <label for="district">Quận / Huyện</label>
+                                </div>
+                            </div>
+
                             <div class="form-group">
-                                <input type="tel" id="phone" required>
-                                <label for="phone">Số điện thoại</label>
+                                <textarea id="note" rows="3"></textarea>
+                                <label for="note">Ghi chú</label>
+                            </div>
+
+                            <div class="text-end">
+                                <button type="button" class="btn btn-brown" disabled>Lưu địa chỉ</button>
+                            </div>
+                        </form>
+
+
+
+                        <!-- Danh sách địa chỉ đã lưu (tĩnh) -->
+                        <div id="savedAddresses" class="mt-4">
+                            <h5 class="text-brown mb-3">Địa chỉ đã lưu</h5>
+
+                            <div class="order-card">
+                                <div>
+                                    <strong class="order-name">Nguyễn Văn A</strong><br>
+                                    <span class="order-price">📞 0987654321</span><br>
+                                    <span>123 Lê Lợi, P. Bến Nghé, Q.1, TP. Hồ Chí Minh</span><br>
+                                    <small class="text-muted">Nhận hàng buổi sáng</small>
+                                </div>
+                                <button class="btn btn-sm btn-outline-danger" disabled>
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+
+                            <div class="order-card">
+                                <div>
+                                    <strong class="order-name">Trần Thị B</strong><br>
+                                    <span class="order-price">📞 0901122334</span><br>
+                                    <span>45 Trần Hưng Đạo, P.2, TP. Vũng Tàu</span><br>
+                                    <small class="text-muted">Giao ngoài giờ hành chính</small>
+                                </div>
+                                <button class="btn btn-sm btn-outline-danger" disabled>
+                                    <i class="bi bi-trash"></i>
+                                </button>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <input type="text" id="address" required>
-                            <label for="address">Địa chỉ cụ thể</label>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="text" id="city" required>
-                                <label for="city">Thành phố / Tỉnh</label>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="district" required>
-                                <label for="district">Quận / Huyện</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <textarea id="note" rows="3"></textarea>
-                            <label for="note">Ghi chú</label>
-                        </div>
-
-                        <div class="text-end">
-                            <button type="button" class="btn btn-brown" disabled>Lưu địa chỉ</button>
-                        </div>
-                    </form>
-
-                    <!-- Danh sách địa chỉ đã lưu (tĩnh) -->
-                    <div id="savedAddresses" class="mt-4">
-                        <h5 class="text-brown mb-3">Địa chỉ đã lưu</h5>
-
-                        <div class="order-card">
-                            <div>
-                                <strong class="order-name">Nguyễn Văn A</strong><br>
-                                <span class="order-price">📞 0987654321</span><br>
-                                <span>123 Lê Lợi, P. Bến Nghé, Q.1, TP. Hồ Chí Minh</span><br>
-                                <small class="text-muted">Nhận hàng buổi sáng</small>
-                            </div>
-                            <button class="btn btn-sm btn-outline-danger" disabled>
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </div>
-
-                        <div class="order-card">
-                            <div>
-                                <strong class="order-name">Trần Thị B</strong><br>
-                                <span class="order-price">📞 0901122334</span><br>
-                                <span>45 Trần Hưng Đạo, P.2, TP. Vũng Tàu</span><br>
-                                <small class="text-muted">Giao ngoài giờ hành chính</small>
-                            </div>
-                            <button class="btn btn-sm btn-outline-danger" disabled>
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </div>
-                    </div>
                 </div>
-                <!-- (style nội tuyến giữ nguyên) -->
                 <style>
                     /* ======= Nội dung chính ======= */
                     .content {
@@ -510,6 +470,8 @@
                     }
 
                     /* ======= FORM FLEXBOX ======= */
+                    /* ======= FORM FLEXBOX CÂN ĐỐI HƠN ======= */
+                    /* ======= FORM FLEXBOX (LABEL GẦN CHỮ HƠN) ======= */
                     .form-group {
                         flex: 1;
                         position: relative;
@@ -518,6 +480,7 @@
                         margin-bottom: 16px;
                     }
 
+                    /* Ô nhập liệu */
                     .form-group input,
                     .form-group textarea {
                         font-size: 15px;
@@ -525,13 +488,14 @@
                         background: #fff7f0;
                         border: 1px solid #e3c7a6;
                         border-radius: 10px;
-                        padding: 10px 10px 8px 10px;
+                        padding: 10px 10px 8px 10px;  /* giảm khoảng cách trên dưới để label gần hơn */
                         transition: all 0.25s ease;
                         width: 100%;
                         z-index: 1;
                         line-height: 1.4;
                     }
 
+                    /* Hover và Focus */
                     .form-group input:hover,
                     .form-group textarea:hover {
                         background-color: #fffdfb;
@@ -547,10 +511,11 @@
                         box-shadow: 0 0 0 0.2rem rgba(219, 167, 123, 0.25);
                     }
 
+                    /* Label */
                     .form-group label {
                         color: #7a5b3a;
                         font-size: 15px;
-                        margin-bottom: 1px;
+                        margin-bottom: 1px;       /* label gần sát chữ nhập */
                         transform: translateY(0);
                         transition: all 0.2s ease;
                         pointer-events: none;
@@ -558,11 +523,12 @@
                         padding-left: 3px;
                     }
 
+                    /* Khi người dùng focus hoặc có nội dung */
                     .form-group input:focus + label,
                     .form-group input:not(:placeholder-shown) + label,
                     .form-group textarea:focus + label,
                     .form-group textarea:not(:placeholder-shown) + label {
-                        transform: translateY(-11px);
+                        transform: translateY(-11px);  /* hạ thấp label khi nổi lên để cân đối hơn */
                         font-size: 13px;
                         color: #a05d2f;
                         background: #fffdfb;
@@ -572,11 +538,13 @@
                         letter-spacing: 0.1px;
                     }
 
+                    /* Textarea cao hơn một chút */
                     textarea {
                         resize: none;
                         min-height: 90px;
                     }
 
+                    /* ======= Nút ======= */
                     .btn-brown {
                         background-color: #a05d2f;
                         color: #fff;
@@ -623,6 +591,7 @@
                         border-color: #c06c37;
                     }
 
+                    /* ======= Danh sách địa chỉ ======= */
                     #savedAddresses {
                         background: linear-gradient(180deg, #fff7f0 0%, #fffdfb 100%);
                         border-radius: 16px;
@@ -641,6 +610,7 @@
                         font-weight: 600;
                     }
 
+                    /* Card địa chỉ */
                     .order-card {
                         background-color: #fffdfb;
                         border-radius: 14px;
@@ -660,6 +630,7 @@
                         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
                     }
 
+                    /* Fix chữ bị chìm */
                     .order-card,
                     .order-card * {
                         color: #4b2e05 !important;
@@ -680,50 +651,56 @@
 
             <!-- ========== TAB LINKED ========== -->
             <section class="content-section linked-section">
+
                 <div class="card">
-                    <h3 class="title">Tài khoản liên kết</h3>
-                    <p class="desc">Quản lý và kết nối các ví điện tử, ngân hàng để thanh toán dễ dàng hơn</p>
+<!--                    <h2 class="section-title">Liên kết tài khoản</h2>-->
+                    <!-- Main content -->
+<!--                        <div class="main-card">-->
+                            <h3 class="title">Tài khoản liên kết</h3>
+                            <p class="desc">Quản lý và kết nối các ví điện tử, ngân hàng để thanh toán dễ dàng hơn</p>
 
-                    <div class="account-list">
-                        <!-- Ngân hàng -->
-                        <div class="linked-item">
-                            <div class="left">
-                                <i class="bi bi-bank icon-bank"></i>
-                                <div class="link-name">Liên kết Ngân hàng</div>
-                            </div>
-                            <div class="status linked">Đã liên kết</div>
-                        </div>
+                            <div class="account-list">
+                                <!-- Ngân hàng -->
+                                <div class="linked-item">
+                                    <div class="left">
+                                        <i class="bi bi-bank icon-bank"></i>
+                                        <div class="link-name">Liên kết Ngân hàng</div>
+                                    </div>
+                                    <div class="status linked">Đã liên kết</div>
+                                </div>
 
-                        <!-- MoMo -->
-                        <div class="linked-item">
-                            <div class="left">
-                                <img src="img/MOMO-Logo-App.png" alt="MoMo" class="icon">
-                                <div class="link-name">Ví MoMo</div>
-                            </div>
-                            <div class="status not-linked">Chưa liên kết</div>
-                        </div>
+                                <!-- MoMo -->
+                                <div class="linked-item">
+                                    <div class="left">
+                                        <img src="img/MOMO-Logo-App.png" alt="MoMo" class="icon">
+                                        <div class="link-name">Ví MoMo</div>
+                                    </div>
+                                    <div class="status not-linked">Chưa liên kết</div>
+                                </div>
 
-                        <!-- ZaloPay -->
-                        <div class="linked-item">
-                            <div class="left">
-                                <img src="img/Logo FA-13.png" alt="ZaloPay" class="icon">
-                                <div class="link-name">ZaloPay</div>
-                            </div>
-                            <div class="status linked">Đã liên kết</div>
-                        </div>
+                                <!-- ZaloPay -->
+                                <div class="linked-item">
+                                    <div class="left">
+                                        <img src="img/Logo FA-13.png" alt="ZaloPay" class="icon">
+                                        <div class="link-name">ZaloPay</div>
+                                    </div>
+                                    <div class="status linked">Đã liên kết</div>
+                                </div>
 
-                        <!-- ViettelPay -->
-                        <div class="linked-item">
-                            <div class="left">
-                                <img src="img/Logo-Viettelpay.jpg" alt="ViettelPay" class="icon">
-                                <div class="link-name">ViettelPay</div>
+                                <!-- ViettelPay -->
+                                <div class="linked-item">
+                                    <div class="left">
+                                        <img src="img/Logo-Viettelpay.jpg" alt="ViettelPay" class="icon">
+                                        <div class="link-name">ViettelPay</div>
+                                    </div>
+                                    <div class="status not-linked">Chưa liên kết</div>
+                                </div>
                             </div>
-                            <div class="status not-linked">Chưa liên kết</div>
-                        </div>
-                    </div>
+<!--                        </div>-->
+
                 </div>
-
                 <style>
+                    /* ==== Main content ==== */
                     .main-content {
                         flex: 2;
                         min-width: 400px;
@@ -743,6 +720,7 @@
                         margin-bottom: 24px;
                     }
 
+                    /* ==== Account list ==== */
                     .account-list {
                         display: flex;
                         flex-direction: column;
@@ -794,6 +772,7 @@
                         color: #a05d2f;
                     }
 
+                    /* ==== Responsive ==== */
                     @media (max-width: 768px) {
                         .link-wrapper {
                             flex-direction: column;
@@ -817,6 +796,12 @@
                     }
                 </style>
             </section>
+
+<!--            &lt;!&ndash; ========== TAB SETTINGS ========== &ndash;&gt;-->
+<!--            <section class="content-section settings-section">-->
+<!--                <h2 class="section-title">Cài đặt chung</h2>-->
+<!--                <div class="card">Chưa có nội dung.</div>-->
+<!--            </section>-->
 
         </main>
     </div>

@@ -11,7 +11,7 @@ html,body {
 .page-wrap > input[type="radio"] { display:none; }
 
 /* ========== CONTAINER ========== */
-.profile-container {
+.container {
     width: 1200px;
     max-width: calc(100% - 40px);
     margin: 40px auto;
@@ -62,11 +62,11 @@ html,body {
 }
 
 /* ========== ACTIVE SIDEBAR ITEM ========== */
-#tab-profile:checked ~ .profile-container .sidebar label[for="tab-profile"],
-#tab-orders:checked  ~ .profile-container .sidebar label[for="tab-orders"],
-#tab-address:checked ~ .profile-container .sidebar label[for="tab-address"],
-#tab-linked:checked  ~ .profile-container .sidebar label[for="tab-linked"],
-#tab-settings:checked ~ .profile-container .sidebar label[for="tab-settings"] {
+#tab-profile:checked ~ .container .sidebar label[for="tab-profile"],
+#tab-orders:checked  ~ .container .sidebar label[for="tab-orders"],
+#tab-address:checked ~ .container .sidebar label[for="tab-address"],
+#tab-linked:checked  ~ .container .sidebar label[for="tab-linked"],
+#tab-settings:checked ~ .container .sidebar label[for="tab-settings"] {
     background: linear-gradient(140deg,#f7e5d7,#f3d7c3);
     font-weight:700;
     border: 2px solid #c18a50;
@@ -172,8 +172,8 @@ html,body {
 /* SECTIONS HIDE/SHOW */
 .content-section { display:none; }
 
-#tab-profile:checked ~ .profile-container .main .profile-section { display:block; }
-#tab-orders:checked  ~ .profile-container .main .orders-section  { display:block; }
-#tab-address:checked ~ .profile-container .main .address-section { display:block; }
-#tab-linked:checked  ~ .profile-container .main .linked-section  { display:block; }
-#tab-settings:checked ~ .profile-container .main .settings-section{ display:block; }
+#tab-profile:checked ~ .container .main .profile-section { display:block; }
+#tab-orders:checked  ~ .container .main .orders-section  { display:block; }
+#tab-address:checked ~ .container .main .address-section { display:block; }
+#tab-linked:checked  ~ .container .main .linked-section  { display:block; }
+#tab-settings:checked ~ .container .main .settings-section{ display:block; }
