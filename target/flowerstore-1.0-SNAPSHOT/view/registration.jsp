@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký thành viên</title>
+    <!-- MDB & Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="../MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/css/mdb.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../assets/registration.css">
+</head>
+
+<body>
+
+<div class="register-container">
+
+    <h2 class="text-center mb-4">Đăng ký thành viên</h2>
+    <!-- Nút quay về trang chủ -->
+    <a href="home.html" class="home-button">
+        <i class="bi bi-house-door-fill"></i>
+    </a>
+
+    <div class="form-group">
+        <label for="fullname">Họ và tên</label>
+        <input type="text" id="fullname" placeholder="Nhập họ và tên">
+    </div>
+
+        <div class="form-group">
+            <label for="fullname">Họ và tên</label>
+            <input type="text" id="fullname" placeholder="Nhập họ và tên">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Nhập email">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Mật khẩu</label>
+            <input type="password" id="password" placeholder="Nhập mật khẩu">
+        </div>
+
+        <div class="form-group">
+            <label for="repassword">Nhập lại mật khẩu</label>
+            <input type="password" id="repassword" placeholder="Nhập lại mật khẩu">
+        </div>
+
+        <div class="checkbox-group">
+            <label>
+                <input type="checkbox" id="agree"> Tôi đồng ý với
+                <a href="#">chính sách dịch vụ</a>
+            </label>
+        </div>
+
+        <button class="btn-register w-1200" id="btnRegister">ĐĂNG KÝ</button>
+
+        <div class="login-link">
+            Bạn đã có tài khoản? <a href="login_1.html">Đăng nhập ngay</a>
+        </div>
+    </div>
+
+    <!-- Toast thông báo -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="../../MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/js/mdb.umd.min.js"></script>
+
+    <script>
+        // Hàm hiển thị toast thông báo
+        function showToast(message, type = "success") {
+            const container = document.getElementById("toastContainer");
+            const toast = document.createElement("div");
+            toast.className = `toast-message ${type}`;
+            toast.innerHTML = `
+                <i class="bi ${type === 'success' ? 'bi-check-circle' : 'bi-exclamation-circle'} me-2"></i>
+                ${message}
+            `;
+            container.appendChild(toast);
+
+            setTimeout(() => toast.classList.add("show"), 100);
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+
+        // Xử lý nút đăng ký
+        document.getElementById("btnRegister").addEventListener("click", () => {
+            const name = document.getElementById("fullname").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const pass = document.getElementById("password").value;
+            const repass = document.getElementById("repassword").value;
+            const agree = document.getElementById("agree").checked;
+
+            if (!name || !email || !pass || !repass) {
+                showToast("Vui lòng điền đầy đủ thông tin!", "error");
+                return;
+            }
+            if (pass !== repass) {
+                showToast("Mật khẩu không khớp!", "error");
+                return;
+            }
+            if (!agree) {
+                showToast("Vui lòng đồng ý với chính sách dịch vụ!", "error");
+                return;
+            }
+
+            // Nếu hợp lệ
+            showToast("Đăng ký thành công!", "success");
+
+            // (Tùy chọn) chuyển hướng sau 2 giây
+            setTimeout(() => window.location.href = "login.html", 2000);
+        });
+    </script>
+    <script src="../MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/js/mdb.es.min.js"></script>
+    <script src="../MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/MDB5-STANDARD-UI-KIT-Free-9.2.0 (1)/js/mdb.umd.min.js"></script>
+</body>
+
+</html>

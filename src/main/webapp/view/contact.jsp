@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+
+    <title>Tiệm Hoa nhà tớ</title>
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'GTM-W8R4GL2');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'GTM-NSBT6HTK');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/favicon.png?v=245"
+        type="image/x-icon" />
+    <link rel="icon" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/favicon.png?v=245" type="image/png" />
+    <meta content='width=device-width,user-scalable=0' name='viewport' />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="revisit-after" content="1 day" />
+    <meta name="description"
+        content="Trang giới thiệu gi&#250;p kh&#225;ch h&#224;ng hiểu r&#245; hơn về cửa h&#224;ng của bạn. H&#227;y cung cấp th&#244;ng tin cụ thể về việc kinh doanh, về cửa h&#224;ng, th&#244;ng tin li&#234;n hệ. Điều n&#224;y sẽ gi&#250;p kh&#225;ch h&#224;ng cảm thấy tin tưởng khi mua h&#224;ng tr&#234;n website của bạn.Một v&#224;i gợi &#253; cho nội dung trang Giới thiệu:Bạn l&#224; aiGi&#225; trị kinh doanh của bạn l&#224; g&#236;Địa ch" />
+    <link rel="canonical" href="https://lavieestbelle.vn/pages/about-us" />
+    <meta name="robots" content="index,follow,noodp">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Giới thiệu" />
+    <meta property="og:image"
+        content="http://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg" />
+    <meta property="og:image"
+        content="https://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg" />
+    <meta property="og:image:secure_url"
+        content="https://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg" />
+    <meta property="og:image:secure_url"
+        content="http://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg" />
+    <meta property="og:description"
+        content="Trang giới thiệu gi&#250;p kh&#225;ch h&#224;ng hiểu r&#245; hơn về cửa h&#224;ng của bạn. H&#227;y cung cấp th&#244;ng tin cụ thể về việc kinh doanh, về cửa h&#224;ng, th&#244;ng tin li&#234;n hệ. Điều n&#224;y sẽ gi&#250;p kh&#225;ch h&#224;ng cảm thấy tin tưởng khi mua h&#224;ng tr&#234;n website của bạn.Một v&#224;i gợi &#253; cho nội dung trang Giới thiệu:Bạn l&#224; aiGi&#225; trị kinh doanh của bạn l&#224; g&#236;Địa ch" />
+    <meta property="og:image:alt" content="Giới thiệu" />
+    <meta property="og:url" content="https://lavieestbelle.vn/pages/about-us" />
+
+    <!-- Biến màu chung của theme -->
+    <style>
+        :root {
+            --bg-soldout: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/hethang.png?v=245);
+            --bgshop: #000000;
+            --colorshop: #000000;
+            --colorshophover: #212020;
+            --bgfooter: #ffffff;
+            --colorfooter: #000000;
+            --colorbgmenumb: #ffffff;
+            --colortextmenumb: #000000;
+            --height-head: 72px;
+            --bg-flashsale: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/bg-flashs-sale.jpg?v=245);
+            --imgselect: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/ico-select.svg?v=245);
+            --imgsort: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/sort-az.svg?v=245);
+            --bgsubcribe: url('//cdn.hstatic.net/themes/200000846175/1001403720/14/modal-banner.jpg?v=245');
+            --bg-filter: url('//cdn.hstatic.net/themes/200000846175/1001403720/14/filter.svg?v=245');
+            --bg-google: url('//cdn.hstatic.net/themes/200000846175/1001403720/14/google-plus.png?v=245');
+            --bg-facebook: url('//cdn.hstatic.net/themes/200000846175/1001403720/14/facebook.png?v=245');
+            --heartpage: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/hearts-page.svg?v=245);
+            --customer: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/customer-icon-service.svg?v=245);
+            --cancel: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/cancel-while.svg?v=245);
+            --bg-footer: url(https://file.hstatic.net/200000397757/file/wd-footer-bg_bd337816b3d64003b9fa0ca6f4b8b3fa.png);
+
+            /* Thêm bộ màu giống trang tin tức */
+            --bg-page: #faf5ef;
+            --brown-main: #3c2922;
+            --brown-soft: #6c5845;
+            --accent: #c99366;
+            --accent-dark: #aa6a3f;
+        }
+    </style>
+
+    <!-- Style trang liên hệ (theo phong cách trang tin tức) -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body#wandave-theme {
+            font-family: 'Crimson Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-page);
+            color: var(--brown-main);
+            line-height: 1.6;
+        }
+
+        /* HERO */
+        .contact-hero {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: #fff;
+            padding: 4rem 2rem;
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 480px;
+            height: 480px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .contact-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .contact-hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .contact-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+        }
+
+        .contact-hero p {
+            font-size: 1.2rem;
+            opacity: 0.96;
+            font-style: italic;
+        }
+
+        /* WRAPPER CARD (trùng vibe với search-filter-section của news) */
+        .contact-wrapper {
+            background: #fff;
+            max-width: 1200px;
+            margin: -3rem auto 3rem;
+            padding: 2rem 2.25rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 5;
+        }
+
+        .contact-wrapper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-wrapper-header-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--brown-main);
+        }
+
+        .contact-wrapper-header-note {
+            font-size: 0.95rem;
+            color: var(--brown-soft);
+        }
+
+        .contact-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, rgba(201, 147, 102, 0.14), rgba(170, 106, 63, 0.12));
+            color: var(--accent-dark);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* LAYOUT 2 CỘT */
+        .contact-container {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* CARD CHUNG */
+        .contact-card,
+        .info-card {
+            background: #ffffff;
+            padding: 24px 22px;
+            border-radius: 18px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(210, 180, 160, 0.4);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f7e7d7, #fdf7f1);
+        }
+
+        .card-title {
+            color: #4a3428;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .small-note {
+            color: #8a6a55;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        /* FORM */
+        .form-label {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            font-weight: 600;
+            color: #5b4334;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 10px 16px;
+            border-radius: 999px;
+            border: 1px solid rgba(180, 130, 100, 0.5);
+            font-size: 0.95rem;
+            background: #ffffff;
+            outline: none;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .form-textarea {
+            border-radius: 14px;
+            min-height: 120px;
+            resize: vertical;
+            padding-top: 12px;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(201, 147, 102, 0.25);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+
+        .form-row>div {
+            flex: 1;
+        }
+
+        @media (max-width: 640px) {
+            .contact-wrapper {
+                margin: -2rem 1rem 2.5rem;
+                padding: 1.5rem 1.25rem;
+            }
+
+            .contact-hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .contact-hero p {
+                font-size: 1rem;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 26px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: #fff;
+            border-radius: 999px;
+            font-size: 1.02rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            margin-top: 10px;
+            box-shadow: 0 10px 24px rgba(170, 106, 63, 0.35);
+            transition: all 0.25s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(170, 106, 63, 0.45);
+            background: linear-gradient(135deg, #b57d4c, #945331);
+        }
+
+        .contact-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 8px 18px rgba(170, 106, 63, 0.3);
+        }
+
+        /* INFO CARD */
+        .info-item {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            background: #ffffffb0;
+            border: 1px solid rgba(180, 130, 100, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #5a3d2e;
+        }
+
+        .info-label {
+            color: #7a5a44;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+            font-weight: 900;
+        }
+
+        .info-text {
+            color: #3c2c24;
+            font-size: 0.98rem;
+        }
+
+        .info-highlight {
+            display: inline-flex;
+            margin-top: 4px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px dashed rgba(170, 106, 63, 0.6);
+            font-size: 0.85rem;
+            color: #7a5a44;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #d8c0a9;
+            margin: 18px 0;
+        }
+
+        .info-social-note {
+            font-size: 0.92rem;
+            color: #7a5a44;
+            line-height: 1.7;
+        }
+
+        .info-social-note strong {
+            font-weight: 700;
+        }
+
+        /* Animation giống news-card */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson Text:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=fallback"
+        as="style" type="text/css" rel="preload stylesheet">
+    <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/plugin-style.css?v=245" rel="preload stylesheet"
+        as="style" type="text/css">
+    <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/styles-new.scss.css?v=245" rel="preload stylesheet"
+        as="style" type="text/css">
+    <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/style-page.scss.css?v=245" rel="preload stylesheet"
+        as="style" type="text/css">
+    <link rel="preload" as="image" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/logo.png?v=245">
+    <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245" rel="preload" as="script"
+        type="text/javascript">
+    <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/main-scripts.js?v=245" rel="preload" as="script"
+        type="text/javascript">
+    <script type="text/javascript"
+        src="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"></script>
+
+    <!-- Các script Haravan giữ nguyên như cũ -->
+    <script>
+        localStorage.setItem('shop_id', 'themes/200000846175/1001403720');
+        const tbag_varible = {
+            template: 'page',
+            navLeftText: '<button class="slick-prev slick-arrow custom-style" aria-label="Previous"><span class="arrow-custom arrow-left"><div class="arrow-top"></div><div class="arrow-bottom"></div></span></button>',
+            navRightText: '<button class="slick-next slick-arrow custom-style" aria-label="Next"><span class="arrow-custom arrow-right"><div class="arrow-top"></div><div class="arrow-bottom"></div></span></button>',
+            checklocation: "false",
+            checkproducthot: "true",
+            checkproductrelated: "true",
+            checkproductseen: "false",
+            heartactive: "//cdn.hstatic.net/themes/200000846175/1001403720/14/heart-fill.svg?v=245",
+            addtocart: "//cdn.hstatic.net/themes/200000846175/1001403720/14/add-to-cart.svg?v=245",
+            heart: "//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245",
+            sgnotify: "false",
+            recaptchajs: "https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-",
+            jsonmap: "https://file.hstatic.net/200000397757/file/hethongcuahang_f1ee212eddc04706b09d43518b50a964.json",
+            typepaginate: "default",
+            typeimage: false,
+            trash: "//cdn.hstatic.net/themes/200000846175/1001403720/14/trash.svg?v=245",
+            cancel: "//cdn.hstatic.net/themes/200000846175/1001403720/14/cancel.svg?v=245",
+            productjson: { "error": "json not allowed for this object" },
+            producthandle: "",
+            typerelated: "type",
+            vendorurl: "/collections/vendors?q=&view=related-product",
+            typeurl: "/collections/types?q=&view=related-product",
+            sortbydefault: ""
+        }
+        const formatMoney = '{{amount}} VND';
+    </script>
+
+    <script type='text/javascript'>
+        if ((typeof Haravan) === 'undefined') {
+            Haravan = {};
+        }
+        Haravan.culture = 'vi-VN';
+        Haravan.shop = 'lavieestbelle.myharavan.com';
+        Haravan.theme = { "name": "Customize Lavieestbelle", "id": 1001403720, "role": "main" };
+        Haravan.domain = 'lavieestbelle.vn';
+    </script>
+    <script defer src='https://stats.hstatic.net/beacon.min.js' hrv-beacon-t='200000846175'></script>
+    <style>
+        .grecaptcha-badge {
+            visibility: hidden;
+        }
+    </style>
+    <script type='text/javascript'>
+        window.HaravanAnalytics = window.HaravanAnalytics || {};
+        window.HaravanAnalytics.meta = window.HaravanAnalytics.meta || {};
+        window.HaravanAnalytics.meta.currency = 'VND';
+        var meta = { "page": { "pageType": "page", "resourceType": "page", "resourceId": 1003535962 } };
+        for (var attr in meta) {
+            window.HaravanAnalytics.meta[attr] = meta[attr];
+        }
+        window.HaravanAnalytics.AutoTrack = true;
+    </script>
+    <script>
+        window.HaravanAnalytics.ga = "UA-000000000-1";
+        window.HaravanAnalytics.enhancedEcommerce = false;
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', window.HaravanAnalytics.ga, 'auto', { allowLinker: true });
+        ga('send', 'pageview'); ga('require', 'linker');
+    </script>
+    <script
+        type="application/ld+json">{"@context":"http://schema.org","@type":"WebSite","name":"lavieestbelle.vn","url":"https://lavieestbelle.vn","potentialAction":{"@type":"SearchAction","target":"https://lavieestbelle.vn/search?&q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="components.js"></script>
+</head>
+
+<body id="wandave-theme" class="index" data-theme="tbag-fashion">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8R4GL2" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSBT6HTK" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <site-header></site-header>  
+    <main>
+    <!-- HERO -->
+    <section class="contact-hero">
+        <h1 class="contact-title">LIÊN HỆ</h1>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <div class="contact-container">
+
+        <!-- FORM -->
+        <div class="contact-card">
+            <h2 style="color:#4a3428; margin-bottom:10px; font-size:1.2rem;">Thông tin của bạn</h2>
+            <p class="small-note">Điền chính xác để tụi mình liên hệ nhanh nhất nhé!</p>
+
+            <form method="post">
+                <div class="form-row">
+                    <div>
+                        <label class="form-label">Họ và tên</label>
+                        <input type="text" class="form-input" placeholder="Nhập tên của bạn" required>
+                    </div>
+                    <div>
+                        <label class="form-label">Số điện thoại</label>
+                        <input type="text" class="form-input" placeholder="0123 456 789" required>
+                    </div>
+                </div>
+
+    <site-header></site-header>
+
+    <main>
+        <!-- HERO -->
+        <section class="contact-hero">
+            <div class="contact-hero-inner">
+                <h1>Liên hệ Nhà Tớ</h1>
+                <p>Để tụi mình chuẩn bị thật chỉn chu cho bó hoa dành riêng cho bạn </p>
+            </div>
+        </section>
+
+        <!-- WRAPPER + LAYOUT 2 CỘT -->
+        <section class="contact-wrapper">
+            <div class="contact-wrapper-header">
+                <div>
+                    <div class="contact-wrapper-header-title">Gửi lời nhắn cho Tiệm</div>
+                    <p class="contact-wrapper-header-note">
+                        Điền vài thông tin nhỏ bên dưới, tụi mình sẽ liên hệ lại trong thời gian sớm nhất.
+                    </p>
+                </div>
+                <span class="contact-tag">
+                    <span>Ưu tiên đơn gấp trong ngày</span>
+                </span>
+            </div>
+
+            <div class="contact-container">
+                <!-- FORM -->
+                <div class="contact-card">
+                    <h2 class="card-title">Thông tin của bạn</h2>
+                    <p class="small-note">Điền chính xác để tụi mình tư vấn đúng nhu cầu &amp; ngân sách của bạn nhé.</p>
+
+                    <form method="post">
+                        <div class="form-row">
+                            <div>
+                                <label class="form-label">Họ và tên</label>
+                                <input type="text" class="form-input" placeholder="Nhập tên của bạn" required>
+                            </div>
+                            <div>
+                                <label class="form-label">Số điện thoại</label>
+                                <input type="text" class="form-input" placeholder="0123 456 789" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div>
+                                <label class="form-label">Email (tuỳ chọn)</label>
+                                <input type="email" class="form-input" placeholder="example@gmail.com">
+                            </div>
+                            <div>
+                                <label class="form-label">Chủ đề</label>
+                                <select class="form-select">
+                                    <option value="">Chọn chủ đề</option>
+                                    <option>Đặt hoa theo mẫu / yêu cầu</option>
+                                    <option>Tư vấn tone màu / concept</option>
+                                    <option>Hoa khai trương - sự kiện</option>
+                                    <option>Hợp tác / đối tác</option>
+                                    <option>Khác…</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <label class="form-label">Lời nhắn</label>
+                        <textarea class="form-textarea"
+                            placeholder="Nội dung bạn muốn tư vấn: tone màu, ngân sách dự kiến, thời gian giao, địa chỉ cụ thể…"
+                            required></textarea>
+
+                        <button type="submit" class="contact-btn">Gửi liên hệ cho Nhà Tớ</button>
+                    </form>
+                </div>
+
+                <!-- CONTACT INFO -->
+                <div class="info-card">
+                    <h2 class="card-title">Thông tin liên hệ</h2>
+                    <p class="small-note">Nhà Tớ luôn cố gắng trả lời nhanh nhất trong khung giờ làm việc.</p>
+
+                    <div class="info-item">
+                        <div>
+                            <div class="info-label">Địa chỉ</div>
+                            <div class="info-text">11A Nguyễn An, Thạnh Mỹ Lợi, TP. Thủ Đức</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div>
+                            <div class="info-label">Hotline &amp; Zalo</div>
+                            <div class="info-text">
+                                0123 456 789
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div>
+                            <div class="info-label">Email</div>
+                            <div class="info-text">tiemhoanhato@gmail.com</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div>
+                            <div class="info-label">Giờ làm việc</div>
+                            <div class="info-text">
+                                07:30 – 21:00 (Thứ 2 – Chủ nhật)
+                                <br><span class="small-note">Có nhận đơn gấp &amp; giao trong ngày tuỳ thời điểm.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <p class="info-social-note">
+                        Bạn cũng có thể ghé tụi mình ở:
+                        <br>• Zalo: <strong>0919 89 79 69</strong>
+                        <br>• Facebook: <strong>Tiệm Hoa Nhà Tớ</strong>
+                        <br>Nếu cần tư vấn gấp, hãy gọi hoặc nhắn Zalo giúp tụi mình nha
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <site-footer></site-footer>
+
+    <!-- Các modal & social-fixed giữ nguyên -->
+    <div class="modal" id="pro-qv-wanda"></div>
+    <div class="modal" id="success-cart-wanda">
+        <div class="row">
+            <div class="modal-content">
+                <div class="modal-icon sweet-alert">
+                    <div class="sa-icon sa-success animate">
+                        <span class="sa-line sa-tip animateSuccessTip"></span>
+                        <span class="sa-line sa-long animateSuccessLong"></span>
+                        <div class="sa-placeholder"></div>
+                        <div class="sa-fix"></div>
+                    </div>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="modal-title">Thêm vào giỏ thành công</p>
+                    <div class="media-success"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="cart-mini-wanda">
+        <div class="modal-header"> Giỏ hàng</div>
+        <div class="modal-content">
+            <div class="cart-view clearfix">
+                <div class="cart-scroll">
+                    <table id="cart-view">
+                        <tbody></tbody>
+                    </table>
+                </div> <span class="line"></span>
+                <table class="table-total">
+                    <tbody>
+                        <tr>
+                            <td class="text-left title-total">TỔNG TIỀN:</td>
+                            <td class="text-right" id="total-view-cart"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><a href="cart.html" class="wanda-checkout-url btn">Thanh toán</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-error">
+        <img src="//cdn.hstatic.net/themes/200000846175/1001403720/14/alert.png?v=245" width="44" height="38" />
+        <span class="title">Thông báo!</span>
+        <p></p>
+    </div>
+
+    <div class="modal" id="success-subcribe-wanda">
+        <div class="row">
+            <div class="modal-content">
+                <div class="modal-icon sweet-alert">
+                    <div class="sa-icon sa-success animate">
+                        <span class="sa-line sa-tip animateSuccessTip"></span>
+                        <span class="sa-line sa-long animateSuccessLong"></span>
+                        <div class="sa-placeholder"></div>
+                        <div class="sa-fix"></div>
+                    </div>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="modal-title">Đăng ký thành công.<br>Thông báo sẽ tự động tắt sau 3 giây</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="social-fixed">
+        <ul class="active overflow-active">
+            <li class="hotline"><a href="tel:0919897969" data-toggle="tooltip"
+                    data-original-title="Liên hệ 0919897969"><i class="fa fa-phone"></i></a></li>
+            <li class="zalo">
+                <a href=" https://zalo.me/3854304162857362827" data-toggle="tooltip"
+                    data-original-title="Liên hệ với chúng tôi qua Zalo">
+                    <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="22" cy="22" r="22" fill="url(#paint4_linear)"></circle>
+                        <!-- svg content giữ nguyên -->
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <script src="//cdn.hstatic.net/themes/200000846175/1001403720/14/main-scripts.js?v=245" type="text/javascript"></script>
+</body>
+
+</html>
