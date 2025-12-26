@@ -9,13 +9,13 @@ async function loadFragment(url) {
 
 class SiteHeader extends HTMLElement {
     async connectedCallback() {
-        const src = this.getAttribute('src') || 'partials/header.html';
+        const src = this.getAttribute('src') || '/view/partials/header.jsp';
         this.innerHTML = await loadFragment(src);
     }
 }
 class SiteFooter extends HTMLElement {
     async connectedCallback() {
-        const src = this.getAttribute('src') || 'partials/footer.html';
+        const src = this.getAttribute('src') || 'partials/footer.jsp';
         this.innerHTML = await loadFragment(src);
     }
 }

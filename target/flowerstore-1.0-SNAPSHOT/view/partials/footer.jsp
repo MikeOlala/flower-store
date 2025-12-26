@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <footer class="border-none mg-top-30 mg-0 pd-bt-50-mb ">
     <div class="top-ft-wanda">
         <div class="container">

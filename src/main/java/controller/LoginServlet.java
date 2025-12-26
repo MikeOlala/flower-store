@@ -7,6 +7,7 @@ import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+    
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -21,6 +22,10 @@ public class LoginServlet extends HttpServlet {
             // Tạo session
             HttpSession session = request.getSession();
             session.setAttribute("user", email);
+            request.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("text/html; charset=UTF-8");
+
 
             response.sendRedirect("view/home.jsp");
 
