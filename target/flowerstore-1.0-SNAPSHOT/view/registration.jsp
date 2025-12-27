@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%@
+taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 
@@ -21,6 +22,24 @@
     />
 
     <link rel="stylesheet" href="registration.css" />
+    <style>
+      .alert {
+        padding: 12px 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+      .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+      .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+    </style>
   </head>
 
   <body>
@@ -29,129 +48,136 @@
 
       <!-- Nút quay về trang chủ -->
 
-      <a href="home.jsp" class="home-button">
+      <a
+        href="${pageContext.request.contextPath}/view/home.jsp"
+        class="home-button"
+      >
         <i class="bi bi-house-door-fill"></i>
       </a>
 
-      <div class="form-group">
-        <label for="fullname">Họ và tên</label>
+      <!-- Hiển thị thông báo lỗi -->
+      <c:if test="${not empty error}">
+        <div class="alert alert-danger">
+          <i class="bi bi-exclamation-circle me-2"></i>${error}
+        </div>
+      </c:if>
 
-        <input type="text" id="fullname" placeholder="Nhập họ và tên" />
-      </div>
+      <form
+        action="${pageContext.request.contextPath}/register"
+        method="post"
+        id="registerForm"
+      >
+        <div class="form-group">
+          <label for="fullname">Họ và tên</label>
+          <input
+            type="text"
+            id="fullname"
+            name="fullname"
+            placeholder="Nhập họ và tên"
+            value="${fullname}"
+            required
+          />
+        </div>
 
-      <div class="form-group">
-        <label for="email">Email</label>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Nhập email"
+            value="${email}"
+            required
+          />
+        </div>
 
-        <input type="email" id="email" placeholder="Nhập email" />
-      </div>
+        <div class="form-group">
+          <label for="phone">Số điện thoại</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Nhập số điện thoại"
+            value="${phone}"
+          />
+        </div>
 
-      <div class="form-group">
-        <label for="password">Mật khẩu</label>
+        <div class="form-group">
+          <label for="password">Mật khẩu</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Nhập mật khẩu"
+            required
+          />
+        </div>
 
-        <input type="password" id="password" placeholder="Nhập mật khẩu" />
-      </div>
+        <div class="form-group">
+          <label for="repassword">Nhập lại mật khẩu</label>
+          <input
+            type="password"
+            id="repassword"
+            name="repassword"
+            placeholder="Nhập lại mật khẩu"
+            required
+          />
+        </div>
 
-      <div class="form-group">
-        <label for="repassword">Nhập lại mật khẩu</label>
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" id="agree" name="agree" required /> Tôi đồng
+            ý với
+            <a href="#">chính sách dịch vụ</a>
+          </label>
+        </div>
 
-        <input
-          type="password"
-          id="repassword"
-          placeholder="Nhập lại mật khẩu"
-        />
-      </div>
-
-      <div class="checkbox-group">
-        <label>
-          <input type="checkbox" id="agree" /> Tôi đồng ý với
-
-          <a href="#">chính sách dịch vụ</a>
-        </label>
-      </div>
-
-      <button class="btn-register w-1200" id="btnRegister">ĐĂNG KÝ</button>
+        <button type="submit" class="btn-register w-1200" id="btnRegister">
+          ĐĂNG KÝ
+        </button>
+      </form>
 
       <div class="login-link">
-        Bạn đã có tài khoản? <a href="login_1.jsp">Đăng nhập ngay</a>
+        Bạn đã có tài khoản?
+        <a href="${pageContext.request.contextPath}/view/login_1.jsp"
+          >Đăng nhập ngay</a
+        >
       </div>
     </div>
 
-    <!-- Toast thông báo -->
-
-    <div class="toast-container" id="toastContainer"></div>
+    <!-- MDB Script -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
 
     <script>
-      // Hàm hiển thị toast thông báo
+      // Client-side validation before submit
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", function (e) {
+          const pass = document.getElementById("password").value;
+          const repass = document.getElementById("repassword").value;
+          const agree = document.getElementById("agree").checked;
 
-      function showToast(message, type = "success") {
-        const container = document.getElementById("toastContainer");
+          if (pass !== repass) {
+            e.preventDefault();
+            alert("Mật khẩu không khớp!");
+            return false;
+          }
 
-        const toast = document.createElement("div");
+          if (pass.length < 6) {
+            e.preventDefault();
+            alert("Mật khẩu phải có ít nhất 6 ký tự!");
+            return false;
+          }
 
-        toast.className = `toast-message ${type}`;
+          if (!agree) {
+            e.preventDefault();
+            alert("Vui lòng đồng ý với chính sách dịch vụ!");
+            return false;
+          }
 
-        toast.innerHTML = `
-
-        <i class="bi ${
-          type === "success" ? "bi-check-circle" : "bi-exclamation-circle"
-        } me-2"></i>
-
-        ${message}
-
-      `;
-
-        container.appendChild(toast);
-
-        setTimeout(() => toast.classList.add("show"), 100);
-
-        setTimeout(() => {
-          toast.classList.remove("show");
-
-          setTimeout(() => toast.remove(), 400);
-        }, 3000);
-      }
-
-      // Xử lý nút đăng ký
-
-      document.getElementById("btnRegister").addEventListener("click", () => {
-        const name = document.getElementById("fullname").value.trim();
-
-        const email = document.getElementById("email").value.trim();
-
-        const pass = document.getElementById("password").value;
-
-        const repass = document.getElementById("repassword").value;
-
-        const agree = document.getElementById("agree").checked;
-
-        if (!name || !email || !pass || !repass) {
-          showToast("Vui lòng điền đầy đủ thông tin!", "error");
-
-          return;
-        }
-
-        if (pass !== repass) {
-          showToast("Mật khẩu không khớp!", "error");
-
-          return;
-        }
-
-        if (!agree) {
-          showToast("Vui lòng đồng ý với chính sách dịch vụ!", "error");
-
-          return;
-        }
-
-        // Nếu hợp lệ
-
-        showToast("Đăng ký thành công!", "success");
-
-        // (Tùy chọn) chuyển hướng sau 2 giây
-
-        setTimeout(() => (window.location.href = "login_1.jsp"), 2000);
-      });
+          return true;
+        });
     </script>
   </body>
 </html>

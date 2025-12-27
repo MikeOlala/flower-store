@@ -1,4 +1,5 @@
 ﻿<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <header id="header" class="site-header">
     <div id="site-header-center" class="box-shadow-none2">
         <div class="container">
@@ -193,15 +194,35 @@
                                 </div>
                             </li>
                             <li class="list-inline-item mr-0 account-header-mobile">
-                                <a href="login_1.jsp" data-original-title="Đăng nhập" class="login"
-                                    data-tooltip="tooltip">
-                                    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-user"
-                                        viewBox="0 0 64 64">
-                                        <path
-                                            d="M35 39.84v-2.53c3.3-1.91 6-6.66 6-11.41 0-7.63 0-13.82-9-13.82s-9 6.19-9 13.82c0 4.75 2.7 9.51 6 11.41v2.53c-10.18.85-18 6-18 12.16h42c0-6.19-7.82-11.31-18-12.16z">
-                                        </path>
-                                    </svg>
-                                </a>
+                                <c:choose>
+                                    <c:when test="${not empty sessionScope.user}">
+                                        <!-- Đã đăng nhập - Hiển thị tên người dùng -->
+                                        <a href="${pageContext.request.contextPath}/view/settingProfile.jsp" class="login" 
+                                           style="display: flex; align-items: center; text-decoration: none;">
+                                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-user"
+                                                viewBox="0 0 64 64">
+                                                <path
+                                                    d="M35 39.84v-2.53c3.3-1.91 6-6.66 6-11.41 0-7.63 0-13.82-9-13.82s-9 6.19-9 13.82c0 4.75 2.7 9.51 6 11.41v2.53c-10.18.85-18 6-18 12.16h42c0-6.19-7.82-11.31-18-12.16z">
+                                                </path>
+                                            </svg>
+                                            <span style="font-size: 13px; margin-left: 5px; color: #333; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                                ${sessionScope.user.fullname}
+                                            </span>
+                                        </a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <!-- Chưa đăng nhập -->
+                                        <a href="${pageContext.request.contextPath}/view/login_1.jsp" data-original-title="Đăng nhập" class="login"
+                                            data-tooltip="tooltip">
+                                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-user"
+                                                viewBox="0 0 64 64">
+                                                <path
+                                                    d="M35 39.84v-2.53c3.3-1.91 6-6.66 6-11.41 0-7.63 0-13.82-9-13.82s-9 6.19-9 13.82c0 4.75 2.7 9.51 6 11.41v2.53c-10.18.85-18 6-18 12.16h42c0-6.19-7.82-11.31-18-12.16z">
+                                                </path>
+                                            </svg>
+                                        </a>
+                                    </c:otherwise>
+                                </c:choose>
                             </li>
                             <li class="list-inline-item mr-0">
                                 <a href="cart.jsp" class="cart js-call-minicart" data-original-title="Giỏ hàng"

@@ -405,7 +405,10 @@
     <div class="login-container">
       <!-- Nút quay về trang chủ -->
 
-      <a href="home.jsp" class="home-button">
+      <a
+        href="${pageContext.request.contextPath}/view/home.jsp"
+        class="home-button"
+      >
         <i class="bi bi-house-door-fill"></i>
       </a>
 
@@ -420,13 +423,37 @@
 
       <% if (request.getAttribute("error") != null) { %>
 
-      <div style="color: red; text-align: center; margin-bottom: 1rem">
+      <div
+        style="
+          color: #dc3545;
+          text-align: center;
+          margin-bottom: 1rem;
+          padding: 10px;
+          background-color: #f8d7da;
+          border-radius: 8px;
+        "
+      >
         <%= request.getAttribute("error") %>
+      </div>
+
+      <% } %> <% if (request.getAttribute("success") != null) { %>
+
+      <div
+        style="
+          color: #155724;
+          text-align: center;
+          margin-bottom: 1rem;
+          padding: 10px;
+          background-color: #d4edda;
+          border-radius: 8px;
+        "
+      >
+        <%= request.getAttribute("success") %>
       </div>
 
       <% } %>
 
-      <form action="<%= request.getContextPath() %>/login" method="post">
+      <form action="${pageContext.request.contextPath}/login" method="post">
         <!-- Email input -->
 
         <div class="input-group">
@@ -435,6 +462,7 @@
             id="email"
             name="email"
             placeholder=" "
+            value="${email != null ? email : ''}"
             required
           />
 
@@ -459,12 +487,14 @@
 
         <div class="login-options">
           <div>
-            <input type="checkbox" id="remember" checked />
+            <input type="checkbox" id="remember" name="remember" />
 
             <label for="remember">Lưu mật khẩu</label>
           </div>
 
-          <a href="ForgotPassword.jsp">Quên mật khẩu?</a>
+          <a href="${pageContext.request.contextPath}/view/ForgotPassword.jsp"
+            >Quên mật khẩu?</a
+          >
         </div>
 
         <!-- Submit button -->
@@ -489,7 +519,10 @@
 
         <div class="register-link">
           <p>
-            Bạn chưa có tài khoản? <a href="registration.jsp">Đăng ký ngay</a>
+            Bạn chưa có tài khoản?
+            <a href="${pageContext.request.contextPath}/view/registration.jsp"
+              >Đăng ký ngay</a
+            >
           </p>
         </div>
       </form>
