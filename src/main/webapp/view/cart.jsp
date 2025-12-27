@@ -3,2318 +3,1907 @@
 <!DOCTYPE html>
 
 <html lang="vi">
+  <head>
+    <title>Tiệm Hoa nhà tớ</title>
+
+    <!-- Google Tag Manager -->
+
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-W8R4GL2");
+    </script>
 
+    <!-- End Google Tag Manager -->
 
+    <!-- Google Tag Manager -->
 
-<head>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-NSBT6HTK");
+    </script>
 
-  <title>Tiệm Hoa nhÃ  tớ</title>
+    <!-- End Google Tag Manager -->
 
+    <meta charset="utf-8" />
 
+    <link
+      rel="shortcut icon"
+      href="//cdn.hstatic.net/themes/200000846175/1001403720/14/favicon.png?v=245"
+      type="image/x-icon"
+    />
 
-  <!-- Google Tag Manager -->
+    <link
+      rel="icon"
+      href="//cdn.hstatic.net/themes/200000846175/1001403720/14/favicon.png?v=245"
+      type="image/png"
+    />
 
-  <script>(function (w, d, s, l, i) {
+    <meta content="width=device-width,user-scalable=0" name="viewport" />
 
-      w[l] = w[l] || []; w[l].push({
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-        'gtm.start':
+    <meta name="HandheldFriendly" content="true" />
 
-          new Date().getTime(), event: 'gtm.js'
+    <meta name="revisit-after" content="1 day" />
 
-      }); var f = d.getElementsByTagName(s)[0],
+    <link rel="canonical" href="https://lavieestbelle.vn/" />
 
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+    <meta name="robots" content="index,follow,noodp" />
 
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    <meta property="og:type" content="website" />
 
-    })(window, document, 'script', 'dataLayer', 'GTM-W8R4GL2');</script>
+    <meta property="og:title" content="La Vie Est Belle ( Flower & Gift)" />
 
-  <!-- End Google Tag Manager -->
+    <meta
+      property="og:image"
+      content="http://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg"
+    />
 
+    <meta
+      property="og:image"
+      content="https://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg"
+    />
 
+    <meta
+      property="og:image:secure_url"
+      content="https://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg"
+    />
 
-  <!-- Google Tag Manager -->
+    <meta
+      property="og:image:secure_url"
+      content="http://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg"
+    />
 
-  <script>(function (w, d, s, l, i) {
+    <meta
+      property="og:image:alt"
+      content="La Vie Est Belle ( Flower &amp; Gift)"
+    />
 
-      w[l] = w[l] || []; w[l].push({
+    <meta property="og:url" content="https://lavieestbelle.vn/" />
 
-        'gtm.start':
+    <meta property="og:site_name" content="La Vie Est Belle - Flower & Gift" />
+    <!-- Shop id asset -->
 
-          new Date().getTime(), event: 'gtm.js'
+    <style>
+      :root {
+        --bg-soldout: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/hethang.png?v=245);
 
-      }); var f = d.getElementsByTagName(s)[0],
+        --bgshop: #000000;
 
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        --colorshop: #000000;
 
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        --colorshophover: #212020;
 
-    })(window, document, 'script', 'dataLayer', 'GTM-NSBT6HTK');</script>
+        --bgfooter: #ffffff;
 
-  <!-- End Google Tag Manager -->
+        --colorfooter: #000000;
 
-  <meta charset="utf-8" />
+        --colorbgmenumb: #ffffff;
 
-  <link rel="shortcut icon" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/favicon.png?v=245"
+        --colortextmenumb: #000000;
 
-    type="image/x-icon" />
+        --height-head: 72px;
 
-  <link rel="icon" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/favicon.png?v=245" type="image/png" />
+        --bg-flashsale: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/bg-flashs-sale.jpg?v=245);
 
-  <meta content='width=device-width,user-scalable=0' name='viewport' />
+        --imgselect: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/ico-select.svg?v=245);
 
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+        --imgsort: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/sort-az.svg?v=245);
 
-  <meta name="HandheldFriendly" content="true">
+        --bgsubcribe: url("//cdn.hstatic.net/themes/200000846175/1001403720/14/modal-banner.jpg?v=245");
 
-  <meta name="revisit-after" content="1 day" />
+        --bg-filter: url("//cdn.hstatic.net/themes/200000846175/1001403720/14/filter.svg?v=245");
 
+        --bg-google: url("//cdn.hstatic.net/themes/200000846175/1001403720/14/google-plus.png?v=245");
 
+        --bg-facebook: url("//cdn.hstatic.net/themes/200000846175/1001403720/14/facebook.png?v=245");
 
-  <link rel="canonical" href="https://lavieestbelle.vn/" />
+        --heartpage: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/hearts-page.svg?v=245);
 
-  <meta name="robots" content="index,follow,noodp">
+        --customer: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/customer-icon-service.svg?v=245);
 
-  <meta property="og:type" content="website" />
+        --cancel: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/cancel-while.svg?v=245);
 
-  <meta property="og:title" content="La Vie Est Belle ( Flower & Gift)" />
+        --bg-footer: url(https://file.hstatic.net/200000397757/file/wd-footer-bg_bd337816b3d64003b9fa0ca6f4b8b3fa.png);
+      }
+    </style>
 
-  <meta property="og:image"
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-    content="http://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <meta property="og:image"
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    content="https://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg" />
+    <style>
+      :root {
+        --rose: #a97155;
 
-  <meta property="og:image:secure_url"
+        --rose-600: #8a5c44;
 
-    content="https://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg" />
+        --rose-200: #ead9ca;
 
-  <meta property="og:image:secure_url"
+        --ink: #2b2926;
 
-    content="http://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg" />
+        --muted: #7a6e65;
 
-  <meta property="og:image:alt" content="La Vie Est Belle ( Flower &amp; Gift)" />
+        --card: #ffffffcc;
 
-  <meta property="og:url" content="https://lavieestbelle.vn/" />
+        --ring: rgba(169, 113, 85, 0.35);
 
-  <meta property="og:site_name" content="La Vie Est Belle - Flower & Gift" /><!-- Shop id asset -->
+        --shadow: 0 10px 30px rgba(169, 113, 85, 0.18),
+          0 8px 24px rgba(0, 0, 0, 0.06);
 
-  <style>
+        --radius: 22px;
 
-    :root {
+        --success: #10b981;
 
-      --bg-soldout: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/hethang.png?v=245);
-
-      --bgshop: #000000;
-
-      --colorshop: #000000;
-
-      --colorshophover: #212020;
-
-      --bgfooter: #ffffff;
-
-      --colorfooter: #000000;
-
-      --colorbgmenumb: #ffffff;
-
-      --colortextmenumb: #000000;
-
-      --height-head: 72px;
-
-      --bg-flashsale: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/bg-flashs-sale.jpg?v=245);
-
-      --imgselect: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/ico-select.svg?v=245);
-
-      --imgsort: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/sort-az.svg?v=245);
-
-      --bgsubcribe: url('//cdn.hstatic.net/themes/200000846175/1001403720/14/modal-banner.jpg?v=245');
-
-      --bg-filter: url('//cdn.hstatic.net/themes/200000846175/1001403720/14/filter.svg?v=245');
-
-      --bg-google: url('//cdn.hstatic.net/themes/200000846175/1001403720/14/google-plus.png?v=245');
-
-      --bg-facebook: url('//cdn.hstatic.net/themes/200000846175/1001403720/14/facebook.png?v=245');
-
-      --heartpage: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/hearts-page.svg?v=245);
-
-      --customer: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/customer-icon-service.svg?v=245);
-
-      --cancel: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/cancel-while.svg?v=245);
-
-      --bg-footer: url(https://file.hstatic.net/200000397757/file/wd-footer-bg_bd337816b3d64003b9fa0ca6f4b8b3fa.png);
-
-    }
-
-  </style>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
-
-    rel="stylesheet">
-
-  <style>
-
-    :root {
-
-      --rose: #a97155;
-
-      --rose-600: #8a5c44;
-
-      --rose-200: #ead9ca;
-
-      --ink: #2b2926;
-
-      --muted: #7a6e65;
-
-      --card: #ffffffcc;
-
-      --ring: rgba(169, 113, 85, .35);
-
-      --shadow: 0 10px 30px rgba(169, 113, 85, .18), 0 8px 24px rgba(0, 0, 0, .06);
-
-      --radius: 22px;
-
-      --success: #10b981;
-
-      --error: #ef4444;
-
-    }
-
-    .page-title {
-
-      font-family: "Playfair Display", serif;
-
-      font-size: 38px;
-
-      line-height: 1.2;
-
-      margin: 20px 0 8px;
-
-      text-align: center;
-
-    }
-
-
-
-    .subtitle {
-
-      color: var(--muted);
-
-      font-size: 15px;
-
-      text-align: center;
-
-      margin-bottom: 32px;
-
-    }
-
-
-
-    .grid {
-
-      display: grid;
-
-      grid-template-columns: 1.2fr .8fr;
-
-      gap: 24px;
-
-      margin-bottom: 40px;
-
-    }
-
-
-
-    .card {
-
-      background: var(--card);
-
-      backdrop-filter: blur(8px);
-
-      border: 1px solid #fff;
-
-      border-radius: var(--radius);
-
-      box-shadow: var(--shadow);
-
-    }
-
-
-
-    /* Cart Table */
-
-    .cart {
-
-      padding: 10px;
-
-    }
-
-
-
-    .cart-head {
-
-      display: grid;
-
-      grid-template-columns: 6fr 2fr 2fr 40px;
-
-      gap: 10px;
-
-      padding: 14px 18px;
-
-      color: var(--muted);
-
-      font-weight: 600;
-
-      font-size: 14px;
-
-    }
-
-
-
-    .cart-row {
-
-      display: grid;
-
-      grid-template-columns: 6fr 2fr 2fr 40px;
-
-      gap: 10px;
-
-      align-items: center;
-
-      padding: 14px 18px;
-
-      border-top: 1px dashed #f0cddd;
-
-    }
-
-
-
-    .prod {
-
-      display: flex;
-
-      gap: 14px;
-
-      align-items: center;
-
-    }
-
-
-
-    .photo {
-
-      width: 78px;
-
-      height: 78px;
-
-      border-radius: 16px;
-
-      overflow: hidden;
-
-      flex: 0 0 auto;
-
-      box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
-
-    }
-
-
-
-    .photo img {
-
-      width: 100%;
-
-      height: 100%;
-
-      object-fit: cover;
-
-    }
-
-
-
-    .name {
-
-      font-weight: 600;
-
-      font-size: 15px;
-
-    }
-
-
-
-    .meta {
-
-      color: var(--muted);
-
-      font-size: 13px;
-
-      margin-top: 3px;
-
-    }
-
-
-
-    .qty-pill {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      border: 1px solid var(--rose-200);
-
-      border-radius: 999px;
-
-      padding: 8px 14px;
-
-      font-weight: 700;
-
-      gap: 8px;
-
-    }
-
-
-
-    .price {
-
-      font-weight: 700;
-
-      font-size: 15px;
-
-    }
-
-
-
-    .remove {
-
-      display: grid;
-
-      place-items: center;
-
-      width: 36px;
-
-      height: 36px;
-
-      border-radius: 50%;
-
-      border: 1px solid #ead9ca;
-
-      background: #fff;
-
-      cursor: pointer;
-
-      transition: all 0.2s;
-
-    }
-
-
-
-    .remove:hover {
-
-      background: var(--rose-200);
-
-      transform: scale(1.05);
-
-    }
-
-
-
-    /* Summary */
-
-    .summary {
-
-      position: sticky;
-
-      top: 20px;
-
-      padding: 18px;
-
-    }
-
-
-
-    .section-title {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 8px;
-
-      font-weight: 800;
-
-      padding: 16px 18px;
-
-      font-size: 16px;
-
-    }
-
-
-
-    .sum-row {
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      margin: 10px 0;
-
-      font-size: 15px;
-
-    }
-
-
-
-    .sum-row.muted {
-
-      color: var(--muted);
-
-    }
-
-
-
-    .sum-total {
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      border-top: 1px dashed #f0cddd;
-
-      margin-top: 14px;
-
-      padding-top: 14px;
-
-      font-weight: 800;
-
-      font-size: 18px;
-
-    }
-
-
-
-    .code {
-
-      display: flex;
-
-      gap: 10px;
-
-      margin: 12px 0;
-
-    }
-
-
-
-    .code input {
-
-      flex: 1;
-
-      padding: 12px 14px;
-
-      border-radius: 14px;
-
-      border: 1px solid var(--rose-200);
-
-      background: #fff;
-
-      font-size: 14px;
-
-    }
-
-
-
-    .btn {
-
-      appearance: none;
-
-      border: 0;
-
-      background: var(--rose);
-
-      color: #fff;
-
-      font-weight: 700;
-
-      border-radius: 16px;
-
-      padding: 12px 16px;
-
-      cursor: pointer;
-
-      box-shadow: 0 8px 20px var(--ring);
-
-      text-decoration: none;
-
-      display: inline-block;
-
-      text-align: center;
-
-      font-size: 14px;
-
-      transition: all 0.3s;
-
-    }
-
-
-
-    .btn:hover {
-
-      background: var(--rose-600);
-
-      transform: translateY(-2px);
-
-    }
-
-
-
-    .btn.secondary {
-
-      background: #fff;
-
-      color: var(--ink);
-
-      border: 1px solid var(--rose-200);
-
-      box-shadow: none;
-
-    }
-
-
-
-    .btn.secondary:hover {
-
-      background: var(--rose-200);
-
-    }
-
-
-
-    .actions {
-
-      display: flex;
-
-      gap: 12px;
-
-      margin-top: 14px;
-
-      flex-wrap: wrap;
-
-    }
-
-
-
-    .actions .btn {
-
-      flex: 1;
-
-      min-width: 140px;
-
-    }
-
-
-
-    .note textarea {
-
-      width: 100%;
-
-      min-height: 86px;
-
-      padding: 12px 14px;
-
-      border-radius: 14px;
-
-      border: 1px solid var(--rose-200);
-
-      resize: vertical;
-
-      font-family: inherit;
-
-      font-size: 14px;
-
-    }
-
-
-
-    /* Modal Styles */
-
-    .modal-overlay {
-
-      position: fixed;
-
-      inset: 0;
-
-      background: rgba(0, 0, 0, 0.5);
-
-      backdrop-filter: blur(4px);
-
-      display: none;
-
-      align-items: center;
-
-      justify-content: center;
-
-      z-index: 9999;
-
-      animation: fadeIn 0.3s;
-
-    }
-
-
-
-    .modal-overlay.active {
-
-      display: flex;
-
-    }
-
-
-
-    .modal-content {
-
-      background: white;
-
-      border-radius: 24px;
-
-      padding: 32px;
-
-      max-width: 500px;
-
-      width: 90%;
-
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-
-      animation: slideUp 0.3s;
-
-    }
-
-
-
-    .modal-header {
-
-      font-family: "Playfair Display", serif;
-
-      font-size: 28px;
-
-      margin-bottom: 16px;
-
-      color: var(--ink);
-
-    }
-
-
-
-    .modal-body {
-
-      color: var(--muted);
-
-      font-size: 15px;
-
-      line-height: 1.6;
-
-      margin-bottom: 24px;
-
-    }
-
-
-
-    .modal-actions {
-
-      display: flex;
-
-      gap: 12px;
-
-      justify-content: flex-end;
-
-    }
-
-
-
-    .modal-actions .btn {
-
-      min-width: 120px;
-
-    }
-
-
-
-    /* Invoice Styles */
-
-    .invoice {
-
-      background: white;
-
-      border-radius: 20px;
-
-      padding: 24px;
-
-      max-width: 600px;
-
-      margin: 0 auto;
-
-      max-height: 70vh;
-
-      overflow-y: auto;
-
-    }
-
-
-
-    .invoice-header {
-
-      text-align: center;
-
-      border-bottom: 2px solid var(--rose-200);
-
-      padding-bottom: 16px;
-
-      margin-bottom: 20px;
-
-    }
-
-
-
-    .invoice-header h2 {
-
-      font-family: "Playfair Display", serif;
-
-      font-size: 26px;
-
-      color: var(--rose);
-
-      margin-bottom: 6px;
-
-    }
-
-
-
-    .invoice-header p {
-
-      font-size: 13px;
-
-      color: var(--muted);
-
-    }
-
-
-
-    .invoice-info {
-
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 16px;
-
-      margin-bottom: 20px;
-
-    }
-
-
-
-    .invoice-section h3 {
-
-      font-size: 12px;
-
-      color: var(--muted);
-
-      margin-bottom: 6px;
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.5px;
-
-      font-weight: 600;
-
-    }
-
-
-
-    .invoice-section p {
-
-      color: var(--ink);
-
-      font-size: 13px;
-
-      line-height: 1.5;
-
-    }
-
-
-
-    .invoice-items {
-
-      margin-bottom: 20px;
-
-    }
-
-
-
-    .invoice-items h3 {
-
-      font-size: 14px;
-
-      margin-bottom: 12px;
-
-      color: var(--ink);
-
-      font-weight: 600;
-
-    }
-
-
-
-    .invoice-item {
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: flex-start;
-
-      padding: 12px 0;
-
-      border-bottom: 1px dashed var(--rose-200);
-
-      gap: 12px;
-
-    }
-
-
-
-    .invoice-item:last-child {
-
-      border-bottom: none;
-
-    }
-
-
-
-    .invoice-item-info {
-
-      flex: 1;
-
-      min-width: 0;
-
-    }
-
-
-
-    .invoice-item-name {
-
-      font-weight: 600;
-
-      margin-bottom: 3px;
-
-      font-size: 14px;
-
-    }
-
-
-
-    .invoice-item-meta {
-
-      font-size: 12px;
-
-      color: var(--muted);
-
-    }
-
-
-
-    .invoice-item-price {
-
-      font-weight: 700;
-
-      color: var(--rose);
-
-      font-size: 14px;
-
-      white-space: nowrap;
-
-    }
-
-
-
-    .invoice-note {
-
-      background: #faf3ea;
-
-      padding: 12px;
-
-      border-radius: 10px;
-
-      margin-bottom: 20px;
-
-    }
-
-
-
-    .invoice-note h3 {
-
-      font-size: 11px;
-
-      color: var(--muted);
-
-      margin-bottom: 6px;
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.5px;
-
-    }
-
-
-
-    .invoice-note p {
-
-      font-style: italic;
-
-      color: var(--ink);
-
-      font-size: 13px;
-
-      line-height: 1.5;
-
-    }
-
-
-
-    .invoice-total {
-
-      border-top: 2px solid var(--rose);
-
-      padding-top: 12px;
-
-    }
-
-
-
-    .invoice-total-row {
-
-      display: flex;
-
-      justify-content: space-between;
-
-      margin: 6px 0;
-
-      font-size: 14px;
-
-    }
-
-
-
-    .invoice-total-row.grand {
-
-      font-size: 18px;
-
-      font-weight: 800;
-
-      color: var(--rose);
-
-      margin-top: 12px;
-
-      padding-top: 8px;
-
-      border-top: 1px dashed var(--rose-200);
-
-    }
-
-
-
-    .invoice-footer {
-
-      text-align: center;
-
-      margin-top: 20px;
-
-      padding-top: 16px;
-
-      border-top: 1px solid var(--rose-200);
-
-      color: var(--muted);
-
-      font-size: 12px;
-
-      line-height: 1.6;
-
-    }
-
-
-
-    .success-icon {
-
-      width: 60px;
-
-      height: 60px;
-
-      margin: 0 auto 16px;
-
-      background: var(--success);
-
-      border-radius: 50%;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      font-size: 32px;
-
-      color: white;
-
-    }
-
-
-
-    @keyframes fadeIn {
-
-      from { opacity: 0; }
-
-      to { opacity: 1; }
-
-    }
-
-
-
-    @keyframes slideUp {
-
-      from {
-
-        opacity: 0;
-
-        transform: translateY(20px);
-
+        --error: #ef4444;
       }
 
-      to {
+      .page-title {
+        font-family: "Playfair Display", serif;
 
-        opacity: 1;
+        font-size: 38px;
 
-        transform: translateY(0);
+        line-height: 1.2;
 
+        margin: 20px 0 8px;
+
+        text-align: center;
       }
 
-    }
+      .subtitle {
+        color: var(--muted);
 
-
-
-    @media (max-width: 980px) {
-
-      .grid {
-
-        grid-template-columns: 1fr;
-
-      }
-
-
-
-      .cart-head {
-
-        display: none;
-
-      }
-
-
-
-      .cart-row {
-
-        grid-template-columns: 1fr;
-
-        gap: 12px;
-
-      }
-
-
-
-      .prod {
-
-        flex-direction: column;
+        font-size: 15px;
 
         text-align: center;
 
+        margin-bottom: 32px;
       }
 
+      .grid {
+        display: grid;
 
+        grid-template-columns: 1.2fr 0.8fr;
 
-      .actions {
+        gap: 24px;
 
-        flex-direction: column;
-
+        margin-bottom: 40px;
       }
 
+      .card {
+        background: var(--card);
 
+        backdrop-filter: blur(8px);
 
-      .actions .btn {
+        border: 1px solid #fff;
 
+        border-radius: var(--radius);
+
+        box-shadow: var(--shadow);
+      }
+
+      /* Cart Table */
+
+      .cart {
+        padding: 10px;
+      }
+
+      .cart-head {
+        display: grid;
+
+        grid-template-columns: 6fr 2fr 2fr 40px;
+
+        gap: 10px;
+
+        padding: 14px 18px;
+
+        color: var(--muted);
+
+        font-weight: 600;
+
+        font-size: 14px;
+      }
+
+      .cart-row {
+        display: grid;
+
+        grid-template-columns: 6fr 2fr 2fr 40px;
+
+        gap: 10px;
+
+        align-items: center;
+
+        padding: 14px 18px;
+
+        border-top: 1px dashed #f0cddd;
+      }
+
+      .prod {
+        display: flex;
+
+        gap: 14px;
+
+        align-items: center;
+      }
+
+      .photo {
+        width: 78px;
+
+        height: 78px;
+
+        border-radius: 16px;
+
+        overflow: hidden;
+
+        flex: 0 0 auto;
+
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      }
+
+      .photo img {
         width: 100%;
 
+        height: 100%;
+
+        object-fit: cover;
       }
 
+      .name {
+        font-weight: 600;
 
+        font-size: 15px;
+      }
+
+      .meta {
+        color: var(--muted);
+
+        font-size: 13px;
+
+        margin-top: 3px;
+      }
+
+      .qty-pill {
+        display: inline-flex;
+
+        align-items: center;
+
+        border: 1px solid var(--rose-200);
+
+        border-radius: 999px;
+
+        padding: 8px 14px;
+
+        font-weight: 700;
+
+        gap: 8px;
+      }
+
+      .price {
+        font-weight: 700;
+
+        font-size: 15px;
+      }
+
+      .remove {
+        display: grid;
+
+        place-items: center;
+
+        width: 36px;
+
+        height: 36px;
+
+        border-radius: 50%;
+
+        border: 1px solid #ead9ca;
+
+        background: #fff;
+
+        cursor: pointer;
+
+        transition: all 0.2s;
+      }
+
+      .remove:hover {
+        background: var(--rose-200);
+
+        transform: scale(1.05);
+      }
+
+      /* Summary */
+
+      .summary {
+        position: sticky;
+
+        top: 20px;
+
+        padding: 18px;
+      }
+
+      .section-title {
+        display: flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        font-weight: 800;
+
+        padding: 16px 18px;
+
+        font-size: 16px;
+      }
+
+      .sum-row {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        margin: 10px 0;
+
+        font-size: 15px;
+      }
+
+      .sum-row.muted {
+        color: var(--muted);
+      }
+
+      .sum-total {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        border-top: 1px dashed #f0cddd;
+
+        margin-top: 14px;
+
+        padding-top: 14px;
+
+        font-weight: 800;
+
+        font-size: 18px;
+      }
+
+      .code {
+        display: flex;
+
+        gap: 10px;
+
+        margin: 12px 0;
+      }
+
+      .code input {
+        flex: 1;
+
+        padding: 12px 14px;
+
+        border-radius: 14px;
+
+        border: 1px solid var(--rose-200);
+
+        background: #fff;
+
+        font-size: 14px;
+      }
+
+      .btn {
+        appearance: none;
+
+        border: 0;
+
+        background: var(--rose);
+
+        color: #fff;
+
+        font-weight: 700;
+
+        border-radius: 16px;
+
+        padding: 12px 16px;
+
+        cursor: pointer;
+
+        box-shadow: 0 8px 20px var(--ring);
+
+        text-decoration: none;
+
+        display: inline-block;
+
+        text-align: center;
+
+        font-size: 14px;
+
+        transition: all 0.3s;
+      }
+
+      .btn:hover {
+        background: var(--rose-600);
+
+        transform: translateY(-2px);
+      }
+
+      .btn.secondary {
+        background: #fff;
+
+        color: var(--ink);
+
+        border: 1px solid var(--rose-200);
+
+        box-shadow: none;
+      }
+
+      .btn.secondary:hover {
+        background: var(--rose-200);
+      }
+
+      .actions {
+        display: flex;
+
+        gap: 12px;
+
+        margin-top: 14px;
+
+        flex-wrap: wrap;
+      }
+
+      .actions .btn {
+        flex: 1;
+
+        min-width: 140px;
+      }
+
+      .note textarea {
+        width: 100%;
+
+        min-height: 86px;
+
+        padding: 12px 14px;
+
+        border-radius: 14px;
+
+        border: 1px solid var(--rose-200);
+
+        resize: vertical;
+
+        font-family: inherit;
+
+        font-size: 14px;
+      }
+
+      /* Modal Styles */
+
+      .modal-overlay {
+        position: fixed;
+
+        inset: 0;
+
+        background: rgba(0, 0, 0, 0.5);
+
+        backdrop-filter: blur(4px);
+
+        display: none;
+
+        align-items: center;
+
+        justify-content: center;
+
+        z-index: 9999;
+
+        animation: fadeIn 0.3s;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal-content {
+        background: white;
+
+        border-radius: 24px;
+
+        padding: 32px;
+
+        max-width: 500px;
+
+        width: 90%;
+
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+        animation: slideUp 0.3s;
+      }
+
+      .modal-header {
+        font-family: "Playfair Display", serif;
+
+        font-size: 28px;
+
+        margin-bottom: 16px;
+
+        color: var(--ink);
+      }
+
+      .modal-body {
+        color: var(--muted);
+
+        font-size: 15px;
+
+        line-height: 1.6;
+
+        margin-bottom: 24px;
+      }
+
+      .modal-actions {
+        display: flex;
+
+        gap: 12px;
+
+        justify-content: flex-end;
+      }
+
+      .modal-actions .btn {
+        min-width: 120px;
+      }
+
+      /* Invoice Styles */
 
       .invoice {
+        background: white;
+
+        border-radius: 20px;
 
         padding: 24px;
 
+        max-width: 600px;
+
+        margin: 0 auto;
+
+        max-height: 70vh;
+
+        overflow-y: auto;
       }
 
+      .invoice-header {
+        text-align: center;
 
+        border-bottom: 2px solid var(--rose-200);
+
+        padding-bottom: 16px;
+
+        margin-bottom: 20px;
+      }
+
+      .invoice-header h2 {
+        font-family: "Playfair Display", serif;
+
+        font-size: 26px;
+
+        color: var(--rose);
+
+        margin-bottom: 6px;
+      }
+
+      .invoice-header p {
+        font-size: 13px;
+
+        color: var(--muted);
+      }
 
       .invoice-info {
+        display: grid;
 
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
 
+        gap: 16px;
+
+        margin-bottom: 20px;
       }
 
-    }
+      .invoice-section h3 {
+        font-size: 12px;
 
+        color: var(--muted);
 
+        margin-bottom: 6px;
 
-    .empty-cart {
+        text-transform: uppercase;
 
-      text-align: center;
+        letter-spacing: 0.5px;
 
-      padding: 60px 20px;
-
-    }
-
-
-
-    .empty-cart-icon {
-
-      font-size: 64px;
-
-      margin-bottom: 16px;
-
-    }
-
-
-
-    .print-btn {
-
-      margin-top: 24px;
-
-    }
-
-
-
-    @media print {
-
-      body {
-
-        background: white;
-
+        font-weight: 600;
       }
 
-      .btn, .modal-overlay {
+      .invoice-section p {
+        color: var(--ink);
 
-        display: none !important;
+        font-size: 13px;
 
+        line-height: 1.5;
       }
 
-    }
+      .invoice-items {
+        margin-bottom: 20px;
+      }
 
+      .invoice-items h3 {
+        font-size: 14px;
 
+        margin-bottom: 12px;
 
-    /* AI Card Modal Styles */
+        color: var(--ink);
 
-    .ai-modal-backdrop {
+        font-weight: 600;
+      }
 
-      position: fixed;
+      .invoice-item {
+        display: flex;
 
-      inset: 0;
+        justify-content: space-between;
 
-      background: rgba(33, 26, 19, .45);
+        align-items: flex-start;
 
-      backdrop-filter: saturate(120%) blur(2px);
+        padding: 12px 0;
 
-      display: none;
+        border-bottom: 1px dashed var(--rose-200);
 
-      z-index: 9998;
+        gap: 12px;
+      }
 
-    }
+      .invoice-item:last-child {
+        border-bottom: none;
+      }
 
+      .invoice-item-info {
+        flex: 1;
 
+        min-width: 0;
+      }
 
-    .ai-modal-backdrop.active {
+      .invoice-item-name {
+        font-weight: 600;
 
-      display: block;
+        margin-bottom: 3px;
 
-    }
+        font-size: 14px;
+      }
 
+      .invoice-item-meta {
+        font-size: 12px;
 
+        color: var(--muted);
+      }
 
-    .ai-modal {
+      .invoice-item-price {
+        font-weight: 700;
 
-      position: fixed;
+        color: var(--rose);
 
-      inset: 0;
+        font-size: 14px;
 
-      display: none;
+        white-space: nowrap;
+      }
 
-      place-items: center;
+      .invoice-note {
+        background: #faf3ea;
 
-      z-index: 9999;
+        padding: 12px;
 
-      padding: 18px;
+        border-radius: 10px;
 
-      overflow-y: auto;
+        margin-bottom: 20px;
+      }
 
-    }
+      .invoice-note h3 {
+        font-size: 11px;
 
+        color: var(--muted);
 
+        margin-bottom: 6px;
 
-    .ai-modal.active {
+        text-transform: uppercase;
 
-      display: grid;
+        letter-spacing: 0.5px;
+      }
 
-    }
+      .invoice-note p {
+        font-style: italic;
 
+        color: var(--ink);
 
+        font-size: 13px;
 
-    .ai-card {
+        line-height: 1.5;
+      }
 
-      width: min(1080px, 96vw);
+      .invoice-total {
+        border-top: 2px solid var(--rose);
 
-      max-height: 88vh;
+        padding-top: 12px;
+      }
 
-      overflow: auto;
+      .invoice-total-row {
+        display: flex;
 
-      background: linear-gradient(180deg, #fff 0%, #fffdfc 50%, #ffffff 100%);
+        justify-content: space-between;
 
-      border: 1px solid #fff;
+        margin: 6px 0;
 
-      border-radius: 26px;
+        font-size: 14px;
+      }
 
-      box-shadow: 0 20px 60px rgba(33, 26, 19, .18);
+      .invoice-total-row.grand {
+        font-size: 18px;
 
-      padding: 18px 18px 22px;
+        font-weight: 800;
 
-    }
+        color: var(--rose);
 
+        margin-top: 12px;
 
+        padding-top: 8px;
 
-    .ai-head {
+        border-top: 1px dashed var(--rose-200);
+      }
 
-      position: sticky;
+      .invoice-footer {
+        text-align: center;
 
-      top: 0;
+        margin-top: 20px;
 
-      background: linear-gradient(180deg, #ffffff 70%, rgba(255, 255, 255, 0));
+        padding-top: 16px;
 
-      z-index: 1;
+        border-top: 1px solid var(--rose-200);
 
-      display: flex;
+        color: var(--muted);
 
-      gap: 10px;
+        font-size: 12px;
 
-      justify-content: space-between;
+        line-height: 1.6;
+      }
 
-      align-items: center;
+      .success-icon {
+        width: 60px;
 
-      margin: -6px -6px 8px;
+        height: 60px;
 
-      padding: 10px 6px 12px;
+        margin: 0 auto 16px;
 
-    }
+        background: var(--success);
 
+        border-radius: 50%;
 
+        display: flex;
 
-    .ai-head h3 {
+        align-items: center;
 
-      margin: 0;
+        justify-content: center;
 
-      font-family: "Playfair Display", serif;
+        font-size: 32px;
 
-      font-size: 28px;
+        color: white;
+      }
 
-      letter-spacing: .2px;
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
 
-      color: var(--ink);
+        to {
+          opacity: 1;
+        }
+      }
 
-    }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
 
+          transform: translateY(20px);
+        }
 
+        to {
+          opacity: 1;
 
-    .ai-close {
+          transform: translateY(0);
+        }
+      }
 
-      border: 0;
+      @media (max-width: 980px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
 
-      background: #fff;
+        .cart-head {
+          display: none;
+        }
 
-      border: 1px solid var(--rose-200);
+        .cart-row {
+          grid-template-columns: 1fr;
 
-      width: 38px;
+          gap: 12px;
+        }
 
-      height: 38px;
+        .prod {
+          flex-direction: column;
 
-      border-radius: 999px;
+          text-align: center;
+        }
 
-      cursor: pointer;
+        .actions {
+          flex-direction: column;
+        }
 
-      line-height: 38px;
+        .actions .btn {
+          width: 100%;
+        }
 
-      transition: all 0.2s;
+        .invoice {
+          padding: 24px;
+        }
 
-    }
+        .invoice-info {
+          grid-template-columns: 1fr;
+        }
+      }
 
+      .empty-cart {
+        text-align: center;
 
+        padding: 60px 20px;
+      }
 
-    .ai-close:hover {
+      .empty-cart-icon {
+        font-size: 64px;
 
-      background: var(--rose-200);
+        margin-bottom: 16px;
+      }
 
-      transform: scale(1.05);
+      .print-btn {
+        margin-top: 24px;
+      }
 
-    }
+      @media print {
+        body {
+          background: white;
+        }
 
+        .btn,
+        .modal-overlay {
+          display: none !important;
+        }
+      }
 
+      /* AI Card Modal Styles */
 
-    .ai-grid {
+      .ai-modal-backdrop {
+        position: fixed;
 
-      display: grid;
+        inset: 0;
 
-      grid-template-columns: 420px 1fr;
+        background: rgba(33, 26, 19, 0.45);
 
-      gap: 18px;
+        backdrop-filter: saturate(120%) blur(2px);
 
-      align-items: start;
+        display: none;
 
-    }
+        z-index: 9998;
+      }
 
+      .ai-modal-backdrop.active {
+        display: block;
+      }
 
+      .ai-modal {
+        position: fixed;
 
-    @media(max-width:1024px) {
+        inset: 0;
+
+        display: none;
+
+        place-items: center;
+
+        z-index: 9999;
+
+        padding: 18px;
+
+        overflow-y: auto;
+      }
+
+      .ai-modal.active {
+        display: grid;
+      }
+
+      .ai-card {
+        width: min(1080px, 96vw);
+
+        max-height: 88vh;
+
+        overflow: auto;
+
+        background: linear-gradient(180deg, #fff 0%, #fffdfc 50%, #ffffff 100%);
+
+        border: 1px solid #fff;
+
+        border-radius: 26px;
+
+        box-shadow: 0 20px 60px rgba(33, 26, 19, 0.18);
+
+        padding: 18px 18px 22px;
+      }
+
+      .ai-head {
+        position: sticky;
+
+        top: 0;
+
+        background: linear-gradient(
+          180deg,
+          #ffffff 70%,
+          rgba(255, 255, 255, 0)
+        );
+
+        z-index: 1;
+
+        display: flex;
+
+        gap: 10px;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        margin: -6px -6px 8px;
+
+        padding: 10px 6px 12px;
+      }
+
+      .ai-head h3 {
+        margin: 0;
+
+        font-family: "Playfair Display", serif;
+
+        font-size: 28px;
+
+        letter-spacing: 0.2px;
+
+        color: var(--ink);
+      }
+
+      .ai-close {
+        border: 0;
+
+        background: #fff;
+
+        border: 1px solid var(--rose-200);
+
+        width: 38px;
+
+        height: 38px;
+
+        border-radius: 999px;
+
+        cursor: pointer;
+
+        line-height: 38px;
+
+        transition: all 0.2s;
+      }
+
+      .ai-close:hover {
+        background: var(--rose-200);
+
+        transform: scale(1.05);
+      }
 
       .ai-grid {
+        display: grid;
 
-        grid-template-columns: 1fr;
+        grid-template-columns: 420px 1fr;
 
+        gap: 18px;
+
+        align-items: start;
       }
 
-    }
-
-
-
-    .ai-field {
-
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 6px;
-
-      margin: 8px 0;
-
-    }
-
-
-
-    .ai-field label {
-
-      font-size: 13px;
-
-      color: var(--muted);
-
-      font-weight: 500;
-
-    }
-
-
-
-    .ai-field input,
-
-    .ai-field select,
-
-    .ai-field textarea {
-
-      padding: 12px 14px;
-
-      border: 1px solid var(--rose-200);
-
-      border-radius: 16px;
-
-      background: #fff;
-
-      font-size: 14px;
-
-      color: var(--ink);
-
-      font-family: inherit;
-
-    }
-
-
-
-    .ai-field input:focus,
-
-    .ai-field select:focus,
-
-    .ai-field textarea:focus {
-
-      outline: none;
-
-      border-color: var(--rose);
-
-      box-shadow: 0 0 0 3px var(--ring);
-
-    }
-
-
-
-    .ai-row {
-
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 12px;
-
-    }
-
-
-
-    .ai-actions {
-
-      display: flex;
-
-      gap: 10px;
-
-      margin-top: 12px;
-
-      flex-wrap: wrap;
-
-    }
-
-
-
-    .ai-btn {
-
-      appearance: none;
-
-      border: 0;
-
-      background: var(--rose);
-
-      color: #fff;
-
-      font-weight: 700;
-
-      border-radius: 18px;
-
-      padding: 12px 16px;
-
-      cursor: pointer;
-
-      box-shadow: 0 8px 20px rgba(169, 113, 85, .28);
-
-      transition: all 0.3s;
-
-    }
-
-
-
-    .ai-btn:hover {
-
-      background: var(--rose-600);
-
-      transform: translateY(-2px);
-
-    }
-
-
-
-    .ai-btn.secondary {
-
-      background: #fff;
-
-      color: var(--ink);
-
-      border: 1px solid var(--rose-200);
-
-      box-shadow: none;
-
-    }
-
-
-
-    .ai-btn.secondary:hover {
-
-      background: var(--rose-200);
-
-    }
-
-
-
-    .ai-hint {
-
-      color: var(--muted);
-
-      font-size: 12.5px;
-
-    }
-
-
-
-    .ai-canvas-wrap {
-
-      background: linear-gradient(180deg, #fff, #fffdfc);
-
-      border: 1px solid #f6e7da;
-
-      border-radius: 18px;
-
-      display: grid;
-
-      place-items: center;
-
-      min-height: 360px;
-
-      padding: 14px;
-
-    }
-
-
-
-    canvas.ai-canvas {
-
-      width: 100%;
-
-      height: auto;
-
-      display: block;
-
-      border-radius: 14px;
-
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-    }
-
-  </style>
-
-  <link
-
-    href="https://fonts.googleapis.com/css2?family=Crimson Text:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=fallback"
-
-    as="style" type="text/css" rel="preload stylesheet">
-
-  <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/plugin-style.css?v=245" rel="preload stylesheet"
-
-    as="style" type="text/css">
-
-  <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/styles-new.scss.css?v=245" rel="preload stylesheet"
-
-    as="style" type="text/css">
-
-  <link rel="preload" as="image" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/logo.png?v=245">
-
-  <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/styles-index.scss.css?v=245"
-
-    rel="preload stylesheet" as="style" type="text/css">
-
-  <link rel="preload" as="image"
-
-    href="//cdn.hstatic.net/themes/200000846175/1001403720/14/slideshow_1_mob_large.jpg?v=245"
-
-    media="(max-width: 480px)">
-
-  <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245" rel="preload" as="script"
-
-    type="text/javascript">
-
-  <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/main-scripts.js?v=245" rel="preload" as="script"
-
-    type="text/javascript">
-
-  <script type="text/javascript"
-
-    src="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"></script>
-
-  <!-- Tất cả biáº¿n khá»Ÿi táº¡o, check sá»­ dá»¥ng-->
-
-  <script>
-
-    localStorage.setItem('shop_id', 'themes/200000846175/1001403720');
-
-    const tbag_varible = {
-
-      template: 'index',
-
-      navLeftText: '<button class="slick-prev slick-arrow custom-style" aria-label="Previous"><span class="arrow-custom arrow-left"><div class="arrow-top"></div><div class="arrow-bottom"></div></span></button>',
-
-      navRightText: '<button class="slick-next slick-arrow custom-style" aria-label="Next"><span class="arrow-custom arrow-right"><div class="arrow-top"></div><div class="arrow-bottom"></div></span></button>',
-
-      checklocation: "false",
-
-      checkproducthot: "true",
-
-      checkproductrelated: "true",
-
-      checkproductseen: "false",
-
-      heartactive: "//cdn.hstatic.net/themes/200000846175/1001403720/14/heart-fill.svg?v=245",
-
-      addtocart: "//cdn.hstatic.net/themes/200000846175/1001403720/14/add-to-cart.svg?v=245",
-
-      heart: "//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245",
-
-      sgnotify: "false",
-
-      recaptchajs: "https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-",
-
-      jsonmap: "https://file.hstatic.net/200000397757/file/hethongcuahang_f1ee212eddc04706b09d43518b50a964.json",
-
-      typepaginate: "default",
-
-      typeimage: false,
-
-      trash: "//cdn.hstatic.net/themes/200000846175/1001403720/14/trash.svg?v=245",
-
-      cancel: "//cdn.hstatic.net/themes/200000846175/1001403720/14/cancel.svg?v=245",
-
-      productjson: { "error": "json not allowed for this object" },
-
-      producthandle: "",
-
-      typerelated: "type",
-
-      vendorurl: "/collections/vendors?q=&view=related-product",
-
-      typeurl: "/collections/types?q=&view=related-product",
-
-      sortbydefault: ""
-
-    }
-
-    const formatMoney = '{{amount}} VND', _0x2c0xa = ["\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65", "\x69\x6E\x64\x65\x78\x4F\x66", "\x75\x73\x65\x72\x41\x67\x65\x6E\x74", "\x6C\x6F\x61\x64"];
-
-    function getScriptCcd(url, callback) { $.ajax({ type: "GET", url: url, success: callback, dataType: "script", cache: true }); }
-
-    function getdatasite(url, callback, slider) { $.ajax({ type: "GET", url: url, success: function (data) { callback.html(data) } }).done(() => { slider == 'true' ? Wanda.slidercallback() : '' }); }
-
-    if (navigator[_0x2c0xa[2]][_0x2c0xa[1]](_0x2c0xa[0]) == -1) {
-
-      $(function () {
-
-        const resultcss = `<link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/render-after.scss.css?v=245" rel="preload stylesheet" as="style" type="text/css"><link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/owl-carousel_modal.css?v=245" rel="preload stylesheet" as="style" type="text/css">`;
-
-        $('head').append(resultcss);
-
-      });
-
-      $(window).load(() => { getScriptCcd(tbag_varible.recaptchajs); })
-
-    }
-
-    if ((typeof Haravan) === 'undefined') { Haravan = {}; }
-
-    Haravan.shop = 'lavieestbelle.vn';
-
-    const tbag_radom = {
-
-      item: ["peachy", "lovely-hue", "chic-petals", "pearl-bloom", "honey-ball", "classic-charm", "fresh-mood", "tulip-muse-1"],
-
-      name: [],
-
-      time: ["20 phút trước", "2 giờ trước", "15 phút trước", "8 phút trước", "35 phút trước", "14 phút trước", "3 giờ trước", "1 giờ trước"]
-
-    };
-
-  </script>
-
-  <script type='text/javascript'>
-
-    //<![CDATA[
-
-    if ((typeof Haravan) === 'undefined') {
-
-      Haravan = {};
-
-    }
-
-    Haravan.culture = 'vi-VN';
-
-    Haravan.shop = 'lavieestbelle.myharavan.com';
-
-    Haravan.theme = { "name": "Customize Lavieestbelle", "id": 1001403720, "role": "main" };
-
-    Haravan.domain = 'lavieestbelle.vn';
-
-    //]]>
-
-  </script>
-
-  <script defer src='https://stats.hstatic.net/beacon.min.js' hrv-beacon-t='200000846175'></script>
-
-  <style>
-
-    .grecaptcha-badge {
-
-      visibility: hidden;
-
-    }
-
-  </style>
-
-  <script type='text/javascript'>
-
-    window.HaravanAnalytics = window.HaravanAnalytics || {};
-
-    window.HaravanAnalytics.meta = window.HaravanAnalytics.meta || {};
-
-    window.HaravanAnalytics.meta.currency = 'VND';
-
-    var meta = { "page": { "pageType": "home" } };
-
-    for (var attr in meta) {
-
-      window.HaravanAnalytics.meta[attr] = meta[attr];
-
-    }
-
-    window.HaravanAnalytics.AutoTrack = true;
-
-  </script>
-
-  <script>
-
-    //<![CDATA[
-
-    window.HaravanAnalytics.ga = "UA-000000000-1";
-
-    window.HaravanAnalytics.enhancedEcommerce = false;
-
-    (function (i, s, o, g, r, a, m) {
-
-      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-
-        (i[r].q = i[r].q || []).push(arguments)
-
-      }, i[r].l = 1 * new Date(); a = s.createElement(o),
-
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', window.HaravanAnalytics.ga, 'auto', { allowLinker: true });
-
-    ga('send', 'pageview'); ga('require', 'linker'); try {
-
-      if (window.location.href.indexOf('checkouts') > -1) {
-
-        var themeid = Haravan.theme.id;
-
-        !function (e, t, n) { var a = t.getElementsByTagName(n)[0], c = t.createElement(n); c.async = false, c.src = "https://theme.hstatic.net/200000846175/" + themeid + "/14/main-tracking.js?v=" + (new Date).getTime(), a.parentNode.insertBefore(c, a) }(window, document, "script");
-
+      @media (max-width: 1024px) {
+        .ai-grid {
+          grid-template-columns: 1fr;
+        }
       }
 
-    } catch (e) { };
+      .ai-field {
+        display: flex;
 
-    //]]>
+        flex-direction: column;
 
-  </script>
+        gap: 6px;
 
-  <script
+        margin: 8px 0;
+      }
 
-    type="application/ld+json">{"@context":"http://schema.org","@type":"WebSite","name":"lavieestbelle.vn","url":"https://lavieestbelle.vn","potentialAction":{"@type":"SearchAction","target":"https://lavieestbelle.vn/search?&q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+      .ai-field label {
+        font-size: 13px;
 
+        color: var(--muted);
 
+        font-weight: 500;
+      }
 
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+      .ai-field input,
+      .ai-field select,
+      .ai-field textarea {
+        padding: 12px 14px;
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        border: 1px solid var(--rose-200);
 
+        border-radius: 16px;
 
+        background: #fff;
 
-  <script defer src="components.js"></script>
+        font-size: 14px;
 
+        color: var(--ink);
 
+        font-family: inherit;
+      }
 
-</head>
+      .ai-field input:focus,
+      .ai-field select:focus,
+      .ai-field textarea:focus {
+        outline: none;
 
+        border-color: var(--rose);
 
+        box-shadow: 0 0 0 3px var(--ring);
+      }
 
-<body id="wandave-theme" class="index" data-theme="tbag-fashion">
+      .ai-row {
+        display: grid;
 
-    <site-header></site-header>
+        grid-template-columns: 1fr 1fr;
 
-   <div class="container" id="mainContent">
+        gap: 12px;
+      }
 
-    <h1 class="page-title">Giá» hÃ ng cá»§a báº¡n</h1>
+      .ai-actions {
+        display: flex;
 
-    <p class="subtitle">Hoa tÆ°Æ¡i má»—i ngÃ y â€” ÄÃ³ng gÃ³i cáº©n tháº­n, giao trong 2â€“4h ná»™i thÃ nh.</p>
+        gap: 10px;
 
+        margin-top: 12px;
 
+        flex-wrap: wrap;
+      }
 
-    <div class="grid">
+      .ai-btn {
+        appearance: none;
 
-      <!-- LEFT: CART LIST -->
+        border: 0;
 
-      <section class="card cart">
+        background: var(--rose);
 
-        <div class="cart-head">
+        color: #fff;
 
-          <div>Sản phẩm</div>
+        font-weight: 700;
 
-          <div>Sá»‘ lÆ°á»£ng</div>
+        border-radius: 18px;
 
-          <div>ThÃ nh tiá»n</div>
+        padding: 12px 16px;
 
-          <div></div>
+        cursor: pointer;
 
-        </div>
+        box-shadow: 0 8px 20px rgba(169, 113, 85, 0.28);
 
+        transition: all 0.3s;
+      }
 
+      .ai-btn:hover {
+        background: var(--rose-600);
 
-        <div id="cartItems">
+        transform: translateY(-2px);
+      }
 
-          <!-- Cart items will be inserted here -->
+      .ai-btn.secondary {
+        background: #fff;
 
-        </div>
+        color: var(--ink);
 
+        border: 1px solid var(--rose-200);
 
+        box-shadow: none;
+      }
+
+      .ai-btn.secondary:hover {
+        background: var(--rose-200);
+      }
+
+      .ai-hint {
+        color: var(--muted);
 
-        <div class="section-title">
+        font-size: 12.5px;
+      }
 
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      .ai-canvas-wrap {
+        background: linear-gradient(180deg, #fff, #fffdfc);
 
-            <path d="M20 7v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7" stroke="#a97155" stroke-width="1.4" />
+        border: 1px solid #f6e7da;
 
-            <path d="M8 7V5a4 4 0 0 1 8 0v2" stroke="#a97155" stroke-width="1.4" />
+        border-radius: 18px;
 
-          </svg>
+        display: grid;
 
-          Ghi lá»i chúc kÃ¨m bÃ³ hoa
+        place-items: center;
 
-        </div>
+        min-height: 360px;
 
-        <div class="note" style="padding: 0 18px 18px;">
+        padding: 14px;
+      }
 
-          <textarea id="giftNote" placeholder="VD: ChÃºc má»«ng sinh nhật em âœ¨"></textarea>
+      canvas.ai-canvas {
+        width: 100%;
 
-        </div>
+        height: auto;
 
-      </section>
+        display: block;
 
+        border-radius: 14px;
 
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+    </style>
 
-      <!-- RIGHT: SUMMARY -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson Text:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=fallback"
+      as="style"
+      type="text/css"
+      rel="preload stylesheet"
+    />
 
-      <aside class="card summary">
+    <link
+      href="//cdn.hstatic.net/themes/200000846175/1001403720/14/plugin-style.css?v=245"
+      rel="preload stylesheet"
+      as="style"
+      type="text/css"
+    />
 
-        <div class="section-title">
+    <link
+      href="//cdn.hstatic.net/themes/200000846175/1001403720/14/styles-new.scss.css?v=245"
+      rel="preload stylesheet"
+      as="style"
+      type="text/css"
+    />
 
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+    <link
+      rel="preload"
+      as="image"
+      href="//cdn.hstatic.net/themes/200000846175/1001403720/14/logo.png?v=245"
+    />
 
-            <path d="M12 3l2.7 5.4 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.3l6-.9L12 3z" stroke="#a97155" stroke-width="1.2" />
+    <link
+      href="//cdn.hstatic.net/themes/200000846175/1001403720/14/styles-index.scss.css?v=245"
+      rel="preload stylesheet"
+      as="style"
+      type="text/css"
+    />
 
-          </svg>
+    <link
+      rel="preload"
+      as="image"
+      href="//cdn.hstatic.net/themes/200000846175/1001403720/14/slideshow_1_mob_large.jpg?v=245"
+      media="(max-width: 480px)"
+    />
 
-          TÃ³m táº¯t Ä‘Æ¡n hÃ ng
+    <link
+      href="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"
+      rel="preload"
+      as="script"
+      type="text/javascript"
+    />
 
-        </div>
+    <link
+      href="//cdn.hstatic.net/themes/200000846175/1001403720/14/main-scripts.js?v=245"
+      rel="preload"
+      as="script"
+      type="text/javascript"
+    />
 
-        
+    <script
+      type="text/javascript"
+      src="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"
+    ></script>
 
-        <div class="code">
+    <!-- Tất cả biến khởi tạo, check sử dụng-->
 
-          <input id="discountCode" placeholder="Nháº­p mÃ£ giáº£m giÃ¡">
+    <script>
+      localStorage.setItem("shop_id", "themes/200000846175/1001403720");
 
-          <button class="btn secondary" onclick="applyDiscount()">Ãp dá»¥ng</button>
+      const tbag_varible = {
+        template: "index",
 
-        </div>
+        navLeftText:
+          '<button class="slick-prev slick-arrow custom-style" aria-label="Previous"><span class="arrow-custom arrow-left"><div class="arrow-top"></div><div class="arrow-bottom"></div></span></button>',
 
-        
+        navRightText:
+          '<button class="slick-next slick-arrow custom-style" aria-label="Next"><span class="arrow-custom arrow-right"><div class="arrow-top"></div><div class="arrow-bottom"></div></span></button>',
 
-        <div class="sum-row muted">
+        checklocation: "false",
 
-          <span>Táº¡m tÃ­nh</span>
+        checkproducthot: "true",
 
-          <span id="subtotal">0â‚«</span>
+        checkproductrelated: "true",
 
-        </div>
+        checkproductseen: "false",
 
-        <div class="sum-row muted">
+        heartactive:
+          "//cdn.hstatic.net/themes/200000846175/1001403720/14/heart-fill.svg?v=245",
 
-          <span>PhÃ­ giao (Æ°á»›c tÃ­nh)</span>
+        addtocart:
+          "//cdn.hstatic.net/themes/200000846175/1001403720/14/add-to-cart.svg?v=245",
 
-          <span id="shipping">0â‚«</span>
+        heart:
+          "//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245",
 
-        </div>
+        sgnotify: "false",
 
-        <div class="sum-row muted">
+        recaptchajs:
+          "https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-",
 
-          <span>Giáº£m giÃ¡</span>
+        jsonmap:
+          "https://file.hstatic.net/200000397757/file/hethongcuahang_f1ee212eddc04706b09d43518b50a964.json",
 
-          <span id="discount">0â‚«</span>
+        typepaginate: "default",
 
-        </div>
+        typeimage: false,
 
-        <div class="sum-total">
+        trash:
+          "//cdn.hstatic.net/themes/200000846175/1001403720/14/trash.svg?v=245",
 
-          <span>Tá»•ng cá»™ng</span>
+        cancel:
+          "//cdn.hstatic.net/themes/200000846175/1001403720/14/cancel.svg?v=245",
 
-          <span id="total">0â‚«</span>
+        productjson: { error: "json not allowed for this object" },
 
-        </div>
+        producthandle: "",
 
-        
+        typerelated: "type",
 
-        <div class="actions">
+        vendorurl: "/collections/vendors?q=&view=related-product",
 
-          <button class="btn secondary" onclick="continueShopping()">Tiáº¿p tá»¥c mua</button>
+        typeurl: "/collections/types?q=&view=related-product",
 
-          <button class="btn" onclick="showAICardModal()">Táº¡o thiệp tá»± Ä‘á»™ng</button>
+        sortbydefault: "",
+      };
 
-          <button class="btn" onclick="showCheckoutConfirm()">Thanh toÃ¡n</button>
+      const formatMoney = "{{amount}} VND",
+        _0x2c0xa = [
+          "\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65",
+          "\x69\x6E\x64\x65\x78\x4F\x66",
+          "\x75\x73\x65\x72\x41\x67\x65\x6E\x74",
+          "\x6C\x6F\x61\x64",
+        ];
 
-        </div>
+      function getScriptCcd(url, callback) {
+        $.ajax({
+          type: "GET",
+          url: url,
+          success: callback,
+          dataType: "script",
+          cache: true,
+        });
+      }
 
-      </aside>
+      function getdatasite(url, callback, slider) {
+        $.ajax({
+          type: "GET",
+          url: url,
+          success: function (data) {
+            callback.html(data);
+          },
+        }).done(() => {
+          slider == "true" ? Wanda.slidercallback() : "";
+        });
+      }
 
-    </div>
+      if (navigator[_0x2c0xa[2]][_0x2c0xa[1]](_0x2c0xa[0]) == -1) {
+        $(function () {
+          const resultcss = `<link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/render-after.scss.css?v=245" rel="preload stylesheet" as="style" type="text/css"><link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/owl-carousel_modal.css?v=245" rel="preload stylesheet" as="style" type="text/css">`;
 
-  </div>
+          $("head").append(resultcss);
+        });
 
+        $(window).load(() => {
+          getScriptCcd(tbag_varible.recaptchajs);
+        });
+      }
 
+      if (typeof Haravan === "undefined") {
+        Haravan = {};
+      }
 
-  <!-- Confirmation Modal -->
+      Haravan.shop = "lavieestbelle.vn";
 
-  <div class="modal-overlay" id="confirmModal">
+      const tbag_radom = {
+        item: [
+          "peachy",
+          "lovely-hue",
+          "chic-petals",
+          "pearl-bloom",
+          "honey-ball",
+          "classic-charm",
+          "fresh-mood",
+          "tulip-muse-1",
+        ],
 
-    <div class="modal-content">
+        name: [],
 
-      <div class="modal-header">XÃ¡c nháº­n thanh toÃ¡n</div>
-
-      <div class="modal-body">
-
-        <p>Báº¡n cÃ³ cháº¯c cháº¯n muá»‘n thanh toÃ¡n Ä‘Æ¡n hÃ ng nÃ y khÃ´ng?</p>
-
-        <div style="margin-top: 16px; padding: 16px; background: #faf3ea; border-radius: 12px;">
-
-          <strong>Tá»•ng tiá»n: <span id="confirmTotal" style="color: var(--rose);">0â‚«</span></strong>
-
-        </div>
-
-      </div>
-
-      <div class="modal-actions">
-
-        <button class="btn secondary" onclick="closeConfirmModal()">Há»§y</button>
-
-        <button class="btn" onclick="processCheckout()">Äá»“ng Ã½</button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- Invoice Modal -->
-
-  <div class="modal-overlay" id="invoiceModal">
-
-    <div class="modal-content" style="max-width: 700px;">
-
-      <div class="invoice" id="invoiceContent">
-
-        <!-- Invoice content will be generated here -->
-
-      </div>
-
-      <div class="modal-actions">
-
-        <button class="btn secondary" onclick="printInvoice()">In hÃ³a Ä‘Æ¡n</button>
-
-        <button class="btn" onclick="closeInvoice()">ÄÃ³ng</button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- AI Card Modal -->
-
-  <div class="ai-modal-backdrop" id="aiCardBackdrop"></div>
-
-  <div class="ai-modal" id="aiCardModal">
-
-    <div class="ai-card">
-
-      <div class="ai-head">
-
-        <h3>Táº¡o thiệp tá»± Ä‘á»™ng</h3>
-
-        <button class="ai-close" onclick="closeAICardModal()">âœ•</button>
-
-      </div>
-
-
-
-      <div class="ai-grid">
-
-        <!-- LEFT: form -->
-
-        <div>
-
-          <div class="ai-field">
-
-            <label>NgÆ°á»i nháº­n</label>
-
-            <input id="aiTo" placeholder="VD: Em Linh / Ba máº¹ / Anh Tuáº¥n">
-
+        time: [
+          "20 phút trước",
+          "2 giờ trước",
+          "15 phút trước",
+          "8 phút trước",
+          "35 phút trước",
+          "14 phút trước",
+          "3 giờ trước",
+          "1 giờ trước",
+        ],
+      };
+    </script>
+
+    <script type="text/javascript">
+      //<![CDATA[
+
+      if (typeof Haravan === "undefined") {
+        Haravan = {};
+      }
+
+      Haravan.culture = "vi-VN";
+
+      Haravan.shop = "lavieestbelle.myharavan.com";
+
+      Haravan.theme = {
+        name: "Customize Lavieestbelle",
+        id: 1001403720,
+        role: "main",
+      };
+
+      Haravan.domain = "lavieestbelle.vn";
+
+      //]]>
+    </script>
+
+    <script
+      defer
+      src="https://stats.hstatic.net/beacon.min.js"
+      hrv-beacon-t="200000846175"
+    ></script>
+
+    <style>
+      .grecaptcha-badge {
+        visibility: hidden;
+      }
+    </style>
+
+    <script type="text/javascript">
+      window.HaravanAnalytics = window.HaravanAnalytics || {};
+
+      window.HaravanAnalytics.meta = window.HaravanAnalytics.meta || {};
+
+      window.HaravanAnalytics.meta.currency = "VND";
+
+      var meta = { page: { pageType: "home" } };
+
+      for (var attr in meta) {
+        window.HaravanAnalytics.meta[attr] = meta[attr];
+      }
+
+      window.HaravanAnalytics.AutoTrack = true;
+    </script>
+
+    <script>
+      //<![CDATA[
+
+      window.HaravanAnalytics.ga = "UA-000000000-1";
+
+      window.HaravanAnalytics.enhancedEcommerce = false;
+
+      (function (i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
+          i[r] ||
+          function () {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "//www.google-analytics.com/analytics.js",
+        "ga"
+      );
+
+      ga("create", window.HaravanAnalytics.ga, "auto", { allowLinker: true });
+
+      ga("send", "pageview");
+      ga("require", "linker");
+      try {
+        if (window.location.href.indexOf("checkouts") > -1) {
+          var themeid = Haravan.theme.id;
+
+          !(function (e, t, n) {
+            var a = t.getElementsByTagName(n)[0],
+              c = t.createElement(n);
+            (c.async = false),
+              (c.src =
+                "https://theme.hstatic.net/200000846175/" +
+                themeid +
+                "/14/main-tracking.js?v=" +
+                new Date().getTime()),
+              a.parentNode.insertBefore(c, a);
+          })(window, document, "script");
+        }
+      } catch (e) {}
+
+      //]]>
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "name": "lavieestbelle.vn",
+        "url": "https://lavieestbelle.vn",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://lavieestbelle.vn/search?&q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    
+  </head>
+
+  <body id="wandave-theme" class="index" data-theme="tbag-fashion">
+    <%@ include file="partials/header.jsp" %>
+
+    <div class="container" id="mainContent">
+      <h1 class="page-title">Giỏ hàng của bạn</h1>
+
+      <p class="subtitle">
+        Hoa tươi mỗi ngày — Đóng gói cẩn thận, giao trong 2–4h nội thành.
+      </p>
+
+      <div class="grid">
+        <!-- LEFT: CART LIST -->
+
+        <section class="card cart">
+          <div class="cart-head">
+            <div>Sản phẩm</div>
+
+            <div>Số lượng</div>
+
+            <div>Thành tiền</div>
+
+            <div></div>
           </div>
 
-
-
-          <div class="ai-row">
-
-            <div class="ai-field">
-
-              <label>Dá»‹p / Sự kiá»‡n</label>
-
-              <select id="aiOccasion">
-
-                <option value="sinh nhật">Sinh nháº­t</option>
-
-                <option value="ká»· niá»‡m">Ká»· niá»‡m</option>
-
-                <option value="chúc má»«ng">ChÃºc má»«ng</option>
-
-                <option value="cảm Æ¡n">Cáº£m Æ¡n</option>
-
-                <option value="ngÃ y Ä‘áº·c biá»‡t">NgÃ y Ä‘áº·c biá»‡t</option>
-
-                <option value="an á»§i">An á»§i</option>
-
-              </select>
-
-            </div>
-
-            <div class="ai-field">
-
-              <label>Giá»ng Ä‘iá»‡u</label>
-
-              <select id="aiTone">
-
-                <option value="áº¥m Ã¡p">áº¤m Ã¡p</option>
-
-                <option value="hÃ i hÆ°á»›c">HÃ i hÆ°á»›c</option>
-
-                <option value="trang trá»ng">Trang trá»ng</option>
-
-                <option value="ngá»t ngÃ o">Ngá»t ngÃ o</option>
-
-                <option value="Ä‘á»™ng viÃªn">Äá»™ng viÃªn</option>
-
-              </select>
-
-            </div>
-
+          <div id="cartItems">
+            <!-- Cart items will be inserted here -->
           </div>
 
+          <div class="section-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M20 7v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7"
+                stroke="#a97155"
+                stroke-width="1.4"
+              />
 
+              <path
+                d="M8 7V5a4 4 0 0 1 8 0v2"
+                stroke="#a97155"
+                stroke-width="1.4"
+              />
+            </svg>
 
-          <div class="ai-row">
-
-            <div class="ai-field">
-
-              <label>Äá»™ dÃ i</label>
-
-              <select id="aiLength">
-
-                <option value="ngáº¯n">Ngáº¯n</option>
-
-                <option value="vá»«a">Vá»«a</option>
-
-                <option value="dÃ i">DÃ i</option>
-
-              </select>
-
-            </div>
-
-            <div class="ai-field">
-
-              <label>NgÆ°á»i gá»­i (kÃ½ tÃªn)</label>
-
-              <input id="aiFrom" placeholder="VD: TÃªn cá»§a báº¡n">
-
-            </div>
-
+            Ghi lời chúc kèm bó hoa
           </div>
 
+          <div class="note" style="padding: 0 18px 18px">
+            <textarea
+              id="giftNote"
+              placeholder="VD: Chúc mừng sinh nhật em ✨"
+            ></textarea>
+          </div>
+        </section>
 
+        <!-- RIGHT: SUMMARY -->
 
-          <div class="ai-field">
+        <aside class="card summary">
+          <div class="section-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 3l2.7 5.4 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.3l6-.9L12 3z"
+                stroke="#a97155"
+                stroke-width="1.2"
+              />
+            </svg>
 
-            <label>Lá»i nháº¯n thá»§ công (tÃ¹y chá»n)</label>
+            Tóm tắt đơn hàng
+          </div>
 
-            <textarea id="aiManual" rows="3"
+          <div class="code">
+            <input id="discountCode" placeholder="Nhập mã giảm giá" />
 
-              placeholder="Náº¿u Ä‘Ã£ ghi lá»i chúc á»Ÿ Ã´ 'Ghi lá»i chúc kÃ¨m bÃ³ hoa', báº¥m 'Láº¥y lá»i nháº¯n tá»« giờ' Ä‘á»ƒ dÃ¹ng láº¡i."></textarea>
+            <button class="btn secondary" onclick="applyDiscount()">
+              Áp dụng
+            </button>
+          </div>
+
+          <div class="sum-row muted">
+            <span>Tạm tính</span>
+
+            <span id="subtotal">0đ</span>
+          </div>
+
+          <div class="sum-row muted">
+            <span>Phí giao (ước tính)</span>
+
+            <span id="shipping">0đ</span>
+          </div>
+
+          <div class="sum-row muted">
+            <span>Giảm giá</span>
+
+            <span id="discount">0đ</span>
+          </div>
+
+          <div class="sum-total">
+            <span>Tổng cộng</span>
+
+            <span id="total">0đ</span>
+          </div>
+
+          <div class="actions">
+            <button class="btn secondary" onclick="continueShopping()">
+              Tiếp tục mua
+            </button>
+
+            <button class="btn" onclick="showAICardModal()">
+              Tạo thiệp tự động
+            </button>
+
+            <button class="btn" onclick="showCheckoutConfirm()">
+              Thanh toán
+            </button>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+
+    <div class="modal-overlay" id="confirmModal">
+      <div class="modal-content">
+        <div class="modal-header">Xác nhận thanh toán</div>
+
+        <div class="modal-body">
+          <p>Bạn có chắc chắn muốn thanh toán đơn hàng này không?</p>
+
+          <div
+            style="
+              margin-top: 16px;
+              padding: 16px;
+              background: #faf3ea;
+              border-radius: 12px;
+            "
+          >
+            <strong
+              >Tổng tiền:
+              <span id="confirmTotal" style="color: var(--rose)"
+                >0₫</span
+              ></strong
+            >
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn secondary" onclick="closeConfirmModal()">
+            Hủy
+          </button>
+
+          <button class="btn" onclick="processCheckout()">Đồng ý</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Invoice Modal -->
+
+    <div class="modal-overlay" id="invoiceModal">
+      <div class="modal-content" style="max-width: 700px">
+        <div class="invoice" id="invoiceContent">
+          <!-- Invoice content will be generated here -->
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn secondary" onclick="printInvoice()">
+            In hóa đơn
+          </button>
+
+          <button class="btn" onclick="closeInvoice()">Đóng</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Card Modal -->
+
+    <div class="ai-modal-backdrop" id="aiCardBackdrop"></div>
+
+    <div class="ai-modal" id="aiCardModal">
+      <div class="ai-card">
+        <div class="ai-head">
+          <h3>Tạo thiệp tự động</h3>
+
+          <button class="ai-close" onclick="closeAICardModal()">✕</button>
+        </div>
+
+        <div class="ai-grid">
+          <!-- LEFT: form -->
+
+          <div>
+            <div class="ai-field">
+              <label>Người nhận</label>
+
+              <input id="aiTo" placeholder="VD: Em Linh / Ba mẹ / Anh Tuấn" />
+            </div>
+
+            <div class="ai-row">
+              <div class="ai-field">
+                <label>Dịp / Sự kiện</label>
+
+                <select id="aiOccasion">
+                  <option value="sinh nhật">Sinh nhật</option>
+
+                  <option value="kỷ niệm">Kỷ niệm</option>
+
+                  <option value="chúc mừng">Chúc mừng</option>
+
+                  <option value="cảm ơn">Cảm ơn</option>
+
+                  <option value="ngày đặc biệt">Ngày đặc biệt</option>
+
+                  <option value="an ủi">An á»§i</option>
+                </select>
+              </div>
+
+              <div class="ai-field">
+                <label>Giọng điệu</label>
+
+                <select id="aiTone">
+                  <option value="ấm áp">Ấm áp</option>
+
+                  <option value="hài hước">Hài hước</option>
+
+                  <option value="trang trọng">Trang trọng</option>
+
+                  <option value="ngọt ngào">Ngọt ngào</option>
+
+                  <option value="động viên">Động viên</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="ai-row">
+              <div class="ai-field">
+                <label>Độ dài</label>
+
+                <select id="aiLength">
+                  <option value="ngắn">Ngắn</option>
+
+                  <option value="vừa">Vừa</option>
+
+                  <option value="dài">Dài</option>
+                </select>
+              </div>
+
+              <div class="ai-field">
+                <label>Người gửi (ký tên)</label>
+
+                <input id="aiFrom" placeholder="VD: Tên của bạn" />
+              </div>
+            </div>
+
+            <div class="ai-field">
+              <label>Lời nhắn thá»§ công (tùy chọn)</label>
+
+              <textarea
+                id="aiManual"
+                rows="3"
+                placeholder="Nếu đã ghi lời chúc ở ô 'Ghi lời chúc kèm bó hoa', bấm 'Lấy lời nhắn từ giờ' để dùng lại."
+              ></textarea>
+
+              <div class="ai-actions">
+                <button class="ai-btn secondary" onclick="grabNoteFromCart()">
+                  Lấy lời nhắn từ giờ
+                </button>
+
+                <span class="ai-hint"
+                  >Mẹo: để trống phần này nếu muốn AI tự sinh toàn bộ.</span
+                >
+              </div>
+            </div>
 
             <div class="ai-actions">
+              <button class="ai-btn" onclick="generateMessage()">
+                Sinh lời chúc
+              </button>
 
-              <button class="ai-btn secondary" onclick="grabNoteFromCart()">Láº¥y lá»i nháº¯n tá»« giờ</button>
+              <button class="ai-btn secondary" onclick="renderCard()">
+                Tạo thiệp
+              </button>
 
-              <span class="ai-hint">Máº¹o: Ä‘á»ƒ trá»‘ng pháº§n nÃ y náº¿u muá»‘n AI tá»± sinh toÃ n bá»™.</span>
+              <button class="ai-btn secondary" onclick="downloadCard()">
+                Tải PNG
+              </button>
+            </div>
+          </div>
 
+          <!-- RIGHT: canvas preview -->
+
+          <div>
+            <div class="ai-canvas-wrap">
+              <canvas
+                id="aiCanvas"
+                width="900"
+                height="600"
+                class="ai-canvas"
+              ></canvas>
             </div>
 
+            <p class="ai-hint" style="margin-top: 8px">
+              Thiệp dùng tông nâu ấm của trang, kèm hoa 🌸·ðŸŒ·.<br />Hình xuất
+              PNG 900×600.
+            </p>
           </div>
-
-
-
-          <div class="ai-actions">
-
-            <button class="ai-btn" onclick="generateMessage()">Sinh lá»i chúc</button>
-
-            <button class="ai-btn secondary" onclick="renderCard()">Táº¡o thiệp</button>
-
-            <button class="ai-btn secondary" onclick="downloadCard()">Táº£i PNG</button>
-
-          </div>
-
         </div>
-
-
-
-        <!-- RIGHT: canvas preview -->
-
-        <div>
-
-          <div class="ai-canvas-wrap">
-
-            <canvas id="aiCanvas" width="900" height="600" class="ai-canvas"></canvas>
-
-          </div>
-
-          <p class="ai-hint" style="margin-top:8px">
-
-            Thiá»‡p dÃ¹ng tÃ´ng nÃ¢u áº¥m cá»§a trang, kÃ¨m hoa ðŸŒ¸·ðŸŒ·.<br>HÃ¬nh xuáº¥t PNG 900Ã—600.
-
-          </p>
-
-        </div>
-
       </div>
-
     </div>
 
-  </div>
+    <%@ include file="partials/footer.jsp" %>
 
-    <site-footer></site-footer>
+    <script>
+      // Sample cart data
 
-  <script>
+      let cartItems = [
+        {
+          id: 1,
 
-    // Sample cart data
+          name: "Bó Hồng Phấn – Soft Rose",
 
-    let cartItems = [
+          meta: "Màu hồng phấn • Size M",
 
-      {
+          price: 520000,
 
-        id: 1,
+          quantity: 1,
 
-        name: 'Bó Há»“ng Pháº¥n â€“ Soft Rose',
+          image:
+            "https://product.hstatic.net/200000846175/product/stcked-6_78b3da3372454315b4d7d1798804ae6b_grande.jpg",
+        },
 
-        meta: 'MÃ u há»“ng pháº¥n â€¢ Size M',
+        {
+          id: 2,
 
-        price: 520000,
+          name: "Tulip Blush",
 
-        quantity: 1,
+          meta: "Hồng pastel • 15 cành",
 
-        image: 'https://product.hstatic.net/200000846175/product/stcked-6_78b3da3372454315b4d7d1798804ae6b_grande.jpg'
+          price: 690000,
 
-      },
+          quantity: 1,
 
-      {
+          image:
+            "https://product.hstatic.net/200000846175/product/rowan27_2371bf7c7c244c6f8357c9634eefd534_grande.jpg",
+        },
+      ];
 
-        id: 2,
+      let discountAmount = 0;
 
-        name: 'Tulip Blush',
+      const shippingFee = 0;
 
-        meta: 'Há»“ng pastel â€¢ 15 cÃ nh',
+      function formatPrice(price) {
+        return new Intl.NumberFormat("vi-VN", {
+          style: "currency",
 
-        price: 690000,
-
-        quantity: 1,
-
-        image: 'https://product.hstatic.net/200000846175/product/rowan27_2371bf7c7c244c6f8357c9634eefd534_grande.jpg'
-
+          currency: "VND",
+        }).format(price);
       }
 
-    ];
+      function renderCart() {
+        const container = document.getElementById("cartItems");
 
-
-
-    let discountAmount = 0;
-
-    const shippingFee = 0;
-
-
-
-    function formatPrice(price) {
-
-      return new Intl.NumberFormat('vi-VN', {
-
-        style: 'currency',
-
-        currency: 'VND'
-
-      }).format(price);
-
-    }
-
-
-
-    function renderCart() {
-
-      const container = document.getElementById('cartItems');
-
-      
-
-      if (cartItems.length === 0) {
-
-        container.innerHTML = `
+        if (cartItems.length === 0) {
+          container.innerHTML = `
 
           <div class="empty-cart">
 
-            <div class="empty-cart-icon">ðŸ›’</div>
+            <div class="empty-cart-icon">🛒</div>
 
-            <h3>Giá» hÃ ng trá»‘ng</h3>
+            <h3>Giỏ hàng trống</h3>
 
-            <p style="color: var(--muted); margin: 12px 0;">HÃ£y thêm sáº£n pháº©m vÃ o giờ hÃ ng!</p>
+            <p style="color: var(--muted); margin: 12px 0;">Hãy thêm sản phẩm vào giỏ hàng!</p>
 
-            <button class="btn" onclick="continueShopping()">Mua sáº¯m ngay</button>
+            <button class="btn" onclick="continueShopping()">Mua sắm ngay</button>
 
           </div>
 
         `;
 
-        updateSummary();
+          updateSummary();
 
-        return;
+          return;
+        }
 
-      }
-
-
-
-      container.innerHTML = cartItems.map(item => `
+        container.innerHTML = cartItems
+          .map(
+            (item) => `
 
         <div class="cart-row">
 
@@ -2346,175 +1935,137 @@
 
           <div>
 
-            <div class="remove" onclick="removeItem(${item.id})" title="XÃ³a">âœ•</div>
+            <div class="remove" onclick="removeItem(${
+              item.id
+            })" title="Xóa">✕</div>
 
           </div>
 
         </div>
 
-      `).join('');
+      `
+          )
+          .join("");
 
-
-
-      updateSummary();
-
-    }
-
-
-
-    function updateSummary() {
-
-      const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-      const total = subtotal + shippingFee - discountAmount;
-
-
-
-      document.getElementById('subtotal').textContent = formatPrice(subtotal);
-
-      document.getElementById('shipping').textContent = formatPrice(shippingFee);
-
-      document.getElementById('discount').textContent = formatPrice(discountAmount);
-
-      document.getElementById('total').textContent = formatPrice(total);
-
-    }
-
-
-
-    function removeItem(id) {
-
-      cartItems = cartItems.filter(item => item.id !== id);
-
-      renderCart();
-
-    }
-
-
-
-    function applyDiscount() {
-
-      const code = document.getElementById('discountCode').value.trim().toUpperCase();
-
-      
-
-      if (code === 'LAVIE10') {
-
-        const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-        discountAmount = subtotal * 0.1;
-
-        alert('âœ… Ãp dá»¥ng mÃ£ giáº£m giÃ¡ 10% thÃ nh công!');
-
-      } else if (code === 'LAVIE50K') {
-
-        discountAmount = 50000;
-
-        alert('âœ… Ãp dá»¥ng mÃ£ giáº£m 50.000â‚« thÃ nh công!');
-
-      } else if (code) {
-
-        alert('âŒ MÃ£ giáº£m giÃ¡ khÃ´ng hợp lá»‡!');
-
-        discountAmount = 0;
-
+        updateSummary();
       }
 
-      
+      function updateSummary() {
+        const subtotal = cartItems.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0
+        );
 
-      updateSummary();
+        const total = subtotal + shippingFee - discountAmount;
 
-    }
+        document.getElementById("subtotal").textContent = formatPrice(subtotal);
 
+        document.getElementById("shipping").textContent =
+          formatPrice(shippingFee);
 
+        document.getElementById("discount").textContent =
+          formatPrice(discountAmount);
 
-    function continueShopping() {
-
-      alert('ðŸŒ¸ Chá»©c nÄƒng Ä‘ang phÃ¡t triá»ƒn - Sáº½ chuyá»ƒn vá» trang sáº£n pháº©m');
-
-    }
-
-
-
-    function showCheckoutConfirm() {
-
-      if (cartItems.length === 0) {
-
-        alert('âŒ Giá» hÃ ng trá»‘ng!');
-
-        return;
-
+        document.getElementById("total").textContent = formatPrice(total);
       }
 
+      function removeItem(id) {
+        cartItems = cartItems.filter((item) => item.id !== id);
 
+        renderCart();
+      }
 
-      const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      function applyDiscount() {
+        const code = document
+          .getElementById("discountCode")
+          .value.trim()
+          .toUpperCase();
 
-      const total = subtotal + shippingFee - discountAmount;
+        if (code === "LAVIE10") {
+          const subtotal = cartItems.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0
+          );
 
-      
+          discountAmount = subtotal * 0.1;
 
-      document.getElementById('confirmTotal').textContent = formatPrice(total);
+          alert("✅ Áp dụng mã giảm giá 10% thành công!");
+        } else if (code === "LAVIE50K") {
+          discountAmount = 50000;
 
-      document.getElementById('confirmModal').classList.add('active');
+          alert("✅ Áp dụng mã giảm 50.000đ thành công!");
+        } else if (code) {
+          alert("❌ Mã giảm giá không hợp lệ!");
 
-    }
+          discountAmount = 0;
+        }
 
+        updateSummary();
+      }
 
+      function continueShopping() {
+        alert("🌸 Chức năng đang phát triển - Sẽ chuyển về trang sản phẩm");
+      }
 
-    function closeConfirmModal() {
+      function showCheckoutConfirm() {
+        if (cartItems.length === 0) {
+          alert("❌ Giỏ hàng trống!");
 
-      document.getElementById('confirmModal').classList.remove('active');
+          return;
+        }
 
-    }
+        const subtotal = cartItems.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0
+        );
 
+        const total = subtotal + shippingFee - discountAmount;
 
+        document.getElementById("confirmTotal").textContent =
+          formatPrice(total);
 
-    function processCheckout() {
+        document.getElementById("confirmModal").classList.add("active");
+      }
 
-      closeConfirmModal();
+      function closeConfirmModal() {
+        document.getElementById("confirmModal").classList.remove("active");
+      }
 
-      
+      function processCheckout() {
+        closeConfirmModal();
 
-      // Simulate processing
+        // Simulate processing
 
-      setTimeout(() => {
+        setTimeout(() => {
+          generateInvoice();
 
-        generateInvoice();
+          document.getElementById("invoiceModal").classList.add("active");
+        }, 500);
+      }
 
-        document.getElementById('invoiceModal').classList.add('active');
+      function generateInvoice() {
+        const now = new Date();
 
-      }, 500);
+        const invoiceNumber = "INV" + now.getTime().toString().slice(-8);
 
-    }
+        const giftNote = document.getElementById("giftNote").value.trim();
 
+        const subtotal = cartItems.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0
+        );
 
+        const total = subtotal + shippingFee - discountAmount;
 
-    function generateInvoice() {
+        const invoiceHTML = `
 
-      const now = new Date();
-
-      const invoiceNumber = 'INV' + now.getTime().toString().slice(-8);
-
-      const giftNote = document.getElementById('giftNote').value.trim();
-
-      
-
-      const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-      const total = subtotal + shippingFee - discountAmount;
-
-
-
-      const invoiceHTML = `
-
-        <div class="success-icon">âœ“</div>
+        <div class="success-icon">✓</div>
 
         <div class="invoice-header">
 
-          <h2>HÃ³a ÄÆ¡n Thanh ToÃ¡n</h2>
+          <h2>Hóa Đơn Thanh Toán</h2>
 
-          <p style="color: var(--muted); font-size: 14px;">Tiệm hoa nhÃ  tớ</p>
+          <p style="color: var(--muted); font-size: 14px;">Tiệm hoa nhà tớ</p>
 
         </div>
 
@@ -2524,15 +2075,15 @@
 
           <div class="invoice-section">
 
-            <h3>ThÃ´ng tin Ä‘Æ¡n hÃ ng</h3>
+            <h3>Thông tin đơn hàng</h3>
 
             <p>
 
-              MÃ£ Ä‘Æ¡n: <strong>${invoiceNumber}</strong><br>
+              Mã đơn: <strong>${invoiceNumber}</strong><br>
 
-              NgÃ y: ${now.toLocaleDateString('vi-VN')}<br>
+              Ngày: ${now.toLocaleDateString("vi-VN")}<br>
 
-              Giá»: ${now.toLocaleTimeString('vi-VN')}
+              Giờ: ${now.toLocaleTimeString("vi-VN")}
 
             </p>
 
@@ -2540,15 +2091,15 @@
 
           <div class="invoice-section">
 
-            <h3>ThÃ´ng tin khách hÃ ng</h3>
+            <h3>Thông tin khách hàng</h3>
 
             <p>
 
-              KhÃ¡ch hÃ ng VIP<br>
+              Khách hàng VIP<br>
 
-              Giao hÃ ng: 2-4 giờ<br>
+              Giao hàng: 2-4 giờ<br>
 
-              Khu vá»±c: Ná»™i thÃ nh
+              Khu vực: Nội thành
 
             </p>
 
@@ -2560,9 +2111,11 @@
 
         <div class="invoice-items">
 
-          <h3 style="margin-bottom: 16px; color: var(--ink);">Chi tiáº¿t Ä‘Æ¡n hÃ ng</h3>
+          <h3 style="margin-bottom: 16px; color: var(--ink);">Chi tiết đơn hàng</h3>
 
-          ${cartItems.map(item => `
+          ${cartItems
+            .map(
+              (item) => `
 
             <div class="invoice-item">
 
@@ -2570,31 +2123,41 @@
 
                 <div class="invoice-item-name">${item.name}</div>
 
-                <div class="invoice-item-meta">${item.meta} Ã— ${item.quantity}</div>
+                <div class="invoice-item-meta">${item.meta} × ${
+                item.quantity
+              }</div>
 
               </div>
 
-              <div class="invoice-item-price">${formatPrice(item.price * item.quantity)}</div>
+              <div class="invoice-item-price">${formatPrice(
+                item.price * item.quantity
+              )}</div>
 
             </div>
 
-          `).join('')}
+          `
+            )
+            .join("")}
 
         </div>
 
 
 
-        ${giftNote ? `
+        ${
+          giftNote
+            ? `
 
           <div style="background: #faf3ea; padding: 16px; border-radius: 12px; margin-bottom: 24px;">
 
-            <h3 style="font-size: 14px; color: var(--muted); margin-bottom: 8px;">Lá»œI CHÃšC</h3>
+            <h3 style="font-size: 14px; color: var(--muted); margin-bottom: 8px;">LỜI CHÚC</h3>
 
             <p style="font-style: italic; color: var(--ink);">"${giftNote}"</p>
 
           </div>
 
-        ` : ''}
+        `
+            : ""
+        }
 
 
 
@@ -2602,7 +2165,7 @@
 
           <div class="invoice-total-row">
 
-            <span>Táº¡m tÃ­nh</span>
+            <span>Tạm tính</span>
 
             <span>${formatPrice(subtotal)}</span>
 
@@ -2610,27 +2173,31 @@
 
           <div class="invoice-total-row">
 
-            <span>PhÃ­ giao hÃ ng</span>
+            <span>Phí giao hàng</span>
 
             <span>${formatPrice(shippingFee)}</span>
 
           </div>
 
-          ${discountAmount > 0 ? `
+          ${
+            discountAmount > 0
+              ? `
 
             <div class="invoice-total-row" style="color: var(--success);">
 
-              <span>Giáº£m giÃ¡</span>
+              <span>Giảm giá</span>
 
               <span>-${formatPrice(discountAmount)}</span>
 
             </div>
 
-          ` : ''}
+          `
+              : ""
+          }
 
           <div class="invoice-total-row grand">
 
-            <span>Tá»”NG Cá»˜NG</span>
+            <span>TỔNG CỘNG</span>
 
             <span>${formatPrice(total)}</span>
 
@@ -2642,559 +2209,385 @@
 
         <div class="invoice-footer">
 
-          <p>Cáº£m Æ¡n báº¡n Ä‘Ã£ mua hÃ ng táº¡i Tiệm hoa nhÃ  tớ!</p>
+          <p>Cảm ơn bạn đã mua hàng tại Tiệm hoa nhà tớ!</p>
 
-          <p style="margin-top: 8px;">Hotline: 0123 456 789 â€¢ tiemhoanhato.vn</p>
+          <p style="margin-top: 8px;">Hotline: 0123 456 789 • tiemhoanhato.vn</p>
 
         </div>
 
       `;
 
-
-
-      document.getElementById('invoiceContent').innerHTML = invoiceHTML;
-
-    }
-
-
-
-    function closeInvoice() {
-
-      document.getElementById('invoiceModal').classList.remove('active');
-
-      
-
-      // Reset cart after closing invoice
-
-      cartItems = [];
-
-      discountAmount = 0;
-
-      document.getElementById('giftNote').value = '';
-
-      document.getElementById('discountCode').value = '';
-
-      renderCart();
-
-    }
-
-
-
-    function printInvoice() {
-
-      window.print();
-
-    }
-
-
-
-    // AI Card Functions
-
-    let currentMessage = '';
-
-
-
-    function showAICardModal() {
-
-      document.getElementById('aiCardModal').classList.add('active');
-
-      document.getElementById('aiCardBackdrop').classList.add('active');
-
-      initializeCanvas();
-
-    }
-
-
-
-    function closeAICardModal() {
-
-      document.getElementById('aiCardModal').classList.remove('active');
-
-      document.getElementById('aiCardBackdrop').classList.remove('active');
-
-    }
-
-
-
-    function grabNoteFromCart() {
-
-      const note = document.getElementById('giftNote').value.trim();
-
-      if (note) {
-
-        document.getElementById('aiManual').value = note;
-
-      } else {
-
-        document.getElementById('aiManual').value = 'â€”';
-
+        document.getElementById("invoiceContent").innerHTML = invoiceHTML;
       }
 
-    }
+      function closeInvoice() {
+        document.getElementById("invoiceModal").classList.remove("active");
 
+        // Reset cart after closing invoice
 
+        cartItems = [];
 
-    function pick(arr) {
+        discountAmount = 0;
 
-      return arr[Math.floor(Math.random() * arr.length)];
+        document.getElementById("giftNote").value = "";
 
-    }
+        document.getElementById("discountCode").value = "";
 
-
-
-    function getCartSummary() {
-
-      const names = cartItems.map(item => item.name);
-
-      const count = cartItems.length;
-
-      return { names, count };
-
-    }
-
-
-
-    function buildMessage() {
-
-      const to = document.getElementById('aiTo').value.trim() || 'Báº¡n';
-
-      const from = document.getElementById('aiFrom').value.trim() || 'MÃ¬nh';
-
-      const occ = document.getElementById('aiOccasion').value;
-
-      const tone = document.getElementById('aiTone').value;
-
-      const len = document.getElementById('aiLength').value;
-
-
-
-      const { names, count } = getCartSummary();
-
-      const bouquet = count ? `bÃ³ ${count > 1 ? count + ' loáº¡i hoa' : 'hoa'} ${names[0] ?? ''}`.trim() : 'bÃ³ hoa';
-
-
-
-      const openers = {
-
-        'áº¥m Ã¡p': [
-
-          `Gá»­i ${to} thÃ¢n máº¿n,`,
-
-          `${to} Æ¡i,`,
-
-          `ThÆ°Æ¡ng gá»­i ${to},`
-
-        ],
-
-        'hÃ i hÆ°á»›c': [
-
-          `Hello ${to}, "ban công tim" má»Ÿ cá»­a!`,
-
-          `ÃŠ ${to}, hoa tới kẹoâ€¦ tim quÃ¡ háº¡n ðŸ˜†`,
-
-          `${to} Æ¡i, má»Ÿ quÃ  trước, cảm Ä‘á»™ng sau nha!`
-
-        ],
-
-        'trang trá»ng': [
-
-          `KÃ­nh gá»­i ${to},`,
-
-          `TrÃ¢n trá»ng gá»­i ${to},`,
-
-          `Gá»­i ${to},`
-
-        ],
-
-        'ngá»t ngÃ o': [
-
-          `NÃ y ${to} dá»… thÆ°Æ¡ng,`,
-
-          `Cho ${to} cá»§a mÃ¬nh,`,
-
-          `Gá»­i ${to}, ngÆ°á»i lÃ m ngÃ y thÆ°á»ng hÃ³a ngá»t.`
-
-        ],
-
-        'Ä‘á»™ng viÃªn': [
-
-          `Gá»­i ${to},`,
-
-          `${to} Æ¡i,`,
-
-          `ThÆ°Æ¡ng gá»­i ${to},`
-
-        ]
-
-      };
-
-
-
-      const bodies = {
-
-        'sinh nhật': [
-
-          `chúc báº¡n tuá»•i má»›i tháº­t nhiá»u sá»©c khá»e, niá»m vui vÃ  nhá»¯ng Ä‘iá»u nhiá»‡m mÃ u. ${bouquet} nÃ y thay mÃ¬nh gá»­i muÃ´n vÃ n yêu thÆ°Æ¡ng!`,
-
-          `mong má»i Æ°á»›c mÆ¡ cá»§a báº¡n ná»Ÿ rá»™ như nhá»¯ng cÃ¡nh hoa nÃ y. ChÃºc một nÄƒm rá»±c rá»¡ vÃ  bÃ¬nh an!`,
-
-          `một vÃ²ng quay ná»¯a quanh máº·t trá»i, mong báº¡n luÃ´n ráº¡ng rá»¡, áº¥m Ã¡p vÃ  Ä‘Æ°á»£c yêu thÆ°Æ¡ng Ä‘á»§ Ä‘áº§y.`
-
-        ],
-
-        'ká»· niá»‡m': [
-
-          `cảm Æ¡n vÃ¬ nhá»¯ng ngÃ y Ä‘Ã£ qua vÃ  cáº£ cháº·ng Ä‘Æ°á»ng phÃ­a trước. Mong má»—i láº§n nhÃ¬n ${bouquet}, báº¡n láº¡i nhá»› Ä‘áº¿n ná»¥ cÆ°á»i cá»§a chÃºng ta.`,
-
-          `má»—i cÃ¡nh hoa lÃ  một khoáº£nh kháº¯c mÃ¬nh trÃ¢n quÃ½. ChÃºc ta luÃ´n náº¯m tay nhau qua má»—i mÃ¹a.`
-
-        ],
-
-        'chúc má»«ng': [
-
-          `chúc má»«ng cá»™t má»‘c tuyá»‡t vá»i! Mong báº¡n tiáº¿p tá»¥c toáº£ sÃ¡ng, bá»n bá»‰ vÃ  háº¡nh phÃºc trÃªn hÃ nh trình má»›i.`,
-
-          `thÃ nh quáº£ ngá»t lÃ nh như hÆ°Æ¡ng hoa. Ráº¥t tá»± hÃ o vá» báº¡n!`
-
-        ],
-
-        'cảm Æ¡n': [
-
-          `cảm Æ¡n vÃ¬ sá»± quan tÃ¢m vÃ  giÃºp Ä‘á»¡. Mong bÃ³ hoa nhá» nÃ y gá»­i Ä‘áº¿n báº¡n Ä‘iá»u áº¥m Ã¡p như báº¡n Ä‘Ã£ trao.`,
-
-          `lá»i cảm Æ¡n Ä‘Ã´i khi khÃ³ nÃ³i háº¿t â€” mong hÆ°Æ¡ng hoa nÃ³i giÃ¹m mÃ¬nh pháº§n nÃ o.`
-
-        ],
-
-        'ngÃ y Ä‘áº·c biá»‡t': [
-
-          `mong hÃ´m nay cá»§a báº¡n dá»‹u dÃ ng vÃ  Ä‘á»§ Ä‘áº§y. Hy vá»ng ${bouquet} kháº½ cháº¡m vÃ o trÃ¡i tim báº¡n.`,
-
-          `chúc báº¡n một ngÃ y Ä‘áº¹p như Ä‘iá»u báº¡n xá»©ng Ä‘Ã¡ng.`
-
-        ],
-
-        'an á»§i': [
-
-          `cÃ³ nhá»¯ng ngÃ y mÃ¢y kÃ©o Ä‘áº¿n â€” mong hÆ°Æ¡ng hoa nÃ y sáº½ lÃ  chÃºt náº¯ng an yÃªn cho báº¡n.`,
-
-          `hÃ£y cho mÃ¬nh Ä‘Æ°á»£c á»Ÿ Ä‘Ã¢y cÃ¹ng báº¡n. Rá»“i má»i chuyá»‡n cÅ©ng sáº½ dá»‹u láº¡i thÃ´i.`
-
-        ]
-
-      };
-
-
-
-      const closers = {
-
-        'áº¥m Ã¡p': [
-
-          `ThÆ°Æ¡ng máº¿n, ${from}`,
-
-          `Ã”m báº¡n một cÃ¡i tháº­t cháº·t, ${from}`
-
-        ],
-
-        'hÃ i hÆ°á»›c': [
-
-          `KÃ½ tÃªn: shipper cảm xÃºc â€” ${from}`,
-
-          `Táº·ng hoa chá»“ngâ€¦ xÃ¬-trÃ©t! â€” ${from}`
-
-        ],
-
-        'trang trá»ng': [
-
-          `TrÃ¢n trá»ng, ${from}`,
-
-          `ThÃ¢n Ã¡i, ${from}`
-
-        ],
-
-        'ngá»t ngÃ o': [
-
-          `YÃªu thÆ°Æ¡ng nhiá»u, ${from}`,
-
-          `NgÃ n ná»¥ hÃ´n giÃ³, ${from}`
-
-        ],
-
-        'Ä‘á»™ng viÃªn': [
-
-          `MÃ¬nh luÃ´n á»Ÿ Ä‘Ã¢y, ${from}`,
-
-          `Vá»¯ng vÃ ng nhÃ©, ${from}`
-
-        ]
-
-      };
-
-
-
-      let text = `${pick(openers[tone])}\n\n${pick(bodies[occ])}\n\n${pick(closers[tone])}`;
-
-      const manual = document.getElementById('aiManual').value.trim();
-
-      if (manual && manual !== 'â€”') {
-
-        text = `${pick(openers[tone])}\n\n${manual}\n\n${pick(closers[tone])}`;
-
+        renderCart();
       }
 
-
-
-      if (len === 'ngáº¯n') {
-
-        text = text.split('\n').slice(0, 3).join('\n');
-
-      } else if (len === 'dÃ i') {
-
-        text += `\n\nP/S: Cáº£m Æ¡n báº¡n Ä‘Ã£ lÃ  chÃ­nh mÃ¬nh. Má»i Ä‘iá»u tá»‘t Ä‘áº¹p Ä‘ang tới gáº§n â€” tin mÃ¬nh nhÃ©!`;
-
+      function printInvoice() {
+        window.print();
       }
 
-      return text;
+      // AI Card Functions
 
-    }
+      let currentMessage = "";
 
+      function showAICardModal() {
+        document.getElementById("aiCardModal").classList.add("active");
 
+        document.getElementById("aiCardBackdrop").classList.add("active");
 
-    function generateMessage() {
-
-      currentMessage = buildMessage();
-
-      drawCard(currentMessage, false);
-
-    }
-
-
-
-    function renderCard() {
-
-      if (!currentMessage) currentMessage = buildMessage();
-
-      drawCard(currentMessage, true);
-
-    }
-
-
-
-    function downloadCard() {
-
-      const canvas = document.getElementById('aiCanvas');
-
-      const link = document.createElement('a');
-
-      const stamp = new Date().toISOString().slice(0, 10);
-
-      link.download = `thiep_${stamp}.png`;
-
-      link.href = canvas.toDataURL('image/png');
-
-      link.click();
-
-    }
-
-
-
-    function initializeCanvas() {
-
-      drawCard('GÃµ thÃ´ng tin á»Ÿ trÃ¡i, báº¥m "Sinh lá»i chúc" rá»“i "Táº¡o thiệp" Ä‘á»ƒ xem trước.\n\nðŸŒ¼ Gá»£i Ã½: nháº­p NgÆ°á»i nháº­n, chá»n Dá»‹p & Giá»ng Ä‘iá»‡u.', false);
-
-    }
-
-
-
-    function drawRoundedRect(ctx, x, y, w, h, r) {
-
-      const rr = Math.min(r, w / 2, h / 2);
-
-      ctx.beginPath();
-
-      ctx.moveTo(x + rr, y);
-
-      ctx.arcTo(x + w, y, x + w, y + h, rr);
-
-      ctx.arcTo(x + w, y + h, x, y + h, rr);
-
-      ctx.arcTo(x, y + h, x, y, rr);
-
-      ctx.arcTo(x, y, x + w, y, rr);
-
-      ctx.closePath();
-
-    }
-
-
-
-    function drawCard(message, withBorder) {
-
-      const canvas = document.getElementById('aiCanvas');
-
-      const ctx = canvas.getContext('2d');
-
-      const W = canvas.width, H = canvas.height;
-
-      
-
-      // Background gradient
-
-      const g = ctx.createLinearGradient(0, 0, 0, H);
-
-      g.addColorStop(0, '#fff8f1');
-
-      g.addColorStop(0.45, '#faf3ea');
-
-      g.addColorStop(1, '#ffffff');
-
-      ctx.fillStyle = g;
-
-      ctx.fillRect(0, 0, W, H);
-
-
-
-      // Card frame
-
-      ctx.save();
-
-      const pad = 30;
-
-      drawRoundedRect(ctx, pad, pad, W - 2 * pad, H - 2 * pad, 26);
-
-      ctx.fillStyle = 'rgba(255,255,255,0.85)';
-
-      ctx.fill();
-
-
-
-      if (withBorder) {
-
-        ctx.strokeStyle = 'rgba(234,217,202,0.9)';
-
-        ctx.lineWidth = 2;
-
-        ctx.stroke();
-
+        initializeCanvas();
       }
 
-      ctx.restore();
+      function closeAICardModal() {
+        document.getElementById("aiCardModal").classList.remove("active");
 
+        document.getElementById("aiCardBackdrop").classList.remove("active");
+      }
 
+      function grabNoteFromCart() {
+        const note = document.getElementById("giftNote").value.trim();
 
-      // Flower decorations
+        if (note) {
+          document.getElementById("aiManual").value = note;
+        } else {
+          document.getElementById("aiManual").value = "—";
+        }
+      }
 
-      ctx.font = '48px serif';
+      function pick(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }
 
-      ctx.globalAlpha = 0.9;
+      function getCartSummary() {
+        const names = cartItems.map((item) => item.name);
 
-      ctx.fillText('ðŸŒ·', 48, 86);
+        const count = cartItems.length;
 
-      ctx.fillText('ðŸŒ¸', W - 96, H - 48);
+        return { names, count };
+      }
 
-      ctx.globalAlpha = 1;
+      function buildMessage() {
+        const to = document.getElementById("aiTo").value.trim() || "Bạn";
 
+        const from = document.getElementById("aiFrom").value.trim() || "Mình";
 
+        const occ = document.getElementById("aiOccasion").value;
 
-      // Title
+        const tone = document.getElementById("aiTone").value;
 
-      ctx.fillStyle = '#8a5c44';
+        const len = document.getElementById("aiLength").value;
 
-      ctx.font = 'bold 52px "Playfair Display", serif';
+        const { names, count } = getCartSummary();
 
-      ctx.fillText('Gá»­i chÃºt hÆ°Æ¡ng hoa', 48, 140);
+        const bouquet = count
+          ? `bó ${count > 1 ? count + " loại hoa" : "hoa"} ${
+              names[0] ?? ""
+            }`.trim()
+          : "bó hoa";
 
+        const openers = {
+          "ấm áp": [`Gửi ${to} thân mến,`, `${to} ơi,`, `Thương gửi ${to},`],
 
+          "hài hước": [
+            `Hello ${to}, "ban công tim" mở cửa!`,
 
-      // Content
+            `Ê ${to}, hoa tới kẹo… tim quá hạn 😆`,
 
-      ctx.fillStyle = '#2b2926';
+            `${to} Æ¡i, mở quà trước, cảm động sau nha!`,
+          ],
 
-      const bodyX = 48, bodyY = 180, bodyW = W - 96;
+          "trang trọng": [
+            `Kính gửi ${to},`,
 
-      ctx.font = '20px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial';
+            `Trân trọng gửi ${to},`,
 
-      wrapText(ctx, message, bodyX, bodyY, bodyW, 32);
+            `Gửi ${to},`,
+          ],
 
-    }
+          "ngọt ngào": [
+            `Này ${to} dễ thương,`,
 
+            `Cho ${to} của mình,`,
 
+            `Gửi ${to}, người làm ngày thường hóa ngọt.`,
+          ],
 
-    function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+          "động viên": [`Gửi ${to},`, `${to} ơi,`, `Thương gửi ${to},`],
+        };
 
-      const paragraphs = text.split('\n');
+        const bodies = {
+          "sinh nhật": [
+            `chúc bạn tuổi mới thật nhiều sức khỏe, niềm vui và những điều nhiệm màu. ${bouquet} này thay mình gửi muôn vàn yêu thương!`,
 
-      for (const p of paragraphs) {
+            `mong mọi ước mÆ¡ của bạn nở rá»™ như những cánh hoa này. Chúc một năm rực rỡ và bình an!`,
 
-        const words = p.split(' ');
+            `một vòng quay nữa quanh mặt trời, mong bạn luôn rạng rỡ, ấm áp và được yêu thương đủ đầy.`,
+          ],
 
-        let line = '';
+          "kỷ niệm": [
+            `cảm ơn vì những ngày đã qua và cả chặng đường phía trước. Mong mỗi lần nhìn ${bouquet}, bạn lại nhớ đến nụ cười của chúng ta.`,
 
-        for (let i = 0; i < words.length; i++) {
+            `mỗi cánh hoa là một khoảnh khắc mình trân quý. Chúc ta luôn nắm tay nhau qua mỗi mùa.`,
+          ],
 
-          const test = line + words[i] + ' ';
+          "chúc mừng": [
+            `chúc mừng cột mốc tuyệt vời! Mong bạn tiếp tục toả sáng, bền bỉ và hạnh phúc trên hành trình mới.`,
 
-          const m = ctx.measureText(test);
+            `thành quả ngọt lành như hương hoa. Rất tự hào về bạn!`,
+          ],
 
-          if (m.width > maxWidth && i > 0) {
+          "cảm ơn": [
+            `cảm ơn vì sự quan tâm và giúp đỡ. Mong bó hoa nhỏ này gửi đến bạn điều ấm áp như bạn đã trao.`,
 
-            ctx.fillText(line, x, y);
+            `lời cảm ơn đôi khi khó nói hết — mong hương hoa nói giùm mình phần nào.`,
+          ],
 
-            line = words[i] + ' ';
+          "ngày đặc biệt": [
+            `mong hôm nay của bạn dịu dàng và đủ đầy. Hy vọng ${bouquet} khẽ chạm vào trái tim bạn.`,
 
-            y += lineHeight;
+            `chúc bạn một ngày đẹp như điều bạn xứng đáng.`,
+          ],
 
-          } else {
+          "an ủi": [
+            `có những ngày mây kéo đến — mong hương hoa này sẽ là chút nắng an yên cho bạn.`,
 
-            line = test;
+            `hãy cho mình được ở đây cùng bạn. Rồi mọi chuyện cũng sẽ dịu lại thôi.`,
+          ],
+        };
 
+        const closers = {
+          "ấm áp": [`Thương mến, ${from}`, `Ôm bạn một cái thật chặt, ${from}`],
+
+          "hài hước": [
+            `Ký tên: shipper cảm xúc — ${from}`,
+
+            `Tặng hoa chồng… xì-trét! — ${from}`,
+          ],
+
+          "trang trọng": [`Trân trọng, ${from}`, `Thân ái, ${from}`],
+
+          "ngọt ngào": [
+            `Yêu thương nhiều, ${from}`,
+
+            `Ngàn nụ hôn gió, ${from}`,
+          ],
+
+          "động viên": [`Mình luôn ở đây, ${from}`, `Vững vàng nhé, ${from}`],
+        };
+
+        let text = `${pick(openers[tone])}\n\n${pick(bodies[occ])}\n\n${pick(
+          closers[tone]
+        )}`;
+
+        const manual = document.getElementById("aiManual").value.trim();
+
+        if (manual && manual !== "—") {
+          text = `${pick(openers[tone])}\n\n${manual}\n\n${pick(
+            closers[tone]
+          )}`;
+        }
+
+        if (len === "ngắn") {
+          text = text.split("\n").slice(0, 3).join("\n");
+        } else if (len === "dài") {
+          text += `\n\nP/S: Cảm ơn bạn đã là chính mình. Mọi điều tốt đẹp đang tới gần — tin mình nhé!`;
+        }
+
+        return text;
+      }
+
+      function generateMessage() {
+        currentMessage = buildMessage();
+
+        drawCard(currentMessage, false);
+      }
+
+      function renderCard() {
+        if (!currentMessage) currentMessage = buildMessage();
+
+        drawCard(currentMessage, true);
+      }
+
+      function downloadCard() {
+        const canvas = document.getElementById("aiCanvas");
+
+        const link = document.createElement("a");
+
+        const stamp = new Date().toISOString().slice(0, 10);
+
+        link.download = `thiep_${stamp}.png`;
+
+        link.href = canvas.toDataURL("image/png");
+
+        link.click();
+      }
+
+      function initializeCanvas() {
+        drawCard(
+          'Gõ thông tin ở trái, bấm "Sinh lời chúc" rồi "Tạo thiệp" để xem trước.\n\n🌼 Gợi ý: nhập Người nhận, chọn Dịp & Giọng điệu.',
+          false
+        );
+      }
+
+      function drawRoundedRect(ctx, x, y, w, h, r) {
+        const rr = Math.min(r, w / 2, h / 2);
+
+        ctx.beginPath();
+
+        ctx.moveTo(x + rr, y);
+
+        ctx.arcTo(x + w, y, x + w, y + h, rr);
+
+        ctx.arcTo(x + w, y + h, x, y + h, rr);
+
+        ctx.arcTo(x, y + h, x, y, rr);
+
+        ctx.arcTo(x, y, x + w, y, rr);
+
+        ctx.closePath();
+      }
+
+      function drawCard(message, withBorder) {
+        const canvas = document.getElementById("aiCanvas");
+
+        const ctx = canvas.getContext("2d");
+
+        const W = canvas.width,
+          H = canvas.height;
+
+        // Background gradient
+
+        const g = ctx.createLinearGradient(0, 0, 0, H);
+
+        g.addColorStop(0, "#fff8f1");
+
+        g.addColorStop(0.45, "#faf3ea");
+
+        g.addColorStop(1, "#ffffff");
+
+        ctx.fillStyle = g;
+
+        ctx.fillRect(0, 0, W, H);
+
+        // Card frame
+
+        ctx.save();
+
+        const pad = 30;
+
+        drawRoundedRect(ctx, pad, pad, W - 2 * pad, H - 2 * pad, 26);
+
+        ctx.fillStyle = "rgba(255,255,255,0.85)";
+
+        ctx.fill();
+
+        if (withBorder) {
+          ctx.strokeStyle = "rgba(234,217,202,0.9)";
+
+          ctx.lineWidth = 2;
+
+          ctx.stroke();
+        }
+
+        ctx.restore();
+
+        // Flower decorations
+
+        ctx.font = "48px serif";
+
+        ctx.globalAlpha = 0.9;
+
+        ctx.fillText("🌷", 48, 86);
+
+        ctx.fillText("🌸", W - 96, H - 48);
+
+        ctx.globalAlpha = 1;
+
+        // Title
+
+        ctx.fillStyle = "#8a5c44";
+
+        ctx.font = 'bold 52px "Playfair Display", serif';
+
+        ctx.fillText("Gửi chút hương hoa", 48, 140);
+
+        // Content
+
+        ctx.fillStyle = "#2b2926";
+
+        const bodyX = 48,
+          bodyY = 180,
+          bodyW = W - 96;
+
+        ctx.font =
+          "20px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial";
+
+        wrapText(ctx, message, bodyX, bodyY, bodyW, 32);
+      }
+
+      function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+        const paragraphs = text.split("\n");
+
+        for (const p of paragraphs) {
+          const words = p.split(" ");
+
+          let line = "";
+
+          for (let i = 0; i < words.length; i++) {
+            const test = line + words[i] + " ";
+
+            const m = ctx.measureText(test);
+
+            if (m.width > maxWidth && i > 0) {
+              ctx.fillText(line, x, y);
+
+              line = words[i] + " ";
+
+              y += lineHeight;
+            } else {
+              line = test;
+            }
           }
 
+          ctx.fillText(line, x, y);
+
+          y += lineHeight + 10;
         }
-
-        ctx.fillText(line, x, y);
-
-        y += lineHeight + 10;
-
       }
 
-    }
+      // Close modals when clicking outside
 
-
-
-    // Close modals when clicking outside
-
-    document.querySelectorAll('.modal-overlay').forEach(modal => {
-
-      modal.addEventListener('click', (e) => {
-
-        if (e.target === modal) {
-
-          modal.classList.remove('active');
-
-        }
-
+      document.querySelectorAll(".modal-overlay").forEach((modal) => {
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            modal.classList.remove("active");
+          }
+        });
       });
 
-    });
+      // Close AI modal when clicking backdrop
 
+      document
+        .getElementById("aiCardBackdrop")
+        .addEventListener("click", closeAICardModal);
 
+      // Initialize cart
 
-    // Close AI modal when clicking backdrop
-
-    document.getElementById('aiCardBackdrop').addEventListener('click', closeAICardModal);
-
-
-
-    // Initialize cart
-
-    renderCart();
-
-  </script>
-
-</body>
-
-
-
+      renderCart();
+    </script>
+  </body>
 </html>
-

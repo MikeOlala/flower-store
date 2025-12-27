@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+﻿<%@ page pageEncoding="UTF-8" %>
 <header id="header" class="site-header">
     <div id="site-header-center" class="box-shadow-none2">
         <div class="container">
@@ -10,58 +10,58 @@
                     </button>
                 </div>
                 <div class="logo col-md-2 col-xs-2 col-sm-4 pd-right-0 pd-left-0">
-                    <a href="home.html">
+                    <a href="home.jsp">
                         <img class="dt-width-auto" height="30" width="185"
-                            src="assets/Logo Tiệm Hoa.png"
-                            alt="Tiem hoa nha to">
+                            src="${pageContext.request.contextPath}/view/Logo%20Ti%E1%BB%87m%20Hoa.png"
+                            alt="Tiệm Hoa Nhà Tớ">
                     </a>
                 </div>
                 <nav class="col-md-7 hidden-xs hidden-sm pd-right-0">
                     <ul id="menu-desktop" class="menu-desk">
 
                         <li class="active ">
-                            <a href="home.html"> TRANG CHỦ</a>
+                            <a href="home.jsp"> TRANG CHỦ</a>
 
                         </li>
                         <li class=" ">
-                            <a href="intro.html"> GIỚI THIỆU</a>
+                            <a href="intro.jsp"> GIỚI THIỆU</a>
 
                         </li>
                           <li class=" ">
-                            <a href="product.html"> BỘ SƯU TẬP</a>
+                            <a href="product.jsp"> BỘ SƯU TẬP</a>
                         </li>
                         <li class=" mega-menu">
-                            <a href="silkFlower.html"> HOA GIẢ<i class="fa-chevron-down" aria-hidden="true"></i></a>
+                            <a href="silkFlower.jsp"> HOA GIẢ<i class="fa-chevron-down" aria-hidden="true"></i></a>
                             <div class="mega-menu-wrap">
                                 <div class="menu-mega-inner">
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="silkFlower.html">Hoa Lụa</a>
+                                            <a href="silkFlower.jsp">Hoa Lụa</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="plasticFlower.html">Hoa Nhựa</a>
+                                            <a href="plasticFlower.jsp">Hoa Nhựa</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="paperFlower.html">Hoa Giấy</a>
+                                            <a href="paperFlower.jsp">Hoa Giấy</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="fabricFlower.html">Hoa Vải</a>
+                                            <a href="fabricFlower.jsp">Hoa Vải</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="boxFlower.html">Hộp Hoa</a>
+                                            <a href="boxFlower.jsp">Hộp Hoa</a>
                                         </div>
                                     </div>
 
@@ -69,68 +69,68 @@
                             </div>
                         </li>
                         <li class=" mega-menu">
-                            <a href="boHoa.html"> HOA TƯƠI<i class="fa-chevron-down"
+                            <a href="boHoa.jsp"> HOA TƯƠI<i class="fa-chevron-down"
                                     aria-hidden="true"></i></a>
                             <div class="mega-menu-wrap">
                                 <div class="menu-mega-inner">
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="boHoa.html">Bó Hoa</a>
+                                            <a href="boHoa.jsp">Bó Hoa</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="hoaTulip.html">Hoa Tulip</a>
+                                            <a href="hoaTulip.jsp">Hoa Tulip</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="binhHoa.html">Bình Hoa</a>
+                                            <a href="binhHoa.jsp">Bình Hoa</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="gioHoa.html">Giỏ Hoa</a>
+                                            <a href="gioHoa.jsp">Giỏ Hoa</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="hopHoa.html">Hộp Hoa</a>
+                                            <a href="hopHoa.jsp">Hộp Hoa</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="hoaCuoi.html">Hoa Cưới</a>
+                                            <a href="hoaCuoi.jsp">Hoa Cưới</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="lanHoDiep.html">Lan Hồ Điệp</a>
+                                            <a href="lanHoDiep.jsp">Lan Hồ Điệp</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="hoaMauDon.html">Hoa Mẫu Đơn</a>
+                                            <a href="hoaMauDon.jsp">Hoa Mẫu Đơn</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="keHoaChucMung.html">Kệ Hoa Chúc Mừng</a>
+                                            <a href="keHoaChucMung.jsp">Kệ Hoa Chúc Mừng</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="hoaTotNghiep.html">Hoa Tốt Nghiệp</a>
+                                            <a href="hoaTotNghiep.jsp">Hoa Tốt Nghiệp</a>
                                         </div>
                                     </div>
                                 </div>
@@ -138,10 +138,10 @@
                         </li>
                         </li>
                          <li class=" ">
-                            <a href="tintuc.html"> TIN TỨC</a>
+                            <a href="tintuc.jsp"> TIN TỨC</a>
                         </li>
                         <li class=" ">
-                            <a href="contact.html"> LIÊN HỆ</a>
+                            <a href="contact.jsp"> LIÊN HỆ</a>
                         </li>
                     </ul>
                 </nav>
@@ -193,7 +193,7 @@
                                 </div>
                             </li>
                             <li class="list-inline-item mr-0 account-header-mobile">
-                                <a href="login_1.html" data-original-title="Đăng nhập" class="login"
+                                <a href="login_1.jsp" data-original-title="Đăng nhập" class="login"
                                     data-tooltip="tooltip">
                                     <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-user"
                                         viewBox="0 0 64 64">
@@ -204,7 +204,7 @@
                                 </a>
                             </li>
                             <li class="list-inline-item mr-0">
-                                <a href="cart.html" class="cart js-call-minicart" data-original-title="Giỏ hàng"
+                                <a href="cart.jsp" class="cart js-call-minicart" data-original-title="Giỏ hàng"
                                     data-tooltip="tooltip">
                                     <svg aria-hidden="true" focusable="false" role="presentation"
                                         class="icon icon-bag-minimal" viewBox="0 0 64 64">

@@ -3,692 +3,496 @@
 <!DOCTYPE html>
 
 <html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta charset="UTF-8">
+    <title>Đăng nhập</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap Icons -->
 
-  <title>Đăng nhập</title>
-
-
-
-  <!-- Bootstrap Icons -->
-
-  <link
-
+    <link
       rel="stylesheet"
-
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
 
-  >
+    <!-- Custom CSS -->
 
+    <style>
+      /* 🎨 Tổng thể giao diện login */
 
+      body {
+        margin: 0;
 
-  <!-- Custom CSS -->
+        padding: 0;
 
-  <style>
+        font-family: "Poppins", sans-serif;
 
-    /* 🎨 Tổng thể giao diện login */
+        background-color: #f5efe6; /* nền be */
 
-    body {
+        display: flex;
 
-      margin: 0;
+        justify-content: center;
 
-      padding: 0;
+        align-items: center;
 
-      font-family: "Poppins", sans-serif;
+        height: 100vh;
 
-      background-color: #f5efe6; /* nền be */
-
-      display: flex;
-
-      justify-content: center;
-
-      align-items: center;
-
-      height: 100vh;
-
-      animation: fadeInSlide 1s ease-out;
-
-    }
-
-
-
-    @keyframes fadeInSlide {
-
-      0% {
-
-        opacity: 0;
-
-        transform: translateX(-40px);
-
+        animation: fadeInSlide 1s ease-out;
       }
 
-      100% {
+      @keyframes fadeInSlide {
+        0% {
+          opacity: 0;
 
-        opacity: 1;
+          transform: translateX(-40px);
+        }
 
-        transform: translateX(0);
+        100% {
+          opacity: 1;
 
+          transform: translateX(0);
+        }
       }
 
-    }
-
-
-
-    /* 🪞 Khung form */
-
-    .login-container {
-
-      background-color: #fffdf9;
-
-      padding: 4rem 5rem;
-
-      border-radius: 20px;
-
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-
-      width: 500px;
-
-      max-width: 95%;
-
-      box-sizing: border-box;
-
-      animation: fadeInSlide 1s ease-out;
-
-      position: relative;
-
-    }
-
-
-
-    /* 🌼 Logo */
-
-    .login-logo {
-
-      display: flex;
-
-      justify-content: center;
-
-      margin-bottom: 2rem;
-
-      transform: scale(2.0);
-
-    }
-
-
-
-    .login-logo img {
-
-      width: 140px;
-
-      height: auto;
-
-    }
-
-
-
-    /* 🧾 Tiêu đề */
-
-    .login-title {
-
-      text-align: center;
-
-      font-size: 2rem;
-
-      font-weight: 600;
-
-      color: #6b4f36;
-
-      margin-bottom: 2rem;
-
-    }
-
-
-
-    /* ✏️ Input group */
-
-    .input-group {
-
-      position: relative;
-
-      margin-bottom: 1.8rem;
-
-    }
-
-
-
-    .input-group input {
-
-      width: 100%;
-
-      padding: 14px 12px;
-
-      border: 1.5px solid #c8b6a6;
-
-      border-radius: 8px;
-
-      outline: none;
-
-      background: transparent;
-
-      transition: 0.3s ease;
-
-      font-size: 1rem;
-
-      color: #6b4f36;
-
-    }
-
-
-
-    .input-group label {
-
-      position: absolute;
-
-      top: 50%;
-
-      left: 12px;
-
-      transform: translateY(-50%);
-
-      color: #a1887f;
-
-      font-size: 1rem;
-
-      pointer-events: none;
-
-      transition: 0.25s ease all;
-
-      background-color: #fffdf9;
-
-      padding: 0 6px;
-
-    }
-
-
-
-    .input-group input:focus {
-
-      border-color: #6b4f36;
-
-    }
-
-
-
-    .input-group input:focus + label,
-
-    .input-group input:not(:placeholder-shown) + label {
-
-      top: 0;
-
-      font-size: 0.85rem;
-
-      color: #6b4f36;
-
-    }
-
-
-
-    /* ✅ Checkbox + quên mật khẩu */
-
-    .login-options {
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      font-size: 0.9rem;
-
-      color: #6b4f36;
-
-      margin-bottom: 1.8rem;
-
-    }
-
-
-
-    .login-options input[type="checkbox"] {
-
-      accent-color: #6b4f36; /* màu nâu */
-
-    }
-
-
-
-    .login-options a {
-
-      color: #6b4f36;
-
-      text-decoration: none;
-
-      transition: 0.3s ease;
-
-    }
-
-
-
-    .login-options a:hover {
-
-      color: #4b3621;
-
-    }
-
-
-
-    /* 🔘 Nút đăng nhập */
-
-    .login-button {
-
-      width: 100%;
-
-      background-color: #6b4f36; /* nâu */
-
-      color: #fff;
-
-      padding: 14px 0;
-
-      font-size: 1.15rem;
-
-      font-weight: 500;
-
-      border: none;
-
-      border-radius: 10px;
-
-      cursor: pointer;
-
-      transition: 0.3s ease;
-
-    }
-
-
-
-    .login-button:hover {
-
-      background-color: #4b3621;
-
-      transform: translateY(-2px);
-
-    }
-
-
-
-    /* 🌐 Liên kết mạng xã hội */
-
-    .social-login {
-
-      text-align: center;
-
-      margin-top: 2rem;
-
-    }
-
-
-
-    .social-login p {
-
-      color: #6b4f36;
-
-      margin-bottom: 0.8rem;
-
-      font-weight: 500;
-
-    }
-
-
-
-    .social-icons {
-
-      display: flex;
-
-      justify-content: center;
-
-      gap: 18px;
-
-    }
-
-
-
-    .social-icons i {
-
-      color: #6b4f36;
-
-      font-size: 1.5rem;
-
-      transition: 0.3s ease;
-
-    }
-
-
-
-    .social-icons i:hover {
-
-      color: #4b3621;
-
-      transform: scale(1.2);
-
-    }
-
-
-
-    /* 🪶 Liên kết đăng ký */
-
-    .register-link {
-
-      text-align: center;
-
-      margin-top: 1.5rem;
-
-      color: #6b4f36;
-
-    }
-
-
-
-    .register-link a {
-
-      color: #6b4f36;
-
-      font-weight: 600;
-
-      text-decoration: none;
-
-      transition: 0.3s ease;
-
-    }
-
-
-
-    .register-link a:hover {
-
-      color: #4b3621;
-
-    }
-
-
-
-    /* 📱 Responsive */
-
-    @media (max-width: 992px) {
+      /* 🪞 Khung form */
 
       .login-container {
+        background-color: #fffdf9;
 
-        width: 450px;
+        padding: 4rem 5rem;
 
-        padding: 3rem 3.5rem;
+        border-radius: 20px;
 
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+
+        width: 500px;
+
+        max-width: 95%;
+
+        box-sizing: border-box;
+
+        animation: fadeInSlide 1s ease-out;
+
+        position: relative;
       }
 
+      /* 🌼 Logo */
 
+      .login-logo {
+        display: flex;
 
-      .login-title {
+        justify-content: center;
 
-        font-size: 1.8rem;
+        margin-bottom: 2rem;
 
+        transform: scale(2);
       }
-
-
 
       .login-logo img {
+        width: 140px;
 
-        width: 120px;
-
+        height: auto;
       }
 
-    }
-
-
-
-    @media (max-width: 768px) {
-
-      .login-container {
-
-        width: 90%;
-
-        padding: 2.5rem;
-
-      }
-
-
+      /* 🧾 Tiêu đề */
 
       .login-title {
+        text-align: center;
 
-        font-size: 1.6rem;
+        font-size: 2rem;
 
+        font-weight: 600;
+
+        color: #6b4f36;
+
+        margin-bottom: 2rem;
       }
 
+      /* ✏️ Input group */
 
+      .input-group {
+        position: relative;
 
-      .login-logo img {
-
-        width: 110px;
-
+        margin-bottom: 1.8rem;
       }
 
-    }
+      .input-group input {
+        width: 100%;
 
+        padding: 14px 12px;
 
+        border: 1.5px solid #c8b6a6;
 
-    @media (max-width: 480px) {
+        border-radius: 8px;
 
-      .login-container {
+        outline: none;
 
-        padding: 2rem 1.5rem;
+        background: transparent;
 
-      }
-
-
-
-      .login-title {
-
-        font-size: 1.4rem;
-
-      }
-
-
-
-      .login-button {
+        transition: 0.3s ease;
 
         font-size: 1rem;
 
-        padding: 12px 0;
-
+        color: #6b4f36;
       }
 
+      .input-group label {
+        position: absolute;
 
+        top: 50%;
+
+        left: 12px;
+
+        transform: translateY(-50%);
+
+        color: #a1887f;
+
+        font-size: 1rem;
+
+        pointer-events: none;
+
+        transition: 0.25s ease all;
+
+        background-color: #fffdf9;
+
+        padding: 0 6px;
+      }
+
+      .input-group input:focus {
+        border-color: #6b4f36;
+      }
+
+      .input-group input:focus + label,
+      .input-group input:not(:placeholder-shown) + label {
+        top: 0;
+
+        font-size: 0.85rem;
+
+        color: #6b4f36;
+      }
+
+      /* ✅ Checkbox + quên mật khẩu */
+
+      .login-options {
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        font-size: 0.9rem;
+
+        color: #6b4f36;
+
+        margin-bottom: 1.8rem;
+      }
+
+      .login-options input[type="checkbox"] {
+        accent-color: #6b4f36; /* màu nâu */
+      }
+
+      .login-options a {
+        color: #6b4f36;
+
+        text-decoration: none;
+
+        transition: 0.3s ease;
+      }
+
+      .login-options a:hover {
+        color: #4b3621;
+      }
+
+      /* 🔘 Nút đăng nhập */
+
+      .login-button {
+        width: 100%;
+
+        background-color: #6b4f36; /* nâu */
+
+        color: #fff;
+
+        padding: 14px 0;
+
+        font-size: 1.15rem;
+
+        font-weight: 500;
+
+        border: none;
+
+        border-radius: 10px;
+
+        cursor: pointer;
+
+        transition: 0.3s ease;
+      }
+
+      .login-button:hover {
+        background-color: #4b3621;
+
+        transform: translateY(-2px);
+      }
+
+      /* 🌐 Liên kết mạng xã hội */
+
+      .social-login {
+        text-align: center;
+
+        margin-top: 2rem;
+      }
+
+      .social-login p {
+        color: #6b4f36;
+
+        margin-bottom: 0.8rem;
+
+        font-weight: 500;
+      }
+
+      .social-icons {
+        display: flex;
+
+        justify-content: center;
+
+        gap: 18px;
+      }
 
       .social-icons i {
+        color: #6b4f36;
 
-        font-size: 1.3rem;
+        font-size: 1.5rem;
 
+        transition: 0.3s ease;
       }
 
-    }
+      .social-icons i:hover {
+        color: #4b3621;
 
-    /* 🔙 Nút quay về trang chủ */
+        transform: scale(1.2);
+      }
 
-    .home-button {
+      /* 🪶 Liên kết đăng ký */
 
-      position: absolute;
+      .register-link {
+        text-align: center;
 
-      top: 20px;    /* Đẩy nút lên cao hơn một chút */
+        margin-top: 1.5rem;
 
-      left: 20px;   /* Đẩy nút sang trái một chút */
+        color: #6b4f36;
+      }
 
-      background-color: #6b4f36;
+      .register-link a {
+        color: #6b4f36;
 
-      color: #fff;
+        font-weight: 600;
 
-      padding: 12px 14px;
+        text-decoration: none;
 
-      border-radius: 12px;
+        transition: 0.3s ease;
+      }
 
-      font-size: 1.4rem;
+      .register-link a:hover {
+        color: #4b3621;
+      }
 
-      display: flex;
+      /* 📱 Responsive */
 
-      align-items: center;
+      @media (max-width: 992px) {
+        .login-container {
+          width: 450px;
 
-      justify-content: center;
+          padding: 3rem 3.5rem;
+        }
 
-      cursor: pointer;
+        .login-title {
+          font-size: 1.8rem;
+        }
 
-      text-decoration: none;
+        .login-logo img {
+          width: 120px;
+        }
+      }
 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      @media (max-width: 768px) {
+        .login-container {
+          width: 90%;
 
-      transition: 0.25s ease;
+          padding: 2.5rem;
+        }
 
-      z-index: 10;
+        .login-title {
+          font-size: 1.6rem;
+        }
 
-    }
+        .login-logo img {
+          width: 110px;
+        }
+      }
 
+      @media (max-width: 480px) {
+        .login-container {
+          padding: 2rem 1.5rem;
+        }
 
+        .login-title {
+          font-size: 1.4rem;
+        }
 
-    .home-button:hover {
+        .login-button {
+          font-size: 1rem;
 
-      background-color: #4b3621;
+          padding: 12px 0;
+        }
 
-      transform: translateY(-2px);
+        .social-icons i {
+          font-size: 1.3rem;
+        }
+      }
 
-    }
+      /* 🔙 Nút quay về trang chủ */
 
+      .home-button {
+        position: absolute;
 
+        top: 20px; /* Đẩy nút lên cao hơn một chút */
 
+        left: 20px; /* Đẩy nút sang trái một chút */
 
+        background-color: #6b4f36;
 
-  </style>
+        color: #fff;
 
-</head>
+        padding: 12px 14px;
 
+        border-radius: 12px;
 
+        font-size: 1.4rem;
 
-<body>
+        display: flex;
 
+        align-items: center;
 
+        justify-content: center;
 
-<!--<a href="home.html" class="home-button">-->
+        cursor: pointer;
 
-<!--  <i class="bi bi-house-door-fill"></i>-->
+        text-decoration: none;
 
-<!--</a>-->
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 
-<div class="login-container">
+        transition: 0.25s ease;
 
-  <!-- Nút quay về trang chủ -->
+        z-index: 10;
+      }
 
-  <a href="home.html" class="home-button">
+      .home-button:hover {
+        background-color: #4b3621;
 
-    <i class="bi bi-house-door-fill"></i>
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
 
-  </a>
+  <body>
+    <!--<a href="home.jsp" class="home-button">-->
 
-  <div class="login-logo">
+    <!--  <i class="bi bi-house-door-fill"></i>-->
 
-    <img src="../assets/logo.jpg" alt="Logo">
+    <!--</a>-->
 
-  </div>
+    <div class="login-container">
+      <!-- Nút quay về trang chủ -->
 
-  <div class="login-title">Đăng nhập</div>
+      <a href="home.jsp" class="home-button">
+        <i class="bi bi-house-door-fill"></i>
+      </a>
 
-  <% if (request.getAttribute("error") != null) { %>
-
-    <div style="color: red; text-align: center; margin-bottom: 1rem;">
-
-      <%= request.getAttribute("error") %>
-
-    </div>
-
-  <% } %>
-
-  <form action="<%= request.getContextPath() %>/login" method="post">
-
-    <!-- Email input -->
-
-    <div class="input-group">
-
-      <input type="email" id="email" name="email" placeholder=" " required>
-
-      <label for="email">Nhập email của bạn</label>
-
-    </div>
-
-
-
-    <!-- Password input -->
-
-    <div class="input-group">
-
-      <input type="password" id="password" name="password" placeholder=" " required>
-
-      <label for="password">Mật khẩu</label>
-
-    </div>
-
-
-
-    <!-- Checkbox + Quên mật khẩu -->
-
-    <div class="login-options">
-
-      <div>
-
-        <input type="checkbox" id="remember" checked>
-
-        <label for="remember">Lưu mật khẩu</label>
-
+      <div class="login-logo">
+        <img
+          src="${pageContext.request.contextPath}/view/Logo%20Ti%E1%BB%87m%20Hoa.png"
+          alt="Tiệm Hoa Nhà Tớ"
+        />
       </div>
 
-      <a href="ForgotPassword.html">Quên mật khẩu?</a>
+      <div class="login-title">Đăng nhập</div>
 
-    </div>
+      <% if (request.getAttribute("error") != null) { %>
 
-
-
-    <!-- Submit button -->
-
-    <button type="submit" class="login-button">Đăng nhập</button>
-
-
-
-    <!-- Register + mạng xã hội -->
-
-    <div class="social-login">
-
-      <p>Hoặc đăng nhập bằng:</p>
-
-      <div class="social-icons">
-
-        <i class="bi bi-facebook"></i>
-
-        <i class="bi bi-google"></i>
-
-        <i class="bi bi-twitter"></i>
-
-        <i class="bi bi-github"></i>
-
+      <div style="color: red; text-align: center; margin-bottom: 1rem">
+        <%= request.getAttribute("error") %>
       </div>
 
+      <% } %>
+
+      <form action="<%= request.getContextPath() %>/login" method="post">
+        <!-- Email input -->
+
+        <div class="input-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder=" "
+            required
+          />
+
+          <label for="email">Nhập email của bạn</label>
+        </div>
+
+        <!-- Password input -->
+
+        <div class="input-group">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder=" "
+            required
+          />
+
+          <label for="password">Mật khẩu</label>
+        </div>
+
+        <!-- Checkbox + Quên mật khẩu -->
+
+        <div class="login-options">
+          <div>
+            <input type="checkbox" id="remember" checked />
+
+            <label for="remember">Lưu mật khẩu</label>
+          </div>
+
+          <a href="ForgotPassword.jsp">Quên mật khẩu?</a>
+        </div>
+
+        <!-- Submit button -->
+
+        <button type="submit" class="login-button">Đăng nhập</button>
+
+        <!-- Register + mạng xã hội -->
+
+        <div class="social-login">
+          <p>Hoặc đăng nhập bằng:</p>
+
+          <div class="social-icons">
+            <i class="bi bi-facebook"></i>
+
+            <i class="bi bi-google"></i>
+
+            <i class="bi bi-twitter"></i>
+
+            <i class="bi bi-github"></i>
+          </div>
+        </div>
+
+        <div class="register-link">
+          <p>
+            Bạn chưa có tài khoản? <a href="registration.jsp">Đăng ký ngay</a>
+          </p>
+        </div>
+      </form>
     </div>
-
-
-
-    <div class="register-link">
-
-      <p>Bạn chưa có tài khoản? <a href="registration.html">Đăng ký ngay</a></p>
-
-    </div>
-
-  </form>
-
-</div>
-
-</body>
-
+  </body>
 </html>
-

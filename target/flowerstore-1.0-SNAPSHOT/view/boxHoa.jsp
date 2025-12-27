@@ -10,7 +10,7 @@
 
   <meta charset="UTF-8">
 
-  <title>Tiệm Hoa nhÃ  tớ</title>
+  <title>Tiệm Hoa nhà tớ</title>
 
 </head>
 
@@ -78,7 +78,7 @@
 
   <meta name="revisit-after" content="1 day" />
 
-  <title>Tiệm hoa nhÃ  tớ</title>
+  <title>Tiệm hoa nhà tớ</title>
 
 
 
@@ -206,7 +206,7 @@
 
     src="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"></script>
 
-  <!-- Tất cả biáº¿n khá»Ÿi táº¡o, check sá»­ dá»¥ng-->
+  <!-- Tất cả biến khởi tạo, check sử dụng-->
 
   <script>
 
@@ -514,7 +514,7 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-  <script defer src="components.js"></script>
+  
 
 </head>
 
@@ -542,7 +542,7 @@
 
   <!-- End Google Tag Manager (noscript) -->
 
-  <site-header></site-header>
+  <%@ include file="partials/header.jsp" %>
 
 
 
@@ -586,13 +586,13 @@
 
             <div class="card-body text-center p-4">
 
-              <h5 class="fw-semibold mb-2">Bó hoa Há»“ng sáp</h5>
+              <h5 class="fw-semibold mb-2">Bó hoa Hồng sáp</h5>
 
-              <p class="text-muted small">Lá»i chúc má»«ng - Sự hoa n hảo - ThÃ nh công</p>
+              <p class="text-muted small">Lời chúc mừng - Sự hoàn hảo - Thành công</p>
 
               
 
-              <button class="btn btn-outline-dark rounded-pill px-4">320.000Ä‘</button>
+              <button class="btn btn-outline-dark rounded-pill px-4">320.000đ</button>
 
             </div>
 
@@ -618,13 +618,13 @@
 
             <div class="card-body text-center p-4">
 
-              <h5 class="fw-semibold mb-2">Bó hoa HÆ°á»›ng DÆ°Æ¡ng sáp</h5>
+              <h5 class="fw-semibold mb-2">Bó hoa Hướng Dương sáp</h5>
 
-              <p class="text-muted small">Niá»m tin - Hy vá»ng - TÆ°Æ¡ng lai tÆ°Æ¡i sÃ¡ng</p>
+              <p class="text-muted small">Niềm tin - Hy vọng - Tương lai tươi sáng</p>
 
 
 
-              <button class="btn btn-outline-dark rounded-pill px-4">300.000Ä‘</button>
+              <button class="btn btn-outline-dark rounded-pill px-4">300.000đ</button>
 
             </div>
 
@@ -650,13 +650,13 @@
 
             <div class="card-body text-center p-4">
 
-              <h5 class="fw-semibold mb-2">Bó hoa Tulip lá»¥a</h5>
+              <h5 class="fw-semibold mb-2">Bó hoa Tulip lụa</h5>
 
-              <p class="text-muted small">Thanh lá»‹ch - Tinh Táº¿ - BÆ°á»›c tiáº¿n mạnh máº½</p>
+              <p class="text-muted small">Thanh lịch - Tinh Tế - Bước tiến mạnh mẽ</p>
 
               
 
-              <button class="btn btn-outline-dark rounded-pill px-4">280.000Ä‘</button>
+              <button class="btn btn-outline-dark rounded-pill px-4">280.000đ</button>
 
             </div>
 
@@ -682,13 +682,13 @@
 
             <div class="card-body text-center p-4">
 
-              <h5 class="fw-semibold mb-2">Bó hoa Cáº©m TÃº Cáº§u khÃ´</h5>
+              <h5 class="fw-semibold mb-2">Bó hoa Cẩm Tú Cầu khô</h5>
 
-              <p class="text-muted small">LÃ²ng biáº¿t Æ¡n - TÃ¬nh cảm chÃ¢n thÃ nh</p>
+              <p class="text-muted small">Lòng biết ơn - Tình cảm chân thành</p>
 
               
 
-              <button class="btn btn-outline-dark rounded-pill px-4">310.000Ä‘</button>
+              <button class="btn btn-outline-dark rounded-pill px-4">310.000đ</button>
 
             </div>
 
@@ -714,13 +714,13 @@
 
             <div class="card-body text-center p-4">
 
-              <h5 class="fw-semibold mb-2">Bó hoa Baby's Breath (hoa Bi) khÃ´</h5>
+              <h5 class="fw-semibold mb-2">Bó hoa Babys Breath (hoa Bi) khô</h5>
 
-              <p class="text-muted small">Trong sÃ¡ng - TÃ¬nh báº¡n vÄ©nh cá»­u - Sự khá»Ÿi Ä‘áº§u.</p>
+              <p class="text-muted small">Trong sáng - Tình bạn vĩnh cửu - Sự khởi đầu.</p>
 
               
 
-              <button class="btn btn-outline-dark rounded-pill px-4">380.000Ä‘</button>
+              <button class="btn btn-outline-dark rounded-pill px-4">380.000đ</button>
 
             </div>
 
@@ -746,13 +746,13 @@
 
             <div class="card-body text-center p-4">
 
-              <h5 class="fw-semibold mb-2">Bó hoa Oáº£i HÆ°Æ¡ng (Lavender) khÃ´</h5>
+              <h5 class="fw-semibold mb-2">Bó hoa Oải Hương (Lavender) khô</h5>
 
-              <p class="text-muted small">ThÆ° thÃ¡i - May máº¯n - Sang trá»ng</p>
+              <p class="text-muted small">Thư thái - May mắn - Sang trọng</p>
 
               
 
-              <button class="btn btn-outline-dark rounded-pill px-4">250.000Ä‘</button>
+              <button class="btn btn-outline-dark rounded-pill px-4">250.000đ</button>
 
             </div>
 
@@ -778,13 +778,13 @@
 
             <div class="card-body text-center p-4">
 
-              <h5 class="fw-semibold mb-2">Bó hoa Äá»“ng tiá»n nhá»±a</h5>
+              <h5 class="fw-semibold mb-2">Bó hoa Đồng tiền nhá»±a</h5>
 
-              <p class="text-muted small">May máº¯n - Sung tÃºc - Vui váº»</p>
+              <p class="text-muted small">May mắn - Sung túc - Vui vẻ</p>
 
               
 
-              <button class="btn btn-outline-dark rounded-pill px-4">350.000Ä‘</button>
+              <button class="btn btn-outline-dark rounded-pill px-4">350.000đ</button>
 
             </div>
 
@@ -810,13 +810,13 @@
 
             <div class="card-body text-center p-4">
 
-              <h5 class="fw-semibold mb-2">Cháº­u hoa Bá»“ CÃ´ng Anh lá»¥a</h5>
+              <h5 class="fw-semibold mb-2">Chậu hoa Bồ Công Anh lụa</h5>
 
-              <p class="text-muted small">Æ¯á»›c mÆ¡ - Sự tá»± do - Nhá»¯ng lá»i há»©a háº¹n</p>
+              <p class="text-muted small">Ước mÆ¡ - Sự tự do - Những lời hứa hẹn</p>
 
               
 
-              <button class="btn btn-outline-dark rounded-pill px-4">340.000Ä‘</button>
+              <button class="btn btn-outline-dark rounded-pill px-4">340.000đ</button>
 
             </div>
 
@@ -842,13 +842,13 @@
 
             <div class="card-body text-center p-4">
 
-              <h5 class="fw-semibold mb-2">Bó hoa Máº«u ÄÆ¡n lá»¥a</h5>
+              <h5 class="fw-semibold mb-2">Bó hoa Mẫu Đơn lụa</h5>
 
-              <p class="text-muted small">Thá»‹nh vÆ°á»£ng - Danh dá»± - ThÃ nh công</p>
+              <p class="text-muted small">Thịnh vượng - Danh dự - Thành công</p>
 
               
 
-              <button class="btn btn-outline-dark rounded-pill px-4">380.000Ä‘</button>
+              <button class="btn btn-outline-dark rounded-pill px-4">380.000đ</button>
 
             </div>
 
@@ -862,7 +862,7 @@
 
   </main>
 
-  <site-footer></site-footer>
+  <%@ include file="partials/footer.jsp" %>
 
 
 
@@ -892,7 +892,7 @@
 
         <div class="modal-body text-center">
 
-          <p class="modal-title">ThÃªm vÃ o giờ thÃ nh công</p>
+          <p class="modal-title">Thêm vào giờ thành công</p>
 
           <div class="media-success"></div>
 
@@ -906,7 +906,7 @@
 
   <div class="modal" id="cart-mini-wanda">
 
-    <div class="modal-header"> Giá» hÃ ng</div>
+    <div class="modal-header"> Giỏ hàng</div>
 
     <div class="modal-content">
 
@@ -928,7 +928,7 @@
 
             <tr>
 
-              <td class="text-left title-total">Tá»”NG TIá»€N:</td>
+              <td class="text-left title-total">TỔNG TIỀN:</td>
 
               <td class="text-right" id="total-view-cart"></td>
 
@@ -936,7 +936,7 @@
 
             <tr>
 
-              <td colspan="2"><a href="cart.html" class="wanda-checkout-url btn">Thanh toÃ¡n</a></td>
+              <td colspan="2"><a href="cart.jsp" class="wanda-checkout-url btn">Thanh toán</a></td>
 
             </tr>
 
@@ -954,7 +954,7 @@
 
     <img src="//cdn.hstatic.net/themes/200000846175/1001403720/14/alert.png?v=245" width="44" height="38" />
 
-    <span class="title">ThÃ´ng bÃ¡o!</span>
+    <span class="title">Thông báo!</span>
 
     <p></p>
 
@@ -982,7 +982,7 @@
 
         <div class="modal-body text-center">
 
-          <p class="modal-title">ÄÄƒng kÃ½ thÃ nh công.<br>ThÃ´ng bÃ¡o sáº½ tá»± Ä‘á»™ng táº¯t sau 3 giÃ¢y</p>
+          <p class="modal-title">Đăng ký thành công.<br>Thông báo sẽ tự động tắt sau 3 giây</p>
 
         </div>
 
@@ -998,13 +998,13 @@
 
       <li class="hotline"><a href="tel:0919897969" data-toggle="tooltip"
 
-          data-original-title="LiÃªn há»‡ 0919897969"><i class="fa fa-phone"></i></a></li>
+          data-original-title="Liên hệ 0919897969"><i class="fa fa-phone"></i></a></li>
 
       <li class="zalo">
 
         <a href=" https://zalo.me/3854304162857362827" data-toggle="tooltip"
 
-          data-original-title="LiÃªn há»‡ vá»›i chÃºng tÃ´i qua Zalo">
+          data-original-title="Liên hệ với chúng tôi qua Zalo">
 
           <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -1070,7 +1070,7 @@
 
           href="https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2Ftiemhoa.lavieestbelle"
 
-          data-toggle="tooltip" data-original-title="LiÃªn há»‡ vá»›i chÃºng tÃ´i qua Messenger">
+          data-toggle="tooltip" data-original-title="Liên hệ với chúng tôi qua Messenger">
 
           <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -1126,7 +1126,7 @@
 
   <div class="modal-backdrop fade"></div>
 
-  <!-- ÄÃ¢y lÃ  suggest sale popup -->
+  <!-- Đây là suggest sale popup -->
 
   <div class="suggest-notify anislideOutDown sales_animated"></div>
 
@@ -1140,7 +1140,7 @@
 
       let timeSlide = parseInt("2000");
 
-      let htmlslider = `<div class="item"> <a href="/collections/all" title="Vegetable 2" aria-label="Banner 2"> <picture> <source media="(max-width: 480px)" srcset="https://cdn.hstatic.net/files/200000846175/file/4217caf7a3e82eb677f9.jpg" data-srcset="https://cdn.hstatic.net/files/200000846175/file/4217caf7a3e82eb677f9.jpg"> <source media="(min-width: 481px)" data-srcset="https://cdn.hstatic.net/files/200000846175/file/caf51f824f9dc2c39b8c.jpg" srcset="https://cdn.hstatic.net/files/200000846175/file/caf51f824f9dc2c39b8c.jpg"> <img class="dt-width-100 lazyload" width="1920" height="550" alt="Vegetable 2"> </picture><div class="slider-text left-slide"><h4> Tiệm hoa nhÃ  tớ </h4><p> Gá»­i hoa Ä‘áº¹p - Trao yêu thÆ°Æ¡ng.</p></a></div>`;
+      let htmlslider = `<div class="item"> <a href="/collections/all" title="Vegetable 2" aria-label="Banner 2"> <picture> <source media="(max-width: 480px)" srcset="https://cdn.hstatic.net/files/200000846175/file/4217caf7a3e82eb677f9.jpg" data-srcset="https://cdn.hstatic.net/files/200000846175/file/4217caf7a3e82eb677f9.jpg"> <source media="(min-width: 481px)" data-srcset="https://cdn.hstatic.net/files/200000846175/file/caf51f824f9dc2c39b8c.jpg" srcset="https://cdn.hstatic.net/files/200000846175/file/caf51f824f9dc2c39b8c.jpg"> <img class="dt-width-100 lazyload" width="1920" height="550" alt="Vegetable 2"> </picture><div class="slider-text left-slide"><h4> Tiệm hoa nhà tớ </h4><p> Gửi hoa đẹp - Trao yêu thương.</p></a></div>`;
 
       $("#home-slider").append(htmlslider);
 
@@ -1211,4 +1211,6 @@
 
 
 </html>
+
+
 

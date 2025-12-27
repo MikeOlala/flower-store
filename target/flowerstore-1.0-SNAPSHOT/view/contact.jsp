@@ -1,1502 +1,1073 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="vi">
-
-
-
-<head>
-
-
-
-  <title>Tiệm Hoa nhÃ  tớ</title>
-
-
-
-  <!-- Google Tag Manager -->
-
-  <script>(function (w, d, s, l, i) {
-
-      w[l] = w[l] || []; w[l].push({
-
-        'gtm.start':
-
-          new Date().getTime(), event: 'gtm.js'
-
-      }); var f = d.getElementsByTagName(s)[0],
-
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-
-    })(window, document, 'script', 'GTM-W8R4GL2');</script>
-
-  <!-- End Google Tag Manager -->
-
-
-
-  <!-- Google Tag Manager -->
-
-  <script>(function (w, d, s, l, i) {
-
-      w[l] = w[l] || []; w[l].push({
-
-        'gtm.start':
-
-          new Date().getTime(), event: 'gtm.js'
-
-      }); var f = d.getElementsByTagName(s)[0],
-
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-
-    })(window, document, 'script', 'GTM-NSBT6HTK');</script>
-
-  <!-- End Google Tag Manager -->
-
-  <meta charset="utf-8" />
-
-  <link rel="shortcut icon" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/favicon.png?v=245"
-
-    type="image/x-icon" />
-
-  <link rel="icon" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/favicon.png?v=245" type="image/png" />
-
-  <meta content='width=device-width,user-scalable=0' name='viewport' />
-
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-  <meta name="HandheldFriendly" content="true">
-
-  <meta name="revisit-after" content="1 day" />
-
-  <meta name="description"
-
-    content="Trang giờ›i thiá»‡u gi&#250;p kh&#225;ch h&#224;ng hiá»ƒu r&#245; hÆ¡n vá» cá»­a h&#224;ng cá»§a báº¡n. H&#227;y cung cáº¥p th&#244;ng tin cá»¥ thể vá» viá»‡c kinh doanh, vá» cá»­a h&#224;ng, th&#244;ng tin li&#234;n há»‡. Äiá»u n&#224;y sáº½ gi&#250;p kh&#225;ch h&#224;ng cảm tháº¥y tin tÆ°á»Ÿng khi mua h&#224;ng tr&#234;n website cá»§a báº¡n.Má»™t v&#224;i gá»£i &#253; cho ná»™i dung trang Giá»›i thiá»‡u:Báº¡n l&#224; aiGi&#225; trá»‹ kinh doanh cá»§a báº¡n l&#224; g&#236;Äá»‹a ch" />
-
-  <link rel="canonical" href="https://lavieestbelle.vn/pages/about-us" />
-
-  <meta name="robots" content="index,follow,noodp">
-
-  <meta property="og:type" content="website" />
-
-  <meta property="og:title" content="Giá»›i thiá»‡u" />
-
-  <meta property="og:image"
-
-    content="http://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg" />
-
-  <meta property="og:image"
-
-    content="https://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg" />
-
-  <meta property="og:image:secure_url"
-
-    content="https://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg" />
-
-  <meta property="og:image:secure_url"
-
-    content="http://file.hstatic.net/200000846175/file/z5318389113228_bf05d1d394f756ddf038d8894726eb4c_cf4c6b6a880841b6b51d904a62b0035c.jpg" />
-
-  <meta property="og:description"
-
-    content="Trang giờ›i thiá»‡u gi&#250;p kh&#225;ch h&#224;ng hiá»ƒu r&#245; hÆ¡n vá» cá»­a h&#224;ng cá»§a báº¡n. H&#227;y cung cáº¥p th&#244;ng tin cá»¥ thể vá» viá»‡c kinh doanh, vá» cá»­a h&#224;ng, th&#244;ng tin li&#234;n há»‡. Äiá»u n&#224;y sáº½ gi&#250;p kh&#225;ch h&#224;ng cảm tháº¥y tin tÆ°á»Ÿng khi mua h&#224;ng tr&#234;n website cá»§a báº¡n.Má»™t v&#224;i gá»£i &#253; cho ná»™i dung trang Giá»›i thiá»‡u:Báº¡n l&#224; aiGi&#225; trá»‹ kinh doanh cá»§a báº¡n l&#224; g&#236;Äá»‹a ch" />
-
-  <meta property="og:image:alt" content="Giá»›i thiá»‡u" />
-
-  <meta property="og:url" content="https://lavieestbelle.vn/pages/about-us" />
-
-
-
-  <!-- Biáº¿n mÃ u chung cá»§a theme -->
-
-  <style>
-
-    :root {
-
-      --bg-soldout: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/hethang.png?v=245);
-
-      --bgshop: #000000;
-
-      --colorshop: #000000;
-
-      --colorshophover: #212020;
-
-      --bgfooter: #ffffff;
-
-      --colorfooter: #000000;
-
-      --colorbgmenumb: #ffffff;
-
-      --colortextmenumb: #000000;
-
-      --height-head: 72px;
-
-      --bg-flashsale: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/bg-flashs-sale.jpg?v=245);
-
-      --imgselect: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/ico-select.svg?v=245);
-
-      --imgsort: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/sort-az.svg?v=245);
-
-      --bgsubcribe: url('//cdn.hstatic.net/themes/200000846175/1001403720/14/modal-banner.jpg?v=245');
-
-      --bg-filter: url('//cdn.hstatic.net/themes/200000846175/1001403720/14/filter.svg?v=245');
-
-      --bg-google: url('//cdn.hstatic.net/themes/200000846175/1001403720/14/google-plus.png?v=245');
-
-      --bg-facebook: url('//cdn.hstatic.net/themes/200000846175/1001403720/14/facebook.png?v=245');
-
-      --heartpage: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/hearts-page.svg?v=245);
-
-      --customer: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/customer-icon-service.svg?v=245);
-
-      --cancel: url(//cdn.hstatic.net/themes/200000846175/1001403720/14/cancel-while.svg?v=245);
-
-      --bg-footer: url(https://file.hstatic.net/200000397757/file/wd-footer-bg_bd337816b3d64003b9fa0ca6f4b8b3fa.png);
-
-
-
-      /* ThÃªm bá»™ mÃ u giờ‘ng trang tin tá»©c */
-
-      --bg-page: #faf5ef;
-
-      --brown-main: #3c2922;
-
-      --brown-soft: #6c5845;
-
-      --accent: #c99366;
-
-      --accent-dark: #aa6a3f;
-
-    }
-
-  </style>
-
-
-
-  <!-- Style trang liÃªn há»‡ (theo phong cách trang tin tá»©c) -->
-
-  <style>
-
-    * {
-
-      box-sizing: border-box;
-
-    }
-
-
-
-    body#wandave-theme {
-
-      font-family: 'Crimson Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
-      background: var(--bg-page);
-
-      color: var(--brown-main);
-
-      line-height: 1.6;
-
-    }
-
-
-
-    /* HERO */
-
-    .contact-hero {
-
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-
-      color: #fff;
-
-      padding: 4rem 2rem;
-
-      text-align: center;
-
-      padding-top: 30px;
-
-    }
-
-
-
-    .contact-hero::before {
-
-      content: '';
-
-      position: absolute;
-
-      top: -50%;
-
-      right: -10%;
-
-      width: 480px;
-
-      height: 480px;
-
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
-
-      border-radius: 50%;
-
-    }
-
-
-
-    .contact-hero::after {
-
-      content: '';
-
-      position: absolute;
-
-      bottom: -30%;
-
-      left: -5%;
-
-      width: 360px;
-
-      height: 360px;
-
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
-
-      border-radius: 50%;
-
-    }
-
-
-
-    .contact-hero-inner {
-
-      position: relative;
-
-      z-index: 1;
-
-      max-width: 760px;
-
-      margin: 0 auto;
-
-    }
-
-
-
-    .contact-hero h1 {
-
-      font-size: 3rem;
-
-      font-weight: 700;
-
-      letter-spacing: -0.02em;
-
-      margin-bottom: 0.75rem;
-
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
-
-    }
-
-
-
-    .contact-hero p {
-
-      font-size: 1.2rem;
-
-      opacity: 0.96;
-
-      font-style: italic;
-
-    }
-
-
-
-    /* WRAPPER CARD (trÃ¹ng vibe vá»›i search-filter-section cá»§a news) */
-
-    .contact-wrapper {
-
-      background: #fff;
-
-      max-width: 1200px;
-
-      margin: -3rem auto 3rem;
-
-      padding: 2rem 2.25rem;
-
-      border-radius: 20px;
-
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-
-      position: relative;
-
-      z-index: 5;
-
-    }
-
-
-
-    .contact-wrapper-header {
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      gap: 1.5rem;
-
-      margin-bottom: 1.5rem;
-
-      flex-wrap: wrap;
-
-    }
-
-
-
-    .contact-wrapper-header-title {
-
-      font-size: 1.4rem;
-
-      font-weight: 700;
-
-      color: var(--brown-main);
-
-    }
-
-
-
-    .contact-wrapper-header-note {
-
-      font-size: 0.95rem;
-
-      color: var(--brown-soft);
-
-    }
-
-
-
-    .contact-tag {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 0.4rem;
-
-      padding: 0.35rem 1rem;
-
-      border-radius: 999px;
-
-      background: linear-gradient(135deg, rgba(201, 147, 102, 0.14), rgba(170, 106, 63, 0.12));
-
-      color: var(--accent-dark);
-
-      font-size: 0.8rem;
-
-      font-weight: 700;
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.08em;
-
-    }
-
-
-
-    /* LAYOUT 2 Cá»˜T */
-
-    .contact-container {
-
-      display: grid;
-
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-
-      gap: 2.5rem;
-
-    }
-
-
-
-    @media (max-width: 1024px) {
-
-      .contact-container {
-
-        grid-template-columns: 1fr;
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liên hệ - Tiệm Hoa nhà tớ</title>
+
+    <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Crimson+Text:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome (for header/footer icons) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Header/Footer CSS (from main theme) -->
+    <link
+      href="//cdn.hstatic.net/themes/200000846175/1001403720/14/plugin-style.css?v=245"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="//cdn.hstatic.net/themes/200000846175/1001403720/14/styles-new.scss.css?v=245"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="//cdn.hstatic.net/themes/200000846175/1001403720/14/styles-index.scss.css?v=245"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- jQuery (required for header/footer functionality) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Theme Variables for Header/Footer -->
+    <script>
+      localStorage.setItem("shop_id", "themes/200000846175/1001403720");
+      const tbag_varible = {
+        template: "page",
+        navLeftText:
+          '<button class="slick-prev slick-arrow custom-style" aria-label="Previous"><span class="arrow-custom arrow-left"><div class="arrow-top"></div><div class="arrow-bottom"></div></span></button>',
+        navRightText:
+          '<button class="slick-next slick-arrow custom-style" aria-label="Next"><span class="arrow-custom arrow-right"><div class="arrow-top"></div><div class="arrow-bottom"></div></span></button>',
+        checklocation: "false",
+        checkproducthot: "true",
+        checkproductrelated: "true",
+        checkproductseen: "false",
+        heartactive:
+          "//cdn.hstatic.net/themes/200000846175/1001403720/14/heart-fill.svg?v=245",
+        addtocart:
+          "//cdn.hstatic.net/themes/200000846175/1001403720/14/add-to-cart.svg?v=245",
+        heart:
+          "//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245",
+        trash:
+          "//cdn.hstatic.net/themes/200000846175/1001403720/14/trash.svg?v=245",
+        cancel:
+          "//cdn.hstatic.net/themes/200000846175/1001403720/14/cancel.svg?v=245",
+      };
+      if (typeof Haravan === "undefined") {
+        Haravan = {};
+      }
+      Haravan.shop = "lavieestbelle.vn";
+    </script>
+
+    <style>
+      :root {
+        --primary: #c99366;
+        --primary-dark: #aa6a3f;
+        --primary-light: #e8d4c4;
+        --brown-main: #3c2922;
+        --brown-soft: #6c5845;
+        --bg-light: #faf5ef;
+        --bg-cream: #fff9f4;
+        --white: #ffffff;
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+        --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.08);
+        --shadow-lg: 0 15px 50px rgba(0, 0, 0, 0.12);
+        --radius-sm: 12px;
+        --radius-md: 20px;
+        --radius-lg: 30px;
       }
 
-    }
-
-
-
-    /* CARD CHUNG */
-
-    .contact-card,
-
-    .info-card {
-
-      background: #ffffff;
-
-      padding: 24px 22px;
-
-      border-radius: 18px;
-
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
-
-      border: 1px solid rgba(210, 180, 160, 0.4);
-
-      animation: fadeInUp 0.6s ease-out;
-
-    }
-
-
-
-    .info-card {
-
-      background: linear-gradient(135deg, #f7e7d7, #fdf7f1);
-
-    }
-
-
-
-    .card-title {
-
-      color: #4a3428;
-
-      margin-bottom: 8px;
-
-      font-size: 1.2rem;
-
-      font-weight: 700;
-
-    }
-
-
-
-    .small-note {
-
-      color: #8a6a55;
-
-      font-size: 0.9rem;
-
-      margin-bottom: 12px;
-
-    }
-
-
-
-    /* FORM */
-
-    .form-label {
-
-      font-size: 0.95rem;
-
-      margin-bottom: 4px;
-
-      font-weight: 600;
-
-      color: #5b4334;
-
-    }
-
-
-
-    .form-input,
-
-    .form-select,
-
-    .form-textarea {
-
-      width: 100%;
-
-      padding: 10px 16px;
-
-      border-radius: 999px;
-
-      border: 1px solid rgba(180, 130, 100, 0.5);
-
-      font-size: 0.95rem;
-
-      background: #ffffff;
-
-      outline: none;
-
-      transition: all 0.2s ease;
-
-      font-family: inherit;
-
-    }
-
-
-
-    .form-textarea {
-
-      border-radius: 14px;
-
-      min-height: 120px;
-
-      resize: vertical;
-
-      padding-top: 12px;
-
-    }
-
-
-
-    .form-input:focus,
-
-    .form-select:focus,
-
-    .form-textarea:focus {
-
-      border-color: var(--accent);
-
-      box-shadow: 0 0 0 3px rgba(201, 147, 102, 0.25);
-
-    }
-
-
-
-    .form-row {
-
-      display: flex;
-
-      gap: 16px;
-
-      margin-bottom: 14px;
-
-    }
-
-
-
-    .form-row>div {
-
-      flex: 1;
-
-    }
-
-
-
-    @media (max-width: 640px) {
-
-      .contact-wrapper {
-
-        margin: -2rem 1rem 2.5rem;
-
-        padding: 1.5rem 1.25rem;
-
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--bg-light);
+        color: var(--brown-main);
+        line-height: 1.7;
+      }
 
+      /* ===== HERO SECTION ===== */
+      .contact-hero {
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        padding: 100px 20px 140px;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .contact-hero::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.15) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .contact-hero::after {
+        content: "";
+        position: absolute;
+        bottom: -80px;
+        left: -50px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        animation: float 8s ease-in-out infinite reverse;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 700px;
+        margin: 0 auto;
+      }
 
       .contact-hero h1 {
-
-        font-size: 2.3rem;
-
+        font-family: "Playfair Display", serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 16px;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
       }
-
-
 
       .contact-hero p {
-
-        font-size: 1rem;
-
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.95);
+        font-weight: 300;
+        max-width: 500px;
+        margin: 0 auto;
       }
 
+      /* ===== MAIN CONTAINER ===== */
+      .contact-main {
+        max-width: 1200px;
+        margin: -80px auto 60px;
+        padding: 0 20px;
+        position: relative;
+        z-index: 10;
+      }
 
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 30px;
+      }
+
+      @media (max-width: 968px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ===== FORM CARD ===== */
+      .contact-form-card {
+        background: var(--white);
+        border-radius: var(--radius-md);
+        padding: 45px;
+        box-shadow: var(--shadow-lg);
+      }
+
+      .card-header {
+        margin-bottom: 32px;
+      }
+
+      .card-header h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.9rem;
+        color: var(--brown-main);
+        margin-bottom: 10px;
+      }
+
+      .card-header p {
+        color: var(--brown-soft);
+        font-size: 1rem;
+      }
 
       .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
 
+      @media (max-width: 600px) {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .form-group {
+        margin-bottom: 22px;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--brown-main);
+        margin-bottom: 10px;
+      }
+
+      .form-group label .required {
+        color: #e74c3c;
+        margin-left: 2px;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 15px 20px;
+        border: 2px solid #e8ddd4;
+        border-radius: var(--radius-sm);
+        font-size: 1rem;
+        font-family: inherit;
+        transition: all 0.3s ease;
+        background: var(--bg-cream);
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--primary);
+        background: var(--white);
+        box-shadow: 0 0 0 4px rgba(201, 147, 102, 0.15);
+      }
+
+      .form-control::placeholder {
+        color: #b5a99a;
+      }
+
+      textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      select.form-control {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236c5845' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 18px center;
+        padding-right: 45px;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 18px 36px;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: #fff;
+        border: none;
+        border-radius: var(--radius-sm);
+        font-size: 1.05rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        box-shadow: 0 10px 30px rgba(170, 106, 63, 0.35);
+        margin-top: 10px;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(170, 106, 63, 0.45);
+      }
+
+      .submit-btn:active {
+        transform: translateY(-1px);
+      }
+
+      .submit-btn i {
+        font-size: 1.2rem;
+        transition: transform 0.3s;
+      }
+
+      .submit-btn:hover i {
+        transform: translateX(5px);
+      }
+
+      /* ===== INFO CARDS ===== */
+      .contact-info-card {
+        display: flex;
         flex-direction: column;
-
+        gap: 24px;
       }
 
-    }
-
-
-
-    .contact-btn {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      padding: 12px 26px;
-
-      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-
-      color: #fff;
-
-      border-radius: 999px;
-
-      font-size: 1.02rem;
-
-      font-weight: 600;
-
-      cursor: pointer;
-
-      border: none;
-
-      margin-top: 10px;
-
-      box-shadow: 0 10px 24px rgba(170, 106, 63, 0.35);
-
-      transition: all 0.25s ease;
-
-    }
-
-
-
-    .contact-btn:hover {
-
-      transform: translateY(-2px);
-
-      box-shadow: 0 14px 28px rgba(170, 106, 63, 0.45);
-
-      background: linear-gradient(135deg, #b57d4c, #945331);
-
-    }
-
-
-
-    .contact-btn:active {
-
-      transform: translateY(0);
-
-      box-shadow: 0 8px 18px rgba(170, 106, 63, 0.3);
-
-    }
-
-
-
-    /* INFO CARD */
-
-    .info-item {
-
-      display: flex;
-
-      gap: 14px;
-
-      margin-bottom: 18px;
-
-    }
-
-
-
-    .info-icon {
-
-      width: 40px;
-
-      height: 40px;
-
-      border-radius: 999px;
-
-      background: #ffffffb0;
-
-      border: 1px solid rgba(180, 130, 100, 0.5);
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      font-size: 18px;
-
-      color: #5a3d2e;
-
-    }
-
-
-
-    .info-label {
-
-      color: #7a5a44;
-
-      font-size: 0.8rem;
-
-      letter-spacing: 1px;
-
-      text-transform: uppercase;
-
-      margin-bottom: 3px;
-
-      font-weight: 900;
-
-    }
-
-
-
-    .info-text {
-
-      color: #3c2c24;
-
-      font-size: 0.98rem;
-
-    }
-
-
-
-    .info-highlight {
-
-      display: inline-flex;
-
-      margin-top: 4px;
-
-      padding: 4px 10px;
-
-      border-radius: 999px;
-
-      background: rgba(255, 255, 255, 0.8);
-
-      border: 1px dashed rgba(170, 106, 63, 0.6);
-
-      font-size: 0.85rem;
-
-      color: #7a5a44;
-
-    }
-
-
-
-    hr {
-
-      border: none;
-
-      border-top: 1px solid #d8c0a9;
-
-      margin: 18px 0;
-
-    }
-
-
-
-    .info-social-note {
-
-      font-size: 0.92rem;
-
-      color: #7a5a44;
-
-      line-height: 1.7;
-
-    }
-
-
-
-    .info-social-note strong {
-
-      font-weight: 700;
-
-    }
-
-
-
-    /* Animation giờ‘ng news-card */
-
-    @keyframes fadeInUp {
-
-      from {
-
-        opacity: 0;
-
-        transform: translateY(30px);
-
+      .info-box {
+        background: linear-gradient(135deg, #fff9f4 0%, #fff 100%);
+        border-radius: var(--radius-md);
+        padding: 32px;
+        box-shadow: var(--shadow-md);
+        border: 1px solid rgba(201, 147, 102, 0.15);
+        transition: transform 0.3s ease;
       }
 
-
-
-      to {
-
-        opacity: 1;
-
-        transform: translateY(0);
-
+      .info-box:hover {
+        transform: translateY(-5px);
       }
 
-    }
-
-  </style>
-
-
-
-  <link
-
-    href="https://fonts.googleapis.com/css2?family=Crimson Text:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=fallback"
-
-    as="style" type="text/css" rel="preload stylesheet">
-
-  <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/plugin-style.css?v=245" rel="preload stylesheet"
-
-    as="style" type="text/css">
-
-  <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/styles-new.scss.css?v=245" rel="preload stylesheet"
-
-    as="style" type="text/css">
-
-  <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/style-page.scss.css?v=245" rel="preload stylesheet"
-
-    as="style" type="text/css">
-
-  <link rel="preload" as="image" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/logo.png?v=245">
-
-  <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245" rel="preload" as="script"
-
-    type="text/javascript">
-
-  <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/main-scripts.js?v=245" rel="preload" as="script"
-
-    type="text/javascript">
-
-  <script type="text/javascript"
-
-    src="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"></script>
-
-
-
-  <!-- CÃ¡c script Haravan giữ nguyÃªn như cÅ© -->
-
-  <script>
-
-    localStorage.setItem('shop_id', 'themes/200000846175/1001403720');
-
-    const tbag_varible = {
-
-      template: 'page',
-
-      navLeftText: '<button class="slick-prev slick-arrow custom-style" aria-label="Previous"><span class="arrow-custom arrow-left"><div class="arrow-top"></div><div class="arrow-bottom"></div></span></button>',
-
-      navRightText: '<button class="slick-next slick-arrow custom-style" aria-label="Next"><span class="arrow-custom arrow-right"><div class="arrow-top"></div><div class="arrow-bottom"></div></span></button>',
-
-      checklocation: "false",
-
-      checkproducthot: "true",
-
-      checkproductrelated: "true",
-
-      checkproductseen: "false",
-
-      heartactive: "//cdn.hstatic.net/themes/200000846175/1001403720/14/heart-fill.svg?v=245",
-
-      addtocart: "//cdn.hstatic.net/themes/200000846175/1001403720/14/add-to-cart.svg?v=245",
-
-      heart: "//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245",
-
-      sgnotify: "false",
-
-      recaptchajs: "https://www.google.com/recaptcha/api.js?render=6LdD18MUAAAAAHqKl3Avv8W-tREL6LangePxQLM-",
-
-      jsonmap: "https://file.hstatic.net/200000397757/file/hethongcuahang_f1ee212eddc04706b09d43518b50a964.json",
-
-      typepaginate: "default",
-
-      typeimage: false,
-
-      trash: "//cdn.hstatic.net/themes/200000846175/1001403720/14/trash.svg?v=245",
-
-      cancel: "//cdn.hstatic.net/themes/200000846175/1001403720/14/cancel.svg?v=245",
-
-      productjson: { "error": "json not allowed for this object" },
-
-      producthandle: "",
-
-      typerelated: "type",
-
-      vendorurl: "/collections/vendors?q=&view=related-product",
-
-      typeurl: "/collections/types?q=&view=related-product",
-
-      sortbydefault: ""
-
-    }
-
-    const formatMoney = '{{amount}} VND';
-
-  </script>
-
-
-
-  <script type='text/javascript'>
-
-    if ((typeof Haravan) === 'undefined') {
-
-      Haravan = {};
-
-    }
-
-    Haravan.culture = 'vi-VN';
-
-    Haravan.shop = 'lavieestbelle.myharavan.com';
-
-    Haravan.theme = { "name": "Customize Lavieestbelle", "id": 1001403720, "role": "main" };
-
-    Haravan.domain = 'lavieestbelle.vn';
-
-  </script>
-
-  <script defer src='https://stats.hstatic.net/beacon.min.js' hrv-beacon-t='200000846175'></script>
-
-  <style>
-
-    .grecaptcha-badge {
-
-      visibility: hidden;
-
-    }
-
-  </style>
-
-  <script type='text/javascript'>
-
-    window.HaravanAnalytics = window.HaravanAnalytics || {};
-
-    window.HaravanAnalytics.meta = window.HaravanAnalytics.meta || {};
-
-    window.HaravanAnalytics.meta.currency = 'VND';
-
-    var meta = { "page": { "pageType": "page", "resourceType": "page", "resourceId": 1003535962 } };
-
-    for (var attr in meta) {
-
-      window.HaravanAnalytics.meta[attr] = meta[attr];
-
-    }
-
-    window.HaravanAnalytics.AutoTrack = true;
-
-  </script>
-
-  <script>
-
-    window.HaravanAnalytics.ga = "UA-000000000-1";
-
-    window.HaravanAnalytics.enhancedEcommerce = false;
-
-    (function (i, s, o, g, r, a, m) {
-
-      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-
-        (i[r].q = i[r].q || []).push(arguments)
-
-      }, i[r].l = 1 * new Date(); a = s.createElement(o),
-
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', window.HaravanAnalytics.ga, 'auto', { allowLinker: true });
-
-    ga('send', 'pageview'); ga('require', 'linker');
-
-  </script>
-
-  <script
-
-    type="application/ld+json">{"@context":"http://schema.org","@type":"WebSite","name":"lavieestbelle.vn","url":"https://lavieestbelle.vn","potentialAction":{"@type":"SearchAction","target":"https://lavieestbelle.vn/search?&q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-
-
-
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-  <script defer src="components.js"></script>
-
-</head>
-
-
-
-<body id="wandave-theme" class="index" data-theme="tbag-fashion">
-
-
-
-  <!-- Google Tag Manager (noscript) -->
-
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8R4GL2" height="0" width="0"
-
-      style="display:none;visibility:hidden"></iframe></noscript>
-
-
-
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSBT6HTK" height="0" width="0"
-
-      style="display:none;visibility:hidden"></iframe></noscript>
-
-  <!-- End Google Tag Manager (noscript) -->
-
-  <site-header></site-header> 
-
-  <main>
-
-  <!-- HERO -->
-
-  <section class="contact-hero">
-
-    <h1 class="contact-title">LIÃŠN Há»†</h1>
-
-  </section>
-
-
-
-  <!-- MAIN CONTENT -->
-
-  <div class="contact-container">
-
-
-
-    <!-- FORM -->
-
-    <div class="contact-card">
-
-      <h2 style="color:#4a3428; margin-bottom:10px; font-size:1.2rem;">ThÃ´ng tin cá»§a báº¡n</h2>
-
-      <p class="small-note">Äiá»n chÃ­nh xÃ¡c Ä‘á»ƒ tá»¥i mÃ¬nh liÃªn há»‡ nhanh nháº¥t nhÃ©!</p>
-
-
-
-      <form method="post">
-
-        <div class="form-row">
-
-          <div>
-
-            <label class="form-label">Há» vÃ  tÃªn</label>
-
-            <input type="text" class="form-input" placeholder="Nháº­p tÃªn cá»§a báº¡n" required>
-
-          </div>
-
-          <div>
-
-            <label class="form-label">Sá»‘ Ä‘iá»‡n thoáº¡i</label>
-
-            <input type="text" class="form-input" placeholder="0123 456 789" required>
-
-          </div>
-
-        </div>
-
-
-
-  <site-header></site-header>
-
-
-
-  <main>
-
-    <!-- HERO -->
-
+      .info-box.highlight {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+        color: #fff;
+        border: none;
+      }
+
+      .info-box.highlight .info-title,
+      .info-box.highlight .info-text,
+      .info-box.highlight .info-label {
+        color: #fff;
+      }
+
+      .info-box.highlight .info-icon {
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+      }
+
+      .info-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        color: var(--brown-main);
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .info-title i {
+        color: var(--primary);
+        font-size: 1.3rem;
+      }
+
+      .info-box.highlight .info-title i {
+        color: #fff;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .info-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .info-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 14px;
+        background: var(--primary-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-dark);
+        font-size: 1.3rem;
+        flex-shrink: 0;
+      }
+
+      .info-content {
+        flex: 1;
+      }
+
+      .info-label {
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        color: var(--brown-soft);
+        margin-bottom: 5px;
+      }
+
+      .info-text {
+        font-size: 1.05rem;
+        color: var(--brown-main);
+        font-weight: 500;
+      }
+
+      .info-text a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .info-text a:hover {
+        color: var(--primary);
+      }
+
+      .info-note {
+        font-size: 0.9rem;
+        color: var(--brown-soft);
+        margin-top: 5px;
+      }
+
+      .urgent-badge {
+        margin-top: 20px;
+        padding: 14px 20px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 12px;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .urgent-badge i {
+        font-size: 1.2rem;
+        color: #ffd700;
+      }
+
+      /* Social Links */
+      .social-section {
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: 1px dashed #e8ddd4;
+      }
+
+      .social-section .info-label {
+        margin-bottom: 16px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .social-link {
+        width: 50px;
+        height: 50px;
+        border-radius: 14px;
+        background: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--brown-main);
+        font-size: 1.4rem;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-sm);
+        text-decoration: none;
+      }
+
+      .social-link:hover {
+        background: var(--primary);
+        color: #fff;
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(170, 106, 63, 0.3);
+      }
+
+      .social-link.facebook:hover {
+        background: #1877f2;
+      }
+      .social-link.instagram:hover {
+        background: linear-gradient(
+          45deg,
+          #f09433,
+          #e6683c,
+          #dc2743,
+          #cc2366,
+          #bc1888
+        );
+      }
+      .social-link.zalo:hover {
+        background: #0068ff;
+      }
+      .social-link.tiktok:hover {
+        background: #000;
+      }
+
+      /* ===== MAP SECTION ===== */
+      .map-section {
+        max-width: 1200px;
+        margin: 0 auto 60px;
+        padding: 0 20px;
+      }
+
+      .map-card {
+        background: var(--white);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+      }
+
+      .map-header {
+        padding: 28px 35px;
+        border-bottom: 1px solid #f0e6dd;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .map-header h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        color: var(--brown-main);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .map-header h3 i {
+        color: var(--primary);
+      }
+
+      .map-direction-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        background: var(--primary-light);
+        color: var(--primary-dark);
+        border-radius: 50px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .map-direction-btn:hover {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      .map-container {
+        height: 400px;
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* ===== FEATURES SECTION ===== */
+      .features-section {
+        max-width: 1200px;
+        margin: 0 auto 60px;
+        padding: 0 20px;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+      }
+
+      @media (max-width: 968px) {
+        .features-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 500px) {
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .feature-item {
+        background: var(--white);
+        border-radius: var(--radius-md);
+        padding: 30px 24px;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: all 0.3s;
+      }
+
+      .feature-item:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .feature-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary-light), #fff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 18px;
+        font-size: 1.8rem;
+        color: var(--primary-dark);
+      }
+
+      .feature-item h4 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        color: var(--brown-main);
+        margin-bottom: 8px;
+      }
+
+      .feature-item p {
+        font-size: 0.9rem;
+        color: var(--brown-soft);
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 768px) {
+        .contact-hero {
+          padding: 80px 20px 120px;
+        }
+
+        .contact-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .contact-form-card {
+          padding: 30px 25px;
+        }
+
+        .info-box {
+          padding: 25px;
+        }
+
+        .map-container {
+          height: 300px;
+        }
+      }
+
+      /* ===== ANIMATIONS ===== */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+
+  <body id="wandave-theme" class="index" data-theme="tbag-fashion">
+    <!-- Mobile Menu -->
+    <nav id="menu-mobile" class="hidden-md">
+      <button
+        id="wanda-close-handle"
+        class="wanda-close-handle"
+        aria-label="Đóng"
+        title="Đóng"
+      >
+        <span class="mb-menu-cls" aria-hidden="true"
+          ><span class="bar animate"></span></span
+        >Đóng
+      </button>
+      <ul class="mb-menu"></ul>
+      <ul class="list-lang">
+        <li class="btn-language-vi" title="Vietnamese">
+          <a
+            href="#"
+            onclick="doGTranslate('vi|vi');return false;"
+            title=""
+            class="lang-vi gflag vietnam nturl"
+          >
+            <img
+              src="//gtranslate.net/flags/blank.png"
+              height="24"
+              width="24"
+              alt="Vietnamese"
+            />
+          </a>
+        </li>
+        <li class="btn-language-en" title="English">
+          <a
+            href="#"
+            onclick="doGTranslate('vi|en');return false;"
+            title=""
+            class="lang-en gflag nturl"
+          >
+            <img
+              src="//gtranslate.net/flags/blank.png"
+              height="24"
+              width="24"
+              alt="English"
+            />
+          </a>
+        </li>
+        <li class="btn-language-ko" title="Korean">
+          <a
+            href="#"
+            onclick="doGTranslate('vi|ko');return false;"
+            title=""
+            class="lang-ko gflag nturl"
+          >
+            <img
+              src="//gtranslate.net/flags/blank.png"
+              height="24"
+              width="24"
+              alt="Korean"
+            />
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="site-overlay" class="site-overlay active"></div>
+
+    <%@ include file="partials/header.jsp" %>
+
+    <!-- HERO SECTION -->
     <section class="contact-hero">
-
-      <div class="contact-hero-inner">
-
-        <h1>LiÃªn há»‡ nhà tớ</h1>
-
-        <p>Äá»ƒ tá»¥i mÃ¬nh chuáº©n bá»‹ tháº­t chá»‰n chu cho bÃ³ hoa dÃ nh riêng cho báº¡n </p>
-
+      <div class="hero-content" data-aos="fade-up">
+        <h1>Liên hệ với chúng tớ</h1>
+        <p>Hãy để tụi mình chuẩn bị thật chỉn chu bó hoa dành cho bạn nhé!</p>
       </div>
-
     </section>
 
-
-
-    <!-- WRAPPER + LAYOUT 2 Cá»˜T -->
-
-    <section class="contact-wrapper">
-
-      <div class="contact-wrapper-header">
-
-        <div>
-
-          <div class="contact-wrapper-header-title">Gá»­i lá»i nháº¯n cho Tiệm</div>
-
-          <p class="contact-wrapper-header-note">
-
-            Äiá»n vÃ i thÃ´ng tin nhá» bÃªn dÆ°á»›i, tá»¥i mÃ¬nh sáº½ liÃªn há»‡ láº¡i trong thá»i gian sá»›m nháº¥t.
-
-          </p>
-
-        </div>
-
-        <span class="contact-tag">
-
-          <span>Æ¯u tiÃªn Ä‘Æ¡n gáº¥p trong ngÃ y</span>
-
-        </span>
-
-      </div>
-
-
-
-      <div class="contact-container">
-
+    <!-- MAIN CONTENT -->
+    <main class="contact-main">
+      <div class="contact-grid">
         <!-- FORM -->
+        <div class="contact-form-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-header">
+            <h2>Gửi lời nhắn cho Tiệm</h2>
+            <p>
+              Điền thông tin bên dưới, tụi mình sẽ liên hệ lại sớm nhất có thể!
+            </p>
+          </div>
 
-        <div class="contact-card">
-
-          <h2 class="card-title">ThÃ´ng tin cá»§a báº¡n</h2>
-
-          <p class="small-note">Äiá»n chÃ­nh xÃ¡c Ä‘á»ƒ tá»¥i mÃ¬nh tÆ° váº¥n Ä‘Ãºng nhu cầu &amp; ngÃ¢n sÃ¡ch cá»§a báº¡n nhÃ©.</p>
-
-
-
-          <form method="post">
-
+          <form method="post" action="">
             <div class="form-row">
-
-              <div>
-
-                <label class="form-label">Há» vÃ  tÃªn</label>
-
-                <input type="text" class="form-input" placeholder="Nháº­p tÃªn cá»§a báº¡n" required>
-
+              <div class="form-group">
+                <label>Họ và tên <span class="required">*</span></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="fullname"
+                  placeholder="Nhập tên của bạn"
+                  required
+                />
               </div>
-
-              <div>
-
-                <label class="form-label">Sá»‘ Ä‘iá»‡n thoáº¡i</label>
-
-                <input type="text" class="form-input" placeholder="0123 456 789" required>
-
+              <div class="form-group">
+                <label>Số điện thoại <span class="required">*</span></label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  name="phone"
+                  placeholder="0123 456 789"
+                  required
+                />
               </div>
-
             </div>
 
-
-
             <div class="form-row">
-
-              <div>
-
-                <label class="form-label">Email (tuá»³ chá»n)</label>
-
-                <input type="email" class="form-input" placeholder="example@gmail.com">
-
+              <div class="form-group">
+                <label>Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  placeholder="example@gmail.com"
+                />
               </div>
-
-              <div>
-
-                <label class="form-label">Chá»§ Ä‘á»</label>
-
-                <select class="form-select">
-
-                  <option value="">Chá»n chá»§ Ä‘á»</option>
-
-                  <option>Äáº·t hoa theo máº«u / yêu cầu</option>
-
-                  <option>TÆ° váº¥n tone mÃ u / concept</option>
-
-                  <option>Hoa khai trÆ°Æ¡ng - sá»± kiá»‡n</option>
-
-                  <option>Há»£p tÃ¡c / Ä‘á»‘i tÃ¡c</option>
-
-                  <option>KhÃ¡câ€¦</option>
-
+              <div class="form-group">
+                <label>Chủ đề</label>
+                <select class="form-control" name="subject">
+                  <option value="">-- Chọn chủ đề --</option>
+                  <option value="order">Đặt hoa theo yêu cầu</option>
+                  <option value="consult">Tư vấn tone màu / concept</option>
+                  <option value="event">Hoa khai trương - sự kiện</option>
+                  <option value="wedding">Hoa cưới</option>
+                  <option value="partner">Hợp tác / đối tác</option>
+                  <option value="other">Khác</option>
                 </select>
-
               </div>
-
             </div>
 
+            <div class="form-group">
+              <label>Lời nhắn <span class="required">*</span></label>
+              <textarea
+                class="form-control"
+                name="message"
+                placeholder="Nội dung bạn muốn tư vấn: tone màu yêu thích, ngân sách dự kiến, thời gian giao, địa chỉ giao hàng..."
+                required
+              ></textarea>
+            </div>
 
-
-            <label class="form-label">Lá»i nháº¯n</label>
-
-            <textarea class="form-textarea"
-
-              placeholder="Ná»™i dung báº¡n muá»‘n tÆ° váº¥n: tone mÃ u, ngÃ¢n sÃ¡ch dá»± kiáº¿n, thá»i gian giao, Ä‘á»‹a chá»‰ cá»¥ thểâ€¦"
-
-              required></textarea>
-
-
-
-            <button type="submit" class="contact-btn">Gá»­i liÃªn há»‡ cho nhà tớ</button>
-
+            <button type="submit" class="submit-btn">
+              Gửi liên hệ
+              <i class="bi bi-arrow-right"></i>
+            </button>
           </form>
-
         </div>
 
-
-
-        <!-- CONTACT INFO -->
-
-        <div class="info-card">
-
-          <h2 class="card-title">ThÃ´ng tin liÃªn há»‡</h2>
-
-          <p class="small-note">nhà tớ luÃ´n cá»‘ gáº¯ng tráº£ lá»i nhanh nháº¥t trong khung giờ lÃ m viá»‡c.</p>
-
-
-
-          <div class="info-item">
-
-            <div>
-
-              <div class="info-label">Äá»‹a chá»‰</div>
-
-              <div class="info-text">11A Nguyá»…n An, Tháº¡nh Má»¹ Lá»£i, TP. Thá»§ Äá»©c</div>
-
+        <!-- INFO CARDS -->
+        <div class="contact-info-card">
+          <!-- Highlight Box - Giờ làm việc -->
+          <div
+            class="info-box highlight"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="info-title">
+              <i class="bi bi-clock-fill"></i>
+              Giờ làm việc
             </div>
-
-          </div>
-
-
-
-          <div class="info-item">
-
-            <div>
-
-              <div class="info-label">Hotline &amp; Zalo</div>
-
-              <div class="info-text">
-
-                0123 456 789
-
+            <div class="info-item">
+              <div class="info-content">
+                <div
+                  class="info-text"
+                  style="font-size: 1.5rem; font-weight: 600"
+                >
+                  07:30 - 21:00
+                </div>
+                <div
+                  class="info-note"
+                  style="color: rgba(255, 255, 255, 0.85); margin-top: 8px"
+                >
+                  Thứ 2 - Chủ nhật (kể cả ngày lễ)
+                </div>
               </div>
-
             </div>
-
+            <div class="urgent-badge">
+              <i class="bi bi-lightning-charge-fill"></i>
+              <span>Nhận đơn gấp & giao trong ngày!</span>
+            </div>
           </div>
 
-
-
-          <div class="info-item">
-
-            <div>
-
-              <div class="info-label">Email</div>
-
-              <div class="info-text">tiemhoanhato@gmail.com</div>
-
+          <!-- Contact Info Box -->
+          <div class="info-box" data-aos="fade-up" data-aos-delay="300">
+            <div class="info-title">
+              <i class="bi bi-info-circle-fill"></i>
+              Thông tin liên hệ
             </div>
 
-          </div>
-
-
-
-          <div class="info-item">
-
-            <div>
-
-              <div class="info-label">Giá» lÃ m viá»‡c</div>
-
-              <div class="info-text">
-
-                07:30 â€“ 21:00 (Thá»© 2 â€“ Chá»§ nháº­t)
-
-                <br><span class="small-note">Có nháº­n Ä‘Æ¡n gáº¥p &amp; giao trong ngÃ y tuá»³ thá»i Ä‘iá»ƒm.</span>
-
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="bi bi-geo-alt-fill"></i>
               </div>
-
+              <div class="info-content">
+                <div class="info-label">Địa chỉ</div>
+                <div class="info-text">
+                  11A Nguyễn An, Thạnh Mỹ Lợi, TP. Thủ Đức, TP.HCM
+                </div>
+              </div>
             </div>
 
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div class="info-content">
+                <div class="info-label">Hotline & Zalo</div>
+                <div class="info-text">
+                  <a href="tel:0919897969">0919 897 969</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="bi bi-envelope-fill"></i>
+              </div>
+              <div class="info-content">
+                <div class="info-label">Email</div>
+                <div class="info-text">
+                  <a href="mailto:tiemhoanhato@gmail.com"
+                    >tiemhoanhato@gmail.com</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="social-section">
+              <div class="info-label">Kết nối với chúng tớ</div>
+              <div class="social-links">
+                <a
+                  href="https://www.facebook.com/"
+                  class="social-link facebook"
+                  title="Facebook"
+                  target="_blank"
+                >
+                  <i class="bi bi-facebook"></i>
+                </a>
+                <a
+                  href="https://www.instagram.com/"
+                  class="social-link instagram"
+                  title="Instagram"
+                  target="_blank"
+                >
+                  <i class="bi bi-instagram"></i>
+                </a>
+                <a
+                  href="https://zalo.me/0919897969"
+                  class="social-link zalo"
+                  title="Zalo"
+                  target="_blank"
+                >
+                  <i class="bi bi-chat-dots-fill"></i>
+                </a>
+                <a
+                  href="https://www.tiktok.com/"
+                  class="social-link tiktok"
+                  title="TikTok"
+                  target="_blank"
+                >
+                  <i class="bi bi-tiktok"></i>
+                </a>
+              </div>
+            </div>
           </div>
-
-
-
-          <hr>
-
-
-
-          <p class="info-social-note">
-
-            Báº¡n cÅ©ng cÃ³ thể ghÃ© tá»¥i mÃ¬nh á»Ÿ:
-
-            <br>â€¢ Zalo: <strong>0919 89 79 69</strong>
-
-            <br>â€¢ Facebook: <strong>Tiệm Hoa nhà tớ</strong>
-
-            <br>Náº¿u cáº§n tÆ° váº¥n gáº¥p, hÃ£y gá»i hhoặc nháº¯n Zalo giÃºp tá»¥i mÃ¬nh nha
-
-          </p>
-
         </div>
-
       </div>
+    </main>
 
+    <!-- FEATURES SECTION -->
+    <section class="features-section" data-aos="fade-up" data-aos-delay="100">
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="bi bi-truck"></i>
+          </div>
+          <h4>Giao hàng nhanh</h4>
+          <p>Giao hoa tận nơi trong 2h tại TP.HCM</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="bi bi-flower2"></i>
+          </div>
+          <h4>Hoa tươi 100%</h4>
+          <p>Cam kết hoa tươi, đẹp như hình</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="bi bi-palette"></i>
+          </div>
+          <h4>Thiết kế riêng</h4>
+          <p>Tư vấn & thiết kế theo yêu cầu</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <i class="bi bi-shield-check"></i>
+          </div>
+          <h4>Đảm bảo chất lượng</h4>
+          <p>Đổi trả nếu không hài lòng</p>
+        </div>
+      </div>
     </section>
 
-  </main>
-
-
-
-  <site-footer></site-footer>
-
-
-
-  <!-- CÃ¡c modal & social-fixed giữ nguyÃªn -->
-
-  <div class="modal" id="pro-qv-wanda"></div>
-
-  <div class="modal" id="success-cart-wanda">
-
-    <div class="row">
-
-      <div class="modal-content">
-
-        <div class="modal-icon sweet-alert">
-
-          <div class="sa-icon sa-success animate">
-
-            <span class="sa-line sa-tip animateSuccessTip"></span>
-
-            <span class="sa-line sa-long animateSuccessLong"></span>
-
-            <div class="sa-placeholder"></div>
-
-            <div class="sa-fix"></div>
-
-          </div>
-
+    <!-- MAP SECTION -->
+    <section class="map-section" data-aos="fade-up" data-aos-delay="200">
+      <div class="map-card">
+        <div class="map-header">
+          <h3><i class="bi bi-pin-map-fill"></i> Tìm đường đến Tiệm</h3>
+          <a
+            href="https://maps.google.com/?q=11A+Nguyen+An+Thanh+My+Loi+Thu+Duc"
+            target="_blank"
+            class="map-direction-btn"
+          >
+            <i class="bi bi-cursor-fill"></i>
+            Chỉ đường
+          </a>
         </div>
-
-        <div class="modal-body text-center">
-
-          <p class="modal-title">ThÃªm vÃ o giờ thÃ nh công</p>
-
-          <div class="media-success"></div>
-
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.2!2d106.76!3d10.79!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDQ3JzI0LjAiTiAxMDbCsDQ1JzM2LjAiRQ!5e0!3m2!1svi!2s!4v1703664000000!5m2!1svi!2s"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          >
+          </iframe>
         </div>
-
       </div>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="modal" id="cart-mini-wanda">
-
-    <div class="modal-header"> Giá» hÃ ng</div>
-
-    <div class="modal-content">
-
-      <div class="cart-view clearfix">
-
-        <div class="cart-scroll">
-
-          <table id="cart-view">
-
-            <tbody></tbody>
-
-          </table>
-
-        </div> <span class="line"></span>
-
-        <table class="table-total">
-
-          <tbody>
-
-            <tr>
-
-              <td class="text-left title-total">Tá»”NG TIá»€N:</td>
-
-              <td class="text-right" id="total-view-cart"></td>
-
-            </tr>
-
-            <tr>
-
-              <td colspan="2"><a href="cart.html" class="wanda-checkout-url btn">Thanh toÃ¡n</a></td>
-
-            </tr>
-
-          </tbody>
-
-        </table>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="modal" id="modal-error">
-
-    <img src="//cdn.hstatic.net/themes/200000846175/1001403720/14/alert.png?v=245" width="44" height="38" />
-
-    <span class="title">ThÃ´ng bÃ¡o!</span>
-
-    <p></p>
-
-  </div>
-
-
-
-  <div class="modal" id="success-subcribe-wanda">
-
-    <div class="row">
-
-      <div class="modal-content">
-
-        <div class="modal-icon sweet-alert">
-
-          <div class="sa-icon sa-success animate">
-
-            <span class="sa-line sa-tip animateSuccessTip"></span>
-
-            <span class="sa-line sa-long animateSuccessLong"></span>
-
-            <div class="sa-placeholder"></div>
-
-            <div class="sa-fix"></div>
-
-          </div>
-
-        </div>
-
-        <div class="modal-body text-center">
-
-          <p class="modal-title">ÄÄƒng kÃ½ thÃ nh công.<br>ThÃ´ng bÃ¡o sáº½ tá»± Ä‘á»™ng táº¯t sau 3 giÃ¢y</p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="social-fixed">
-
-    <ul class="active overflow-active">
-
-      <li class="hotline"><a href="tel:0919897969" data-toggle="tooltip"
-
-          data-original-title="LiÃªn há»‡ 0919897969"><i class="fa fa-phone"></i></a></li>
-
-      <li class="zalo">
-
-        <a href=" https://zalo.me/3854304162857362827" data-toggle="tooltip"
-
-          data-original-title="LiÃªn há»‡ vá»›i chÃºng tÃ´i qua Zalo">
-
-          <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-
-            <circle cx="22" cy="22" r="22" fill="url(#paint4_linear)"></circle>
-
-            <!-- svg content giữ nguyÃªn -->
-
-          </svg>
-
-        </a>
-
-      </li>
-
-    </ul>
-
-  </div>
-
-
-
-  <script src="//cdn.hstatic.net/themes/200000846175/1001403720/14/main-scripts.js?v=245" type="text/javascript"></script>
-
-</body>
-
-
-
+    </section>
+
+    <%@ include file="partials/footer.jsp" %>
+
+    <!-- Scripts -->
+    <!-- Theme JS for header/footer -->
+    <script
+      type="text/javascript"
+      src="//cdn.hstatic.net/themes/200000846175/1001403720/14/pluginscript.js?v=245"
+      defer
+    ></script>
+    <script
+      type="text/javascript"
+      src="//cdn.hstatic.net/themes/200000846175/1001403720/14/main-scripts.js?v=245"
+      defer
+    ></script>
+
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 50,
+        easing: "ease-out-cubic",
+      });
+
+      // Form validation feedback
+      document.querySelector("form").addEventListener("submit", function (e) {
+        const btn = this.querySelector(".submit-btn");
+        btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Đang gửi...';
+        btn.disabled = true;
+      });
+    </script>
+  </body>
 </html>
-
-
-

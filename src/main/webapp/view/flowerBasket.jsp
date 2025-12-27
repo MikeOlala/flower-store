@@ -10,7 +10,7 @@
 
   <meta charset="UTF-8">
 
-  <title>Tiệm Hoa nhÃ  tớ</title>
+  <title>Tiệm Hoa nhà tớ</title>
 
 </head>
 
@@ -198,7 +198,7 @@
 
     src="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"></script>
 
-  <!-- Tất cả biáº¿n khá»Ÿi táº¡o, check sá»­ dá»¥ng-->
+  <!-- Tất cả biến khởi tạo, check sử dụng-->
 
   <script>
 
@@ -394,7 +394,7 @@
 
 
 
-  <script defer src="components.js"></script>
+  
 
 
 
@@ -426,9 +426,9 @@
 
   <nav id="menu-mobile" class="hidden-md">
 
-    <button id="wanda-close-handle" class="wanda-close-handle" aria-label="ÄÃ³ng" title="ÄÃ³ng">
+    <button id="wanda-close-handle" class="wanda-close-handle" aria-label="Đóng" title="Đóng">
 
-      <span class="mb-menu-cls" aria-hidden="true"><span class="bar animate"></span></span>ÄÃ³ng
+      <span class="mb-menu-cls" aria-hidden="true"><span class="bar animate"></span></span>Đóng
 
     </button>
 
@@ -478,7 +478,7 @@
 
   <div id="site-overlay" class="site-overlay active"></div>
 
-  <site-header></site-header>
+  <%@ include file="partials/header.jsp" %>
 
   <main>
 
@@ -492,7 +492,7 @@
 
             <h4 class="title-section">
 
-              <a href="/collections/bo-hoa"><span>GIá»Ž HOA</span></a>
+              <a href="/collections/bo-hoa"><span>GIỎ HOA</span></a>
 
             </h4>
 
@@ -532,7 +532,7 @@
 
                   <div class="product-wishlist">
 
-                    <button data-original-title="YÃªu thÃ­ch" class="wishlist-loop"
+                    <button data-original-title="Yêu thích" class="wishlist-loop"
 
                       data-handle="fabric-peony" data-toggle="tooltip">
 
@@ -540,7 +540,7 @@
 
                         src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
 
-                        alt="YÃªu thÃ­ch"> YÃªu thÃ­ch
+                        alt="Yêu thích"> Yêu thích
 
                     </button>
 
@@ -556,7 +556,7 @@
 
                         class="inline-block icon-addcart margin_right_10 box-shadow"
 
-                        href="javascript:void(0)">ThÃªm vÃ o giờ</button>
+                        href="javascript:void(0)">Thêm vào giờ</button>
 
                     </div>
 
@@ -624,7 +624,7 @@
 
                   <div class="product-wishlist">
 
-                    <button data-original-title="YÃªu thÃ­ch" class="wishlist-loop"
+                    <button data-original-title="Yêu thích" class="wishlist-loop"
 
                       data-handle="fabric-aster-amellus" data-toggle="tooltip">
 
@@ -632,7 +632,7 @@
 
                         src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
 
-                        alt="YÃªu thÃ­ch"> YÃªu thÃ­ch
+                        alt="Yêu thích"> Yêu thích
 
                     </button>
 
@@ -648,7 +648,7 @@
 
                         class="inline-block icon-addcart margin_right_10 box-shadow"
 
-                        href="javascript:void(0)">ThÃªm vÃ o giờ</button>
+                        href="javascript:void(0)">Thêm vào giờ</button>
 
                     </div>
 
@@ -716,7 +716,7 @@
 
                   <div class="product-wishlist">
 
-                    <button data-original-title="YÃªu thÃ­ch" class="wishlist-loop"
+                    <button data-original-title="Yêu thích" class="wishlist-loop"
 
                       data-handle="fabric-phalaenopsis" data-toggle="tooltip">
 
@@ -724,7 +724,7 @@
 
                         src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
 
-                        alt="YÃªu thÃ­ch"> YÃªu thÃ­ch
+                        alt="Yêu thích"> Yêu thích
 
                     </button>
 
@@ -740,7 +740,7 @@
 
                         class="inline-block icon-addcart margin_right_10 box-shadow"
 
-                        href="javascript:void(0)">ThÃªm vÃ o giờ</button>
+                        href="javascript:void(0)">Thêm vào giờ</button>
 
                     </div>
 
@@ -808,7 +808,7 @@
 
                   <div class="product-wishlist">
 
-                    <button data-original-title="YÃªu thÃ­ch" class="wishlist-loop"
+                    <button data-original-title="Yêu thích" class="wishlist-loop"
 
                       data-handle="fabric-rum" data-toggle="tooltip">
 
@@ -816,7 +816,7 @@
 
                         src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
 
-                        alt="YÃªu thÃ­ch"> YÃªu thÃ­ch
+                        alt="Yêu thích"> Yêu thích
 
                     </button>
 
@@ -832,7 +832,7 @@
 
                         class="inline-block icon-addcart margin_right_10 box-shadow"
 
-                        href="javascript:void(0)">ThÃªm vÃ o giờ</button>
+                        href="javascript:void(0)">Thêm vào giờ</button>
 
                     </div>
 
@@ -900,7 +900,7 @@
 
                   <div class="product-wishlist">
 
-                    <button data-original-title="YÃªu thÃ­ch" class="wishlist-loop"
+                    <button data-original-title="Yêu thích" class="wishlist-loop"
 
                       data-handle="fabric-magnolia" data-toggle="tooltip">
 
@@ -908,7 +908,7 @@
 
                         src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
 
-                        alt="YÃªu thÃ­ch"> YÃªu thÃ­ch
+                        alt="Yêu thích"> Yêu thích
 
                     </button>
 
@@ -924,7 +924,7 @@
 
                         class="inline-block icon-addcart margin_right_10 box-shadow"
 
-                        href="javascript:void(0)">ThÃªm vÃ o giờ</button>
+                        href="javascript:void(0)">Thêm vào giờ</button>
 
                     </div>
 
@@ -992,7 +992,7 @@
 
                   <div class="product-wishlist">
 
-                    <button data-original-title="YÃªu thÃ­ch" class="wishlist-loop"
+                    <button data-original-title="Yêu thích" class="wishlist-loop"
 
                       data-handle="fabric-tithonia" data-toggle="tooltip">
 
@@ -1000,7 +1000,7 @@
 
                         src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
 
-                        alt="YÃªu thÃ­ch"> YÃªu thÃ­ch
+                        alt="Yêu thích"> Yêu thích
 
                     </button>
 
@@ -1016,7 +1016,7 @@
 
                         class="inline-block icon-addcart margin_right_10 box-shadow"
 
-                        href="javascript:void(0)">ThÃªm vÃ o giờ</button>
+                        href="javascript:void(0)">Thêm vào giờ</button>
 
                     </div>
 
@@ -1084,7 +1084,7 @@
 
                   <div class="product-wishlist">
 
-                    <button data-original-title="YÃªu thÃ­ch" class="wishlist-loop"
+                    <button data-original-title="Yêu thích" class="wishlist-loop"
 
                       data-handle="fabric-hortensia" data-toggle="tooltip">
 
@@ -1092,7 +1092,7 @@
 
                         src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
 
-                        alt="YÃªu thÃ­ch"> YÃªu thÃ­ch
+                        alt="Yêu thích"> Yêu thích
 
                     </button>
 
@@ -1108,7 +1108,7 @@
 
                         class="inline-block icon-addcart margin_right_10 box-shadow"
 
-                        href="javascript:void(0)">ThÃªm vÃ o giờ</button>
+                        href="javascript:void(0)">Thêm vào giờ</button>
 
                     </div>
 
@@ -1176,7 +1176,7 @@
 
                   <div class="product-wishlist">
 
-                    <button data-original-title="YÃªu thÃ­ch" class="wishlist-loop"
+                    <button data-original-title="Yêu thích" class="wishlist-loop"
 
                       data-handle="fabric-cherry" data-toggle="tooltip">
 
@@ -1184,7 +1184,7 @@
 
                         src="//cdn.hstatic.net/themes/200000846175/1001403720/14/heart.svg?v=245"
 
-                        alt="YÃªu thÃ­ch"> YÃªu thÃ­ch
+                        alt="Yêu thích"> Yêu thích
 
                     </button>
 
@@ -1200,7 +1200,7 @@
 
                         class="inline-block icon-addcart margin_right_10 box-shadow"
 
-                        href="javascript:void(0)">ThÃªm vÃ o giờ</button>
+                        href="javascript:void(0)">Thêm vào giờ</button>
 
                     </div>
 
@@ -1258,7 +1258,7 @@
 
   </main>
 
-  <site-footer></site-footer>
+  <%@ include file="partials/footer.jsp" %>
 
   <div class="modal" id="pro-qv-wanda">
 
@@ -1286,7 +1286,7 @@
 
         <div class="modal-body text-center">
 
-          <p class="modal-title">ThÃªm vÃ o giờ thÃ nh công</p>
+          <p class="modal-title">Thêm vào giờ thành công</p>
 
           <div class="media-success"></div>
 
@@ -1300,7 +1300,7 @@
 
   <div class="modal" id="cart-mini-wanda">
 
-    <div class="modal-header"> Giá» hÃ ng</div>
+    <div class="modal-header"> Giỏ hàng</div>
 
     <div class="modal-content">
 
@@ -1322,7 +1322,7 @@
 
             <tr>
 
-              <td class="text-left title-total">Tá»”NG TIá»€N:</td>
+              <td class="text-left title-total">TỔNG TIỀN:</td>
 
               <td class="text-right" id="total-view-cart"></td>
 
@@ -1330,7 +1330,7 @@
 
             <tr>
 
-              <td colspan="2"><a href="cart.html" class="wanda-checkout-url btn">Thanh toÃ¡n</a></td>
+              <td colspan="2"><a href="cart.jsp" class="wanda-checkout-url btn">Thanh toán</a></td>
 
             </tr>
 
@@ -1348,7 +1348,7 @@
 
     <img src="//cdn.hstatic.net/themes/200000846175/1001403720/14/alert.png?v=245" width="44" height="38" />
 
-    <span class="title">ThÃ´ng bÃ¡o!</span>
+    <span class="title">Thông báo!</span>
 
     <p></p>
 
@@ -1376,7 +1376,7 @@
 
         <div class="modal-body text-center">
 
-          <p class="modal-title">ÄÄƒng kÃ½ thÃ nh công.<br>ThÃ´ng bÃ¡o sáº½ tá»± Ä‘á»™ng táº¯t sau 3 giÃ¢y</p>
+          <p class="modal-title">Đăng ký thành công.<br>Thông báo sẽ tự động tắt sau 3 giây</p>
 
         </div>
 
@@ -1392,13 +1392,13 @@
 
       <li class="hotline"><a href="tel:0919897969" data-toggle="tooltip"
 
-          data-original-title="LiÃªn há»‡ 0919897969"><i class="fa fa-phone"></i></a></li>
+          data-original-title="Liên hệ 0919897969"><i class="fa fa-phone"></i></a></li>
 
       <li class="zalo">
 
         <a href=" https://zalo.me/3854304162857362827" data-toggle="tooltip"
 
-          data-original-title="LiÃªn há»‡ vá»›i chÃºng tÃ´i qua Zalo">
+          data-original-title="Liên hệ với chúng tôi qua Zalo">
 
           <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -1464,7 +1464,7 @@
 
           href="https://www.messenger.com/login.php?next=https%3A%2F%2Fwww.messenger.com%2Ft%2Ftiemhoa.lavieestbelle"
 
-          data-toggle="tooltip" data-original-title="LiÃªn há»‡ vá»›i chÃºng tÃ´i qua Messenger">
+          data-toggle="tooltip" data-original-title="Liên hệ với chúng tôi qua Messenger">
 
           <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
 
@@ -1520,7 +1520,7 @@
 
   <div class="modal-backdrop fade"></div>
 
-  <!-- ÄÃ¢y lÃ  suggest sale popup -->
+  <!-- Đây là suggest sale popup -->
 
   <div class="suggest-notify anislideOutDown sales_animated"></div>
 
@@ -1534,7 +1534,7 @@
 
       let timeSlide = parseInt("2000");
 
-      let htmlslider = `<div class="item"> <a href="/collections/all" title="Vegetable 2" aria-label="Banner 2"> <picture> <source media="(max-width: 480px)" srcset="https://cdn.hstatic.net/files/200000846175/file/4217caf7a3e82eb677f9.jpg" data-srcset="https://cdn.hstatic.net/files/200000846175/file/4217caf7a3e82eb677f9.jpg"> <source media="(min-width: 481px)" data-srcset="https://cdn.hstatic.net/files/200000846175/file/caf51f824f9dc2c39b8c.jpg" srcset="https://cdn.hstatic.net/files/200000846175/file/caf51f824f9dc2c39b8c.jpg"> <img class="dt-width-100 lazyload" width="1920" height="550" alt="Vegetable 2"> </picture><div class="slider-text left-slide"><h4> Tiệm hoa nhÃ  tớ </h4><p> Gá»­i hoa Ä‘áº¹p - Trao yêu thÆ°Æ¡ng.</p></a></div>`;
+      let htmlslider = `<div class="item"> <a href="/collections/all" title="Vegetable 2" aria-label="Banner 2"> <picture> <source media="(max-width: 480px)" srcset="https://cdn.hstatic.net/files/200000846175/file/4217caf7a3e82eb677f9.jpg" data-srcset="https://cdn.hstatic.net/files/200000846175/file/4217caf7a3e82eb677f9.jpg"> <source media="(min-width: 481px)" data-srcset="https://cdn.hstatic.net/files/200000846175/file/caf51f824f9dc2c39b8c.jpg" srcset="https://cdn.hstatic.net/files/200000846175/file/caf51f824f9dc2c39b8c.jpg"> <img class="dt-width-100 lazyload" width="1920" height="550" alt="Vegetable 2"> </picture><div class="slider-text left-slide"><h4> Tiệm hoa nhà tớ </h4><p> Gửi hoa đẹp - Trao yêu thương.</p></a></div>`;
 
       $("#home-slider").append(htmlslider);
 
@@ -1605,4 +1605,5 @@
 
 
 </html>
+
 

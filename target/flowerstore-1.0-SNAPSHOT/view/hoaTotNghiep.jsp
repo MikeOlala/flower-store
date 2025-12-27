@@ -22,7 +22,7 @@
 
 
 
-  <!-- CSS theme Ä‘á»ƒ giữ form header/footer giờ‘ng các trang khác -->
+  <!-- CSS theme để giữ form header/footer giờng các trang khác -->
 
   <link href="//cdn.hstatic.net/themes/200000846175/1001403720/14/plugin-style.css?v=245" rel="stylesheet" />
 
@@ -378,7 +378,7 @@
 
 
 
-    /* FILTER BAR â€“ ngáº¯n gá»n, hiá»‡n Ä‘áº¡i */
+    /* FILTER BAR – ngắn gọn, hiện đại */
 
     .filter-bar {
 
@@ -492,7 +492,7 @@
 
 
 
-    /* GRID CARD Äá»’NG Äá»€U */
+    /* GRID CARD ĐỒNG ĐỀU */
 
     .products-grid {
 
@@ -646,7 +646,7 @@
 
 
 
-    /* MODAL CHI TIáº¾T Sáº¢N PHáº¨M */
+    /* MODAL CHI TIẾT SẢN PHẨM */
 
     .product-modal-overlay {
 
@@ -1012,7 +1012,7 @@
 
 
 
-  <script defer src="components.js"></script>
+  
 
 </head>
 
@@ -1024,7 +1024,7 @@
 
 <!-- HEADER -->
 
-<site-header></site-header>
+<%@ include file="partials/header.jsp" %>
 
 
 
@@ -1036,11 +1036,11 @@
 
     <div class="product-hero-inner">
 
-      <h1 class="product-title">Hoa Tá»‘t Nghiá»‡p</h1>
+      <h1 class="product-title">Hoa Tốt Nghiệp</h1>
 
       <p class="product-subtitle">
 
-        Nhá»¯ng bÃ³ hoa â€œtrendâ€ nháº¥t cá»§a nhà tớ
+        Những bó hoa "trend" nhất của nhà tớ
 
       </p>
 
@@ -1054,29 +1054,29 @@
 
 
 
-    <!-- FILTER NGáº®N Gá»ŒN -->
+    <!-- FILTER NGẮN GỌN -->
 
     <div class="filter-bar">
 
-      <div class="filter-label-main">Bá»™ lá»c</div>
+      <div class="filter-label-main">Bộ lọc</div>
 
       <div class="filter-controls">
 
         <select id="topicFilter" class="filter-select">
 
-          <option value="all">Chá»§ Ä‘á»: Tất cả</option>
+          <option value="all">Chủ đề: Tất cả</option>
 
           <option value="pastel">Pastel</option>
 
-          <option value="chúc má»«ng">ChÃºc má»«ng</option>
+          <option value="chúc mừng">Chúc mừng</option>
 
-          <option value="tá» tÃ¬nh">Tá» tÃ¬nh</option>
+          <option value="tỏ tình">Tỏ tình</option>
 
-          <option value="khai trÆ°Æ¡ng">Khai trÆ°Æ¡ng</option>
+          <option value="khai trương">Khai trương</option>
 
           <option value="rustic">Rustic</option>
 
-          <option value="size nhá»">Size nhá»</option>
+          <option value="size nhỏ">Size nhỏ</option>
 
         </select>
 
@@ -1084,17 +1084,17 @@
 
         <select id="colorFilter" class="filter-select">
 
-          <option value="all">MÃ u: Tất cả</option>
+          <option value="all">Màu: Tất cả</option>
 
           <option value="pastel">Pastel</option>
 
-          <option value="neutral">Tráº¯ng / Be</option>
+          <option value="neutral">Trắng / Be</option>
 
-          <option value="warm">Cam / VÃ ng / Äá»</option>
+          <option value="warm">Cam / Vàng / đá»</option>
 
           <option value="rustic">Rustic / Nâu</option>
 
-          <option value="bright">Rá»±c rá»¡</option>
+          <option value="bright">Rực rỡ</option>
 
         </select>
 
@@ -1102,15 +1102,15 @@
 
         <select id="priceFilter" class="filter-select">
 
-          <option value="all">GiÃ¡: Tất cả</option>
+          <option value="all">Giá¡: Tất cả</option>
 
-          <option value="0-600">DÆ°á»›i 600.000Ä‘</option>
+          <option value="0-600">Dưới 600.000đ</option>
 
-          <option value="600-800">600.000Ä‘ - 800.000Ä‘</option>
+          <option value="600-800">600.000đ - 800.000đ</option>
 
-          <option value="800-1000">800.000Ä‘ - 1.000.000Ä‘</option>
+          <option value="800-1000">800.000đ - 1.000.000đ</option>
 
-          <option value="1000plus">TrÃªn 1.000.000Ä‘</option>
+          <option value="1000plus">Trên 1.000.000đ</option>
 
         </select>
 
@@ -1128,15 +1128,15 @@
 
       <!-- CARD 1 -->
 
-      <article class="product-card" data-title="Aurora" data-price="650.000Ä‘"
+      <article class="product-card" data-title="Aurora" data-price="650.000đ"
 
            data-price-value="650000" data-color="pastel"
 
-           data-desc="Bó hoa tone pastel nháº¹ nhÃ ng vá»›i há»“ng kem, baby tráº¯ng vÃ  chÃºt xanh bạc hÃ . PhÃ¹ hợp Ä‘á»ƒ tặng sinh nhật, ká»· niá»‡m hhoặc Ä‘Æ¡n giáº£n lÃ  gá»­i lá»i há»i thÄƒm."
+           data-desc="Bó hoa tone pastel nhẹ nhàng với hồng kem, baby trắng và chút xanh bạc hà. Phù hợp để tặng sinh nhật, kỷ niệm hoặc đơn giản là gửi lời hỏi thăm."
 
            data-img="https://product.hstatic.net/200000846175/product/cdb6ec98a40e1050491f_6ab36ae1633f46bcbca53e4a737e93ab.jpg"
 
-           data-tags="Pastel, Dá»‹u dÃ ng, Sinh nháº­t, Ká»· niá»‡m">
+           data-tags="Pastel, Dịu dàng, Sinh nhật, Kỷ niệm">
 
         <img class="product-image"
 
@@ -1148,15 +1148,15 @@
 
           <div class="product-name">Aurora</div>
 
-          <div class="product-price">650.000Ä‘</div>
+          <div class="product-price">650.000đ</div>
 
           <div class="product-tags">
 
             <span class="tag tag-highlight">Pastel</span>
 
-            <span class="tag">Hoa tá»‘t nghiá»‡p</span>
+            <span class="tag">Hoa tốt nghiệp</span>
 
-            <span class="tag">Dá»‹u dÃ ng</span>
+            <span class="tag">Dịu dàng</span>
 
           </div>
 
@@ -1168,15 +1168,15 @@
 
       <!-- CARD 2 -->
 
-      <article class="product-card" data-title="Sunset Vibes" data-price="780.000Ä‘" data-price-value="780000"
+      <article class="product-card" data-title="Sunset Vibes" data-price="780.000đ" data-price-value="780000"
 
            data-color="warm"
 
-           data-desc="Bó hoa tone cam - vÃ ng rá»±c rá»¡ như hoa ng hÃ´n, dÃ nh cho nhá»¯ng dá»‹p cáº§n nhiá»u nÄƒng lÆ°á»£ng tÃ­ch cá»±c: chúc má»«ng, tá»‘t nghiá»‡p, khai trÆ°Æ¡ng nhá»."
+           data-desc="Bó hoa tone cam - vàng rực rỡ như hoàng hôn, dành cho những dịp cần nhiều năng lượng tích cực: chúc mừng, tốt nghiệp, khai trương nhỏ."
 
            data-img="https://cdn.hstatic.net/products/200000846175/z7125670258551_014b6ac263a92a1923a4f0ea481c81c0-min_84f76b4525a045078a1b46670d0d81ae.jpg"
 
-           data-tags="Cam vÃ ng, NÄƒng lÆ°á»£ng, ChÃºc má»«ng, Tá»‘t nghiá»‡p">
+           data-tags="Cam vàng, Năng lượng, Chúc mừng, Tốt nghiệp">
 
         <img class="product-image"
 
@@ -1188,15 +1188,15 @@
 
           <div class="product-name">Sunset Vibes</div>
 
-          <div class="product-price">780.000Ä‘</div>
+          <div class="product-price">780.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag tag-highlight">ChÃºc má»«ng</span>
+            <span class="tag tag-highlight">Chúc mừng</span>
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">Tá»‘t nghiá»‡p</span>
+            <span class="tag">Tốt nghiệp</span>
 
           </div>
 
@@ -1208,15 +1208,15 @@
 
       <!-- CARD 3 -->
 
-      <article class="product-card" data-title="Secret Love" data-price="890.000Ä‘" data-price-value="890000"
+      <article class="product-card" data-title="Secret Love" data-price="890.000đ" data-price-value="890000"
 
            data-color="warm"
 
-           data-desc="Má»™t bÃ³ hoa tÃ´ng Ä‘á» - há»“ng Ä‘áº­m dÃ nh cho nhá»¯ng lá»i tá» tÃ¬nh hhoặc ká»· niá»‡m Ä‘áº·c biá»‡t. Có thể thêm thiệp tay viết riêng theo yêu cầu."
+           data-desc="Một bó hoa tông đỏ - hồng đậm dành cho những lời tỏ tình hoặc kỷ niệm đặc biệt. Có thể thêm thiệp tay viết riêng theo yêu cầu."
 
            data-img="https://cdn.hstatic.net/products/200000846175/z7125821940268_11f49a61c8130af1bef29fe16078a1c6-min_cc92a1328d3746d6857fa807c859a73c.jpg"
 
-           data-tags="Tá» tÃ¬nh, Ká»· niá»‡m, Lãng mạn">
+           data-tags="Tỏ tình, Kỷ niệm, Lãng mạn">
 
         <img class="product-image"
 
@@ -1228,11 +1228,11 @@
 
           <div class="product-name">Secret Love</div>
 
-          <div class="product-price">890.000Ä‘</div>
+          <div class="product-price">890.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag tag-highlight">Tá» tÃ¬nh</span>
+            <span class="tag tag-highlight">Tỏ tình</span>
 
             <span class="tag">Hoa Tulip</span>
 
@@ -1248,15 +1248,15 @@
 
       <!-- CARD 4 -->
 
-      <article class="product-card" data-title="Rustic Garden" data-price="720.000Ä‘" data-price-value="720000"
+      <article class="product-card" data-title="Rustic Garden" data-price="720.000đ" data-price-value="720000"
 
            data-color="rustic"
 
-           data-desc="Thiáº¿t káº¿ mang hÆ¡i hÆ°á»›ng Rustic vá»›i hoa dáº¡i, lÃ¡ xanh vÃ  giáº¥y gÃ³i kraft. Ráº¥t hợp Ä‘á»ƒ tặng nhá»¯ng ngÆ°á»i yêu sá»± má»™c máº¡c, gáº§n gÅ©i."
+           data-desc="Thiết kế mang hơi hướng Rustic với hoa dại, lá xanh và giấy gói kraft. Rất hợp để tặng những người yêu sự mộc mạc, gần gũi."
 
            data-img="https://cdn.hstatic.net/products/200000846175/img_1009_87bf802aa355423ca42a1b0cf28117ea.jpg"
 
-           data-tags="Rustic, Má»™c máº¡c, Tá»± nhiÃªn">
+           data-tags="Rustic, Mộc mạc, Tự nhiên">
 
         <img class="product-image"
 
@@ -1268,7 +1268,7 @@
 
           <div class="product-name">Rustic Garden</div>
 
-          <div class="product-price">720.000Ä‘</div>
+          <div class="product-price">720.000đ</div>
 
           <div class="product-tags">
 
@@ -1276,7 +1276,7 @@
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">Má»™c máº¡c</span>
+            <span class="tag">Mộc mạc</span>
 
           </div>
 
@@ -1288,15 +1288,15 @@
 
       <!-- CARD 5 -->
 
-      <article class="product-card" data-title="Gentle Day" data-price="590.000Ä‘" data-price-value="590000"
+      <article class="product-card" data-title="Gentle Day" data-price="590.000đ" data-price-value="590000"
 
            data-color="neutral"
 
-           data-desc="Bó hoa nhá» xinh cho nhá»¯ng láº§n ghÃ© thÄƒm báº¥t ngá»: thÄƒm báº¡n, thÄƒm ngÆ°á»i thÃ¢n, ghÃ© nhÃ  chÆ¡i cuá»‘i tuáº§n."
+           data-desc="Bó hoa nhỏ xinh cho những lần ghé thăm bất ngờ: thăm bạn, thăm người thân, ghé nhà chơi cuối tuần."
 
            data-img="https://product.hstatic.net/200000846175/product/z5930290652722_bbb5be37fa727be59a770db4f1ad3b18_d472ba9a3c164d099ee157dd285de503.jpg"
 
-           data-tags="Nhá» xinh, ThÄƒm ngÆ°á»i thÃ¢n, Cuá»‘i tuáº§n">
+           data-tags="Nhỏ xinh, Thăm người thân, Cuối tuần">
 
         <img class="product-image"
 
@@ -1308,7 +1308,7 @@
 
           <div class="product-name">Gentle Day</div>
 
-          <div class="product-price">590.000Ä‘</div>
+          <div class="product-price">590.000đ</div>
 
           <div class="product-tags">
 
@@ -1316,7 +1316,7 @@
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">Nhá» xinh</span>
+            <span class="tag">Nhỏ xinh</span>
 
           </div>
 
@@ -1328,15 +1328,15 @@
 
       <!-- CARD 6 -->
 
-      <article class="product-card" data-title="New Chapter" data-price="980.000Ä‘" data-price-value="980000"
+      <article class="product-card" data-title="New Chapter" data-price="980.000đ" data-price-value="980000"
 
            data-color="warm"
 
-           data-desc="Ká»‡ hoa mini cho khai trÆ°Æ¡ng hhoặc má»«ng báº¯t Ä‘áº§u một hÃ nh trình má»›i: má»Ÿ tiá»‡m, Ä‘á»•i viá»‡c, chuyá»ƒn nhÃ ."
+           data-desc="Kệ hoa mini cho khai trương hoặc mừng bắt đầu một hành trình mới: mở tiệm, đổi việc, chuyển nhà."
 
            data-img="https://product.hstatic.net/200000846175/product/z5930289355549_8cfae03a4554330c8bf406f5da27cfb8_c1fb215026ec4ed0a80cf3612c181e8b.jpg"
 
-           data-tags="Khai trÆ°Æ¡ng, ChÃºc má»«ng, HÃ nh trình má»›i">
+           data-tags="Khai trương, Chúc mừng, Hành trình mới">
 
         <img class="product-image"
 
@@ -1346,15 +1346,15 @@
 
           <div class="product-name">New Chapter</div>
 
-          <div class="product-price">980.000Ä‘</div>
+          <div class="product-price">980.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag tag-highlight">Khai trÆ°Æ¡ng</span>
+            <span class="tag tag-highlight">Khai trương</span>
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">ChÃºc má»«ng</span>
+            <span class="tag">Chúc mừng</span>
 
           </div>
 
@@ -1366,15 +1366,15 @@
 
       <!-- CARD 7 -->
 
-      <article class="product-card" data-title="Soft Cloud" data-price="630.000Ä‘" data-price-value="630000"
+      <article class="product-card" data-title="Soft Cloud" data-price="630.000đ" data-price-value="630000"
 
            data-color="neutral"
 
-           data-desc="Tone tráº¯ng - kem nháº¹ nhÃ ng như một Ä‘Ã¡m mÃ¢y. PhÃ¹ hợp tặng sáº¿p ná»¯, Ä‘á»“ng nghiá»‡p hhoặc ngÆ°á»i yêu phong cách tá»‘i giáº£n."
+           data-desc="Tone trắng - kem nhẹ nhàng như một đám mây. Phù hợp tặng sếp nữ, đồng nghiệp hoặc người yêu phong cách tối giản."
 
            data-img="https://cdn.hstatic.net/products/200000846175/727a6391a39a29c4708b_200776dbc9624191bd10408ed39dd5e3.jpg"
 
-           data-tags="Tráº¯ng kem, Tá»‘i giáº£n, Thanh lá»‹ch">
+           data-tags="Trắng kem, Tối giản, Thanh lịch">
 
         <img class="product-image"
 
@@ -1384,7 +1384,7 @@
 
           <div class="product-name">Soft Cloud</div>
 
-          <div class="product-price">630.000Ä‘</div>
+          <div class="product-price">630.000đ</div>
 
           <div class="product-tags">
 
@@ -1392,7 +1392,7 @@
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">Thanh lá»‹ch</span>
+            <span class="tag">Thanh lịch</span>
 
           </div>
 
@@ -1404,15 +1404,15 @@
 
       <!-- CARD 8 -->
 
-      <article class="product-card" data-title="Blush Story" data-price="710.000Ä‘" data-price-value="710000"
+      <article class="product-card" data-title="Blush Story" data-price="710.000đ" data-price-value="710000"
 
            data-color="pastel"
 
-           data-desc="Bó hoa há»“ng blush mix cÃ¹ng các loáº¡i hoa nháº­p, cho cảm giác ngá»t ngÃ o vÃ  trÆ°á»Ÿng thÃ nh."
+           data-desc="Bó hoa hồng blush mix cùng các loại hoa nhập, cho cảm giác ngọt ngào và trưởng thành."
 
            data-img="https://cdn.hstatic.net/products/200000846175/z6974792785678_86d4e12184c77a9fd4ffa15c4c1981a4-min__1__3ee7ffb134da43c2b66e65f7c05f44f5.jpg"
 
-           data-tags="Blush, Ngá»t ngÃ o, TrÆ°á»Ÿng thÃ nh">
+           data-tags="Blush, Ngọt ngào, Trưởng thành">
 
         <img class="product-image"
 
@@ -1422,7 +1422,7 @@
 
           <div class="product-name">Blush Story</div>
 
-          <div class="product-price">710.000Ä‘</div>
+          <div class="product-price">710.000đ</div>
 
           <div class="product-tags">
 
@@ -1430,7 +1430,7 @@
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">Ngá»t ngÃ o</span>
+            <span class="tag">Ngọt ngào</span>
 
           </div>
 
@@ -1442,15 +1442,15 @@
 
       <!-- CARD 9 -->
 
-      <article class="product-card" data-title="Tiny Joy" data-price="490.000Ä‘" data-price-value="490000"
+      <article class="product-card" data-title="Tiny Joy" data-price="490.000đ" data-price-value="490000"
 
            data-color="bright"
 
-           data-desc="Má»™t bÃ³ hoa size nhá» nhưng Ä‘á»§ tinh táº¿ Ä‘á»ƒ mang láº¡i niá»m vui báº¥t ngá» cho ngÆ°á»i nháº­n."
+           data-desc="Một bó hoa size nhỏ nhưng đủ tinh tế để mang lại niềm vui bất ngờ cho người nhận."
 
            data-img="https://cdn.hstatic.net/products/200000846175/img_1011_927fb3672e584b06a0f9c77748291c9f.jpg"
 
-           data-tags="Size nhá», Báº¥t ngá», Dá»… thÆ°Æ¡ng">
+           data-tags="Size nhỏ, Bất ngờ, Dễ thương">
 
         <img class="product-image"
 
@@ -1462,15 +1462,15 @@
 
           <div class="product-name">Tiny Joy</div>
 
-          <div class="product-price">490.000Ä‘</div>
+          <div class="product-price">490.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag tag-highlight">Size nhá»</span>
+            <span class="tag tag-highlight">Size nhỏ</span>
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">Háº¹n hÃ²</span>
+            <span class="tag">Hẹn hò</span>
 
           </div>
 
@@ -1482,15 +1482,15 @@
 
       <!-- CARD 10 -->
 
-      <article class="product-card" data-title="Midnight Bloom" data-price="1.050.000Ä‘"
+      <article class="product-card" data-title="Midnight Bloom" data-price="1.050.000đ"
 
            data-price-value="1050000" data-color="bright"
 
-           data-desc="Má»™t bÃ³ hoa Ä‘áº­m mÃ u, sÃ¢u vÃ  áº¥n tÆ°á»£ng, dÃ nh cho nhá»¯ng dá»‹p Ä‘áº·c biá»‡t hhoặc các buá»•i tiệc tá»‘i."
+           data-desc="Một bó hoa đậm màu, sâu và ấn tượng, dành cho những dịp đặc biệt hoặc các buổi tiệc tối."
 
            data-img="https://product.hstatic.net/200000846175/product/z5930289277515_ec844e7f86c45b647818583c110401d5_9f58056144b7424daac0cd79fe9949f6.jpg"
 
-           data-tags="Tá»‘i, áº¤n tÆ°á»£ng, Äáº·c biá»‡t">
+           data-tags="Tối, Ấn tượng, đặc biệt">
 
         <img class="product-image"
 
@@ -1502,15 +1502,15 @@
 
           <div class="product-name">Midnight Bloom</div>
 
-          <div class="product-price">1.050.000Ä‘</div>
+          <div class="product-price">1.050.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag tag-highlight">Tá» tÃ¬nh</span>
+            <span class="tag tag-highlight">Tỏ tình</span>
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">áº¤n tÆ°á»£ng</span>
+            <span class="tag">Ấn tượng</span>
 
           </div>
 
@@ -1522,15 +1522,15 @@
 
       <!-- CARD 11 -->
 
-      <article class="product-card" data-title="Peach Garden" data-price="740.000Ä‘" data-price-value="740000"
+      <article class="product-card" data-title="Peach Garden" data-price="740.000đ" data-price-value="740000"
 
            data-color="pastel"
 
-           data-desc="Sự káº¿t hợp giữa cam Ä‘Ã o vÃ  há»“ng nude táº¡o cảm giác dá»‹u ngá»t, phÃ¹ hợp tặng ngÆ°á»i yêu hhoặc báº¡n thÃ¢n."
+           data-desc="Sự kết hợp giữa cam đào và hồng nude tạo cảm giác dịu ngọt, phù hợp tặng người yêu hoặc bạn thân."
 
            data-img="https://cdn.hstatic.net/products/200000846175/1fa66a5baa50200e7941_75c249ce264a490cb0bdc2f0c8111ac2.jpg"
 
-           data-tags="Pastel, Ngá»t ngÃ o, Sinh nháº­t">
+           data-tags="Pastel, Ngọt ngào, Sinh nhật">
 
         <img class="product-image"
 
@@ -1542,7 +1542,7 @@
 
           <div class="product-name">Peach Garden</div>
 
-          <div class="product-price">740.000Ä‘</div>
+          <div class="product-price">740.000đ</div>
 
           <div class="product-tags">
 
@@ -1550,7 +1550,7 @@
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">Ngá»t ngÃ o</span>
+            <span class="tag">Ngọt ngào</span>
 
           </div>
 
@@ -1562,15 +1562,15 @@
 
       <!-- CARD 12 -->
 
-      <article class="product-card" data-title="Happy Launch" data-price="1.200.000Ä‘"
+      <article class="product-card" data-title="Happy Launch" data-price="1.200.000đ"
 
            data-price-value="1200000" data-color="warm"
 
-           data-desc="Ká»‡ hoa Ä‘á»©ng kÃ­ch thÆ°á»›c vá»«a cho khai trÆ°Æ¡ng, sá»­ dá»¥ng tÃ´ng cam - Ä‘á» - vÃ ng ná»•i báº­t nhưng váº«n tinh táº¿."
+           data-desc="Kệ hoa đứng kích thước vừa cho khai trương, sử dụng tông cam - đỏ - vàng nổi bật nhưng vẫn tinh tế."
 
            data-img="https://cdn.hstatic.net/products/200000846175/z7039619542969_e994448ebc7d39e28ce0f7128cbffa77_45e881835d4349d4b24d842dfdb66d38.jpg"
 
-           data-tags="Khai trÆ°Æ¡ng, ChÃºc má»«ng, NÄƒng lÆ°á»£ng">
+           data-tags="Khai trương, Chúc mừng, Năng lượng">
 
         <img class="product-image"
 
@@ -1582,15 +1582,15 @@
 
           <div class="product-name">Happy Launch</div>
 
-          <div class="product-price">1.200.000Ä‘</div>
+          <div class="product-price">1.200.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag tag-highlight">Khai trÆ°Æ¡ng</span>
+            <span class="tag tag-highlight">Khai trương</span>
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">ChÃºc má»«ng</span>
+            <span class="tag">Chúc mừng</span>
 
           </div>
 
@@ -1602,15 +1602,15 @@
 
       <!-- CARD 13 -->
 
-      <article class="product-card" data-title="First Confession" data-price="820.000Ä‘"
+      <article class="product-card" data-title="First Confession" data-price="820.000đ"
 
            data-price-value="820000" data-color="warm"
 
-           data-desc="Bó hoa dÃ nh riêng cho láº§n tá» tÃ¬nh Ä‘áº§u tiÃªn â€“ nháº¹ nhÃ ng nhưng Ä‘á»§ Ä‘á»ƒ Ä‘á»‘i phÆ°Æ¡ng cảm nháº­n Ä‘Æ°á»£c táº¥m lÃ²ng."
+           data-desc="Bó hoa dành riêng cho lần tỏ tình đầu tiên – nhẹ nhàng nhưng đủ để đối phương cảm nhận được tấm lòng."
 
            data-img="https://cdn.hstatic.net/products/200000846175/z7039619601915_67cb124f4e74d5993c00754a68e3ac8c_21fbbc064ace42b9ab511d4fbdee951a.jpg"
 
-           data-tags="Tá» tÃ¬nh, Lãng mạn, Dá»‹u dÃ ng">
+           data-tags="Tỏ tình, Lãng mạn, Dịu dàng">
 
         <img class="product-image"
 
@@ -1622,11 +1622,11 @@
 
           <div class="product-name">First Confession</div>
 
-          <div class="product-price">820.000Ä‘</div>
+          <div class="product-price">820.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag tag-highlight">Tá» tÃ¬nh</span>
+            <span class="tag tag-highlight">Tỏ tình</span>
 
             <span class="tag">Hoa Tulip</span>
 
@@ -1642,15 +1642,15 @@
 
       <!-- CARD 14 -->
 
-      <article class="product-card" data-title="Rustic Field" data-price="760.000Ä‘" data-price-value="760000"
+      <article class="product-card" data-title="Rustic Field" data-price="760.000đ" data-price-value="760000"
 
            data-color="rustic"
 
-           data-desc="Hoa dáº¡i mix cÃºc há»a mi vÃ  lÃ¡ xanh, mang vibe Ä‘á»“ng quÃª Rustic, cá»±c hợp chá»¥p áº£nh hhoặc trang trÃ­ bÃ n tiệc nhá»."
+           data-desc="Hoa dại mix cúc họa mi và lá xanh, mang vibe đồng quê Rustic, cực hợp chụp ảnh hoặc trang trí bàn tiệc nhỏ."
 
            data-img="https://cdn.hstatic.net/products/200000846175/z7039619269872_ce2cdcc941d06a1ec22634157f9d996d_5bf30593ef6e4533a43993941a414dfc.jpg"
 
-           data-tags="Rustic, Tá»± nhiÃªn, Trang trÃ­">
+           data-tags="Rustic, Tự nhiên, Trang trí">
 
         <img class="product-image"
 
@@ -1662,7 +1662,7 @@
 
           <div class="product-name">Rustic Field</div>
 
-          <div class="product-price">760.000Ä‘</div>
+          <div class="product-price">760.000đ</div>
 
           <div class="product-tags">
 
@@ -1670,7 +1670,7 @@
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">Tá»± nhiÃªn</span>
+            <span class="tag">Tự nhiên</span>
 
           </div>
 
@@ -1682,15 +1682,15 @@
 
       <!-- CARD 15 -->
 
-      <article class="product-card" data-title="Mini Cheer" data-price="450.000Ä‘" data-price-value="450000"
+      <article class="product-card" data-title="Mini Cheer" data-price="450.000đ" data-price-value="450000"
 
            data-color="bright"
 
-           data-desc="Size nhá» nhưng rá»±c rá»¡, phÃ¹ hợp gá»­i tặng Ä‘á»“ng nghiá»‡p hhoặc báº¡n há»c Ä‘á»ƒ chúc má»«ng một cá»™t má»‘c nhá»."
+           data-desc="Size nhỏ nhưng rực rỡ, phù hợp gửi tặng đồng nghiệp hoặc bạn học để chúc mừng một cột mốc nhỏ."
 
            data-img="https://cdn.hstatic.net/products/200000846175/z7039619411783_825b70a7de61ad5a567e7c7bb97d32aa_a865c3be0352472d8b299bd770d0b435.jpg"
 
-           data-tags="Size nhá», ChÃºc má»«ng, Dá»… thÆ°Æ¡ng">
+           data-tags="Size nhỏ, Chúc mừng, Dễ thương">
 
         <img class="product-image"
 
@@ -1700,15 +1700,15 @@
 
           <div class="product-name">Mini Cheer</div>
 
-          <div class="product-price">450.000Ä‘</div>
+          <div class="product-price">450.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag tag-highlight">Size nhá»</span>
+            <span class="tag tag-highlight">Size nhỏ</span>
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">ChÃºc má»«ng</span>
+            <span class="tag">Chúc mừng</span>
 
           </div>
 
@@ -1720,15 +1720,15 @@
 
       <!-- CARD 16 -->
 
-      <article class="product-card" data-title="Pastel Cloud" data-price="700.000Ä‘" data-price-value="700000"
+      <article class="product-card" data-title="Pastel Cloud" data-price="700.000đ" data-price-value="700000"
 
            data-color="pastel"
 
-           data-desc="Má»™t phiÃªn báº£n pastel tone láº¡nh, hÆ¡i xanh â€“ phÃ¹ hợp cho nhá»¯ng ai yêu sá»± thanh thoa¡t, nháº¹ nhÃ ng."
+           data-desc="Một phiên bản pastel tone lạnh, hơi xanh – phù hợp cho những ai yêu sự thanh thoát, nhẹ nhàng."
 
            data-img="https://cdn.hstatic.net/products/200000846175/z7112111629054_ce6f4d73bdbd993aff4d37cd67432bcc-min__1__6012386de08a4c2c97e678b8e903ae96.jpg"
 
-           data-tags="Pastel, Thanh lá»‹ch, Tráº¯ng kem">
+           data-tags="Pastel, Thanh lịch, Trắng kem">
 
         <img class="product-image"
 
@@ -1740,7 +1740,7 @@
 
           <div class="product-name">Pastel Cloud</div>
 
-          <div class="product-price">700.000Ä‘</div>
+          <div class="product-price">700.000đ</div>
 
           <div class="product-tags">
 
@@ -1748,7 +1748,7 @@
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">Thanh lá»‹ch</span>
+            <span class="tag">Thanh lịch</span>
 
           </div>
 
@@ -1760,15 +1760,15 @@
 
       <!-- CARD 17 -->
 
-      <article class="product-card" data-title="Warm Congrats" data-price="900.000Ä‘" data-price-value="900000"
+      <article class="product-card" data-title="Warm Congrats" data-price="900.000đ" data-price-value="900000"
 
            data-color="warm"
 
-           data-desc="Bó hoa chúc má»«ng vá»›i mÃ u sáº¯c áº¥m Ã¡p, thÃ­ch hợp cho lá»… tá»‘t nghiá»‡p, thÄƒng chá»©c hhoặc ká»· niá»‡m quan trá»ng."
+           data-desc="Bó hoa chúc mừng với màu sắc ấm áp, thích hợp cho lễ tốt nghiệp, thăng chức hoặc kỷ niệm quan trọng."
 
            data-img="https://cdn.hstatic.net/products/200000846175/z7039619468541_a22768e1ec6c2434707e1de9ddc6097c_77fcb07d246b495fb7cf7e7bbc29729c.jpg"
 
-           data-tags="ChÃºc má»«ng, Tá»‘t nghiá»‡p, áº¤m Ã¡p">
+           data-tags="Chúc mừng, Tốt nghiệp, Ấm áp">
 
         <img class="product-image"
 
@@ -1780,15 +1780,15 @@
 
           <div class="product-name">Warm Congrats</div>
 
-          <div class="product-price">900.000Ä‘</div>
+          <div class="product-price">900.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag tag-highlight">ChÃºc má»«ng</span>
+            <span class="tag tag-highlight">Chúc mừng</span>
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">áº¤m Ã¡p</span>
+            <span class="tag">Ấm áp</span>
 
           </div>
 
@@ -1800,15 +1800,15 @@
 
       <!-- CARD 18 -->
 
-      <article class="product-card" data-title="Little Secret" data-price="520.000Ä‘" data-price-value="520000"
+      <article class="product-card" data-title="Little Secret" data-price="520.000đ" data-price-value="520000"
 
            data-color="pastel"
 
-           data-desc="Má»™t bÃ³ hoa size nhá» nhưng Ä‘á»§ â€œhintâ€ cho ngÆ°á»i nháº­n hiá»ƒu ráº±ng báº¡n Ä‘ang Ä‘á»ƒ Ã½ há» Ä‘Ã³."
+           data-desc="Một bó hoa size nhỏ nhưng đủ "hint" cho người nhận hiểu rằng bạn đang để ý họ đó."
 
            data-img="https://cdn.hstatic.net/products/200000846175/z7039619349040_e738ca5407d4eebcee15797510831127_f0e0fee303c041c7b2c9d9573a2ad9a7.jpg"
 
-           data-tags="Size nhá», Tá» tÃ¬nh, Dá»… thÆ°Æ¡ng">
+           data-tags="Size nhỏ, Tỏ tình, Dễ thương">
 
         <img class="product-image"
 
@@ -1820,15 +1820,15 @@
 
           <div class="product-name">Little Secret</div>
 
-          <div class="product-price">520.000Ä‘</div>
+          <div class="product-price">520.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag tag-highlight">Size nhá»</span>
+            <span class="tag tag-highlight">Size nhỏ</span>
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">Tá» tÃ¬nh</span>
+            <span class="tag">Tỏ tình</span>
 
           </div>
 
@@ -1840,15 +1840,15 @@
 
       <!-- CARD 19 -->
 
-      <article class="product-card" data-title="Rustic Corner" data-price="780.000Ä‘" data-price-value="780000"
+      <article class="product-card" data-title="Rustic Corner" data-price="780.000đ" data-price-value="780000"
 
            data-color="rustic"
 
-           data-desc="Bó hoa Rustic vá»›i giáº¥y kraft nÃ¢u, phÃ¹ hợp trang trÃ­ gÃ³c phÃ²ng hhoặc tặng ngÆ°á»i yêu phong cách vintage."
+           data-desc="Bó hoa Rustic với giấy kraft nâu, phù hợp trang trí góc phòng hoặc tặng người yêu phong cách vintage."
 
            data-img="https://cdn.hstatic.net/products/200000846175/_6445d4139fa7afd0a8ab6c8766bd4989-min_84a41b1960fb444680c267e069d88da9_891f0eac283e4fbc8e75060766cce394.jpg"
 
-           data-tags="Rustic, Vintage, Trang trÃ­">
+           data-tags="Rustic, Vintage, Trang trí">
 
         <img class="product-image"
 
@@ -1860,7 +1860,7 @@
 
           <div class="product-name">Rustic Corner</div>
 
-          <div class="product-price">780.000Ä‘</div>
+          <div class="product-price">780.000đ</div>
 
           <div class="product-tags">
 
@@ -1880,15 +1880,15 @@
 
       <!-- CARD 20 -->
 
-      <article class="product-card" data-title="Pastel Hug" data-price="830.000Ä‘" data-price-value="830000"
+      <article class="product-card" data-title="Pastel Hug" data-price="830.000đ" data-price-value="830000"
 
            data-color="pastel"
 
-           data-desc="Bó hoa pastel size vá»«a, cảm giác như một cÃ¡i Ã´m áº¥m Ã¡p báº±ng hoa â€“ ráº¥t hợp Ä‘á»ƒ xin lá»—i hhoặc cảm Æ¡n."
+           data-desc="Bó hoa pastel size vừa, cảm giác như một cái ôm ấm áp bằng hoa – rất hợp để xin lỗi hoặc cảm ơn."
 
            data-img="https://product.hstatic.net/200000846175/product/z6054612673644_8cebb893eadcb7d33480fb3516038b5f_0e9f443bd29e4dbda36975e7334fdd01.jpg"
 
-           data-tags="Pastel, Dá»‹u dÃ ng, Cáº£m Æ¡n">
+           data-tags="Pastel, Dịu dàng, Cảm ơn">
 
         <img class="product-image"
 
@@ -1898,7 +1898,7 @@
 
           <div class="product-name">Pastel Hug</div>
 
-          <div class="product-price">830.000Ä‘</div>
+          <div class="product-price">830.000đ</div>
 
           <div class="product-tags">
 
@@ -1906,7 +1906,7 @@
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">Cáº£m Æ¡n</span>
+            <span class="tag">Cảm ơn</span>
 
           </div>
 
@@ -1918,15 +1918,15 @@
 
       <!-- CARD 21 -->
 
-      <article class="product-card" data-title="Morning Breeze" data-price="610.000Ä‘"
+      <article class="product-card" data-title="Morning Breeze" data-price="610.000đ"
 
            data-price-value="610000" data-color="neutral"
 
-           data-desc="Bó hoa vá»›i tÃ´ng tráº¯ng â€“ xanh nháº¡t, cảm giác như lÃ n giÃ³ sá»›m, ráº¥t hợp tặng ngÆ°á»i yêu phong cách nháº¹ nhÃ ng, tá»‘i giáº£n."
+           data-desc="Bó hoa với tông trắng – xanh nhạt, cảm giác như làn gió sớm, rất hợp tặng người yêu phong cách nhẹ nhàng, tối giản."
 
            data-img="https://cdn.hstatic.net/products/200000846175/z6974794754482_79804d1702b96e381fe3aa242fafb08a_b232f0a422c34465b38445872fc33f73.jpg"
 
-           data-tags="Tráº¯ng kem, Thanh lá»‹ch, Dá»‹u dÃ ng">
+           data-tags="Trắng kem, Thanh lịch, Dịu dàng">
 
         <img class="product-image"
 
@@ -1938,15 +1938,15 @@
 
           <div class="product-name">Morning Breeze</div>
 
-          <div class="product-price">610.000Ä‘</div>
+          <div class="product-price">610.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag">Tráº¯ng kem</span>
+            <span class="tag">Trắng kem</span>
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">Thanh lá»‹ch</span>
+            <span class="tag">Thanh lịch</span>
 
           </div>
 
@@ -1958,15 +1958,15 @@
 
       <!-- CARD 22 -->
 
-      <article class="product-card" data-title="Candy Pastel" data-price="690.000Ä‘" data-price-value="690000"
+      <article class="product-card" data-title="Candy Pastel" data-price="690.000đ" data-price-value="690000"
 
            data-color="pastel"
 
-           data-desc="Có cảm giác như một túi kẹo pastel: há»“ng, tím, xanh bạc hÃ  â€“ ráº¥t hợp cho sinh nhật, tiệc nhá» hhoặc tặng em bé."
+           data-desc="Có cảm giác như một túi kẹo pastel: hồng, tím, xanh bạc hà – rất hợp cho sinh nhật, tiệc nhỏ hoặc tặng em bé."
 
            data-img="https://cdn.hstatic.net/products/200000846175/z6972264069179_846ec51a2f578afbeccdb64f86550d63-min_fa0209ff0c6e45099021f2abdc2c2595.jpg"
 
-           data-tags="Pastel, Sinh nháº­t, Ngá»t ngÃ o">
+           data-tags="Pastel, Sinh nhật, Ngọt ngào">
 
         <img class="product-image"
 
@@ -1978,7 +1978,7 @@
 
           <div class="product-name">Candy Pastel</div>
 
-          <div class="product-price">690.000Ä‘</div>
+          <div class="product-price">690.000đ</div>
 
           <div class="product-tags">
 
@@ -1986,7 +1986,7 @@
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">Sinh nháº­t</span>
+            <span class="tag">Sinh nhật</span>
 
           </div>
 
@@ -1998,15 +1998,15 @@
 
       <!-- CARD 23 -->
 
-      <article class="product-card" data-title="Golden Day" data-price="870.000Ä‘" data-price-value="870000"
+      <article class="product-card" data-title="Golden Day" data-price="870.000đ" data-price-value="870000"
 
            data-color="warm"
 
-           data-desc="Bó hoa vÃ ng â€“ kem sang trá»ng, hợp tặng sáº¿p, Ä‘á»‘i tÃ¡c hhoặc dá»‹p ká»· niá»‡m công ty."
+           data-desc="Bó hoa vàng – kem sang trọng, hợp tặng sếp, đối tác hoặc dịp kỷ niệm công ty."
 
            data-img="https://product.hstatic.net/200000846175/product/img_0642-min_387bea0e06754888a5e22d67585de7ef.jpg"
 
-           data-tags="ChÃºc má»«ng, áº¤m Ã¡p, Thanh lá»‹ch">
+           data-tags="Chúc mừng, Ấm áp, Thanh lịch">
 
         <img class="product-image"
 
@@ -2018,15 +2018,15 @@
 
           <div class="product-name">Golden Day</div>
 
-          <div class="product-price">870.000Ä‘</div>
+          <div class="product-price">870.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag tag-highlight">ChÃºc má»«ng</span>
+            <span class="tag tag-highlight">Chúc mừng</span>
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">áº¤m Ã¡p</span>
+            <span class="tag">Ấm áp</span>
 
           </div>
 
@@ -2038,15 +2038,15 @@
 
       <!-- CARD 24 -->
 
-      <article class="product-card" data-title="Forest Rustic" data-price="790.000Ä‘" data-price-value="790000"
+      <article class="product-card" data-title="Forest Rustic" data-price="790.000đ" data-price-value="790000"
 
            data-color="rustic"
 
-           data-desc="Hoa lÃ¡ xanh chá»§ Ä‘áº¡o, káº¿t hợp giáº¥y kraft nÃ¢u táº¡o vibe rá»«ng thÃ´ng, hợp cho ngÆ°á»i yêu thiÃªn nhiÃªn."
+           data-desc="Hoa lá xanh chủ đạo, kết hợp giấy kraft nâu tạo vibe rừng thông, hợp cho người yêu thiên nhiên."
 
            data-img="https://product.hstatic.net/200000846175/product/dscf1205_613a6783ac1648d6809bffe1097f2d41.jpg"
 
-           data-tags="Rustic, Tá»± nhiÃªn, Vintage">
+           data-tags="Rustic, Tự nhiên, Vintage">
 
         <img class="product-image"
 
@@ -2058,7 +2058,7 @@
 
           <div class="product-name">Forest Rustic</div>
 
-          <div class="product-price">790.000Ä‘</div>
+          <div class="product-price">790.000đ</div>
 
           <div class="product-tags">
 
@@ -2066,7 +2066,7 @@
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">Tá»± nhiÃªn</span>
+            <span class="tag">Tự nhiên</span>
 
           </div>
 
@@ -2078,15 +2078,15 @@
 
       <!-- CARD 25 -->
 
-      <article class="product-card" data-title="Mini Pastel Box" data-price="560.000Ä‘"
+      <article class="product-card" data-title="Mini Pastel Box" data-price="560.000đ"
 
            data-price-value="560000" data-color="pastel"
 
-           data-desc="Box hoa size nhá» tone pastel, gá»n gÃ ng nhưng váº«n xinh xáº¯n â€“ Ä‘á»ƒ bÃ n lÃ m viá»‡c hhoặc gá»­i tặng báº¥t ngá»."
+           data-desc="Box hoa size nhỏ tone pastel, gọn gàng nhưng vẫn xinh xắn – để bàn làm việc hoặc gửi tặng bất ngờ."
 
            data-img="https://product.hstatic.net/200000846175/product/w6_57fe7e7ee65f4097aef741ba053a4609.jpg"
 
-           data-tags="Size nhá», Pastel, Dá»… thÆ°Æ¡ng">
+           data-tags="Size nhỏ, Pastel, Dễ thương">
 
         <img class="product-image"
 
@@ -2098,11 +2098,11 @@
 
           <div class="product-name">Mini Pastel Box</div>
 
-          <div class="product-price">560.000Ä‘</div>
+          <div class="product-price">560.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag tag-highlight">Size nhá»</span>
+            <span class="tag tag-highlight">Size nhỏ</span>
 
             <span class="tag">Hoa Tulip</span>
 
@@ -2118,15 +2118,15 @@
 
       <!-- CARD 26 -->
 
-      <article class="product-card" data-title="Blush Heart" data-price="910.000Ä‘" data-price-value="910000"
+      <article class="product-card" data-title="Blush Heart" data-price="910.000đ" data-price-value="910000"
 
            data-color="pastel"
 
-           data-desc="Bó hoa há»“ng blush dÃ¡ng dÃ i, cá»±c hợp cho nhá»¯ng lá»i tá» tÃ¬nh hhoặc ká»· niá»‡m 100 ngÃ y, 1 nÄƒm yêu."
+           data-desc="Bó hoa hồng blush dáng dài, cực hợp cho những lời tỏ tình hoặc kỷ niệm 100 ngày, 1 năm yêu."
 
            data-img="https://product.hstatic.net/200000846175/product/z5544257120946_9e0e1b33c675b424388bd134d87c5a50-min_226bc4a0e74441c7b9f16af491552dd4.jpg"
 
-           data-tags="Tá» tÃ¬nh, Lãng mạn, Ngá»t ngÃ o">
+           data-tags="Tỏ tình, Lãng mạn, Ngọt ngào">
 
         <img class="product-image"
 
@@ -2138,15 +2138,15 @@
 
           <div class="product-name">Blush Heart</div>
 
-          <div class="product-price">910.000Ä‘</div>
+          <div class="product-price">910.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag tag-highlight">Tá» tÃ¬nh</span>
+            <span class="tag tag-highlight">Tỏ tình</span>
 
             <span class="tag">Hoa Tulip</span>
 
-            <span class="tag">Ngá»t ngÃ o</span>
+            <span class="tag">Ngọt ngào</span>
 
           </div>
 
@@ -2158,15 +2158,15 @@
 
       <!-- CARD 27 -->
 
-      <article class="product-card" data-title="Coffee Rustic" data-price="730.000Ä‘" data-price-value="730000"
+      <article class="product-card" data-title="Coffee Rustic" data-price="730.000đ" data-price-value="730000"
 
            data-color="rustic"
 
-           data-desc="TÃ´ng nÃ¢u â€“ be như một ly latte: dÃ¹ng hoa khÃ´ vÃ  hoa tÆ°Æ¡i mix, hợp tặng ngÆ°á»i yêu phong cách tráº§m áº¥m."
+           data-desc="Tông nâu – be như một ly latte: dùng hoa khô và hoa tươi mix, hợp tặng người yêu phong cách trầm ấm."
 
            data-img="https://product.hstatic.net/200000846175/product/z4344034401236_bcef0d35bda443dafcdff70b6e2edffa_75cf540049d44f219ac42c311bddfdfc.jpg"
 
-           data-tags="Rustic, áº¤m Ã¡p, Vintage">
+           data-tags="Rustic, Ấm áp, Vintage">
 
         <img class="product-image"
 
@@ -2178,7 +2178,7 @@
 
           <div class="product-name">Coffee Rustic</div>
 
-          <div class="product-price">730.000Ä‘</div>
+          <div class="product-price">730.000đ</div>
 
           <div class="product-tags">
 
@@ -2186,7 +2186,7 @@
 
             <span class="tag ">Bó hoa</span>
 
-            <span class="tag">áº¤m Ã¡p</span>
+            <span class="tag">Ấm áp</span>
 
           </div>
 
@@ -2198,15 +2198,15 @@
 
       <!-- CARD 28 -->
 
-      <article class="product-card" data-title="Tiny Congrats" data-price="480.000Ä‘" data-price-value="480000"
+      <article class="product-card" data-title="Tiny Congrats" data-price="480.000đ" data-price-value="480000"
 
            data-color="bright"
 
-           data-desc="Bó hoa nhá» nhưng cá»±c ká»³ rá»±c rá»¡, dÃ¹ng Ä‘á»ƒ chúc má»«ng nhá»¯ng cá»™t má»‘c nhá»: qua mÃ´n, nháº­n offer, cÃ³ viá»‡c má»›i."
+           data-desc="Bó hoa nhỏ nhưng cực kỳ rực rỡ, dùng để chúc mừng những cột mốc nhỏ: qua môn, nhận offer, có việc mới."
 
            data-img="https://product.hstatic.net/200000846175/product/sunshine_love_9e96af195c024f4fbc1cd831fc3813e9.jpg"
 
-           data-tags="Size nhá», ChÃºc má»«ng, NÄƒng lÆ°á»£ng">
+           data-tags="Size nhỏ, Chúc mừng, Năng lượng">
 
         <img class="product-image"
 
@@ -2218,15 +2218,15 @@
 
           <div class="product-name">Tiny Congrats</div>
 
-          <div class="product-price">480.000Ä‘</div>
+          <div class="product-price">480.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag tag-highlight">Size nhá»</span>
+            <span class="tag tag-highlight">Size nhỏ</span>
 
             <span class="tag ">Bó hoa</span>
 
-            <span class="tag">ChÃºc má»«ng</span>
+            <span class="tag">Chúc mừng</span>
 
           </div>
 
@@ -2238,15 +2238,15 @@
 
       <!-- CARD 29 -->
 
-      <article class="product-card" data-title="Moonlight Pastel" data-price="880.000Ä‘"
+      <article class="product-card" data-title="Moonlight Pastel" data-price="880.000đ"
 
            data-price-value="880000" data-color="pastel"
 
-           data-desc="Tone tím â€“ tráº¯ng nháº¹ nhÃ ng, cảm giác như Ã¡nh trÄƒng, ráº¥t hợp cho các buá»•i háº¹n tá»‘i hhoặc anniversary."
+           data-desc="Tone tím – trắng nhẹ nhàng, cảm giác như ánh trđƒng, rất hợp cho các buổi hẹn tối hoặc anniversary."
 
            data-img="https://product.hstatic.net/200000846175/product/4222a_6d61a8eea0984f23a73bc514d452e5d7.jpg"
 
-           data-tags="Pastel, Lãng mạn, Buá»•i tá»‘i">
+           data-tags="Pastel, Lãng mạn, Buổi tối">
 
         <img class="product-image"
 
@@ -2258,7 +2258,7 @@
 
           <div class="product-name">Moonlight Pastel</div>
 
-          <div class="product-price">880.000Ä‘</div>
+          <div class="product-price">880.000đ</div>
 
           <div class="product-tags">
 
@@ -2278,15 +2278,15 @@
 
       <!-- CARD 30 -->
 
-      <article class="product-card" data-title="Everyday Hug" data-price="600.000Ä‘" data-price-value="600000"
+      <article class="product-card" data-title="Everyday Hug" data-price="600.000đ" data-price-value="600000"
 
            data-color="neutral"
 
-           data-desc="Má»™t bÃ³ hoa daily size vá»«a, phÃ¹ hợp gá»­i Ä‘i báº¥t ká»³ ngÃ y nÃ o: xin lá»—i, cảm Æ¡n, Ä‘á»™ng viÃªn, hhoặc chá»‰ Ä‘Æ¡n giáº£n lÃ  â€œnhá»› báº¡nâ€."
+           data-desc="Một bó hoa daily size vừa, phù hợp gửi đi bất kỳ ngày nào: xin lỗi, cảm ơn, động viên, hoặc chỉ đơn giản là "nhớ bạn"."
 
            data-img="https://product.hstatic.net/200000846175/product/bo4291_9aac987dd9b54df9a356035b6f49f62f_master.jpg"
 
-           data-tags="Dá»‹u dÃ ng, Cáº£m Æ¡n, Háº±ng ngÃ y">
+           data-tags="Dịu dàng, Cảm ơn, Hằng ngày">
 
         <img class="product-image"
 
@@ -2298,15 +2298,15 @@
 
           <div class="product-name">Everyday Hug</div>
 
-          <div class="product-price">600.000Ä‘</div>
+          <div class="product-price">600.000đ</div>
 
           <div class="product-tags">
 
-            <span class="tag">Dá»‹u dÃ ng</span>
+            <span class="tag">Dịu dàng</span>
 
             <span class="tag ">Bó hoa</span>
 
-            <span class="tag">Cáº£m Æ¡n</span>
+            <span class="tag">Cảm ơn</span>
 
           </div>
 
@@ -2322,7 +2322,7 @@
 
 
 
-<!-- MODAL CHI TIáº¾T -->
+<!-- MODAL CHI TIẾT -->
 
 <div class="product-modal-overlay" id="productModal">
 
@@ -2338,15 +2338,15 @@
 
       <button class="modal-close" id="modalClose">&times;</button>
 
-      <h2 class="modal-title" id="modalTitle">TÃªn sáº£n pháº©m</h2>
+      <h2 class="modal-title" id="modalTitle">Tên sản phẩm</h2>
 
-      <div class="modal-price" id="modalPrice">GiÃ¡</div>
+      <div class="modal-price" id="modalPrice">Giá¡</div>
 
-      <p class="modal-desc" id="modalDesc">MÃ´ táº£ sáº£n pháº©m...</p>
+      <p class="modal-desc" id="modalDesc">Mô tả sản phẩm...</p>
 
       <div class="modal-meta" id="modalMeta">
 
-        Thiáº¿t káº¿ bá»Ÿi Tiệm Hoa nhà tớ. Có thể thay Ä‘á»•i một vÃ i loáº¡i hoa theo mÃ¹a mÃ  váº«n giữ Ä‘Ãºng tinh tháº§n bÃ³
+        Thiết kế bởi Tiệm Hoa nhà tớ. Có thể thay đổi một vài loại hoa theo mùa mà vẫn giữ đúng tinh thần bó
 
         hoa.
 
@@ -2354,17 +2354,17 @@
 
       <div class="modal-tags" id="modalTags">
 
-        <!-- tags sáº½ Ä‘Æ°á»£c JS fill -->
+        <!-- tags sẽ được JS fill -->
 
       </div>
 
       <div class="modal-actions">
 
-        <button class="btn-main">Äáº·t bÃ³ hoa nÃ y</button>
+        <button class="btn-main">Đặt bó hoa này</button>
 
-        <a class="btn-ghost" id="modalDetailLink" href="detail.html">Xem chi tiáº¿t</a>
+        <a class="btn-ghost" id="modalDetailLink" href="detail.jsp">Xem chi tiết</a>
 
-        <button class="btn-ghost" id="modalClose2">ÄÃ³ng láº¡i</button>
+        <button class="btn-ghost" id="modalClose2">Đóng lại</button>
 
       </div>
 
@@ -2380,7 +2380,7 @@
 
 <div class="pagination-container">
 
-  <button class="page-btn" id="prevPage">â€¹</button>
+  <button class="page-btn" id="prevPage">‹</button>
 
   <button class="page-btn" id="prevPage">1</button>
 
@@ -2394,7 +2394,7 @@
 
   <div class="page-numbers" id="paginationNumbers"></div>
 
-  <button class="page-btn" id="nextPage">â€º</button>
+  <button class="page-btn" id="nextPage">›</button>
 
 </div>
 
@@ -2402,11 +2402,11 @@
 
 <!-- FOOTER -->
 
-<site-footer></site-footer>
+<%@ include file="partials/footer.jsp" %>
 
 
 
-<!-- JS: xá»­ lÃ½ click card â†’ má»Ÿ modal + filter -->
+<!-- JS: xử lý click card → mở modal + filter -->
 
 <script>
 
@@ -2438,7 +2438,7 @@
 
 
 
-  // Má»Ÿ modal khi click card
+  // Mở modal khi click card
 
   cards.forEach(card => {
 
@@ -2540,7 +2540,7 @@
 
 
 
-  // FILTER LOGIC â€“ gá»n
+  // FILTER LOGIC – gọn
 
   function applyFilters() {
 
@@ -2570,7 +2570,7 @@
 
 
 
-      // Chá»§ Ä‘á»
+      // Chủ đề
 
       if (topicVal !== 'all') {
 
@@ -2580,7 +2580,7 @@
 
 
 
-      // MÃ u
+      // Màu
 
       if (colorVal !== 'all') {
 
@@ -2590,7 +2590,7 @@
 
 
 
-      // GiÃ¡
+      // Giá¡
 
       if (priceVal !== 'all') {
 
@@ -2657,4 +2657,6 @@
 
 
 </html>
+
+
 

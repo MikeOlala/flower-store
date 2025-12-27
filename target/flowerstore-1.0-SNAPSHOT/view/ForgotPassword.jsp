@@ -1,80 +1,48 @@
-﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
 
 <html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
+    <title>Quên mật khẩu</title>
 
-  <meta charset="UTF-8">
+    <!-- Bootstrap Icons (cho icon email) -->
 
-  <title>QuÃªn máº­t kháº©u</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
 
+    <!-- CSS riêng -->
 
+    <link rel="stylesheet" href="ForgotPassword.css" />
+  </head>
 
-  <!-- Bootstrap Icons (cho icon email) -->
+  <body>
+    <div class="forgot-container">
+      <a href="login_1.jsp" class="home-button">
+        <i class="bi bi-arrow-left"></i>
+      </a>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+      <h2 class="title">Quên mật khẩu</h2>
 
+      <p class="subtitle">
+        Nhập email của bạn để nhận liên kết đặt lại mật khẩu.
+      </p>
 
+      <div class="form-group">
+        <label for="email">Email của bạn</label>
 
-  <!-- CSS riêng -->
+        <input type="email" id="email" placeholder="Nhập email" />
+      </div>
 
-  <link rel="stylesheet" href="../assets/forgotPassword.css">
+      <button class="btn-submit">Gửi yêu cầu</button>
 
-</head>
-
-
-
-<body>
-
-
-
-<div class="forgot-container">
-
-  <a href="login_1.html" class="home-button">
-
-    <i class="bi bi-arrow-left"></i>
-
-  </a>
-
-
-
-  <h2 class="title">QuÃªn máº­t kháº©u</h2>
-
-  <p class="subtitle">Nháº­p email cá»§a báº¡n Ä‘á»ƒ nháº­n liÃªn káº¿t Ä‘áº·t láº¡i máº­t kháº©u.</p>
-
-
-
-  <div class="form-group">
-
-    <label for="email">Email cá»§a báº¡n</label>
-
-    <input type="email" id="email" placeholder="Nháº­p email">
-
-  </div>
-
-
-
-  <button class="btn-submit">Gá»­i yêu cầu</button>
-
-
-
-  <div class="login-link">
-
-    ÄÃ£ nhá»› máº­t kháº©u? <a href="login_1.html">ÄÄƒng nháº­p ngay</a>
-
-  </div>
-
-
-
-</div>
-
-
-
-</body>
-
+      <div class="login-link">
+        Đã nhớ mật khẩu? <a href="login_1.jsp">Đăng nhập ngay</a>
+      </div>
+    </div>
+  </body>
 </html>
-
-
-
