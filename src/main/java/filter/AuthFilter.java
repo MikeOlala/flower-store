@@ -22,6 +22,7 @@ public class AuthFilter implements Filter {
         "/view/cart.jsp",
         "/view/settingProfile.jsp",
         "/view/checkout.jsp",
+        "/view/orderSuccess.jsp",
         "/view/purchaseHistory.jsp",
         "/api/cart",
         "/api/order",

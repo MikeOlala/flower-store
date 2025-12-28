@@ -1,10 +1,13 @@
-﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%@ page
+isELIgnored="false" %> <%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="dollar" value="$" />
 
 <!DOCTYPE html>
 
 <html lang="vi">
   <head>
-    <title>Tiệm Hoa nhà tớ</title>
+    <title>Giỏ hàng - Tiệm Hoa nhà tớ</title>
 
     <!-- Google Tag Manager -->
 
@@ -1517,8 +1520,6 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    
   </head>
 
   <body id="wandave-theme" class="index" data-theme="tbag-fashion">
@@ -1830,43 +1831,41 @@
     <%@ include file="partials/footer.jsp" %>
 
     <script>
-      // Sample cart data
-
-      let cartItems = [
-        {
-          id: 1,
-
-          name: "Bó Hồng Phấn – Soft Rose",
-
-          meta: "Màu hồng phấn • Size M",
-
-          price: 520000,
-
-          quantity: 1,
-
-          image:
-            "https://product.hstatic.net/200000846175/product/stcked-6_78b3da3372454315b4d7d1798804ae6b_grande.jpg",
-        },
-
-        {
-          id: 2,
-
-          name: "Tulip Blush",
-
-          meta: "Hồng pastel • 15 cành",
-
-          price: 690000,
-
-          quantity: 1,
-
-          image:
-            "https://product.hstatic.net/200000846175/product/rowan27_2371bf7c7c244c6f8357c9634eefd534_grande.jpg",
-        },
-      ];
-
+      // Cart data from API
+      let cartItems = [];
       let discountAmount = 0;
-
       const shippingFee = 0;
+      const contextPath = '${pageContext.request.contextPath}';
+
+      // Load cart from API on page load
+      document.addEventListener('DOMContentLoaded', function() {
+        loadCartFromAPI();
+      });
+
+      function loadCartFromAPI() {
+        fetch(contextPath + '/api/cart')
+          .then(response => response.json())
+          .then(data => {
+            if (data.success && data.items) {
+              cartItems = data.items.map(item => ({
+                id: item.productId,
+                name: item.product ? item.product.name : 'Sản phẩm',
+                meta: item.product && item.product.category ? item.product.category.name : 'Hoa tươi',
+                price: item.product ? parseFloat(item.product.salePrice || item.product.price) : 0,
+                quantity: item.quantity,
+                image: item.product && item.product.image ? item.product.image : 'https://via.placeholder.com/100x100?text=No+Image'
+              }));
+            } else {
+              cartItems = [];
+            }
+            renderCart();
+          })
+          .catch(error => {
+            console.error('Error loading cart:', error);
+            cartItems = [];
+            renderCart();
+          });
+      }
 
       function formatPrice(price) {
         return new Intl.NumberFormat("vi-VN", {
@@ -1911,15 +1910,15 @@
 
             <div class="photo">
 
-              <img src="${item.image}" alt="${item.name}">
+              <img src="${dollar}{item.image}" alt="${dollar}{item.name}">
 
             </div>
 
             <div>
 
-              <div class="name">${item.name}</div>
+              <div class="name">${dollar}{item.name}</div>
 
-              <div class="meta">${item.meta}</div>
+              <div class="meta">${dollar}{item.meta}</div>
 
             </div>
 
@@ -1927,15 +1926,15 @@
 
           <div>
 
-            <div class="qty-pill">${item.quantity}</div>
+            <div class="qty-pill">${dollar}{item.quantity}</div>
 
           </div>
 
-          <div class="price">${formatPrice(item.price * item.quantity)}</div>
+          <div class="price">${dollar}{formatPrice(item.price * item.quantity)}</div>
 
           <div>
 
-            <div class="remove" onclick="removeItem(${
+            <div class="remove" onclick="removeItem(${dollar}{
               item.id
             })" title="Xóa">✕</div>
 
@@ -1970,9 +1969,30 @@
       }
 
       function removeItem(id) {
-        cartItems = cartItems.filter((item) => item.id !== id);
-
-        renderCart();
+        // Call API to remove item
+        fetch(contextPath + '/api/cart?productId=' + id, {
+          method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            cartItems = cartItems.filter((item) => item.id !== id);
+            renderCart();
+            // Update cart count in header
+            const cartCount = document.querySelector('.cart-count');
+            if (cartCount && data.cartCount !== undefined) {
+              cartCount.textContent = data.cartCount;
+            }
+          } else {
+            alert('Lỗi: ' + data.message);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          // Fallback to local removal
+          cartItems = cartItems.filter((item) => item.id !== id);
+          renderCart();
+        });
       }
 
       function applyDiscount() {
@@ -2004,27 +2024,17 @@
       }
 
       function continueShopping() {
-        alert("🌸 Chức năng đang phát triển - Sẽ chuyển về trang sản phẩm");
+        window.location.href = contextPath + "/san-pham";
       }
 
       function showCheckoutConfirm() {
         if (cartItems.length === 0) {
           alert("❌ Giỏ hàng trống!");
-
           return;
         }
 
-        const subtotal = cartItems.reduce(
-          (sum, item) => sum + item.price * item.quantity,
-          0
-        );
-
-        const total = subtotal + shippingFee - discountAmount;
-
-        document.getElementById("confirmTotal").textContent =
-          formatPrice(total);
-
-        document.getElementById("confirmModal").classList.add("active");
+        // Chuyển đến trang thanh toán
+        window.location.href = "${pageContext.request.contextPath}/checkout";
       }
 
       function closeConfirmModal() {
@@ -2033,14 +2043,8 @@
 
       function processCheckout() {
         closeConfirmModal();
-
-        // Simulate processing
-
-        setTimeout(() => {
-          generateInvoice();
-
-          document.getElementById("invoiceModal").classList.add("active");
-        }, 500);
+        // Chuyển đến trang thanh toán
+        window.location.href = "${pageContext.request.contextPath}/checkout";
       }
 
       function generateInvoice() {
@@ -2079,11 +2083,11 @@
 
             <p>
 
-              Mã đơn: <strong>${invoiceNumber}</strong><br>
+              Mã đơn: <strong>${dollar}{invoiceNumber}</strong><br>
 
-              Ngày: ${now.toLocaleDateString("vi-VN")}<br>
+              Ngày: ${dollar}{now.toLocaleDateString("vi-VN")}<br>
 
-              Giờ: ${now.toLocaleTimeString("vi-VN")}
+              Giờ: ${dollar}{now.toLocaleTimeString("vi-VN")}
 
             </p>
 
@@ -2113,7 +2117,7 @@
 
           <h3 style="margin-bottom: 16px; color: var(--ink);">Chi tiết đơn hàng</h3>
 
-          ${cartItems
+          ${dollar}{cartItems
             .map(
               (item) => `
 
@@ -2121,15 +2125,15 @@
 
               <div class="invoice-item-info">
 
-                <div class="invoice-item-name">${item.name}</div>
+                <div class="invoice-item-name">${dollar}{item.name}</div>
 
-                <div class="invoice-item-meta">${item.meta} × ${
+                <div class="invoice-item-meta">${dollar}{item.meta} × ${dollar}{
                 item.quantity
               }</div>
 
               </div>
 
-              <div class="invoice-item-price">${formatPrice(
+              <div class="invoice-item-price">${dollar}{formatPrice(
                 item.price * item.quantity
               )}</div>
 
@@ -2143,7 +2147,7 @@
 
 
 
-        ${
+        ${dollar}{
           giftNote
             ? `
 
@@ -2151,7 +2155,7 @@
 
             <h3 style="font-size: 14px; color: var(--muted); margin-bottom: 8px;">LỜI CHÚC</h3>
 
-            <p style="font-style: italic; color: var(--ink);">"${giftNote}"</p>
+            <p style="font-style: italic; color: var(--ink);">"${dollar}{giftNote}"</p>
 
           </div>
 
@@ -2167,7 +2171,7 @@
 
             <span>Tạm tính</span>
 
-            <span>${formatPrice(subtotal)}</span>
+            <span>${dollar}{formatPrice(subtotal)}</span>
 
           </div>
 
@@ -2175,11 +2179,11 @@
 
             <span>Phí giao hàng</span>
 
-            <span>${formatPrice(shippingFee)}</span>
+            <span>${dollar}{formatPrice(shippingFee)}</span>
 
           </div>
 
-          ${
+          ${dollar}{
             discountAmount > 0
               ? `
 
@@ -2187,7 +2191,7 @@
 
               <span>Giảm giá</span>
 
-              <span>-${formatPrice(discountAmount)}</span>
+              <span>-${dollar}{formatPrice(discountAmount)}</span>
 
             </div>
 
@@ -2199,7 +2203,7 @@
 
             <span>TỔNG CỘNG</span>
 
-            <span>${formatPrice(total)}</span>
+            <span>${dollar}{formatPrice(total)}</span>
 
           </div>
 
@@ -2294,52 +2298,52 @@
         const { names, count } = getCartSummary();
 
         const bouquet = count
-          ? `bó ${count > 1 ? count + " loại hoa" : "hoa"} ${
+          ? `bó ${dollar}{count > 1 ? count + " loại hoa" : "hoa"} ${dollar}{
               names[0] ?? ""
             }`.trim()
           : "bó hoa";
 
         const openers = {
-          "ấm áp": [`Gửi ${to} thân mến,`, `${to} ơi,`, `Thương gửi ${to},`],
+          "ấm áp": [`Gửi ${dollar}{to} thân mến,`, `${dollar}{to} ơi,`, `Thương gửi ${dollar}{to},`],
 
           "hài hước": [
-            `Hello ${to}, "ban công tim" mở cửa!`,
+            `Hello ${dollar}{to}, "ban công tim" mở cửa!`,
 
-            `Ê ${to}, hoa tới kẹo… tim quá hạn 😆`,
+            `Ê ${dollar}{to}, hoa tới kẹo… tim quá hạn 😆`,
 
-            `${to} Æ¡i, mở quà trước, cảm động sau nha!`,
+            `${dollar}{to} ơi, mở quà trước, cảm động sau nha!`,
           ],
 
           "trang trọng": [
-            `Kính gửi ${to},`,
+            `Kính gửi ${dollar}{to},`,
 
-            `Trân trọng gửi ${to},`,
+            `Trân trọng gửi ${dollar}{to},`,
 
-            `Gửi ${to},`,
+            `Gửi ${dollar}{to},`,
           ],
 
           "ngọt ngào": [
-            `Này ${to} dễ thương,`,
+            `Này ${dollar}{to} dễ thương,`,
 
-            `Cho ${to} của mình,`,
+            `Cho ${dollar}{to} của mình,`,
 
-            `Gửi ${to}, người làm ngày thường hóa ngọt.`,
+            `Gửi ${dollar}{to}, người làm ngày thường hóa ngọt.`,
           ],
 
-          "động viên": [`Gửi ${to},`, `${to} ơi,`, `Thương gửi ${to},`],
+          "động viên": [`Gửi ${dollar}{to},`, `${dollar}{to} ơi,`, `Thương gửi ${dollar}{to},`],
         };
 
         const bodies = {
           "sinh nhật": [
-            `chúc bạn tuổi mới thật nhiều sức khỏe, niềm vui và những điều nhiệm màu. ${bouquet} này thay mình gửi muôn vàn yêu thương!`,
+            `chúc bạn tuổi mới thật nhiều sức khỏe, niềm vui và những điều nhiệm màu. ${dollar}{bouquet} này thay mình gửi muôn vàn yêu thương!`,
 
-            `mong mọi ước mÆ¡ của bạn nở rá»™ như những cánh hoa này. Chúc một năm rực rỡ và bình an!`,
+            `mong mọi ước mơ của bạn nở rộ như những cánh hoa này. Chúc một năm rực rỡ và bình an!`,
 
             `một vòng quay nữa quanh mặt trời, mong bạn luôn rạng rỡ, ấm áp và được yêu thương đủ đầy.`,
           ],
 
           "kỷ niệm": [
-            `cảm ơn vì những ngày đã qua và cả chặng đường phía trước. Mong mỗi lần nhìn ${bouquet}, bạn lại nhớ đến nụ cười của chúng ta.`,
+            `cảm ơn vì những ngày đã qua và cả chặng đường phía trước. Mong mỗi lần nhìn ${dollar}{bouquet}, bạn lại nhớ đến nụ cười của chúng ta.`,
 
             `mỗi cánh hoa là một khoảnh khắc mình trân quý. Chúc ta luôn nắm tay nhau qua mỗi mùa.`,
           ],
@@ -2357,7 +2361,7 @@
           ],
 
           "ngày đặc biệt": [
-            `mong hôm nay của bạn dịu dàng và đủ đầy. Hy vọng ${bouquet} khẽ chạm vào trái tim bạn.`,
+            `mong hôm nay của bạn dịu dàng và đủ đầy. Hy vọng ${dollar}{bouquet} khẽ chạm vào trái tim bạn.`,
 
             `chúc bạn một ngày đẹp như điều bạn xứng đáng.`,
           ],
@@ -2370,33 +2374,33 @@
         };
 
         const closers = {
-          "ấm áp": [`Thương mến, ${from}`, `Ôm bạn một cái thật chặt, ${from}`],
+          "ấm áp": [`Thương mến, ${dollar}{from}`, `Ôm bạn một cái thật chặt, ${dollar}{from}`],
 
           "hài hước": [
-            `Ký tên: shipper cảm xúc — ${from}`,
+            `Ký tên: shipper cảm xúc — ${dollar}{from}`,
 
-            `Tặng hoa chồng… xì-trét! — ${from}`,
+            `Tặng hoa chồng… xì-trét! — ${dollar}{from}`,
           ],
 
-          "trang trọng": [`Trân trọng, ${from}`, `Thân ái, ${from}`],
+          "trang trọng": [`Trân trọng, ${dollar}{from}`, `Thân ái, ${dollar}{from}`],
 
           "ngọt ngào": [
-            `Yêu thương nhiều, ${from}`,
+            `Yêu thương nhiều, ${dollar}{from}`,
 
-            `Ngàn nụ hôn gió, ${from}`,
+            `Ngàn nụ hôn gió, ${dollar}{from}`,
           ],
 
-          "động viên": [`Mình luôn ở đây, ${from}`, `Vững vàng nhé, ${from}`],
+          "động viên": [`Mình luôn ở đây, ${dollar}{from}`, `Vững vàng nhé, ${dollar}{from}`],
         };
 
-        let text = `${pick(openers[tone])}\n\n${pick(bodies[occ])}\n\n${pick(
+        let text = `${dollar}{pick(openers[tone])}\n\n${dollar}{pick(bodies[occ])}\n\n${dollar}{pick(
           closers[tone]
         )}`;
 
         const manual = document.getElementById("aiManual").value.trim();
 
         if (manual && manual !== "—") {
-          text = `${pick(openers[tone])}\n\n${manual}\n\n${pick(
+          text = `${dollar}{pick(openers[tone])}\n\n${dollar}{manual}\n\n${dollar}{pick(
             closers[tone]
           )}`;
         }
@@ -2429,7 +2433,7 @@
 
         const stamp = new Date().toISOString().slice(0, 10);
 
-        link.download = `thiep_${stamp}.png`;
+        link.download = `thiep_${dollar}{stamp}.png`;
 
         link.href = canvas.toDataURL("image/png");
 

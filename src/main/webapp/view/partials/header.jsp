@@ -21,48 +21,48 @@
                     <ul id="menu-desktop" class="menu-desk">
 
                         <li class="active ">
-                            <a href="home.jsp"> TRANG CHỦ</a>
+                            <a href="${pageContext.request.contextPath}/view/home.jsp"> TRANG CHỦ</a>
 
                         </li>
                         <li class=" ">
-                            <a href="intro.jsp"> GIỚI THIỆU</a>
+                            <a href="${pageContext.request.contextPath}/view/intro.jsp"> GIỚI THIỆU</a>
 
                         </li>
                           <li class=" ">
-                            <a href="product.jsp"> BỘ SƯU TẬP</a>
+                            <a href="${pageContext.request.contextPath}/san-pham"> BỘ SƯU TẬP</a>
                         </li>
                         <li class=" mega-menu">
-                            <a href="silkFlower.jsp"> HOA GIẢ<i class="fa-chevron-down" aria-hidden="true"></i></a>
+                            <a href="${pageContext.request.contextPath}/san-pham?category=hoa-gia"> HOA GIẢ<i class="fa-chevron-down" aria-hidden="true"></i></a>
                             <div class="mega-menu-wrap">
                                 <div class="menu-mega-inner">
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="silkFlower.jsp">Hoa Lụa</a>
+                                            <a href="${pageContext.request.contextPath}/san-pham?category=hoa-lua">Hoa Lụa</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="plasticFlower.jsp">Hoa Nhựa</a>
+                                            <a href="${pageContext.request.contextPath}/san-pham?category=hoa-nhua">Hoa Nhựa</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="paperFlower.jsp">Hoa Giấy</a>
+                                            <a href="${pageContext.request.contextPath}/san-pham?category=hoa-giay">Hoa Giấy</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="fabricFlower.jsp">Hoa Vải</a>
+                                            <a href="${pageContext.request.contextPath}/san-pham?category=hoa-vai">Hoa Vải</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="boxFlower.jsp">Hộp Hoa</a>
+                                            <a href="${pageContext.request.contextPath}/san-pham?category=hop-hoa">Hộp Hoa</a>
                                         </div>
                                     </div>
 
@@ -70,68 +70,68 @@
                             </div>
                         </li>
                         <li class=" mega-menu">
-                            <a href="boHoa.jsp"> HOA TƯƠI<i class="fa-chevron-down"
+                            <a href="${pageContext.request.contextPath}/san-pham?category=hoa-tuoi"> HOA TƯƠI<i class="fa-chevron-down"
                                     aria-hidden="true"></i></a>
                             <div class="mega-menu-wrap">
                                 <div class="menu-mega-inner">
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="boHoa.jsp">Bó Hoa</a>
+                                            <a href="${pageContext.request.contextPath}/san-pham?category=bo-hoa">Bó Hoa</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="hoaTulip.jsp">Hoa Tulip</a>
+                                            <a href="${pageContext.request.contextPath}/san-pham?category=hoa-tulip">Hoa Tulip</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="binhHoa.jsp">Bình Hoa</a>
+                                            <a href="${pageContext.request.contextPath}/san-pham?category=binh-hoa">Bình Hoa</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="gioHoa.jsp">Giỏ Hoa</a>
+                                            <a href="${pageContext.request.contextPath}/san-pham?category=gio-hoa">Giỏ Hoa</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="hopHoa.jsp">Hộp Hoa</a>
+                                            <a href="${pageContext.request.contextPath}/san-pham?category=hop-hoa-tuoi">Hộp Hoa</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="hoaCuoi.jsp">Hoa Cưới</a>
+                                            <a href="${pageContext.request.contextPath}/san-pham?category=hoa-cuoi">Hoa Cưới</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="lanHoDiep.jsp">Lan Hồ Điệp</a>
+                                            <a href="${pageContext.request.contextPath}/san-pham?category=lan-ho-diep">Lan Hồ Điệp</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="hoaMauDon.jsp">Hoa Mẫu Đơn</a>
+                                            <a href="${pageContext.request.contextPath}/san-pham?category=hoa-mau-don">Hoa Mẫu Đơn</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="keHoaChucMung.jsp">Kệ Hoa Chúc Mừng</a>
+                                            <a href="${pageContext.request.contextPath}/san-pham?category=ke-hoa-chuc-mung">Kệ Hoa Chúc Mừng</a>
                                         </div>
                                     </div>
 
                                     <div class="item-mega-menu">
                                         <div class="hd-title-menu">
-                                            <a href="hoaTotNghiep.jsp">Hoa Tốt Nghiệp</a>
+                                            <a href="${pageContext.request.contextPath}/san-pham?category=hoa-tot-nghiep">Hoa Tốt Nghiệp</a>
                                         </div>
                                     </div>
                                 </div>
@@ -139,10 +139,10 @@
                         </li>
                         </li>
                          <li class=" ">
-                            <a href="tintuc.jsp"> TIN TỨC</a>
+                            <a href="${pageContext.request.contextPath}/view/tintuc.jsp"> TIN TỨC</a>
                         </li>
                         <li class=" ">
-                            <a href="contact.jsp"> LIÊN HỆ</a>
+                            <a href="${pageContext.request.contextPath}/view/contact.jsp"> LIÊN HỆ</a>
                         </li>
                     </ul>
                 </nav>
@@ -225,7 +225,7 @@
                                 </c:choose>
                             </li>
                             <li class="list-inline-item mr-0">
-                                <a href="cart.jsp" class="cart js-call-minicart" data-original-title="Giỏ hàng"
+                                <a href="${pageContext.request.contextPath}/view/cart.jsp" class="cart js-call-minicart" data-original-title="Giỏ hàng"
                                     data-tooltip="tooltip">
                                     <svg aria-hidden="true" focusable="false" role="presentation"
                                         class="icon icon-bag-minimal" viewBox="0 0 64 64">

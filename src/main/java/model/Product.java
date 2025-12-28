@@ -122,7 +122,10 @@ public class Product {
      * Lấy giá hiển thị (giá sale nếu có, không thì giá gốc)
      */
     public BigDecimal getDisplayPrice() {
-        return salePrice != null ? salePrice : price;
+        if (salePrice != null && salePrice.compareTo(BigDecimal.ZERO) > 0) {
+            return salePrice;
+        }
+        return price != null ? price : BigDecimal.ZERO;
     }
     
     /**
