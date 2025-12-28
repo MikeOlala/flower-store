@@ -753,15 +753,15 @@
                             <button type="button" onclick="increaseQuantity()">+</button>
                         </div>
                         
-                        <button class="btn-primary" onclick="addToCart(${product.id})" ${!product.inStock ? 'disabled' : ''}>
+                        <button class="btn-primary" id="btnAddCart" data-product-id="${product.id}" <c:if test="${!product.inStock}">disabled</c:if>>
                             <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
                         </button>
                         
-                        <button class="btn-secondary" onclick="buyNow(${product.id})" ${!product.inStock ? 'disabled' : ''}>
+                        <button class="btn-secondary" id="btnBuyNow" data-product-id="${product.id}" <c:if test="${!product.inStock}">disabled</c:if>>
                             <i class="fas fa-bolt"></i> Mua ngay
                         </button>
                         
-                        <button class="btn-wishlist" onclick="toggleWishlist(${product.id})">
+                        <button class="btn-wishlist" id="btnWishlist" data-product-id="${product.id}">
                             <i class="far fa-heart"></i>
                         </button>
                     </div>
@@ -865,7 +865,7 @@
     </div>
     
     <script>
-        const maxQuantity = ${product.quantity > 0 ? product.quantity : 99};
+        const maxQuantity = <c:out value="${product.quantity > 0 ? product.quantity : 99}"/>;
         
         // Change main image
         function changeImage(thumbnail, imageSrc) {
@@ -990,6 +990,19 @@
             if (isNaN(val) || val < 1) val = 1;
             if (val > maxQuantity) val = maxQuantity;
             this.value = val;
+        });
+        
+        // Button event listeners
+        document.getElementById('btnAddCart').addEventListener('click', function() {
+            addToCart(this.dataset.productId);
+        });
+        
+        document.getElementById('btnBuyNow').addEventListener('click', function() {
+            buyNow(this.dataset.productId);
+        });
+        
+        document.getElementById('btnWishlist').addEventListener('click', function() {
+            toggleWishlist(this.dataset.productId);
         });
     </script>
 </body>

@@ -1,15 +1,21 @@
 package filter;
 
-import model.User;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
-import javax.servlet.*;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
+
+import model.User;
 
 /**
  * Filter bảo vệ các trang cần đăng nhập
@@ -42,15 +48,14 @@ public class AuthFilter implements Filter {
         "/view/registration.jsp",
         "/view/ForgotPassword.jsp",
         "/view/home.jsp",
-        "/view/product.jsp",
-        "/view/detail.jsp",
+        "/view/products.jsp",
+        "/view/product-detail.jsp",
         "/view/intro.jsp",
         "/view/contact.jsp",
         "/view/tintuc.jsp",
         "/view/boHoa.jsp",
         "/view/binhHoa.jsp",
         "/view/gioHoa.jsp",
-        "/view/hopHoa.jsp",
         "/view/langHoa.jsp",
         "/view/hoaTulip.jsp",
         "/view/hoaCuoi.jsp",
@@ -68,6 +73,8 @@ public class AuthFilter implements Filter {
         "/view/graduateFlower.jsp",
         "/view/trangChuHoaGia.jsp",
         "/view/partials/",
+        "/san-pham",
+        "/products",
         "/login",
         "/register",
         "/logout",

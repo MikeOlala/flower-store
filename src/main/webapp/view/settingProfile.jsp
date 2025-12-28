@@ -708,6 +708,141 @@
             visibility: visible !important;
             opacity: 1 !important;
         }
+
+        /* Order Detail Modal */
+        #orderDetailOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        #orderDetailOverlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        #orderDetailOverlay .order-detail-modal {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: var(--transition);
+        }
+        
+        #orderDetailOverlay.show .order-detail-modal {
+            transform: scale(1);
+        }
+        
+        .order-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--bg-cream);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+        
+        .order-detail-header h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.25rem;
+            color: var(--brown-main);
+            margin: 0;
+        }
+        
+        .order-detail-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: var(--text-muted);
+        }
+        
+        .order-detail-close:hover {
+            background: var(--error);
+            color: white;
+        }
+        
+        .order-detail-body {
+            padding: 1.5rem;
+        }
+        
+        .order-detail-info p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .order-detail-info strong {
+            color: var(--brown-main);
+        }
+        
+        .order-detail-items {
+            margin: 1rem 0;
+        }
+        
+        .order-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .order-detail-item:last-child {
+            border-bottom: none;
+        }
+        
+        .order-detail-item .item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .order-detail-item .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .order-detail-item .item-info {
+            flex: 1;
+        }
+        
+        .order-detail-item .item-name {
+            font-weight: 500;
+            color: var(--brown-main);
+        }
+        
+        .order-detail-item .item-quantity {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .order-detail-item .item-price {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
         
         #editModal .btn,
         .password-card .btn {
@@ -1536,11 +1671,12 @@
                     <div class="profile-body">
                         <h3 class="section-title"><i class="fas fa-shopping-bag"></i> Lịch sử đơn hàng</h3>
                         <div class="orders-filter">
-                            <button class="filter-btn active" onclick="filterOrders('all')">Tất cả</button>
-                            <button class="filter-btn" onclick="filterOrders('pending')">Chờ xác nhận</button>
-                            <button class="filter-btn" onclick="filterOrders('processing')">Đang xử lý</button>
-                            <button class="filter-btn" onclick="filterOrders('shipped')">Đang giao</button>
-                            <button class="filter-btn" onclick="filterOrders('delivered')">Đã giao</button>
+                            <button class="filter-btn active" data-status="all" onclick="filterOrders('all', this)">Tất cả</button>
+                            <button class="filter-btn" data-status="pending" onclick="filterOrders('pending', this)">Chờ xác nhận</button>
+                            <button class="filter-btn" data-status="confirmed" onclick="filterOrders('confirmed', this)">Đã xác nhận</button>
+                            <button class="filter-btn" data-status="shipping" onclick="filterOrders('shipping', this)">Đang giao</button>
+                            <button class="filter-btn" data-status="delivered" onclick="filterOrders('delivered', this)">Đã giao</button>
+                            <button class="filter-btn" data-status="cancelled" onclick="filterOrders('cancelled', this)">Đã hủy</button>
                         </div>
                         <div id="orderHistoryContent">
                             <!-- Loading state -->
@@ -1563,7 +1699,7 @@
                         <div class="address-grid" id="addressBookContent">
                             <!-- Address cards will be loaded here -->
                         </div>
-                        <div class="add-address-btn" onclick="openModal('newAddress')" style="margin-top: 1.25rem;">
+                        <div class="add-address-btn" onclick="openAddAddressModal()" style="margin-top: 1.25rem;">
                             <i class="fas fa-plus-circle"></i>
                             <span>Thêm địa chỉ mới</span>
                         </div>
@@ -1711,6 +1847,21 @@
         </div>
     </div>
     
+    <!-- Order Detail Modal -->
+    <div id="orderDetailOverlay" onclick="if(event.target===this) closeOrderDetailModal()">
+        <div class="order-detail-modal">
+            <div class="order-detail-header">
+                <h3><i class="fas fa-receipt"></i> Chi tiết đơn hàng</h3>
+                <button class="order-detail-close" onclick="closeOrderDetailModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="order-detail-body" id="orderDetailContent">
+                <!-- Content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+    
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
     
@@ -1743,73 +1894,152 @@
         }
         
         // ==================== Order History ====================
+        let allOrders = [];
+        
         function loadOrderHistory() {
             const container = document.getElementById('orderHistoryContent');
             
             // Show loading
             container.innerHTML = '<div class="empty-state"><i class="fas fa-spinner fa-spin"></i><p>Đang tải...</p></div>';
             
-            fetch(contextPath + '/orders/history')
+            fetch(contextPath + '/orders/detail/0')
+                .then(response => response.json())
+                .catch(() => {
+                    // Fallback: redirect to orders page to get data
+                    return fetch(contextPath + '/orders', {
+                        headers: { 'Accept': 'text/html' }
+                    }).then(() => ({ success: false }));
+                })
+                .then(data => {
+                    // Load real orders via a different approach
+                    loadOrdersFromPage();
+                })
+                .catch(error => {
+                    console.error('Error loading orders:', error);
+                    loadOrdersFromPage();
+                });
+        }
+        
+        function loadOrdersFromPage() {
+            // Use AJAX to load orders list
+            const container = document.getElementById('orderHistoryContent');
+            
+            fetch(contextPath + '/api/orders/list')
                 .then(response => response.json())
                 .then(data => {
                     if (data.success && data.orders && data.orders.length > 0) {
-                        let html = '';
-                        data.orders.forEach(order => {
-                            html += renderOrderCard(order);
-                        });
-                        container.innerHTML = html;
+                        allOrders = data.orders;
+                        renderOrders(allOrders);
                     } else {
                         container.innerHTML = renderEmptyOrders();
                     }
                 })
                 .catch(error => {
-                    console.error('Error loading orders:', error);
-                    // Show demo data for now
+                    console.error('Error:', error);
                     container.innerHTML = renderEmptyOrders();
                 });
+        }
+        
+        function renderOrders(orders) {
+            const container = document.getElementById('orderHistoryContent');
+            
+            if (!orders || orders.length === 0) {
+                container.innerHTML = renderEmptyOrders();
+                return;
+            }
+            
+            let html = '';
+            orders.forEach(order => {
+                html += renderOrderCard(order);
+            });
+            container.innerHTML = html;
+        }
+        
+        function filterOrders(status, btn) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            
+            // Filter orders
+            if (status === 'all') {
+                renderOrders(allOrders);
+            } else {
+                const filtered = allOrders.filter(o => o.orderStatus === status);
+                renderOrders(filtered);
+            }
         }
         
         function renderOrderCard(order) {
             const statusMap = {
                 'pending': { text: 'Chờ xác nhận', class: 'pending' },
-                'processing': { text: 'Đang xử lý', class: 'processing' },
-                'shipped': { text: 'Đang giao', class: 'shipped' },
+                'confirmed': { text: 'Đã xác nhận', class: 'processing' },
+                'shipping': { text: 'Đang giao', class: 'shipped' },
                 'delivered': { text: 'Đã giao', class: 'delivered' },
                 'cancelled': { text: 'Đã hủy', class: 'cancelled' }
             };
-            const status = statusMap[order.status] || { text: order.status, class: 'pending' };
+            const status = statusMap[order.orderStatus] || { text: order.orderStatus, class: 'pending' };
             
             let itemsHtml = '';
-            order.items.forEach(item => {
+            const items = order.orderItems || [];
+            items.forEach(item => {
+                const imgSrc = item.productImage || (contextPath + '/view/default-product.png');
                 itemsHtml += `
                     <div class="order-item">
-                        <img src="\${item.image}" alt="\${item.name}" class="order-item-img">
+                        <img src="\${imgSrc}" alt="\${item.productName || 'Sản phẩm'}" class="order-item-img">
                         <div class="order-item-info">
-                            <div class="order-item-name">\${item.name}</div>
+                            <div class="order-item-name">\${item.productName || 'Sản phẩm'}</div>
                             <div class="order-item-qty">x\${item.quantity}</div>
                         </div>
-                        <div class="order-item-price">\${formatCurrency(item.price)}</div>
+                        <div class="order-item-price">\${formatCurrency(item.price || 0)}</div>
                     </div>
                 `;
             });
             
+            // Format date
+            let dateStr = '';
+            if (order.createdAt) {
+                const date = new Date(order.createdAt);
+                dateStr = date.toLocaleDateString('vi-VN') + ' ' + date.toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'});
+            }
+            
+            // Actions based on status
+            let actionsHtml = `
+                <button class="btn btn-outline btn-sm" onclick="viewOrderDetail(\${order.id})">
+                    <i class="fas fa-eye"></i> Chi tiết
+                </button>
+            `;
+            
+            if (order.orderStatus === 'pending') {
+                actionsHtml += `
+                    <button class="btn btn-danger btn-sm" onclick="cancelOrder(\${order.id})">
+                        <i class="fas fa-times"></i> Hủy
+                    </button>
+                `;
+            }
+            
+            if (order.orderStatus === 'delivered' || order.orderStatus === 'cancelled') {
+                actionsHtml += `
+                    <button class="btn btn-primary btn-sm" onclick="reorder(\${order.id})">
+                        <i class="fas fa-redo"></i> Mua lại
+                    </button>
+                `;
+            }
+            
             return `
-                <div class="order-card">
+                <div class="order-card" data-status="\${order.orderStatus}">
                     <div class="order-header">
                         <div>
-                            <span class="order-id">Đơn hàng #\${order.id}</span>
-                            <span class="order-date">\${order.date}</span>
+                            <span class="order-id">Đơn hàng #\${order.orderCode || order.id}</span>
+                            <span class="order-date">\${dateStr}</span>
                         </div>
                         <span class="order-status \${status.class}">\${status.text}</span>
                     </div>
                     <div class="order-body">
-                        \${itemsHtml}
+                        \${itemsHtml || '<p style="color: #999;">Không có sản phẩm</p>'}
                     </div>
                     <div class="order-footer">
-                        <div class="order-total">Tổng cộng: <span>\${formatCurrency(order.total)}</span></div>
-                        <button class="btn btn-outline btn-sm" onclick="viewOrderDetail(\${order.id})">
-                            <i class="fas fa-eye"></i> Xem chi tiết
-                        </button>
+                        <div class="order-total">Tổng cộng: <span>\${formatCurrency(order.total || 0)}</span></div>
+                        <div>\${actionsHtml}</div>
                     </div>
                 </div>
             `;
@@ -1829,10 +2059,139 @@
         }
         
         function viewOrderDetail(orderId) {
-            // TODO: Implement order detail view
-            showToast('Xem chi tiết đơn hàng #' + orderId, 'success');
+            // Show order detail modal
+            document.getElementById('orderDetailOverlay').classList.add('show');
+            document.getElementById('orderDetailContent').innerHTML = 
+                '<div style="text-align: center; padding: 2rem;">' +
+                '<i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary);"></i>' +
+                '<p style="margin-top: 1rem;">Đang tải...</p>' +
+                '</div>';
+            
+            fetch(contextPath + '/orders/detail/' + orderId)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const order = data.order;
+                        let itemsHtml = '';
+                        if (order.orderItems && order.orderItems.length > 0) {
+                            order.orderItems.forEach(item => {
+                                const imgSrc = item.productImage || (contextPath + '/view/default-product.png');
+                                itemsHtml += '<div class="order-detail-item">' +
+                                    '<div class="item-image"><img src="' + imgSrc + '" alt="' + (item.productName || 'Sản phẩm') + '"></div>' +
+                                    '<div class="item-info">' +
+                                    '<div class="item-name">' + (item.productName || 'Sản phẩm') + '</div>' +
+                                    '<div class="item-quantity">x' + item.quantity + '</div>' +
+                                    '</div>' +
+                                    '<div class="item-price">' + formatCurrency(item.total || item.price * item.quantity) + '</div>' +
+                                    '</div>';
+                            });
+                        }
+                        
+                        // Format date
+                        let dateStr = '';
+                        if (order.createdAt) {
+                            const date = new Date(order.createdAt);
+                            dateStr = date.toLocaleDateString('vi-VN') + ' ' + date.toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'});
+                        }
+                        
+                        // Status text
+                        const statusMap = {
+                            'pending': 'Chờ xác nhận',
+                            'confirmed': 'Đã xác nhận',
+                            'shipping': 'Đang giao',
+                            'delivered': 'Đã giao',
+                            'cancelled': 'Đã hủy'
+                        };
+                        
+                        document.getElementById('orderDetailContent').innerHTML = 
+                            '<div class="order-detail-info">' +
+                            '<p><strong>Mã đơn hàng:</strong> ' + (order.orderCode || 'DH' + order.id) + '</p>' +
+                            '<p><strong>Ngày đặt:</strong> ' + dateStr + '</p>' +
+                            '<p><strong>Trạng thái:</strong> <span style="color: var(--primary);">' + (statusMap[order.orderStatus] || order.orderStatus) + '</span></p>' +
+                            '<p><strong>Người nhận:</strong> ' + (order.receiverName || 'N/A') + '</p>' +
+                            '<p><strong>Số điện thoại:</strong> ' + (order.receiverPhone || 'N/A') + '</p>' +
+                            '<p><strong>Địa chỉ:</strong> ' + (order.shippingAddress || 'N/A') + '</p>' +
+                            (order.note ? '<p><strong>Ghi chú:</strong> ' + order.note + '</p>' : '') +
+                            '<hr style="margin: 1rem 0; border-color: var(--border-color);">' +
+                            '<div class="order-detail-items">' + itemsHtml + '</div>' +
+                            '<hr style="margin: 1rem 0; border-color: var(--border-color);">' +
+                            '<p><strong>Tạm tính:</strong> ' + formatCurrency(order.subtotal || 0) + '</p>' +
+                            '<p><strong>Phí vận chuyển:</strong> ' + formatCurrency(order.shippingFee || 0) + '</p>' +
+                            (order.discount > 0 ? '<p><strong>Giảm giá:</strong> -' + formatCurrency(order.discount) + '</p>' : '') +
+                            '<p style="font-size: 1.1rem;"><strong>Tổng cộng:</strong> <span style="color: var(--primary-dark); font-weight: 700;">' + formatCurrency(order.total || 0) + '</span></p>' +
+                            '</div>';
+                    } else {
+                        document.getElementById('orderDetailContent').innerHTML = 
+                            '<p style="text-align: center; color: var(--error);">' + (data.message || 'Không thể tải chi tiết đơn hàng') + '</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('orderDetailContent').innerHTML = 
+                        '<p style="text-align: center; color: var(--error);">Có lỗi xảy ra khi tải dữ liệu</p>';
+                });
         }
         
+        function closeOrderDetailModal() {
+            document.getElementById('orderDetailOverlay').classList.remove('show');
+        }
+        
+        function cancelOrder(orderId) {
+            if (!confirm('Bạn có chắc chắn muốn hủy đơn hàng này?')) {
+                return;
+            }
+            
+            fetch(contextPath + '/orders/cancel/' + orderId, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'reason=Khách hàng hủy đơn'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast(data.message, 'success');
+                    loadOrdersFromPage(); // Reload orders
+                } else {
+                    showToast(data.message || 'Không thể hủy đơn hàng', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast('Lỗi kết nối', 'error');
+            });
+        }
+        
+        function reorder(orderId) {
+            fetch(contextPath + '/orders/reorder/' + orderId, {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast(data.message, 'success');
+                    // Update cart count
+                    if (data.cartCount) {
+                        updateCartCount(data.cartCount);
+                    }
+                } else {
+                    showToast(data.message || 'Không thể mua lại', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast('Lỗi kết nối', 'error');
+            });
+        }
+        
+        function updateCartCount(count) {
+            const badge = document.querySelector('.cart-badge, .cart-count');
+            if (badge) {
+                badge.textContent = count;
+            }
+        }
+
         // ==================== Address Book ====================
         let addresses = [];
         
@@ -1849,6 +2208,7 @@
                         addresses = data.addresses;
                         renderAddressBook();
                     } else {
+                        addresses = [];
                         container.innerHTML = renderEmptyAddresses();
                     }
                 })
@@ -1863,18 +2223,26 @@
             let html = '';
             
             addresses.forEach((address, index) => {
+                const fullAddress = [
+                    address.addressDetail,
+                    address.ward,
+                    address.district,
+                    address.province
+                ].filter(x => x && x.trim()).join(', ');
+                
                 html += `
-                    <div class="address-card \${address.isDefault ? 'default' : ''}">
-                        \${address.isDefault ? '<span class="address-default-badge">Mặc định</span>' : ''}
-                        <div class="address-name">\${address.name}</div>
+                    <div class="address-card \${address.default ? 'default' : ''}" data-id="\${address.id}">
+                        \${address.default ? '<span class="address-default-badge">Mặc định</span>' : ''}
+                        <div class="address-name">\${address.receiverName}</div>
                         <div class="address-phone"><i class="fas fa-phone"></i> \${address.phone}</div>
-                        <div class="address-detail">\${address.detail}, \${address.ward}, \${address.district}, \${address.city}</div>
+                        <div class="address-detail">\${fullAddress}</div>
+                        \${address.note ? '<div class="address-note"><i class="fas fa-sticky-note"></i> ' + address.note + '</div>' : ''}
                         <div class="address-actions">
                             <button class="btn btn-outline btn-sm" onclick="editAddress(\${index})">
                                 <i class="fas fa-edit"></i> Sửa
                             </button>
-                            \${!address.isDefault ? '<button class="btn btn-outline btn-sm" onclick="setDefaultAddress(' + index + ')"><i class="fas fa-check"></i> Đặt mặc định</button>' : ''}
-                            <button class="btn btn-danger btn-sm" onclick="deleteAddress(\${index})">
+                            \${!address.default ? '<button class="btn btn-outline btn-sm" onclick="setDefaultAddress(' + address.id + ')"><i class="fas fa-check"></i> Đặt mặc định</button>' : ''}
+                            <button class="btn btn-danger btn-sm" onclick="deleteAddress(\${address.id})">
                                 <i class="fas fa-trash"></i> Xóa
                             </button>
                         </div>
@@ -1897,85 +2265,145 @@
         
         function editAddress(index) {
             const address = addresses[index];
-            openModal('editAddress', address);
+            currentEditingAddressId = address.id;
+            
+            // Fill form
+            document.getElementById('modalTitle').innerHTML = '<i class="fas fa-edit"></i> Chỉnh sửa địa chỉ';
+            document.getElementById('modalBody').innerHTML = getAddressFormHtml(address);
+            
+            document.getElementById('modalOverlay').classList.add('active');
         }
         
-        function setDefaultAddress(index) {
-            const address = addresses[index];
+        function openAddAddressModal() {
+            currentEditingAddressId = null;
             
-            fetch(contextPath + '/address/setDefault', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: 'addressId=' + address.id
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    showToast('Đã đặt làm địa chỉ mặc định', 'success');
-                    loadAddressBook();
-                } else {
-                    showToast(data.message || 'Có lỗi xảy ra', 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                showToast('Có lỗi xảy ra', 'error');
-            });
+            document.getElementById('modalTitle').innerHTML = '<i class="fas fa-plus"></i> Thêm địa chỉ mới';
+            document.getElementById('modalBody').innerHTML = getAddressFormHtml(null);
+            
+            document.getElementById('modalOverlay').classList.add('active');
         }
         
-        function deleteAddress(index) {
-            const address = addresses[index];
+        function getAddressFormHtml(address) {
+            return `
+                <form id="addressForm" onsubmit="saveAddress(event)">
+                    <div class="form-group">
+                        <label class="form-label">Tên người nhận <span style="color: var(--error);">*</span></label>
+                        <input type="text" class="form-control" id="addr_receiverName" 
+                            value="\${address ? address.receiverName : ''}" placeholder="Nhập tên người nhận" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Số điện thoại <span style="color: var(--error);">*</span></label>
+                        <input type="tel" class="form-control" id="addr_phone" 
+                            value="\${address ? address.phone : ''}" placeholder="Nhập số điện thoại" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Tỉnh/Thành phố</label>
+                        <input type="text" class="form-control" id="addr_province" 
+                            value="\${address ? (address.province || '') : ''}" placeholder="Nhập tỉnh/thành phố">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Quận/Huyện</label>
+                        <input type="text" class="form-control" id="addr_district" 
+                            value="\${address ? (address.district || '') : ''}" placeholder="Nhập quận/huyện">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phường/Xã</label>
+                        <input type="text" class="form-control" id="addr_ward" 
+                            value="\${address ? (address.ward || '') : ''}" placeholder="Nhập phường/xã">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Địa chỉ chi tiết <span style="color: var(--error);">*</span></label>
+                        <input type="text" class="form-control" id="addr_detail" 
+                            value="\${address ? address.addressDetail : ''}" placeholder="Số nhà, tên đường..." required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Ghi chú</label>
+                        <textarea class="form-control" id="addr_note" rows="2" 
+                            placeholder="Ghi chú thêm (không bắt buộc)">\${address ? (address.note || '') : ''}</textarea>
+                    </div>
+                    <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="checkbox" id="addr_isDefault" \${address && address.default ? 'checked' : ''}>
+                        <label for="addr_isDefault" style="margin: 0; cursor: pointer;">Đặt làm địa chỉ mặc định</label>
+                    </div>
+                </form>
+            `;
+        }
+        
+        let currentEditingAddressId = null;
+        
+        function saveAddress(event) {
+            if (event) event.preventDefault();
             
-            if (!confirm('Bạn có chắc muốn xóa địa chỉ này?')) {
-                return;
+            const formData = new URLSearchParams();
+            formData.append('receiverName', document.getElementById('addr_receiverName').value);
+            formData.append('phone', document.getElementById('addr_phone').value);
+            formData.append('province', document.getElementById('addr_province').value);
+            formData.append('district', document.getElementById('addr_district').value);
+            formData.append('ward', document.getElementById('addr_ward').value);
+            formData.append('addressDetail', document.getElementById('addr_detail').value);
+            formData.append('note', document.getElementById('addr_note').value);
+            formData.append('isDefault', document.getElementById('addr_isDefault').checked);
+            
+            let url = contextPath + '/address/add';
+            if (currentEditingAddressId) {
+                url = contextPath + '/address/update';
+                formData.append('id', currentEditingAddressId);
             }
             
-            fetch(contextPath + '/address/delete', {
+            fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: 'addressId=' + address.id
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    showToast('Đã xóa địa chỉ', 'success');
-                    loadAddressBook();
-                } else {
-                    showToast(data.message || 'Có lỗi xảy ra', 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                showToast('Có lỗi xảy ra', 'error');
-            });
-        }
-        
-        function saveNewAddress() {
-            const formData = new URLSearchParams();
-            formData.append('name', document.getElementById('inputAddressName').value);
-            formData.append('phone', document.getElementById('inputAddressPhone').value);
-            formData.append('city', document.getElementById('inputCity').value);
-            formData.append('district', document.getElementById('inputDistrict').value);
-            formData.append('ward', document.getElementById('inputWard').value);
-            formData.append('detail', document.getElementById('inputAddressDetail').value);
-            formData.append('isDefault', document.getElementById('inputSetDefault').checked);
-            
-            fetch(contextPath + '/address/add', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 body: formData.toString()
             })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    showToast('Đã thêm địa chỉ mới', 'success');
+                    showToast(data.message, 'success');
                     closeModal();
+                    loadAddressBook();
+                } else {
+                    showToast(data.message || 'Có lỗi xảy ra', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast('Có lỗi xảy ra', 'error');
+            });
+        }
+        
+        function setDefaultAddress(addressId) {
+            fetch(contextPath + '/address/set-default/' + addressId, {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast(data.message, 'success');
+                    loadAddressBook();
+                } else {
+                    showToast(data.message || 'Có lỗi xảy ra', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast('Có lỗi xảy ra', 'error');
+            });
+        }
+        
+        function deleteAddress(addressId) {
+            if (!confirm('Bạn có chắc muốn xóa địa chỉ này?')) {
+                return;
+            }
+            
+            fetch(contextPath + '/address/delete/' + addressId, {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast('Đã xóa địa chỉ', 'success');
                     loadAddressBook();
                 } else {
                     showToast(data.message || 'Có lỗi xảy ra', 'error');
@@ -2252,9 +2680,17 @@
         function closeModal() {
             document.getElementById('modalOverlay').classList.remove('active');
             currentField = '';
+            currentEditingAddressId = null;
         }
         
         function saveChanges() {
+            // Check if this is an address form
+            const addressForm = document.getElementById('addressForm');
+            if (addressForm) {
+                saveAddress();
+                return;
+            }
+            
             let value = '';
             
             switch (currentField) {

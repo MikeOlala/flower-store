@@ -2,6 +2,7 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -47,6 +48,14 @@
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --height-head: 72px;
         }
+        
+        /* Font Awesome fix */
+        .fas, .far, .fab, .fa {
+            font-family: "Font Awesome 6 Free" !important;
+            font-weight: 900;
+        }
+        .far { font-weight: 400; }
+        .fab { font-family: "Font Awesome 6 Brands" !important; }
         
         * {
             margin: 0;
@@ -485,9 +494,9 @@
     <div class="orders-container">
         <!-- Breadcrumb -->
         <div class="breadcrumb">
-            <a href="home.jsp"><i class="fas fa-home"></i></a>
+            <a href="${pageContext.request.contextPath}/view/home.jsp"><i class="fas fa-home"></i></a>
             <i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--text-muted);"></i>
-            <a href="settingProfile.jsp">Tài khoản</a>
+            <a href="${pageContext.request.contextPath}/profile">Tài khoản</a>
             <i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--text-muted);"></i>
             <span>Đơn hàng của tôi</span>
         </div>
@@ -603,7 +612,7 @@
                         <i class="fas fa-shopping-bag"></i>
                         <h3>Chưa có đơn hàng nào</h3>
                         <p>Bạn chưa có đơn hàng nào. Hãy bắt đầu mua sắm ngay!</p>
-                        <a href="product.jsp" class="btn-shop">
+                        <a href="${pageContext.request.contextPath}/san-pham" class="btn-shop">
                             <i class="fas fa-shopping-basket"></i>
                             Mua sắm ngay
                         </a>
@@ -655,23 +664,55 @@
         
         function viewOrderDetail(orderId) {
             // Load order detail via AJAX
-            // For now, show modal
             document.getElementById('orderDetailModal').classList.add('show');
-            document.getElementById('orderDetailContent').innerHTML = `
-                <div style="text-align: center; padding: 2rem;">
-                    <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary);"></i>
-                    <p style="margin-top: 1rem;">Đang tải...</p>
-                </div>
-            `;
+            document.getElementById('orderDetailContent').innerHTML = 
+                '<div style="text-align: center; padding: 2rem;">' +
+                '<i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary);"></i>' +
+                '<p style="margin-top: 1rem;">Đang tải...</p>' +
+                '</div>';
             
-            // Simulate loading
-            setTimeout(() => {
-                document.getElementById('orderDetailContent').innerHTML = `
-                    <p style="text-align: center; color: var(--text-muted);">
-                        Chi tiết đơn hàng #${orderId} sẽ được hiển thị ở đây.
-                    </p>
-                `;
-            }, 1000);
+            fetch('${pageContext.request.contextPath}/orders/detail/' + orderId)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const order = data.order;
+                        let itemsHtml = '';
+                        order.orderItems.forEach(item => {
+                            itemsHtml += '<div class="order-item">' +
+                                '<div class="item-image"><img src="' + item.productImage + '" alt="' + item.productName + '"></div>' +
+                                '<div class="item-info">' +
+                                '<div class="item-name">' + item.productName + '</div>' +
+                                '<div class="item-quantity">x' + item.quantity + '</div>' +
+                                '</div>' +
+                                '<div class="item-price">' + formatCurrency(item.total) + '</div>' +
+                                '</div>';
+                        });
+                        
+                        document.getElementById('orderDetailContent').innerHTML = 
+                            '<div class="order-detail-info">' +
+                            '<p><strong>Mã đơn hàng:</strong> ' + order.orderCode + '</p>' +
+                            '<p><strong>Người nhận:</strong> ' + order.receiverName + '</p>' +
+                            '<p><strong>Số điện thoại:</strong> ' + order.receiverPhone + '</p>' +
+                            '<p><strong>Địa chỉ:</strong> ' + order.shippingAddress + '</p>' +
+                            (order.note ? '<p><strong>Ghi chú:</strong> ' + order.note + '</p>' : '') +
+                            '<hr style="margin: 1rem 0; border-color: var(--border-color);">' +
+                            '<div class="order-items">' + itemsHtml + '</div>' +
+                            '<hr style="margin: 1rem 0; border-color: var(--border-color);">' +
+                            '<p><strong>Tạm tính:</strong> ' + formatCurrency(order.subtotal) + '</p>' +
+                            '<p><strong>Phí vận chuyển:</strong> ' + formatCurrency(order.shippingFee) + '</p>' +
+                            (order.discount > 0 ? '<p><strong>Giảm giá:</strong> -' + formatCurrency(order.discount) + '</p>' : '') +
+                            '<p style="font-size: 1.1rem;"><strong>Tổng cộng:</strong> <span style="color: var(--primary-dark); font-weight: 700;">' + formatCurrency(order.total) + '</span></p>' +
+                            '</div>';
+                    } else {
+                        document.getElementById('orderDetailContent').innerHTML = 
+                            '<p style="text-align: center; color: var(--error);">' + data.message + '</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('orderDetailContent').innerHTML = 
+                        '<p style="text-align: center; color: var(--error);">Có lỗi xảy ra khi tải dữ liệu</p>';
+                });
         }
         
         function closeModal() {
@@ -680,16 +721,50 @@
         
         function cancelOrder(orderId) {
             if (confirm('Bạn có chắc chắn muốn hủy đơn hàng này?')) {
-                // Call API to cancel order
-                alert('Đơn hàng đã được hủy');
-                location.reload();
+                fetch('${pageContext.request.contextPath}/orders/cancel/' + orderId, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'reason=Khách hàng hủy đơn'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Đã hủy đơn hàng thành công');
+                        location.reload();
+                    } else {
+                        alert(data.message || 'Không thể hủy đơn hàng');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Có lỗi xảy ra');
+                });
             }
         }
         
         function reorder(orderId) {
-            // Add items to cart and redirect
-            alert('Đã thêm sản phẩm vào giỏ hàng');
-            window.location.href = 'cart.jsp';
+            fetch('${pageContext.request.contextPath}/orders/reorder/' + orderId, {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    window.location.href = '${pageContext.request.contextPath}/cart';
+                } else {
+                    alert(data.message || 'Không thể thêm sản phẩm vào giỏ');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Có lỗi xảy ra');
+            });
+        }
+        
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('vi-VN').format(amount) + '₫';
         }
         
         // Close modal on outside click

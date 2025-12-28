@@ -825,10 +825,10 @@
                                     </div>
                                     
                                     <div class="product-actions" onclick="event.stopPropagation();">
-                                        <button class="btn-add-cart" onclick="addToCart(${product.id}, 1)">
+                                        <button class="btn-add-cart" data-product-id="${product.id}" onclick="addToCart(this.dataset.productId, 1)">
                                             <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
                                         </button>
-                                        <button class="btn-wishlist" onclick="toggleWishlist(${product.id})">
+                                        <button class="btn-wishlist" data-product-id="${product.id}" onclick="toggleWishlist(this.dataset.productId)">
                                             <i class="far fa-heart"></i>
                                         </button>
                                     </div>

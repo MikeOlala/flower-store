@@ -1,4 +1,5 @@
 model\CartItem.class
+controller\AddressServlet.class
 dao\OrderDAO.class
 controller\CartServlet.class
 dao\CartDAO.class
@@ -8,6 +9,8 @@ filter\AuthFilter.class
 model\Product.class
 dao\UserDAO.class
 controller\CartApiServlet.class
+controller\OrderHistoryServlet.class
+dao\AddressDAO.class
 controller\ProfileServlet.class
 model\User.class
 controller\LoginServlet.class

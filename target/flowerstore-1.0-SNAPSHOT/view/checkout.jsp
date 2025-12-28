@@ -1225,7 +1225,7 @@
         let districts = [];
         let wards = [];
         let appliedCoupon = null;
-        const subtotal = ${cartTotal != null ? cartTotal : 0};
+        const subtotal = <c:out value="${cartTotal != null ? cartTotal : 0}"/>;
         let shippingFee = 30000;
         let discount = 0;
         
