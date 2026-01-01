@@ -220,45 +220,4 @@ public class ContactDAO {
         contact.setUpdatedAt(rs.getTimestamp("updated_at"));
         return contact;
     }
-    
-    /**
-     * Get total number of contacts
-     */
-    public int getTotalContacts() {
-        String sql = "SELECT COUNT(*) FROM contacts";
-        
-        try (Connection conn = dbConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
-            
-            if (rs.next()) {
-                return rs.getInt(1);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-    
-    /**
-     * Count contacts by status
-     */
-    public int countByStatus(String status) {
-        String sql = "SELECT COUNT(*) FROM contacts WHERE status = ?";
-        
-        try (Connection conn = dbConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            
-            ps.setString(1, status);
-            
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getInt(1);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
 }
