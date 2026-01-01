@@ -26,7 +26,7 @@ public class DBConnection {
             System.out.println("MySQL JDBC Driver đã được load thành công!");
         } catch (ClassNotFoundException e) {
             System.err.println("Lỗi: Không tìm thấy MySQL JDBC Driver!");
-            e.printStackTrace();
+            System.err.println("Chi tiết lỗi: " + e.getClass().getName() + ": " + e.getMessage());
         }
     }
     
@@ -50,7 +50,7 @@ public class DBConnection {
             conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
         } catch (SQLException e) {
             System.err.println("Lỗi kết nối database: " + e.getMessage());
-            e.printStackTrace();
+            System.err.println("SQL State: " + e.getSQLState() + ", Error Code: " + e.getErrorCode());
         }
         return conn;
     }

@@ -1,6 +1,7 @@
-﻿<%@ page import="java.util.List" %> <%@ page isELIgnored="false" %> <%@ page
-contentType="text/html;charset=UTF-8" language="java" %>
-
+﻿<%@page contentType="text/html;charset=UTF-8" language="java"%><%@page
+isELIgnored="false"%><%@taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%><%@taglib prefix="fmt"
+uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 
 <html lang="vi">
@@ -637,6 +638,19 @@ contentType="text/html;charset=UTF-8" language="java" %>
         height: 300px;
 
         overflow: hidden;
+      }
+
+      .product-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: #e74c3c;
+        color: #fff;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        z-index: 2;
       }
 
       .product-image img {
@@ -1507,23 +1521,21 @@ contentType="text/html;charset=UTF-8" language="java" %>
             <div class="hero-image animate">
               <div class="hero-card">
                 <span class="hero-badge">New</span>
-
                 <model-viewer
-                  src="bouquet.glb"
+                  src="/flowerstore/view/bouquet.glb"
                   alt="Bó hoa 3D"
                   camera-controls
                   auto-rotate
-                  rotation-per-second="20deg"
-                  ar
-                  shadow-intensity="1"
-                  exposure="1.1"
-                  touch-action="pan-y"
                   style="
                     width: 349px;
                     height: 384px;
-                    background: transparent;
-                    margin: auto;
+                    background: #fff;
+                    border-radius: 20px;
+                    margin-left: 100px;
                   "
+                  ar
+                  shadow-intensity="1"
+                  exposure="1"
                 >
                 </model-viewer>
               </div>
@@ -1545,93 +1557,61 @@ contentType="text/html;charset=UTF-8" language="java" %>
           </div>
 
           <div class="categories-grid">
-            <div class="category-card animate">
-              <img
-                src="https://file.hstatic.net/200000846175/file/z5900937479779_23a78c66588e62ae16962ab99bf0d410.jpg"
-                alt="Bó hoa"
-              />
+            <c:forEach var="category" items="${featuredCategories}">
+              <a
+                href="${pageContext.request.contextPath}/products/category/${category.slug}"
+                class="category-card animate"
+              >
+                <img
+                  src="${category.image != null ? category.image : 'https://via.placeholder.com/400x300?text=No+Image'}"
+                  alt="${category.name}"
+                  onerror="this.src='https://via.placeholder.com/400x300?text=No+Image'"
+                />
+                <div class="category-overlay">
+                  <h3 class="category-name">${category.name}</h3>
+                </div>
+              </a>
+            </c:forEach>
 
-              <div class="category-overlay">
-                <h3 class="category-name">BÓ HOA</h3>
+            <c:if test="${empty featuredCategories}">
+              <!-- Fallback nếu không có dữ liệu từ DB -->
+              <div class="category-card animate">
+                <img
+                  src="https://file.hstatic.net/200000846175/file/z5900937479779_23a78c66588e62ae16962ab99bf0d410.jpg"
+                  alt="Bó hoa"
+                />
+                <div class="category-overlay">
+                  <h3 class="category-name">BÓ HOA</h3>
+                </div>
               </div>
-            </div>
-
-            <div class="category-card animate">
-              <img
-                src="https://file.hstatic.net/200000846175/file/z5899444875229_e1c7d0304e0a53ca2be88b52766f04e6.jpg"
-                alt="Bình hoa"
-              />
-
-              <div class="category-overlay">
-                <h3 class="category-name">BÌNH HOA</h3>
+              <div class="category-card animate">
+                <img
+                  src="https://file.hstatic.net/200000846175/file/z5899444875229_e1c7d0304e0a53ca2be88b52766f04e6.jpg"
+                  alt="Bình hoa"
+                />
+                <div class="category-overlay">
+                  <h3 class="category-name">BÌNH HOA</h3>
+                </div>
               </div>
-            </div>
-
-            <div class="category-card animate">
-              <img
-                src="https://file.hstatic.net/200000846175/file/d7a376e45096e9c8b087-min.jpg"
-                alt="Hoa Tulip"
-              />
-
-              <div class="category-overlay">
-                <h3 class="category-name">HOA TULIP</h3>
+              <div class="category-card animate">
+                <img
+                  src="https://file.hstatic.net/200000846175/file/d7a376e45096e9c8b087-min.jpg"
+                  alt="Hoa Tulip"
+                />
+                <div class="category-overlay">
+                  <h3 class="category-name">HOA TULIP</h3>
+                </div>
               </div>
-            </div>
-
-            <div class="category-card animate">
-              <img
-                src="https://file.hstatic.net/200000846175/file/z5900937515947_82c85e8a4d5c70527c21e29fce363cef.jpg"
-                alt="Giỏ hoa"
-              />
-
-              <div class="category-overlay">
-                <h3 class="category-name">GIỎ HOA</h3>
+              <div class="category-card animate">
+                <img
+                  src="https://file.hstatic.net/200000846175/file/z5900937515947_82c85e8a4d5c70527c21e29fce363cef.jpg"
+                  alt="Giỏ hoa"
+                />
+                <div class="category-overlay">
+                  <h3 class="category-name">GIỎ HOA</h3>
+                </div>
               </div>
-            </div>
-
-            <div class="category-card animate">
-              <img
-                src="https://file.hstatic.net/200000846175/file/untitled-8_f341364151ef456c89b87393748a434b.png"
-                alt="Box hoa"
-              />
-
-              <div class="category-overlay">
-                <h3 class="category-name">BOX HOA</h3>
-              </div>
-            </div>
-
-            <div class="category-card animate">
-              <img
-                src="https://file.hstatic.net/200000846175/file/z5899444826287_34ad1d3a0b20eade7fd205656674c367.jpg"
-                alt="Hoa cưới"
-              />
-
-              <div class="category-overlay">
-                <h3 class="category-name">HOA CƯỚI</h3>
-              </div>
-            </div>
-
-            <div class="category-card animate">
-              <img
-                src="https://file.hstatic.net/200000846175/file/z5899444684804_c4148929b8f6ab395f69a93f4953035e.jpg"
-                alt="Lan hồ điệp"
-              />
-
-              <div class="category-overlay">
-                <h3 class="category-name">LAN HỒ ĐIỆP</h3>
-              </div>
-            </div>
-
-            <div class="category-card animate">
-              <img
-                src="https://file.hstatic.net/200000846175/file/89b70a6cc51f7c41250e-min.jpg"
-                alt="Kệ hoa"
-              />
-
-              <div class="category-overlay">
-                <h3 class="category-name">KỆ HOA</h3>
-              </div>
-            </div>
+            </c:if>
           </div>
         </div>
       </section>
@@ -1647,97 +1627,109 @@ contentType="text/html;charset=UTF-8" language="java" %>
           </div>
 
           <div class="products-grid">
-            <div class="product-card animate">
-              <div class="product-image">
-                <img
-                  src="https://cdn.hstatic.net/products/200000846175/z7055354732845_839654631ffda217c68a105a32e32e03-min_dc93e1d5a6ad42ada88d1d7e4cec57b9_1024x1024.jpg"
-                  alt="Pure Blossom"
-                />
+            <c:forEach var="product" items="${bestSellerProducts}">
+              <a
+                href="${pageContext.request.contextPath}/products/${product.slug}"
+                class="product-card animate"
+                style="text-decoration: none"
+              >
+                <div class="product-image">
+                  <img
+                    src="${product.image != null ? product.image : 'https://via.placeholder.com/300x300?text=No+Image'}"
+                    alt="${product.name}"
+                    onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'"
+                  />
+                  <c:if
+                    test="${product.salePrice != null && product.salePrice > 0}"
+                  >
+                    <span class="product-badge"
+                      >-<fmt:formatNumber
+                        value="${(1 - product.salePrice / product.price) * 100}"
+                        maxFractionDigits="0"
+                      />%</span
+                    >
+                  </c:if>
+                  <div class="product-actions">
+                    <button
+                      class="action-btn"
+                      title="Yêu thích"
+                      onclick="event.preventDefault(); event.stopPropagation();"
+                    >
+                      ♥
+                    </button>
+                    <button
+                      class="action-btn"
+                      title="Xem nhanh"
+                      onclick="event.preventDefault(); event.stopPropagation();"
+                    >
+                      👁
+                    </button>
+                  </div>
+                </div>
 
-                <div class="product-actions">
-                  <button class="action-btn" title="Yêu thích">♥</button>
+                <div class="product-info">
+                  <h3 class="product-name">${product.name}</h3>
+                  <div class="product-price">
+                    <c:choose>
+                      <c:when
+                        test="${product.salePrice != null && product.salePrice > 0}"
+                      >
+                        <fmt:formatNumber
+                          value="${product.salePrice}"
+                          type="number"
+                        />
+                        VND
+                        <span
+                          style="
+                            text-decoration: line-through;
+                            color: #999;
+                            font-size: 0.85em;
+                            margin-left: 8px;
+                          "
+                        >
+                          <fmt:formatNumber
+                            value="${product.price}"
+                            type="number"
+                          />
+                          VND
+                        </span>
+                      </c:when>
+                      <c:otherwise>
+                        <fmt:formatNumber
+                          value="${product.price}"
+                          type="number"
+                        />
+                        VND
+                      </c:otherwise>
+                    </c:choose>
+                  </div>
+                  <button class="product-add" data-product-id="${product.id}">
+                    Thêm vào giỏ
+                  </button>
+                </div>
+              </a>
+            </c:forEach>
 
-                  <button class="action-btn" title="Xem nhanh">👁</button>
+            <c:if test="${empty bestSellerProducts}">
+              <!-- Fallback nếu không có dữ liệu -->
+              <div class="product-card animate">
+                <div class="product-image">
+                  <img
+                    src="https://cdn.hstatic.net/products/200000846175/z7055354732845_839654631ffda217c68a105a32e32e03-min_dc93e1d5a6ad42ada88d1d7e4cec57b9_1024x1024.jpg"
+                    alt="Pure Blossom"
+                  />
+                  <div class="product-actions">
+                    <button class="action-btn" title="Yêu thích">♥</button>
+                    <button class="action-btn" title="Xem nhanh">👁</button>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <h3 class="product-name">Pure Blossom</h3>
+                  <div class="product-price">5,000,000 VND</div>
+                  <button class="product-add">Thêm vào giỏ</button>
                 </div>
               </div>
-
-              <div class="product-info">
-                <h3 class="product-name">Pure Blossom</h3>
-
-                <div class="product-price">5,000,000 VND</div>
-
-                <button class="product-add">Thêm vào giỏ</button>
-              </div>
-            </div>
-
-            <div class="product-card animate">
-              <div class="product-image">
-                <img
-                  src="https://cdn.hstatic.net/products/200000846175/z7112091909873_dd141000ba9e17340830c59c2efdc97a-min_dd91cdf31c9a4f0b82a14f35b77b7cdb_1024x1024.jpg"
-                  alt="Tender Rose"
-                />
-
-                <div class="product-actions">
-                  <button class="action-btn" title="Yêu thích">♥</button>
-
-                  <button class="action-btn" title="Xem nhanh">👁</button>
-                </div>
-              </div>
-
-              <div class="product-info">
-                <h3 class="product-name">Tender Rose</h3>
-
-                <div class="product-price">6,660,000 VND</div>
-
-                <button class="product-add">Thêm vào giỏ</button>
-              </div>
-            </div>
-
-            <div class="product-card animate">
-              <div class="product-image">
-                <img
-                  src="https://cdn.hstatic.net/products/200000846175/z7077857936039_e67a1446e9fa7522ca89409f4267cfb9-min_240b2f39ae6e432ab9c52f9eeed3ea97_1024x1024.jpg"
-                  alt="Happy Bloom"
-                />
-
-                <div class="product-actions">
-                  <button class="action-btn" title="Yêu thích">♥</button>
-
-                  <button class="action-btn" title="Xem nhanh">👁</button>
-                </div>
-              </div>
-
-              <div class="product-info">
-                <h3 class="product-name">Happy Bloom</h3>
-
-                <div class="product-price">3,000,000 VND</div>
-
-                <button class="product-add">Thêm vào giỏ</button>
-              </div>
-            </div>
-
-            <div class="product-card animate">
-              <div class="product-image">
-                <img
-                  src="https://cdn.hstatic.net/products/200000846175/z7020437293995_31b6dc8b2dcdbe0dd35c7fd39b31bedb_2b1165d18dda445cb5047777f109b590_1024x1024.jpg"
-                  alt="Cinderella"
-                />
-
-                <div class="product-actions">
-                  <button class="action-btn" title="Yêu thích">♥</button>
-
-                  <button class="action-btn" title="Xem nhanh">👁</button>
-                </div>
-              </div>
-
-              <div class="product-info">
-                <h3 class="product-name">Cinderella</h3>
-
-                <div class="product-price">4,000,000 VND</div>
-
-                <button class="product-add">Thêm vào giỏ</button>
-              </div>
-            </div>
+            </c:if>
           </div>
         </div>
       </section>
@@ -2568,6 +2560,52 @@ contentType="text/html;charset=UTF-8" language="java" %>
       window.addEventListener("scroll", handleScroll);
 
       console.log("🌸 La Vie Est Belle - Website loaded successfully!");
+    </script>
+
+    <!-- Add to cart function for home page -->
+    <script>
+      // Event delegation for add to cart buttons
+      document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("click", function (e) {
+          const addButton = e.target.closest(".product-add[data-product-id]");
+          if (addButton) {
+            e.preventDefault();
+            e.stopPropagation();
+            const productId = addButton.getAttribute("data-product-id");
+            addToCartHome(productId);
+          }
+        });
+      });
+
+      function addToCartHome(productId) {
+        fetch("${pageContext.request.contextPath}/api/cart/add", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: "productId=" + productId + "&quantity=1",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              alert("Đã thêm vào giỏ hàng!");
+              // Update cart count if exists
+              const cartCount = document.querySelector(".number-cart");
+              if (cartCount && data.cartCount) {
+                cartCount.textContent = data.cartCount;
+              }
+            } else {
+              if (data.message && data.message.includes("đăng nhập")) {
+                window.location.href =
+                  "${pageContext.request.contextPath}/login";
+              } else {
+                alert(data.message || "Có lỗi xảy ra");
+              }
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("Có lỗi xảy ra khi thêm vào giỏ hàng");
+          });
+      }
     </script>
 
     <script

@@ -48,10 +48,7 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
       <!-- Nút quay về trang chủ -->
 
-      <a
-        href="${pageContext.request.contextPath}/view/home.jsp"
-        class="home-button"
-      >
+      <a href="${pageContext.request.contextPath}/home" class="home-button">
         <i class="bi bi-house-door-fill"></i>
       </a>
 

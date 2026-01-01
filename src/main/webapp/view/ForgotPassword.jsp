@@ -22,7 +22,10 @@
 
   <body>
     <div class="forgot-container">
-      <a href="login_1.jsp" class="home-button">
+      <a
+        href="${pageContext.request.contextPath}/view/login_1.jsp"
+        class="home-button"
+      >
         <i class="bi bi-arrow-left"></i>
       </a>
 
@@ -32,17 +35,74 @@
         Nhập email của bạn để nhận liên kết đặt lại mật khẩu.
       </p>
 
-      <div class="form-group">
-        <label for="email">Email của bạn</label>
+      <form id="forgotPasswordForm">
+        <div class="form-group">
+          <label for="email">Email của bạn</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Nhập email"
+            required
+          />
+        </div>
 
-        <input type="email" id="email" placeholder="Nhập email" />
-      </div>
-
-      <button class="btn-submit">Gửi yêu cầu</button>
+        <button type="submit" class="btn-submit">Gửi yêu cầu</button>
+      </form>
 
       <div class="login-link">
-        Đã nhớ mật khẩu? <a href="login_1.jsp">Đăng nhập ngay</a>
+        Đã nhớ mật khẩu?
+        <a href="${pageContext.request.contextPath}/view/login_1.jsp"
+          >Đăng nhập ngay</a
+        >
       </div>
     </div>
+
+    <script>
+      document
+        .getElementById("forgotPasswordForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const btn = this.querySelector(".btn-submit");
+          const originalText = btn.textContent;
+          btn.disabled = true;
+          btn.textContent = "Đang xử lý...";
+
+          const formData = new FormData(this);
+
+          fetch("${pageContext.request.contextPath}/forgot-password", {
+            method: "POST",
+            body: new URLSearchParams(formData),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                alert(data.message);
+                if (data.resetLink) {
+                  console.log("Reset link:", data.resetLink);
+                  // Trong development, có thể tự động redirect
+                  if (
+                    confirm(
+                      "Bạn có muốn đi đến trang đặt lại mật khẩu ngay không?"
+                    )
+                  ) {
+                    window.location.href = data.resetLink;
+                  }
+                }
+              } else {
+                alert(data.message || "Có lỗi xảy ra");
+              }
+              btn.disabled = false;
+              btn.textContent = originalText;
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert("Có lỗi xảy ra, vui lòng thử lại");
+              btn.disabled = false;
+              btn.textContent = originalText;
+            });
+        });
+    </script>
   </body>
 </html>

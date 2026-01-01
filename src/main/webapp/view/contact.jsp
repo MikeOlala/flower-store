@@ -789,14 +789,19 @@
             </p>
           </div>
 
-          <form method="post" action="">
+          <form
+            id="contactForm"
+            method="post"
+            action="${pageContext.request.contextPath}/contact"
+          >
             <div class="form-row">
               <div class="form-group">
                 <label>Họ và tên <span class="required">*</span></label>
                 <input
                   type="text"
                   class="form-control"
-                  name="fullname"
+                  name="name"
+                  id="contactName"
                   placeholder="Nhập tên của bạn"
                   required
                 />
@@ -1062,12 +1067,146 @@
         easing: "ease-out-cubic",
       });
 
-      // Form validation feedback
-      document.querySelector("form").addEventListener("submit", function (e) {
-        const btn = this.querySelector(".submit-btn");
-        btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Đang gửi...';
-        btn.disabled = true;
-      });
+      // Form submission with AJAX
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const btn = this.querySelector(".submit-btn");
+          const originalText = btn.innerHTML;
+          btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Đang gửi...';
+          btn.disabled = true;
+
+          const formData = new FormData(this);
+
+          fetch("${pageContext.request.contextPath}/contact", {
+            method: "POST",
+            body: new URLSearchParams(formData),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                // Show success message
+                showNotification(data.message, "success");
+                // Reset form
+                this.reset();
+              } else {
+                showNotification(data.message || "Có lỗi xảy ra", "error");
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              showNotification("Có lỗi xảy ra, vui lòng thử lại", "error");
+            })
+            .finally(() => {
+              btn.innerHTML = originalText;
+              btn.disabled = false;
+            });
+        });
+
+      // Notification function
+      function showNotification(message, type) {
+        // Remove existing notification
+        const existing = document.querySelector(".contact-notification");
+        if (existing) existing.remove();
+
+        const notification = document.createElement("div");
+        notification.className = "contact-notification " + type;
+
+        // Determine icon based on type
+        const icon =
+          type === "success" ? "check-circle-fill" : "exclamation-circle-fill";
+
+        notification.innerHTML =
+          '<i class="bi bi-' +
+          icon +
+          '"></i>' +
+          "<span>" +
+          message +
+          "</span>" +
+          '<button onclick="this.parentElement.remove()"><i class="bi bi-x"></i></button>';
+
+        document.body.appendChild(notification);
+
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+          if (notification.parentElement) {
+            notification.classList.add("fade-out");
+            setTimeout(() => notification.remove(), 300);
+          }
+        }, 5000);
+      }
     </script>
+
+    <style>
+      .contact-notification {
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        padding: 16px 20px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+        max-width: 400px;
+      }
+
+      .contact-notification.success {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+      }
+
+      .contact-notification.error {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        color: white;
+      }
+
+      .contact-notification i:first-child {
+        font-size: 1.3rem;
+      }
+
+      .contact-notification span {
+        flex: 1;
+      }
+
+      .contact-notification button {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: white;
+        transition: background 0.2s;
+      }
+
+      .contact-notification button:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .contact-notification.fade-out {
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(100%);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    </style>
   </body>
 </html>

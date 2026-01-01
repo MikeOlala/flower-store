@@ -18,7 +18,6 @@ import com.google.gson.JsonObject;
 
 import dao.CartDAO;
 import dao.OrderDAO;
-import dao.UserDAO;
 import model.CartItem;
 import model.Order;
 import model.OrderItem;
@@ -33,14 +32,12 @@ public class CheckoutServlet extends HttpServlet {
     
     private CartDAO cartDAO;
     private OrderDAO orderDAO;
-    private UserDAO userDAO;
     private Gson gson;
     
     @Override
     public void init() throws ServletException {
         cartDAO = new CartDAO();
         orderDAO = new OrderDAO();
-        userDAO = new UserDAO();
         gson = new Gson();
     }
     
@@ -88,9 +85,8 @@ public class CheckoutServlet extends HttpServlet {
             request.setAttribute("cartCount", cartCount);
             
             request.getRequestDispatcher("/view/checkout.jsp").forward(request, response);
-        } catch (Exception e) {
-            System.err.println("CheckoutServlet error: " + e.getMessage());
-            e.printStackTrace();
+        } catch (ServletException | IOException e) {
+            System.err.println("[CheckoutServlet] Lỗi: " + e.getMessage());
             // Hiển thị lỗi chi tiết thay vì redirect
             request.setAttribute("errorMessage", "Lỗi: " + e.getMessage());
             request.getRequestDispatcher("/view/checkout.jsp").forward(request, response);
@@ -134,7 +130,6 @@ public class CheckoutServlet extends HttpServlet {
             }
             
             // Lấy thông tin từ form
-            String addressIdStr = request.getParameter("addressId");
             String receiverName = request.getParameter("receiverName");
             String receiverPhone = request.getParameter("receiverPhone");
             String receiverEmail = request.getParameter("receiverEmail");
@@ -236,8 +231,12 @@ public class CheckoutServlet extends HttpServlet {
                 jsonResponse.addProperty("message", "Có lỗi xảy ra khi tạo đơn hàng. Vui lòng thử lại.");
             }
             
+        } catch (NumberFormatException e) {
+            System.err.println("[CheckoutServlet] Lỗi parse số: " + e.getMessage());
+            jsonResponse.addProperty("success", false);
+            jsonResponse.addProperty("message", "Dữ liệu không hợp lệ: " + e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("[CheckoutServlet] Lỗi: " + e.getMessage());
             jsonResponse.addProperty("success", false);
             jsonResponse.addProperty("message", "Có lỗi xảy ra: " + e.getMessage());
         }

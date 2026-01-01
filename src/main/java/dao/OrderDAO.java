@@ -1,14 +1,19 @@
 package dao;
 
-import model.Order;
-import model.OrderItem;
-import util.DBConnection;
-
 import java.math.BigDecimal;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import model.Order;
+import model.OrderItem;
+import util.DBConnection;
 
 /**
  * DAO để thao tác với bảng orders và order_items
@@ -465,5 +470,46 @@ public class OrderDAO {
         item.setTotal(rs.getBigDecimal("total"));
         item.setCreatedAt(rs.getTimestamp("created_at"));
         return item;
+    }
+    
+    /**
+     * Đếm tổng số orders
+     */
+    public int getTotalOrders() {
+        String sql = "SELECT COUNT(*) FROM orders";
+        
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi đếm tổng orders: " + e.getMessage());
+        }
+        return 0;
+    }
+    
+    /**
+     * Lấy danh sách orders gần đây
+     */
+    public List<Order> getRecentOrders(int limit) {
+        List<Order> orders = new ArrayList<>();
+        String sql = "SELECT * FROM orders ORDER BY created_at DESC LIMIT ?";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setInt(1, limit);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                orders.add(mapResultSetToOrder(rs));
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi lấy recent orders: " + e.getMessage());
+        }
+        return orders;
     }
 }

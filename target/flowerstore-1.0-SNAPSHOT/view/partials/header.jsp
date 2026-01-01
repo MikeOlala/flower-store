@@ -1,6 +1,6 @@
 ﻿<%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<header id="header" class="site-header">
+<header id="header" class="site-header" style="position: sticky; top: 0; z-index: 9999; background: white;">
     <div id="site-header-center" class="box-shadow-none2">
         <div class="container">
             <div class="row-left-list d-flex d-flex-center">
@@ -11,7 +11,7 @@
                     </button>
                 </div>
                 <div class="logo col-md-2 col-xs-2 col-sm-4 pd-right-0 pd-left-0">
-                    <a href="home.jsp">
+                    <a href="${pageContext.request.contextPath}/home">
                         <img class="dt-width-auto" height="30" width="185"
                             src="${pageContext.request.contextPath}/view/Logo%20Ti%E1%BB%87m%20Hoa.png"
                             alt="Tiệm Hoa Nhà Tớ">
@@ -19,10 +19,8 @@
                 </div>
                 <nav class="col-md-7 hidden-xs hidden-sm pd-right-0">
                     <ul id="menu-desktop" class="menu-desk">
-
                         <li class="active ">
-                            <a href="${pageContext.request.contextPath}/view/home.jsp"> TRANG CHỦ</a>
-
+                            <a href="${pageContext.request.contextPath}/home"> TRANG CHỦ</a>
                         </li>
                         <li class=" ">
                             <a href="${pageContext.request.contextPath}/view/intro.jsp"> GIỚI THIỆU</a>
@@ -142,7 +140,7 @@
                             <a href="${pageContext.request.contextPath}/view/tintuc.jsp"> TIN TỨC</a>
                         </li>
                         <li class=" ">
-                            <a href="${pageContext.request.contextPath}/view/contact.jsp"> LIÊN HỆ</a>
+                            <a href="${pageContext.request.contextPath}/contact"> LIÊN HỆ</a>
                         </li>
                     </ul>
                 </nav>
@@ -150,7 +148,7 @@
                     <div class="cart-login-search align-items-center">
                         <ul class="list-inline list-unstyled mb-0">
                             <li class="list-inline-item mr-0">
-                                <a href="/search" class="search js-search-desktop" data-original-title="Tìm kiếm"
+                                <a href="${pageContext.request.contextPath}/search" class="search js-search-desktop" data-original-title="Tìm kiếm"
                                     data-tooltip="tooltip">
                                     <svg aria-hidden="true" focusable="false" role="presentation"
                                         class="icon icon-search" viewBox="0 0 64 64">
@@ -170,11 +168,11 @@
                                     <div class="header-dropdown_content">
                                         <p class="title-search">Tìm kiếm</p>
                                         <div class="site_search">
-                                            <form action="/search" class="wanda-mxm-search">
+                                            <form action="${pageContext.request.contextPath}/search" class="wanda-mxm-search" method="get">
                                                 <div class="search-inner">
-                                                    <input type="hidden" name="type" value="product">
                                                     <input name="q" autocomplete="off"
                                                         class="searchinput input-search search-input" type="text"
+                                                        id="header-search-input"
                                                         size="20" placeholder="Tìm kiếm sản phẩm..."
                                                         aria-label="Search">
                                                 </div>
@@ -186,7 +184,7 @@
                                                 </button>
                                             </form>
                                             <div id="wanda-smart-search" class="smart-search-wrapper ajaxSearchResults">
-                                                <div class="results-seach">
+                                                <div class="results-seach" id="live-search-results">
                                                 </div>
                                             </div>
                                         </div>
@@ -327,4 +325,179 @@
             </div>
         </div>
     </div>
+    
+    <!-- Live Search Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('header-search-input');
+        const resultsContainer = document.getElementById('live-search-results');
+        let searchTimeout;
+        
+        if (searchInput && resultsContainer) {
+            searchInput.addEventListener('input', function() {
+                const query = this.value.trim();
+                
+                clearTimeout(searchTimeout);
+                
+                if (query.length < 2) {
+                    resultsContainer.innerHTML = '';
+                    return;
+                }
+                
+                searchTimeout = setTimeout(function() {
+                    fetch('${pageContext.request.contextPath}/api/search?q=' + encodeURIComponent(query))
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success && data.products && data.products.length > 0) {
+                                let html = '<div class="live-search-results-inner">';
+                                data.products.forEach(function(product) {
+                                    const price = product.discountPrice && product.discountPrice > 0 
+                                        ? product.discountPrice 
+                                        : product.price;
+                                    const formattedPrice = new Intl.NumberFormat('vi-VN').format(price) + 'đ';
+                                    
+                                    html += '<a href="${pageContext.request.contextPath}/products/' + product.slug + '" class="search-result-item">';
+                                    html += '<div class="search-result-image">';
+                                    html += '<img src="' + (product.image || 'https://via.placeholder.com/60x60') + '" alt="' + product.name + '">';
+                                    html += '</div>';
+                                    html += '<div class="search-result-info">';
+                                    html += '<div class="search-result-name">' + product.name + '</div>';
+                                    html += '<div class="search-result-price">' + formattedPrice + '</div>';
+                                    html += '</div>';
+                                    html += '</a>';
+                                });
+                                html += '<a href="${pageContext.request.contextPath}/search?q=' + encodeURIComponent(query) + '" class="search-view-all">';
+                                html += 'Xem tất cả kết quả <i class="fas fa-arrow-right"></i>';
+                                html += '</a>';
+                                html += '</div>';
+                                resultsContainer.innerHTML = html;
+                            } else {
+                                resultsContainer.innerHTML = '<div class="search-no-results">Không tìm thấy sản phẩm nào</div>';
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Search error:', error);
+                            resultsContainer.innerHTML = '';
+                        });
+                }, 300);
+            });
+            
+            // Hide results when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.site_search')) {
+                    resultsContainer.innerHTML = '';
+                }
+            });
+        }
+    });
+    </script>
+    
+    <style>
+    /* Live Search Styles */
+    .live-search-results-inner {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    
+    .search-result-item {
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-bottom: 1px solid #f0f0f0;
+        transition: background 0.2s;
+    }
+    
+    .search-result-item:hover {
+        background: #faf5ef;
+    }
+    
+    .search-result-image {
+        width: 50px;
+        height: 50px;
+        flex-shrink: 0;
+        margin-right: 12px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .search-result-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .search-result-info {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .search-result-name {
+        color: #3c2922;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .search-result-price {
+        color: #c99366;
+        font-size: 13px;
+        font-weight: 700;
+        margin-top: 2px;
+    }
+    
+    .search-view-all {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        color: #c99366;
+        font-weight: 600;
+        text-decoration: none;
+        border-top: 1px solid #f0f0f0;
+        transition: background 0.2s;
+    }
+    
+    .search-view-all:hover {
+        background: #faf5ef;
+        color: #aa6a3f;
+    }
+    
+    .search-no-results {
+        padding: 20px;
+        text-align: center;
+        color: #6c5845;
+        font-style: italic;
+    }
+    
+    /* Smooth scroll effect */
+    html {
+        scroll-behavior: smooth;
+    }
+    </style>
+    
+    <script>
+    // Sticky header with shadow on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        const header = document.querySelector('header');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    });
+    </script>
 </header>

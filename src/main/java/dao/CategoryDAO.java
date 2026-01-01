@@ -1,11 +1,16 @@
 package dao;
 
-import model.Category;
-import util.DBConnection;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.Category;
+import util.DBConnection;
 
 /**
  * DAO để thao tác với bảng categories
@@ -252,6 +257,38 @@ public class CategoryDAO {
             e.printStackTrace();
         }
         return 0;
+    }
+    
+    /**
+     * Lấy danh mục nổi bật (có sản phẩm, có hình ảnh)
+     */
+    public List<Category> findFeaturedCategories(int limit) {
+        List<Category> categories = new ArrayList<>();
+        String sql = "SELECT c.*, COUNT(p.id) as product_count " +
+                    "FROM categories c " +
+                    "LEFT JOIN products p ON c.id = p.category_id AND p.is_active = TRUE " +
+                    "WHERE c.is_active = TRUE AND c.image IS NOT NULL AND c.image != '' " +
+                    "GROUP BY c.id " +
+                    "HAVING product_count > 0 " +
+                    "ORDER BY c.display_order, product_count DESC " +
+                    "LIMIT ?";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setInt(1, limit);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Category cat = mapResultSetToCategory(rs);
+                cat.setProductCount(rs.getInt("product_count"));
+                categories.add(cat);
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi lấy featured categories: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return categories;
     }
     
     /**

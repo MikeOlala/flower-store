@@ -1,12 +1,17 @@
 package controller;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import dao.UserDAO;
 import model.User;
-
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
-import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -73,9 +78,9 @@ public class LoginServlet extends HttpServlet {
             
             // Chuyển hướng theo role
             if (user.isAdmin()) {
-                response.sendRedirect(request.getContextPath() + "/view/admin_1.jsp");
+                response.sendRedirect(request.getContextPath() + "/admin");
             } else {
-                response.sendRedirect(request.getContextPath() + "/view/home.jsp");
+                response.sendRedirect(request.getContextPath() + "/home");
             }
             
         } else {

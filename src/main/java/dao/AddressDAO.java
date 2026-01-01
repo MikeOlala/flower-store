@@ -22,6 +22,11 @@ public class AddressDAO {
         dbConnection = DBConnection.getInstance();
     }
     
+    private void logSQLError(String operation, SQLException e) {
+        System.err.println("[AddressDAO] Lỗi " + operation + ": " + e.getMessage());
+        System.err.println("SQL State: " + e.getSQLState() + ", Error Code: " + e.getErrorCode());
+    }
+    
     /**
      * Lấy tất cả địa chỉ của user
      */
@@ -39,7 +44,7 @@ public class AddressDAO {
                 addresses.add(mapResultSetToAddress(rs));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logSQLError("lấy danh sách địa chỉ", e);
         }
         return addresses;
     }
@@ -120,7 +125,7 @@ public class AddressDAO {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logSQLError("thêm địa chỉ", e);
         }
         return -1;
     }
@@ -202,7 +207,7 @@ public class AddressDAO {
                 throw e;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logSQLError("đặt địa chỉ mặc định", e);
         }
         return false;
     }
@@ -223,7 +228,7 @@ public class AddressDAO {
                 return rs.getInt(1);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logSQLError("đếm địa chỉ", e);
         }
         return 0;
     }

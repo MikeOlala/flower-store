@@ -258,6 +258,23 @@
             box-shadow: 0 0 0 1px rgba(201,147,102,0.4);
         }
         
+        /* Reset Filter Button */
+        .filter-reset {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 500;
+        }
+        
+        .filter-reset:hover {
+            background: #c0392b;
+        }
+        
         /* Search Box */
         .search-box {
             display: flex;
@@ -751,7 +768,7 @@
                 </div>
                 
                 <div class="filter-controls">
-                    <form action="${pageContext.request.contextPath}/products/search" method="get" class="search-box">
+                    <form action="${pageContext.request.contextPath}/search" method="get" class="search-box">
                         <input type="text" name="q" class="search-input" placeholder="Tìm kiếm sản phẩm..." 
                                value="${searchKeyword != null ? searchKeyword : ''}">
                         <button type="submit" class="search-btn">
@@ -770,11 +787,17 @@
                     
                     <select id="priceFilter" class="filter-select" onchange="applyPriceFilter(this.value)">
                         <option value="">Khoảng giá</option>
-                        <option value="0-500000">Dưới 500.000đ</option>
-                        <option value="500000-1000000">500.000đ - 1.000.000đ</option>
-                        <option value="1000000-2000000">1.000.000đ - 2.000.000đ</option>
-                        <option value="2000000-9999999999">Trên 2.000.000đ</option>
+                        <option value="0-500000" ${param.minPrice == '0' && param.maxPrice == '500000' ? 'selected' : ''}>Dưới 500.000đ</option>
+                        <option value="500000-1000000" ${param.minPrice == '500000' && param.maxPrice == '1000000' ? 'selected' : ''}>500.000đ - 1.000.000đ</option>
+                        <option value="1000000-2000000" ${param.minPrice == '1000000' && param.maxPrice == '2000000' ? 'selected' : ''}>1.000.000đ - 2.000.000đ</option>
+                        <option value="2000000-9999999999" ${param.minPrice == '2000000' ? 'selected' : ''}>Trên 2.000.000đ</option>
                     </select>
+                    
+                    <c:if test="${param.minPrice != null || param.sort != null}">
+                        <button type="button" class="filter-reset" onclick="resetFilters()">
+                            <i class="fas fa-times"></i> Xóa bộ lọc
+                        </button>
+                    </c:if>
                 </div>
             </div>
             
@@ -890,6 +913,16 @@
                 url.searchParams.set('maxPrice', max);
                 window.location.href = url.toString();
             }
+        }
+        
+        // Reset all filters
+        function resetFilters() {
+            const url = new URL(window.location.href);
+            url.searchParams.delete('minPrice');
+            url.searchParams.delete('maxPrice');
+            url.searchParams.delete('sort');
+            url.searchParams.delete('page');
+            window.location.href = url.toString();
         }
         
         // Add to cart

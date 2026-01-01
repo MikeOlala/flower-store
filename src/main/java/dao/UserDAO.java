@@ -1,12 +1,17 @@
 package dao;
 
-import model.User;
-import util.DBConnection;
-import org.mindrot.jbcrypt.BCrypt;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.mindrot.jbcrypt.BCrypt;
+
+import model.User;
+import util.DBConnection;
 
 /**
  * DAO (Data Access Object) để thao tác với bảng users
@@ -15,6 +20,11 @@ public class UserDAO {
     
     private Connection getConnection() {
         return DBConnection.getInstance().getConnection();
+    }
+    
+    private void logSQLError(String operation, SQLException e) {
+        System.err.println("[UserDAO] Lỗi " + operation + ": " + e.getMessage());
+        System.err.println("SQL State: " + e.getSQLState() + ", Error Code: " + e.getErrorCode());
     }
     
     /**
@@ -46,8 +56,7 @@ public class UserDAO {
                 return true;
             }
         } catch (SQLException e) {
-            System.err.println("Lỗi đăng ký user: " + e.getMessage());
-            e.printStackTrace();
+            logSQLError("đăng ký user", e);
         }
         return false;
     }
@@ -72,8 +81,7 @@ public class UserDAO {
                 }
             }
         } catch (SQLException e) {
-            System.err.println("Lỗi đăng nhập: " + e.getMessage());
-            e.printStackTrace();
+            logSQLError("đăng nhập", e);
         }
         return null;
     }
@@ -94,8 +102,7 @@ public class UserDAO {
                 return mapResultSetToUser(rs);
             }
         } catch (SQLException e) {
-            System.err.println("Lỗi tìm user theo email: " + e.getMessage());
-            e.printStackTrace();
+            logSQLError("tìm user theo email", e);
         }
         return null;
     }
@@ -116,8 +123,7 @@ public class UserDAO {
                 return mapResultSetToUser(rs);
             }
         } catch (SQLException e) {
-            System.err.println("Lỗi tìm user theo ID: " + e.getMessage());
-            e.printStackTrace();
+            logSQLError("tìm user theo ID", e);
         }
         return null;
     }
@@ -137,8 +143,7 @@ public class UserDAO {
                 users.add(mapResultSetToUser(rs));
             }
         } catch (SQLException e) {
-            System.err.println("Lỗi lấy danh sách users: " + e.getMessage());
-            e.printStackTrace();
+            logSQLError("lấy danh sách users", e);
         }
         return users;
     }
@@ -160,8 +165,7 @@ public class UserDAO {
                 users.add(mapResultSetToUser(rs));
             }
         } catch (SQLException e) {
-            System.err.println("Lỗi lấy users theo role: " + e.getMessage());
-            e.printStackTrace();
+            logSQLError("lấy users theo role", e);
         }
         return users;
     }
@@ -186,8 +190,7 @@ public class UserDAO {
             
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
-            System.err.println("Lỗi cập nhật user: " + e.getMessage());
-            e.printStackTrace();
+            logSQLError("cập nhật user", e);
         }
         return false;
     }
@@ -214,7 +217,7 @@ public class UserDAO {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logSQLError("kiểm tra mật khẩu cũ", e);
             return false;
         }
         
@@ -229,8 +232,33 @@ public class UserDAO {
             
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
-            System.err.println("Lỗi đổi mật khẩu: " + e.getMessage());
-            e.printStackTrace();
+            logSQLError("đổi mật khẩu", e);
+        }
+        return false;
+    }
+    
+    /**
+     * Đặt lại mật khẩu (cho forgot password)
+     */
+    public boolean resetPassword(String email, String newPassword) {
+        // Kiểm tra email tồn tại
+        User user = findByEmail(email);
+        if (user == null) {
+            return false;
+        }
+        
+        String sql = "UPDATE users SET password = ?, updated_at = CURRENT_TIMESTAMP WHERE email = ?";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            ps.setString(1, hashedPassword);
+            ps.setString(2, email);
+            
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            logSQLError("đặt lại mật khẩu", e);
         }
         return false;
     }
@@ -249,8 +277,7 @@ public class UserDAO {
             
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
-            System.err.println("Lỗi cập nhật status: " + e.getMessage());
-            e.printStackTrace();
+            logSQLError("cập nhật status", e);
         }
         return false;
     }
@@ -271,8 +298,7 @@ public class UserDAO {
                 return rs.getInt(1) > 0;
             }
         } catch (SQLException e) {
-            System.err.println("Lỗi kiểm tra email: " + e.getMessage());
-            e.printStackTrace();
+            logSQLError("kiểm tra email", e);
         }
         return false;
     }
@@ -291,8 +317,7 @@ public class UserDAO {
                 return rs.getInt(1);
             }
         } catch (SQLException e) {
-            System.err.println("Lỗi đếm users: " + e.getMessage());
-            e.printStackTrace();
+            logSQLError("đếm users", e);
         }
         return 0;
     }
@@ -329,8 +354,7 @@ public class UserDAO {
             
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
-            System.err.println("Lỗi cập nhật field " + fieldName + ": " + e.getMessage());
-            e.printStackTrace();
+            logSQLError("cập nhật field " + fieldName, e);
         }
         return false;
     }
@@ -349,8 +373,7 @@ public class UserDAO {
             
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
-            System.err.println("Lỗi cập nhật birthday: " + e.getMessage());
-            e.printStackTrace();
+            logSQLError("cập nhật birthday", e);
         }
         return false;
     }
@@ -374,5 +397,24 @@ public class UserDAO {
         user.setCreatedAt(rs.getTimestamp("created_at"));
         user.setUpdatedAt(rs.getTimestamp("updated_at"));
         return user;
+    }
+    
+    /**
+     * Đếm tổng số users
+     */
+    public int getTotalUsers() {
+        String sql = "SELECT COUNT(*) FROM users";
+        
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            logSQLError("đếm tổng users", e);
+        }
+        return 0;
     }
 }

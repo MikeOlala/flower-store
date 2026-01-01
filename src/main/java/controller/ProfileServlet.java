@@ -1,14 +1,18 @@
 package controller;
 
-import dao.UserDAO;
-import model.User;
-
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.UserDAO;
+import model.User;
 
 @WebServlet("/profile/*")
 public class ProfileServlet extends HttpServlet {
@@ -48,6 +52,53 @@ public class ProfileServlet extends HttpServlet {
         }
         
         User user = (User) session.getAttribute("user");
+        String pathInfo = request.getPathInfo();
+        
+        // Handle change password
+        if (pathInfo != null && pathInfo.equals("/changePassword")) {
+            handleChangePassword(request, response, user);
+            return;
+        }
+        
+        // Handle update field
+        handleUpdateField(request, response, user, session);
+    }
+    
+    private void handleChangePassword(HttpServletRequest request, HttpServletResponse response, User user) 
+            throws IOException {
+        PrintWriter out = response.getWriter();
+        
+        String currentPassword = request.getParameter("currentPassword");
+        String newPassword = request.getParameter("newPassword");
+        
+        // Validate
+        if (currentPassword == null || currentPassword.isEmpty()) {
+            out.write("{\"success\": false, \"message\": \"Vui lòng nhập mật khẩu hiện tại\"}");
+            return;
+        }
+        
+        if (newPassword == null || newPassword.isEmpty()) {
+            out.write("{\"success\": false, \"message\": \"Vui lòng nhập mật khẩu mới\"}");
+            return;
+        }
+        
+        if (newPassword.length() < 8) {
+            out.write("{\"success\": false, \"message\": \"Mật khẩu mới phải có ít nhất 8 ký tự\"}");
+            return;
+        }
+        
+        // Change password
+        boolean success = userDAO.changePassword(user.getId(), currentPassword, newPassword);
+        
+        if (success) {
+            out.write("{\"success\": true, \"message\": \"Đổi mật khẩu thành công\"}");
+        } else {
+            out.write("{\"success\": false, \"message\": \"Mật khẩu hiện tại không đúng\"}");
+        }
+    }
+    
+    private void handleUpdateField(HttpServletRequest request, HttpServletResponse response, 
+            User user, HttpSession session) throws IOException {
         String field = request.getParameter("field");
         String value = request.getParameter("value");
         

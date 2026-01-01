@@ -20,6 +20,9 @@ public class Category {
     // Thêm trường cho category cha (nếu cần)
     private Category parentCategory;
     
+    // Số lượng sản phẩm trong danh mục
+    private int productCount;
+    
     // Constructors
     public Category() {}
     
@@ -77,6 +80,9 @@ public class Category {
     
     public Category getParentCategory() { return parentCategory; }
     public void setParentCategory(Category parentCategory) { this.parentCategory = parentCategory; }
+    
+    public int getProductCount() { return productCount; }
+    public void setProductCount(int productCount) { this.productCount = productCount; }
     
     @Override
     public String toString() {

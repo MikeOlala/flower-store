@@ -83,10 +83,26 @@
         
         body {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-cream) 100%);
+            background: linear-gradient(135deg, #faf5ef 0%, #fff9f5 50%, #f5ebe1 100%);
+            background-attachment: fixed;
             color: var(--brown-main);
             line-height: 1.6;
             min-height: 100vh;
+        }
+        
+        /* Animated background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(201, 147, 102, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(201, 147, 102, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
         }
         
         /* Breadcrumb */
@@ -146,13 +162,21 @@
         
         /* Sidebar */
         .sidebar {
-            background: var(--white);
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.98) 100%);
+            backdrop-filter: blur(10px);
             border-radius: var(--radius-lg);
             padding: 1.5rem;
             box-shadow: var(--shadow-md);
+            border: 1px solid rgba(201, 147, 102, 0.1);
             height: fit-content;
             position: sticky;
             top: 100px;
+            transition: var(--transition);
+        }
+        
+        .sidebar:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
         }
         
         .sidebar-user {
@@ -169,6 +193,14 @@
             object-fit: cover;
             border: 3px solid var(--primary-light);
             margin-bottom: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(201, 147, 102, 0.3);
+        }
+        
+        .sidebar-avatar:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
+            box-shadow: 0 6px 20px rgba(201, 147, 102, 0.4);
         }
         
         .sidebar-name {
@@ -203,6 +235,11 @@
             font-weight: 500;
             position: relative;
             overflow: hidden;
+            transform-origin: left center;
+        }
+        
+        .sidebar-menu a:hover {
+            transform: translateX(5px);
         }
         
         .sidebar-menu a::before {
@@ -218,18 +255,19 @@
             z-index: -1;
         }
         
-        .sidebar-menu a:hover {
-            color: var(--primary-dark);
-            background: var(--primary-light);
-        }
-        
         .sidebar-menu a.active {
             color: white;
             background: transparent;
+            box-shadow: 0 4px 15px rgba(201, 147, 102, 0.3);
         }
         
         .sidebar-menu a.active::before {
             width: 100%;
+        }
+        
+        .sidebar-menu a.active:hover {
+            transform: translateX(8px);
+            box-shadow: 0 6px 20px rgba(201, 147, 102, 0.4);
         }
         
         .sidebar-menu i {
@@ -248,12 +286,36 @@
             font-weight: 600;
         }
         
+        /* Logout Link Style */
+        .sidebar-menu .logout-link {
+            color: var(--error);
+            margin-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+        }
+        
+        .sidebar-menu .logout-link::before {
+            background: linear-gradient(135deg, var(--error) 0%, #c0392b 100%);
+        }
+        
+        .sidebar-menu .logout-link:hover {
+            background: rgba(231, 76, 60, 0.1);
+            color: var(--error);
+        }
+        
         /* Content Card */
         .content-card {
-            background: var(--white);
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.98) 100%);
+            backdrop-filter: blur(10px);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
+            border: 1px solid rgba(201, 147, 102, 0.1);
             overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .content-card:hover {
+            box-shadow: var(--shadow-lg);
         }
         
         /* Profile Header */
@@ -263,6 +325,11 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         
         .profile-header::before {
@@ -521,14 +588,16 @@
             background: white !important;
             border-radius: var(--radius-lg) !important;
             width: 90% !important;
-            max-width: 480px !important;
+            max-width: 550px !important;
+            max-height: 85vh !important;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
             position: relative !important;
             z-index: 100000 !important;
-            display: block !important;
+            display: flex !important;
+            flex-direction: column !important;
             visibility: visible !important;
             opacity: 1 !important;
-            overflow: visible !important;
+            overflow: hidden !important;
         }
         
         #modalOverlay.active #editModal {
@@ -594,8 +663,10 @@
             visibility: visible !important;
             opacity: 1 !important;
             min-height: 100px !important;
-            overflow: visible !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
             background: white !important;
+            flex: 1 !important;
         }
         
         #editModal .modal-body .form-group,
@@ -603,7 +674,7 @@
             display: block !important;
             visibility: visible !important;
             opacity: 1 !important;
-            margin-bottom: 1.25rem !important;
+            margin-bottom: 1rem !important;
         }
         
         #editModal .modal-body .form-label,
@@ -638,7 +709,7 @@
         #modalBody select,
         .password-card .form-control {
             width: 100% !important;
-            padding: 0.875rem 1.25rem !important;
+            padding: 0.75rem 1rem !important;
             border: 2px solid var(--border-color) !important;
             border-radius: var(--radius-md) !important;
             font-family: inherit !important;
@@ -666,7 +737,8 @@
         #modalBody textarea.form-control,
         #modalBody textarea {
             resize: vertical !important;
-            min-height: 120px !important;
+            min-height: 80px !important;
+            max-height: 120px !important;
         }
         
         #modalBody .form-select,
@@ -707,6 +779,23 @@
             border-radius: 0 0 var(--radius-lg) var(--radius-lg) !important;
             visibility: visible !important;
             opacity: 1 !important;
+            flex-shrink: 0 !important;
+        }
+        
+        /* Responsive Grid for Address Form */
+        @media (max-width: 768px) {
+            #editModal {
+                width: 95% !important;
+                max-height: 90vh !important;
+            }
+            
+            #modalBody [style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            #modalBody [style*="grid-template-columns: 1fr 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
         }
 
         /* Order Detail Modal */
@@ -1130,16 +1219,53 @@
             padding: 1.5rem;
             position: relative;
             border: 2px solid transparent;
-            transition: var(--transition);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        
+        .address-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 50%, var(--primary) 100%);
+            background-size: 200% 100%;
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
         }
         
         .address-card:hover {
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 8px 30px rgba(201, 147, 102, 0.2);
+            transform: translateY(-4px);
+        }
+        
+        .address-card:hover::before {
+            transform: translateX(0);
         }
         
         .address-card.default {
             border-color: var(--primary);
-            background: linear-gradient(135deg, var(--bg-cream) 0%, white 100%);
+            background: linear-gradient(135deg, 
+                rgba(255, 247, 237, 0.6) 0%, 
+                rgba(255, 255, 255, 1) 50%,
+                rgba(255, 247, 237, 0.3) 100%);
+            box-shadow: 0 4px 20px rgba(201, 147, 102, 0.15);
+        }
+        
+        .address-card.default::before {
+            transform: translateX(0);
+            background: linear-gradient(90deg, 
+                var(--primary) 0%, 
+                #d4a574 50%, 
+                var(--primary) 100%);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         
         .address-default-badge {
@@ -1237,28 +1363,67 @@
             justify-content: center;
             gap: 1rem;
             padding: 2.5rem;
-            background: linear-gradient(135deg, var(--bg-cream) 0%, var(--bg-light) 100%);
+            background: linear-gradient(135deg, 
+                rgba(255, 247, 237, 0.4) 0%, 
+                rgba(255, 255, 255, 0.9) 50%,
+                rgba(255, 247, 237, 0.4) 100%);
             border: 2px dashed var(--border-color);
             border-radius: var(--radius-lg);
             color: var(--text-muted);
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             min-height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .add-address-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 147, 102, 0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
         }
         
         .add-address-btn:hover {
             border-color: var(--primary);
+            border-style: solid;
             color: var(--primary);
-            background: var(--primary-light);
+            background: linear-gradient(135deg, 
+                rgba(255, 247, 237, 0.8) 0%, 
+                rgba(255, 255, 255, 1) 50%,
+                rgba(255, 247, 237, 0.6) 100%);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(201, 147, 102, 0.15);
+        }
+        
+        .add-address-btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
         
         .add-address-btn i {
             font-size: 2.5rem;
             opacity: 0.7;
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .add-address-btn:hover i {
+            opacity: 1;
+            transform: scale(1.1) rotate(90deg);
         }
         
         .add-address-btn span {
             font-weight: 500;
+            position: relative;
+            z-index: 1;
         }
         
         /* Change Password Styles */
@@ -1547,6 +1712,11 @@
                     <li>
                         <a href="#" onclick="showSection('password'); return false;" data-section="password">
                             <i class="fas fa-lock"></i> Đổi mật khẩu
+                        </a>
+                    </li>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/logout" class="logout-link">
+                            <i class="fas fa-sign-out-alt"></i> Đăng xuất
                         </a>
                     </li>
                 </ul>
@@ -2286,30 +2456,34 @@
         function getAddressFormHtml(address) {
             return `
                 <form id="addressForm" onsubmit="saveAddress(event)">
-                    <div class="form-group">
-                        <label class="form-label">Tên người nhận <span style="color: var(--error);">*</span></label>
-                        <input type="text" class="form-control" id="addr_receiverName" 
-                            value="\${address ? address.receiverName : ''}" placeholder="Nhập tên người nhận" required>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Tên người nhận <span style="color: var(--error);">*</span></label>
+                            <input type="text" class="form-control" id="addr_receiverName" 
+                                value="\${address ? address.receiverName : ''}" placeholder="Nhập tên người nhận" required>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Số điện thoại <span style="color: var(--error);">*</span></label>
+                            <input type="tel" class="form-control" id="addr_phone" 
+                                value="\${address ? address.phone : ''}" placeholder="Nhập số điện thoại" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Số điện thoại <span style="color: var(--error);">*</span></label>
-                        <input type="tel" class="form-control" id="addr_phone" 
-                            value="\${address ? address.phone : ''}" placeholder="Nhập số điện thoại" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Tỉnh/Thành phố</label>
-                        <input type="text" class="form-control" id="addr_province" 
-                            value="\${address ? (address.province || '') : ''}" placeholder="Nhập tỉnh/thành phố">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Quận/Huyện</label>
-                        <input type="text" class="form-control" id="addr_district" 
-                            value="\${address ? (address.district || '') : ''}" placeholder="Nhập quận/huyện">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Phường/Xã</label>
-                        <input type="text" class="form-control" id="addr_ward" 
-                            value="\${address ? (address.ward || '') : ''}" placeholder="Nhập phường/xã">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Tỉnh/Thành</label>
+                            <input type="text" class="form-control" id="addr_province" 
+                                value="\${address ? (address.province || '') : ''}" placeholder="Tỉnh/Thành">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Quận/Huyện</label>
+                            <input type="text" class="form-control" id="addr_district" 
+                                value="\${address ? (address.district || '') : ''}" placeholder="Quận/Huyện">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label">Phường/Xã</label>
+                            <input type="text" class="form-control" id="addr_ward" 
+                                value="\${address ? (address.ward || '') : ''}" placeholder="Phường/Xã">
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Địa chỉ chi tiết <span style="color: var(--error);">*</span></label>
@@ -2321,9 +2495,9 @@
                         <textarea class="form-control" id="addr_note" rows="2" 
                             placeholder="Ghi chú thêm (không bắt buộc)">\${address ? (address.note || '') : ''}</textarea>
                     </div>
-                    <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem;">
-                        <input type="checkbox" id="addr_isDefault" \${address && address.default ? 'checked' : ''}>
-                        <label for="addr_isDefault" style="margin: 0; cursor: pointer;">Đặt làm địa chỉ mặc định</label>
+                    <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0;">
+                        <input type="checkbox" id="addr_isDefault" style="width: auto !important; margin: 0;" \${address && address.default ? 'checked' : ''}>
+                        <label for="addr_isDefault" style="margin: 0; cursor: pointer; font-weight: 500;">Đặt làm địa chỉ mặc định</label>
                     </div>
                 </form>
             `;
