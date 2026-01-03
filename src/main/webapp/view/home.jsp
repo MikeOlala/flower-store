@@ -1500,9 +1500,9 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
                 <input
                   type="text"
                   placeholder="Tìm bó hoa, giỏ hoa, lan hồ điệp..."
+                  id="hero-search-input"
                 />
-
-                <button>Tìm kiếm</button>
+                <button type="button" id="hero-search-btn">Tìm kiếm</button>
               </div>
 
               <div class="hero-buttons">
@@ -2215,26 +2215,25 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
       }
 
       // Search functionality
-
       const searchButton = document.querySelector(".hero-search button");
-
       const searchInput = document.querySelector(".hero-search input");
 
       if (searchButton && searchInput) {
-        searchButton.addEventListener("click", () => {
+        searchButton.addEventListener("click", function() {
           const searchTerm = searchInput.value.trim();
 
           if (searchTerm) {
-            showNotification(`Đang tìm kiếm: "${searchTerm}"...`);
-
-            // Here you would typically redirect to a search results page
-
-            console.log("Searching for:", searchTerm);
+            // Redirect to search page with query parameter
+            const contextPath = '${pageContext.request.contextPath}';
+            window.location.href = contextPath + '/search?q=' + encodeURIComponent(searchTerm);
+          } else {
+            showNotification('Điền từ khóa tìm kiếm');
           }
         });
 
-        searchInput.addEventListener("keypress", (e) => {
+        searchInput.addEventListener("keypress", function(e) {
           if (e.key === "Enter") {
+            e.preventDefault();
             searchButton.click();
           }
         });

@@ -147,63 +147,18 @@
                 <div class="col-md-3 group-icon-header col-xs-6 col-sm-4 pd-right-0 pd-0-mb">
                     <div class="cart-login-search align-items-center">
                         <ul class="list-inline list-unstyled mb-0">
-                            <li class="list-inline-item mr-0">
-                                <a href="${pageContext.request.contextPath}/search" class="search js-search-desktop" data-original-title="Tìm kiếm"
-                                    data-tooltip="tooltip">
-                                    <svg aria-hidden="true" focusable="false" role="presentation"
-                                        class="icon icon-search" viewBox="0 0 64 64">
-                                        <path
-                                            d="M47.16 28.58A18.58 18.58 0 1 1 28.58 10a18.58 18.58 0 0 1 18.58 18.58zM54 54L41.94 42">
-                                        </path>
-                                    </svg>
-                                </a>
-                                <div class="header-action_dropdown">
-                                    <span class="box-arrow">
-                                        <svg viewBox="0 0 20 9" role="presentation">
-                                            <path
-                                                d="M.47108938 9c.2694725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z"
-                                                fill="#ffffff"></path>
-                                        </svg>
-                                    </span>
-                                    <div class="header-dropdown_content">
-                                        <p class="title-search">Tìm kiếm</p>
-                                        <div class="site_search">
-                                            <form action="${pageContext.request.contextPath}/search" class="wanda-mxm-search" method="get">
-                                                <div class="search-inner">
-                                                    <input name="q" autocomplete="off"
-                                                        class="searchinput input-search search-input" type="text"
-                                                        id="header-search-input"
-                                                        size="20" placeholder="Tìm kiếm sản phẩm..."
-                                                        aria-label="Search">
-                                                </div>
-                                                <button type="submit" class="btn-search" id="search-header-btn"
-                                                    aria-label="Tìm kiếm">
-                                                    <img width="24" height="24"
-                                                        src="//cdn.hstatic.net/themes/200000846175/1001403720/14/searcg-icon.svg?v=245"
-                                                        alt="Tìm kiếm">
-                                                </button>
-                                            </form>
-                                            <div id="wanda-smart-search" class="smart-search-wrapper ajaxSearchResults">
-                                                <div class="results-seach" id="live-search-results">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
                             <li class="list-inline-item mr-0 account-header-mobile">
                                 <c:choose>
                                     <c:when test="${not empty sessionScope.user}">
-                                        <!-- Đã đăng nhập - Hiển thị tên người dùng -->
-                                        <a href="${pageContext.request.contextPath}/view/settingProfile.jsp" class="login" 
-                                           style="display: flex; align-items: center; text-decoration: none;">
-                                            <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-user"
-                                                viewBox="0 0 64 64">
-                                                <path
-                                                    d="M35 39.84v-2.53c3.3-1.91 6-6.66 6-11.41 0-7.63 0-13.82-9-13.82s-9 6.19-9 13.82c0 4.75 2.7 9.51 6 11.41v2.53c-10.18.85-18 6-18 12.16h42c0-6.19-7.82-11.31-18-12.16z">
-                                                </path>
-                                            </svg>
-                                            <span style="font-size: 13px; margin-left: 5px; color: #333; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                        <!-- Đã đăng nhập - Hiển thị avatar và tên người dùng -->
+                                        <a href="${pageContext.request.contextPath}/view/settingProfile.jsp" class="login user-profile-link" 
+                                           style="display: flex; align-items: center; margin-right: 50px; gap: 8px; text-decoration: none; padding: 4px 8px; border-radius: 20px; transition: background 0.2s;"
+                                           onmouseover="this.style.background='#f5f5f5'"
+                                           onmouseout="this.style.background='transparent'">
+                                            <div class="user-avatar" style="width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #c99366 0%, #aa6a3f 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 14px; box-shadow: 0 2px 8px rgba(201, 147, 102, 0.3);">
+                                                ${sessionScope.user.fullname.substring(0, 1).toUpperCase()}
+                                            </div>
+                                            <span style="font-size: 14px; color: #333; max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 500;">
                                                 ${sessionScope.user.fullname}
                                             </span>
                                         </a>
@@ -498,6 +453,39 @@
             
             lastScroll = currentScroll;
         });
+        
+        // Load cart count
+        loadCartCount();
     });
+    
+    // Function to load cart count
+    function loadCartCount() {
+        const contextPath = '${pageContext.request.contextPath}';
+        
+        fetch(contextPath + '/api/cart')
+            .then(response => response.json())
+            .then(result => {
+                if (result.success && result.itemCount > 0) {
+                    updateCartCount(result.itemCount);
+                }
+            })
+            .catch(error => {
+                console.error('Error loading cart count:', error);
+            });
+    }
+    
+    // Function to update cart count display
+    function updateCartCount(count) {
+        const cartCountElements = document.querySelectorAll('.js-number-cart, .number-cart');
+        cartCountElements.forEach(function(element) {
+            if (count > 0) {
+                element.textContent = count;
+                element.style.display = 'inline-block; padding-top: 6px;';
+            } else {
+                element.textContent = '';
+                element.style.display = 'none';
+            }
+        });
+    }
     </script>
 </header>
