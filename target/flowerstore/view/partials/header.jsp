@@ -480,7 +480,7 @@
         cartCountElements.forEach(function(element) {
             if (count > 0) {
                 element.textContent = count;
-                element.style.display = 'inline-block; padding-top: 6px;';
+                element.style.display = 'inline-block; padding-top: 6px';
             } else {
                 element.textContent = '';
                 element.style.display = 'none';

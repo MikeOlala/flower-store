@@ -32,29 +32,51 @@
            CSS VARIABLES & RESET
            ============================================ */
       :root {
+        /* Brand Colors - Matching Home */
         --primary: #c99366;
         --primary-dark: #aa6a3f;
-        --primary-light: #e9d2bd;
+        --primary-light: #f9f5f0;
+        --primary-hover: #b58555;
         --secondary: #3c2922;
         --secondary-soft: #6c5845;
+        
+        /* Background Colors - Warm tones */
         --bg-page: #faf5ef;
-        --bg-light: #f8f3eb;
+        --bg-light: #f9f5f0;
         --bg-card: #ffffff;
+        --bg-hover: #fef9f3;
+        
+        /* Text Colors - Warm browns */
         --text-dark: #3c2922;
         --text-medium: #6c5845;
-        --text-light: #9e8b7c;
-        --border: rgba(210, 180, 160, 0.3);
-        --shadow: rgba(160, 130, 100, 0.15);
-        --success: #6a994e;
-        --success-dark: #386641;
-        --warning: #e9c46a;
-        --warning-dark: #d4a017;
-        --danger: #e76f51;
-        --danger-dark: #d1493d;
-        --info: #4cc9f0;
-        --sidebar-width: 260px;
-        --header-height: 70px;
-        --transition: all 0.3s ease;
+        --text-light: #a89f94;
+        
+        /* Border & Shadow - Subtle warm tones */
+        --border: #e8dfd5;
+        --border-dark: #d4c9bb;
+        --shadow-sm: 0 2px 8px rgba(60, 41, 34, 0.08);
+        --shadow: 0 4px 16px rgba(60, 41, 34, 0.12);
+        --shadow-lg: 0 8px 32px rgba(60, 41, 34, 0.16);
+        
+        /* Status Colors - Modern & Vibrant */
+        --success: #10b981;
+        --success-dark: #059669;
+        --success-light: #d1fae5;
+        --warning: #f59e0b;
+        --warning-dark: #d97706;
+        --warning-light: #fef3c7;
+        --danger: #ef4444;
+        --danger-dark: #dc2626;
+        --danger-light: #fee2e2;
+        --info: #3b82f6;
+        --info-dark: #2563eb;
+        --info-light: #dbeafe;
+        
+        /* Layout */
+        --sidebar-width: 280px;
+        --header-height: 65px;
+        --border-radius: 12px;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       * {
@@ -77,11 +99,7 @@
            ============================================ */
       .sidebar {
         width: var(--sidebar-width);
-        background: linear-gradient(
-          180deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
+        background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
         color: white;
         height: 100vh;
         position: fixed;
@@ -89,79 +107,123 @@
         top: 0;
         transition: var(--transition);
         z-index: 1000;
-        box-shadow: 4px 0 20px var(--shadow);
+        box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
         overflow-y: auto;
+        display: flex;
+        flex-direction: column;
       }
 
       .sidebar::-webkit-scrollbar {
-        width: 6px;
+        width: 5px;
+      }
+
+      .sidebar::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
       }
 
       .sidebar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb:hover {
         background: rgba(255, 255, 255, 0.3);
-        border-radius: 3px;
       }
 
       .sidebar-header {
         padding: 25px 20px;
         text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        background: rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.15);
+        flex-shrink: 0;
       }
 
       .sidebar-header h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 12px;
         font-weight: 700;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        letter-spacing: 0.5px;
       }
 
       .sidebar-header h2 i {
-        color: #fff8e7;
-        font-size: 1.8rem;
+        color: var(--primary);
+        font-size: 1.6rem;
+        filter: drop-shadow(0 2px 4px rgba(201, 147, 102, 0.3));
       }
 
       .sidebar-menu {
-        padding: 15px 0;
+        padding: 20px 0;
+        flex: 1;
+        overflow-y: auto;
       }
 
       .menu-item {
-        padding: 14px 25px;
+        padding: 13px 25px;
         display: flex;
         align-items: center;
-        gap: 15px;
+        gap: 14px;
         cursor: pointer;
         transition: var(--transition);
-        border-left: 4px solid transparent;
-        font-size: 1.05rem;
-        color: rgba(255, 255, 255, 0.9);
+        border-left: 3px solid transparent;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.85);
         text-decoration: none;
+        margin: 2px 10px;
+        border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .menu-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 0;
+        background: var(--primary);
+        transition: width 0.3s ease;
+        z-index: -1;
       }
 
       .menu-item:hover {
-        background-color: rgba(255, 255, 255, 0.15);
-        border-left-color: #fff8e7;
-        padding-left: 30px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        transform: translateX(5px);
+      }
+
+      .menu-item:hover::before {
+        width: 4px;
       }
 
       .menu-item.active {
-        background-color: rgba(255, 255, 255, 0.2);
-        border-left-color: #fff8e7;
+        background: linear-gradient(90deg, rgba(201, 147, 102, 0.2), transparent);
+        border-left-color: var(--primary);
+        color: white;
         font-weight: 600;
       }
 
+      .menu-item.active i {
+        color: var(--primary);
+      }
+
       .menu-item i {
-        width: 22px;
+        width: 20px;
         text-align: center;
-        font-size: 1.1rem;
+        font-size: 1.05rem;
+        transition: var(--transition);
+      }
+
+      .menu-item:hover i {
+        transform: scale(1.1);
       }
 
       .menu-divider {
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        margin: 20px 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        margin: 15px 20px;
       }
 
       /* ============================================
@@ -182,7 +244,7 @@
       .header {
         height: var(--header-height);
         background-color: var(--bg-card);
-        box-shadow: 0 2px 10px var(--shadow);
+        box-shadow: var(--shadow-sm);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -190,12 +252,16 @@
         position: sticky;
         top: 0;
         z-index: 100;
+        border-bottom: 1px solid var(--border);
       }
 
       .header-left h1 {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         color: var(--text-dark);
         font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
 
       .header-right {
@@ -209,18 +275,20 @@
       }
 
       .header-search input {
-        padding: 10px 40px 10px 15px;
-        border: 1px solid var(--border);
+        padding: 10px 40px 10px 16px;
+        border: 2px solid var(--border);
         border-radius: 25px;
-        width: 300px;
-        font-size: 0.95rem;
+        width: 320px;
+        font-size: 0.9rem;
         transition: var(--transition);
+        background: var(--bg-page);
       }
 
       .header-search input:focus {
         outline: none;
         border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(201, 147, 102, 0.1);
+        box-shadow: 0 0 0 4px rgba(201, 147, 102, 0.1);
+        background: white;
       }
 
       .header-search i {
@@ -229,17 +297,25 @@
         top: 50%;
         transform: translateY(-50%);
         color: var(--text-light);
+        pointer-events: none;
       }
 
       .user-info {
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 8px 15px;
-        border-radius: 25px;
-        background: var(--bg-light);
+        padding: 8px 16px;
+        border-radius: 30px;
+        background: var(--bg-page);
         transition: var(--transition);
         cursor: pointer;
+        border: 2px solid transparent;
+      }
+
+      .user-info:hover {
+        background: white;
+        border-color: var(--primary);
+        box-shadow: var(--shadow-sm);
       }
 
       .user-info:hover {
@@ -310,6 +386,43 @@
       }
 
       /* ============================================
+           SECTION HEADERS
+           ============================================ */
+      .section-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .section-header h2 {
+        font-size: 1.8rem;
+        color: var(--text-dark);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0;
+      }
+
+      .section-header h2 i {
+        color: var(--primary);
+        font-size: 1.6rem;
+      }
+
+      .section-header .text-muted {
+        color: var(--text-medium);
+        font-size: 0.95rem;
+        margin-top: 5px;
+      }
+
+      .section-header .btn {
+        white-space: nowrap;
+      }
+
+      /* ============================================
            CARDS
            ============================================ */
       .card {
@@ -342,6 +455,13 @@
         display: flex;
         align-items: center;
         gap: 10px;
+      }
+
+      .card-header h4 {
+        font-size: 1.1rem;
+        color: var(--text-dark);
+        font-weight: 600;
+        margin: 0;
       }
 
       .card-body {
@@ -394,24 +514,16 @@
       }
 
       .stat-icon.success {
-        background: linear-gradient(
-          135deg,
-          var(--success),
-          var(--success-dark)
-        );
+        background: linear-gradient(135deg, #10b981, #059669);
       }
       .stat-icon.warning {
-        background: linear-gradient(
-          135deg,
-          var(--warning),
-          var(--warning-dark)
-        );
+        background: linear-gradient(135deg, #f59e0b, #d97706);
       }
       .stat-icon.danger {
-        background: linear-gradient(135deg, var(--danger), var(--danger-dark));
+        background: linear-gradient(135deg, #ef4444, #dc2626);
       }
       .stat-icon.info {
-        background: linear-gradient(135deg, var(--info), #3a9bc9);
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
       }
 
       .stat-info h3 {
@@ -456,7 +568,7 @@
       }
 
       tr:hover {
-        background-color: rgba(249, 241, 231, 0.5);
+        background-color: #fef9f3;
       }
 
       tbody tr:last-child td {
@@ -476,20 +588,20 @@
       }
 
       .badge-success {
-        background-color: rgba(106, 153, 78, 0.15);
-        color: var(--success-dark);
+        background-color: rgba(16, 185, 129, 0.15);
+        color: #059669;
       }
       .badge-warning {
-        background-color: rgba(233, 196, 106, 0.15);
-        color: var(--warning-dark);
+        background-color: rgba(245, 158, 11, 0.15);
+        color: #d97706;
       }
       .badge-danger {
-        background-color: rgba(231, 111, 81, 0.15);
-        color: var(--danger-dark);
+        background-color: rgba(239, 68, 68, 0.15);
+        color: #dc2626;
       }
       .badge-info {
-        background-color: rgba(76, 201, 240, 0.15);
-        color: #0c5460;
+        background-color: rgba(59, 130, 246, 0.15);
+        color: #2563eb;
       }
       .badge-primary {
         background-color: rgba(201, 147, 102, 0.15);
@@ -550,44 +662,36 @@
       }
 
       .btn-success {
-        background: linear-gradient(
-          135deg,
-          var(--success),
-          var(--success-dark)
-        );
+        background: linear-gradient(135deg, #10b981, #059669);
         color: white;
-        box-shadow: 0 4px 12px rgba(106, 153, 78, 0.3);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
       }
 
       .btn-success:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(106, 153, 78, 0.4);
+        box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
       }
 
       .btn-warning {
-        background: linear-gradient(
-          135deg,
-          var(--warning),
-          var(--warning-dark)
-        );
+        background: linear-gradient(135deg, #f59e0b, #d97706);
         color: white;
-        box-shadow: 0 4px 12px rgba(233, 196, 106, 0.3);
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
       }
 
       .btn-warning:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(233, 196, 106, 0.4);
+        box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4);
       }
 
       .btn-danger {
-        background: linear-gradient(135deg, var(--danger), var(--danger-dark));
+        background: linear-gradient(135deg, #ef4444, #dc2626);
         color: white;
-        box-shadow: 0 4px 12px rgba(231, 111, 81, 0.3);
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
       }
 
       .btn-danger:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(231, 111, 81, 0.4);
+        box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
       }
 
       .btn-light {
@@ -604,6 +708,59 @@
         display: flex;
         gap: 8px;
         justify-content: center;
+      }
+
+      /* ============================================
+           FILTERS SECTION
+           ============================================ */
+      .filters {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 25px;
+      }
+
+      .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .filter-group label {
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .filter-group label i {
+        color: var(--primary);
+        font-size: 0.85rem;
+      }
+
+      .form-input {
+        padding: 11px 16px;
+        border: 2px solid var(--border);
+        border-radius: 10px;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        background-color: var(--bg-card);
+        font-family: inherit;
+        color: var(--text-dark);
+        width: 100%;
+      }
+
+      .form-input:focus {
+        border-color: var(--primary);
+        outline: none;
+        background-color: white;
+        box-shadow: 0 0 0 4px rgba(201, 147, 102, 0.15);
+      }
+
+      .form-input::placeholder {
+        color: var(--text-light);
       }
 
       /* ============================================
@@ -628,6 +785,14 @@
         font-size: 0.95rem;
       }
 
+      .form-label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 0.95rem;
+      }
+
       .form-group label .required {
         color: var(--danger);
         margin-left: 3px;
@@ -636,27 +801,56 @@
       .form-control {
         width: 100%;
         padding: 12px 18px;
-        border: 1px solid var(--border);
+        border: 2px solid var(--border);
         border-radius: 10px;
         font-size: 1rem;
-        transition: var(--transition);
+        transition: all 0.3s ease;
         background-color: var(--bg-card);
         font-family: inherit;
+        color: var(--text-dark);
       }
 
       .form-control:focus {
         border-color: var(--primary);
         outline: none;
-        box-shadow: 0 0 0 3px rgba(201, 147, 102, 0.2);
+        background-color: white;
+        box-shadow: 0 0 0 4px rgba(201, 147, 102, 0.15);
       }
 
       textarea.form-control {
         resize: vertical;
         min-height: 100px;
+        line-height: 1.6;
       }
 
       select.form-control {
         cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c99366' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 12px center;
+        padding-right: 40px;
+      }
+
+      /* Checkbox styling */
+      input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        accent-color: var(--primary);
+      }
+
+      /* File input styling */
+      input[type="file"] {
+        padding: 10px;
+        border: 2px dashed var(--border);
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      input[type="file"]:hover {
+        border-color: var(--primary);
+        background-color: rgba(201, 147, 102, 0.05);
       }
 
       /* ============================================
@@ -724,6 +918,19 @@
         overflow-y: auto;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         animation: slideUp 0.3s ease;
+      }
+
+      .modal-lg {
+        max-width: 900px;
+      }
+
+      .modal-footer {
+        padding: 20px 25px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        background-color: var(--bg-light);
       }
 
       @keyframes slideUp {
@@ -843,6 +1050,156 @@
       .notification-message {
         font-size: 0.9rem;
         color: var(--text-medium);
+      }
+
+      /* ============================================
+           INFO GROUPS
+           ============================================ */
+      .info-group {
+        margin-bottom: 18px;
+      }
+
+      .info-group label {
+        display: block;
+        font-weight: 600;
+        color: var(--text-medium);
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .info-group p {
+        color: var(--text-dark);
+        font-size: 1rem;
+        margin: 0;
+        padding: 10px 14px;
+        background-color: var(--bg-light);
+        border-radius: 8px;
+        border: 1px solid var(--border);
+      }
+
+      /* ============================================
+           STAT ROWS
+           ============================================ */
+      .stat-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        margin-bottom: 10px;
+        background-color: var(--bg-light);
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        transition: var(--transition);
+      }
+
+      .stat-row:hover {
+        background-color: white;
+        box-shadow: var(--shadow-sm);
+        transform: translateX(5px);
+      }
+
+      .stat-row span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-dark);
+        font-weight: 500;
+      }
+
+      .stat-row strong {
+        font-size: 1.1rem;
+        color: var(--primary-dark);
+        font-weight: 700;
+      }
+
+      /* ============================================
+           STATS GRID
+           ============================================ */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
+      }
+
+      .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin: 8px 0;
+      }
+
+      .stat-change {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 20px;
+      }
+
+      .stat-change.positive {
+        background-color: rgba(16, 185, 129, 0.15);
+        color: #059669;
+      }
+
+      .stat-change.negative {
+        background-color: rgba(239, 68, 68, 0.15);
+        color: #dc2626;
+      }
+
+      .table-responsive {
+        overflow-x: auto;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+      }
+
+      .admin-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .admin-table th,
+      .admin-table td {
+        padding: 14px 16px;
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .admin-table th {
+        background-color: var(--bg-light);
+        font-weight: 700;
+        color: var(--text-dark);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .admin-table tbody tr:hover {
+        background-color: #fef9f3;
+      }
+
+      .text-danger {
+        color: var(--danger) !important;
+      }
+
+      .text-success {
+        color: var(--success) !important;
+      }
+
+      .text-warning {
+        color: var(--warning) !important;
+      }
+
+      .text-muted {
+        color: var(--text-medium) !important;
+      }
+
+      small {
+        font-size: 0.85rem;
+        color: var(--text-light);
       }
 
       /* ============================================
@@ -1773,11 +2130,11 @@
               <!-- Revenue & Order Stats -->
               <div class="stats-grid" style="margin-bottom: 30px;">
                 <div class="stat-card">
-                  <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                  <div class="stat-icon" style="background: linear-gradient(135deg, #c99366, #aa6a3f);">
                     <i class="fas fa-dollar-sign"></i>
                   </div>
                   <div class="stat-info">
-                    <h4>Tổng Doanh Thu</h4>
+                    <h4 style="color: var(--text-dark); font-size: 0.95rem; margin-bottom: 8px;">Tổng Doanh Thu</h4>
                     <p class="stat-value" id="analyticsRevenue">0 đ</p>
                     <span class="stat-change positive" id="analyticsRevenueChange">
                       <i class="fas fa-arrow-up"></i> 0%
@@ -1786,11 +2143,11 @@
                 </div>
 
                 <div class="stat-card">
-                  <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                  <div class="stat-icon info" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
                     <i class="fas fa-shopping-cart"></i>
                   </div>
                   <div class="stat-info">
-                    <h4>Đơn Hàng</h4>
+                    <h4 style="color: var(--text-dark); font-size: 0.95rem; margin-bottom: 8px;">Đơn Hàng</h4>
                     <p class="stat-value" id="analyticsOrders">0</p>
                     <span class="stat-change positive" id="analyticsOrdersChange">
                       <i class="fas fa-arrow-up"></i> 0%
@@ -1799,11 +2156,11 @@
                 </div>
 
                 <div class="stat-card">
-                  <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                  <div class="stat-icon success" style="background: linear-gradient(135deg, #10b981, #059669);">
                     <i class="fas fa-chart-line"></i>
                   </div>
                   <div class="stat-info">
-                    <h4>Giá Trị TB</h4>
+                    <h4 style="color: var(--text-dark); font-size: 0.95rem; margin-bottom: 8px;">Giá Trị TB</h4>
                     <p class="stat-value" id="analyticsAvgOrder">0 đ</p>
                     <span class="stat-change positive" id="analyticsAvgChange">
                       <i class="fas fa-arrow-up"></i> 0%
@@ -1812,11 +2169,11 @@
                 </div>
 
                 <div class="stat-card">
-                  <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                  <div class="stat-icon warning" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
                     <i class="fas fa-percent"></i>
                   </div>
                   <div class="stat-info">
-                    <h4>Tỷ Lệ Hoàn Thành</h4>
+                    <h4 style="color: var(--text-dark); font-size: 0.95rem; margin-bottom: 8px;">Tỷ Lệ Hoàn Thành</h4>
                     <p class="stat-value" id="analyticsCompleteRate">0%</p>
                     <span class="stat-change positive" id="analyticsRateChange">
                       <i class="fas fa-arrow-up"></i> 0%
@@ -2795,6 +3152,11 @@
           loadGalleries();
         } else if (sectionId === 'news') {
           loadNews();
+        } else if (sectionId === 'analytics') {
+          console.log("🔄 Switching to analytics section");
+          setTimeout(() => loadAnalytics(), 100);
+        } else if (sectionId === 'settings') {
+          setTimeout(() => loadSettings(), 100);
         }
       }
 
@@ -3227,10 +3589,27 @@
           chartPeriodSelect.addEventListener("change", loadRevenueChart);
         }
 
+        // Analytics date range change handler
+        const analyticsDateRange = document.getElementById("analyticsDateRange");
+        if (analyticsDateRange) {
+          analyticsDateRange.addEventListener("change", function() {
+            loadAnalytics();
+          });
+        }
+
         // Load dashboard when dashboard section is active
         const dashboardSection = document.getElementById("dashboard");
         if (dashboardSection && dashboardSection.classList.contains("active")) {
           loadDashboard();
+        }
+
+        // Load analytics when analytics section is active
+        const analyticsSection = document.getElementById("analytics");
+        console.log("Analytics section:", analyticsSection);
+        console.log("Is active?", analyticsSection?.classList.contains("active"));
+        if (analyticsSection && analyticsSection.classList.contains("active")) {
+          console.log("🚀 Auto-loading analytics on page load...");
+          setTimeout(() => loadAnalytics(), 200);
         }
 
         // Also reload when switching to dashboard
@@ -4831,43 +5210,24 @@
       let revenueByDayChart = null;
       let orderStatusChartInstance = null;
 
-      async function loadAnalytics() {
-        try {
-          const period = document.getElementById("analyticsDateRange").value || "30";
-          const response = await fetch(contextPath + "/admin/api/analytics?period=" + period);
-          
-          if (!response.ok) {
-            // Use sample data if endpoint not ready
-            loadSampleAnalytics();
-            return;
-          }
-
-          const result = await response.json();
-          const data = result.data || result;
-
-          // Update stats cards
-          document.getElementById("analyticsRevenue").textContent = formatCurrency(data.totalRevenue || 0);
-          document.getElementById("analyticsOrders").textContent = formatNumber(data.totalOrders || 0);
-          document.getElementById("analyticsAvgOrder").textContent = formatCurrency(data.avgOrderValue || 0);
-          document.getElementById("analyticsCompleteRate").textContent = (data.completionRate || 0) + "%";
-
-          // Update change indicators
-          updateChangeIndicator("analyticsRevenueChange", data.revenueChange || 0);
-          updateChangeIndicator("analyticsOrdersChange", data.ordersChange || 0);
-          updateChangeIndicator("analyticsAvgChange", data.avgChange || 0);
-          updateChangeIndicator("analyticsRateChange", data.rateChange || 0);
-
-          // Load charts
-          loadRevenueByDayChart(data.dailyRevenue || []);
-          loadOrderStatusChartData(data.ordersByStatus || {});
-          
-          // Load top products
-          loadAnalyticsTopProducts(data.topProducts || []);
-          loadAnalyticsTopCategories(data.topCategories || []);
-        } catch (error) {
-          console.error("Error loading analytics:", error);
-          loadSampleAnalytics();
+      function loadAnalytics() {
+        console.log("🔄 Loading analytics...");
+        
+        // Check if elements exist
+        const revenueEl = document.getElementById("analyticsRevenue");
+        const ordersEl = document.getElementById("analyticsOrders");
+        
+        console.log("Revenue element:", revenueEl);
+        console.log("Orders element:", ordersEl);
+        
+        if (!revenueEl || !ordersEl) {
+          console.error("❌ Analytics elements not found!");
+          setTimeout(() => loadAnalytics(), 500);
+          return;
         }
+        
+        console.log("✅ Elements found, loading sample data...");
+        loadSampleAnalytics();
       }
 
       function updateChangeIndicator(elementId, change) {
@@ -4894,24 +5254,38 @@
             datasets: [{
               label: "Doanh Thu",
               data: revenues,
-              borderColor: "#667eea",
-              backgroundColor: "rgba(102, 126, 234, 0.1)",
-              borderWidth: 2,
+              borderColor: "#c99366",
+              backgroundColor: "rgba(201, 147, 102, 0.1)",
+              borderWidth: 3,
               fill: true,
-              tension: 0.4
+              tension: 0.4,
+              pointRadius: 5,
+              pointBackgroundColor: "#c99366",
+              pointBorderColor: "#fff",
+              pointBorderWidth: 2,
+              pointHoverRadius: 7
             }]
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-              legend: { display: false },
+              legend: { 
+                display: false 
+              },
               tooltip: {
                 callbacks: {
                   label: function(context) {
                     return "Doanh thu: " + formatCurrency(context.parsed.y);
                   }
-                }
+                },
+                backgroundColor: '#3c2922',
+                titleColor: '#fff',
+                bodyColor: '#fff',
+                borderColor: '#c99366',
+                borderWidth: 1,
+                padding: 12,
+                displayColors: false
               }
             },
             scales: {
@@ -4920,7 +5294,19 @@
                 ticks: {
                   callback: function(value) {
                     return formatCurrency(value);
-                  }
+                  },
+                  color: '#6c5845'
+                },
+                grid: {
+                  color: '#e8dfd5'
+                }
+              },
+              x: {
+                ticks: {
+                  color: '#6c5845'
+                },
+                grid: {
+                  display: false
                 }
               }
             }
@@ -4937,7 +5323,7 @@
 
         const labels = Object.keys(statusData).map(key => getStatusText(key));
         const data = Object.values(statusData);
-        const colors = ['#fbbf24', '#3b82f6', '#10b981', '#ef4444'];
+        const colors = ['#f59e0b', '#3b82f6', '#10b981', '#ef4444'];
 
         orderStatusChartInstance = new Chart(ctx, {
           type: "doughnut",
@@ -4946,8 +5332,10 @@
             datasets: [{
               data: data,
               backgroundColor: colors,
-              borderWidth: 2,
-              borderColor: '#fff'
+              borderWidth: 3,
+              borderColor: '#fff',
+              hoverBorderWidth: 4,
+              hoverBorderColor: '#fff'
             }]
           },
           options: {
@@ -4955,9 +5343,29 @@
             maintainAspectRatio: false,
             plugins: {
               legend: {
-                position: 'bottom'
+                position: 'bottom',
+                labels: {
+                  padding: 15,
+                  font: {
+                    size: 13,
+                    family: "'Inter', sans-serif"
+                  },
+                  color: '#3c2922',
+                  usePointStyle: true,
+                  pointStyle: 'circle'
+                }
+              },
+              tooltip: {
+                backgroundColor: '#3c2922',
+                titleColor: '#fff',
+                bodyColor: '#fff',
+                borderColor: '#c99366',
+                borderWidth: 1,
+                padding: 12,
+                displayColors: true
               }
-            }
+            },
+            cutout: '65%'
           }
         });
       }
@@ -4997,57 +5405,71 @@
       }
 
       function loadSampleAnalytics() {
+        console.log("📊 Loading sample analytics data...");
+        
         // Sample data for demonstration
-        document.getElementById("analyticsRevenue").textContent = formatCurrency(45000000);
-        document.getElementById("analyticsOrders").textContent = formatNumber(156);
-        document.getElementById("analyticsAvgOrder").textContent = formatCurrency(288461);
-        document.getElementById("analyticsCompleteRate").textContent = "78%";
+        try {
+          document.getElementById("analyticsRevenue").textContent = formatCurrency(45000000);
+          document.getElementById("analyticsOrders").textContent = formatNumber(156);
+          document.getElementById("analyticsAvgOrder").textContent = formatCurrency(288461);
+          document.getElementById("analyticsCompleteRate").textContent = "78%";
 
-        updateChangeIndicator("analyticsRevenueChange", 12.5);
-        updateChangeIndicator("analyticsOrdersChange", 8.3);
-        updateChangeIndicator("analyticsAvgChange", 5.2);
-        updateChangeIndicator("analyticsRateChange", 3.1);
+          updateChangeIndicator("analyticsRevenueChange", 12.5);
+          updateChangeIndicator("analyticsOrdersChange", 8.3);
+          updateChangeIndicator("analyticsAvgChange", 5.2);
+          updateChangeIndicator("analyticsRateChange", 3.1);
 
-        // Sample revenue chart
-        const sampleRevenue = [
-          {date: "01/01", revenue: 1200000},
-          {date: "02/01", revenue: 1500000},
-          {date: "03/01", revenue: 1800000},
-          {date: "04/01", revenue: 1400000},
-          {date: "05/01", revenue: 2100000},
-          {date: "06/01", revenue: 1900000},
-          {date: "07/01", revenue: 2300000}
-        ];
-        loadRevenueByDayChart(sampleRevenue);
+          console.log("✅ Stats updated");
 
-        // Sample status chart
-        const sampleStatus = {
-          pending: 25,
-          shipping: 45,
-          delivered: 80,
-          cancelled: 6
-        };
-        loadOrderStatusChartData(sampleStatus);
+          // Sample revenue chart
+          const sampleRevenue = [
+            {date: "01/01", revenue: 1200000},
+            {date: "02/01", revenue: 1500000},
+            {date: "03/01", revenue: 1800000},
+            {date: "04/01", revenue: 1400000},
+            {date: "05/01", revenue: 2100000},
+            {date: "06/01", revenue: 1900000},
+            {date: "07/01", revenue: 2300000}
+          ];
+          loadRevenueByDayChart(sampleRevenue);
+          console.log("✅ Revenue chart loaded");
 
-        // Sample top products
-        const sampleProducts = [
-          {name: "Hoa Hồng Đỏ", soldCount: 45, revenue: 4500000},
-          {name: "Hoa Tulip", soldCount: 38, revenue: 3800000},
-          {name: "Hoa Ly", soldCount: 32, revenue: 3200000},
-          {name: "Hoa Cẩm Chướng", soldCount: 28, revenue: 2800000},
-          {name: "Hoa Hướng Dương", soldCount: 25, revenue: 2500000}
-        ];
-        loadAnalyticsTopProducts(sampleProducts);
+          // Sample status chart
+          const sampleStatus = {
+            pending: 25,
+            shipping: 45,
+            delivered: 80,
+            cancelled: 6
+          };
+          loadOrderStatusChartData(sampleStatus);
+          console.log("✅ Status chart loaded");
 
-        // Sample top categories
-        const sampleCategories = [
-          {name: "Hoa Tươi", productCount: 45, revenue: 12000000},
-          {name: "Hoa Khai Trương", productCount: 32, revenue: 8500000},
-          {name: "Hoa Sinh Nhật", productCount: 28, revenue: 7200000},
-          {name: "Hoa Cưới", productCount: 15, revenue: 6800000},
-          {name: "Hoa Chia Buồn", productCount: 12, revenue: 4500000}
-        ];
-        loadAnalyticsTopCategories(sampleCategories);
+          // Sample top products
+          const sampleProducts = [
+            {name: "Hoa Hồng Đỏ", soldCount: 45, revenue: 4500000},
+            {name: "Hoa Tulip", soldCount: 38, revenue: 3800000},
+            {name: "Hoa Ly", soldCount: 32, revenue: 3200000},
+            {name: "Hoa Cẩm Chướng", soldCount: 28, revenue: 2800000},
+            {name: "Hoa Hướng Dương", soldCount: 25, revenue: 2500000}
+          ];
+          loadAnalyticsTopProducts(sampleProducts);
+          console.log("✅ Top products loaded");
+
+          // Sample top categories
+          const sampleCategories = [
+            {name: "Hoa Tươi", productCount: 45, revenue: 12000000},
+            {name: "Hoa Khai Trương", productCount: 32, revenue: 8500000},
+            {name: "Hoa Sinh Nhật", productCount: 28, revenue: 7200000},
+            {name: "Hoa Cưới", productCount: 15, revenue: 6800000},
+            {name: "Hoa Chia Buồn", productCount: 12, revenue: 4500000}
+          ];
+          loadAnalyticsTopCategories(sampleCategories);
+          console.log("✅ Top categories loaded");
+          
+          console.log("🎉 All sample data loaded successfully!");
+        } catch (error) {
+          console.error("❌ Error loading sample analytics:", error);
+        }
       }
 
       // ============================================
