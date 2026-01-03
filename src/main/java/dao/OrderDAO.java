@@ -269,9 +269,13 @@ public class OrderDAO {
     public boolean updateStatus(int orderId, String status) {
         String sql = "UPDATE orders SET order_status = ?, updated_at = CURRENT_TIMESTAMP";
         
-        // Nếu đã giao hàng, cập nhật delivered_at
+        // Nếu đã giao hàng, cập nhật delivered_at và payment_status cho COD
         if ("delivered".equals(status)) {
             sql += ", delivered_at = CURRENT_TIMESTAMP";
+            // Tự động cập nhật payment_status = 'paid' cho đơn COD đã giao thành công
+            sql += ", payment_status = CASE " +
+                   "WHEN payment_method = 'cod' AND payment_status = 'pending' THEN 'paid' " +
+                   "ELSE payment_status END";
         }
         sql += " WHERE id = ?";
         
@@ -281,7 +285,14 @@ public class OrderDAO {
             ps.setString(1, status);
             ps.setInt(2, orderId);
             
-            return ps.executeUpdate() > 0;
+            int rowsUpdated = ps.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("[OrderDAO] Updated order #" + orderId + " to status: " + status);
+                if ("delivered".equals(status)) {
+                    System.out.println("[OrderDAO] Auto-updated payment_status to 'paid' for COD orders");
+                }
+            }
+            return rowsUpdated > 0;
         } catch (SQLException e) {
             System.err.println("Lỗi cập nhật order status: " + e.getMessage());
             e.printStackTrace();
@@ -409,6 +420,31 @@ public class OrderDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi tính doanh thu: " + e.getMessage());
+        }
+        return BigDecimal.ZERO;
+    }
+    
+    /**
+     * Lấy doanh thu theo ngày
+     */
+    public BigDecimal getRevenueByDate(java.sql.Date date) {
+        String sql = "SELECT SUM(total) FROM orders " +
+                     "WHERE DATE(created_at) = ? " +
+                     "AND order_status = 'delivered' " +
+                     "AND payment_status = 'paid'";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setDate(1, date);
+            ResultSet rs = pstmt.executeQuery();
+            
+            if (rs.next()) {
+                BigDecimal total = rs.getBigDecimal(1);
+                return total != null ? total : BigDecimal.ZERO;
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi tính doanh thu theo ngày: " + e.getMessage());
         }
         return BigDecimal.ZERO;
     }

@@ -1048,6 +1048,16 @@
           <i class="fas fa-envelope"></i>
           <span>Liên Hệ</span>
         </div>
+        
+        <div class="menu-item" data-target="gallery">
+          <i class="fas fa-images"></i>
+          <span>Gallery</span>
+        </div>
+        
+        <div class="menu-item" data-target="news">
+          <i class="fas fa-newspaper"></i>
+          <span>Tin Tức</span>
+        </div>
 
         <div class="menu-item" data-target="analytics">
           <i class="fas fa-chart-bar"></i>
@@ -1663,6 +1673,82 @@
                   <tbody id="contactsTableBody">
                     <tr>
                       <td colspan="8" class="text-center">Đang tải...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gallery Section -->
+        <div id="gallery" class="content-section">
+          <div class="card">
+            <div class="card-header">
+              <h3><i class="fas fa-images"></i> Quản Lý Gallery</h3>
+              <button class="btn btn-primary" onclick="openGalleryModal()">
+                <i class="fas fa-plus"></i> Thêm Ảnh
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 80px;">ID</th>
+                      <th style="width: 120px;">Ảnh</th>
+                      <th>Tiêu Đề</th>
+                      <th>Mô Tả</th>
+                      <th style="width: 100px;">Thứ Tự</th>
+                      <th style="width: 100px;">Trạng Thái</th>
+                      <th style="width: 150px;">Thao Tác</th>
+                    </tr>
+                  </thead>
+                  <tbody id="galleryTableBody">
+                    <tr>
+                      <td colspan="7" style="text-align: center; padding: 40px;">
+                        <i class="fas fa-spinner fa-spin" style="font-size: 24px; color: #999;"></i>
+                        <p style="margin-top: 10px; color: #999;">Đang tải...</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- News Section -->
+        <div id="news" class="content-section">
+          <div class="card">
+            <div class="card-header">
+              <h3><i class="fas fa-newspaper"></i> Quản Lý Tin Tức</h3>
+              <button class="btn btn-primary" onclick="openNewsModal()">
+                <i class="fas fa-plus"></i> Thêm Tin Tức
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 60px;">ID</th>
+                      <th style="width: 100px;">Ảnh</th>
+                      <th>Tiêu Đề</th>
+                      <th style="width: 120px;">Danh Mục</th>
+                      <th style="width: 100px;">Tác Giả</th>
+                      <th style="width: 80px;">Lượt Xem</th>
+                      <th style="width: 100px;">Trạng Thái</th>
+                      <th style="width: 120px;">Ngày Đăng</th>
+                      <th style="width: 150px;">Thao Tác</th>
+                    </tr>
+                  </thead>
+                  <tbody id="newsTableBody">
+                    <tr>
+                      <td colspan="9" style="text-align: center; padding: 40px;">
+                        <i class="fas fa-spinner fa-spin" style="font-size: 24px; color: #999;"></i>
+                        <p style="margin-top: 10px; color: #999;">Đang tải...</p>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -2499,6 +2585,153 @@
         </div>
       </div>
     </div>
+    
+    <!-- Gallery Modal -->
+    <div class="modal-overlay" id="galleryModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h3><i class="fas fa-images"></i> <span id="galleryModalTitle">Thêm Ảnh Gallery</span></h3>
+          <button class="modal-close" onclick="closeModal('galleryModal')">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="galleryId" />
+          <form id="galleryForm">
+            <div class="form-group">
+              <label for="galleryImageUrl">URL Hình Ảnh <span style="color: red;">*</span></label>
+              <input type="url" id="galleryImageUrl" class="form-input" placeholder="https://example.com/image.jpg" required />
+              <small style="color: #666;">Nhập URL hình ảnh hoặc upload lên server</small>
+            </div>
+            
+            <div class="form-group">
+              <label for="galleryCaption">Tiêu Đề <span style="color: red;">*</span></label>
+              <input type="text" id="galleryCaption" class="form-input" placeholder="Bó hoa đẹp" required />
+            </div>
+            
+            <div class="form-group">
+              <label for="galleryDescription">Mô Tả</label>
+              <textarea id="galleryDescription" class="form-input" rows="3" placeholder="Mô tả chi tiết về hình ảnh"></textarea>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+              <div class="form-group">
+                <label for="galleryOrder">Thứ Tự Hiển Thị</label>
+                <input type="number" id="galleryOrder" class="form-input" value="0" min="0" />
+              </div>
+              
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" id="galleryActive" checked />
+                  <span>Hiển thị</span>
+                </label>
+              </div>
+            </div>
+            
+            <!-- Preview image -->
+            <div class="form-group" id="galleryPreviewContainer" style="display: none;">
+              <label>Xem Trước:</label>
+              <img id="galleryPreview" style="max-width: 100%; border-radius: 8px; margin-top: 10px;" />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="closeModal('galleryModal')">Hủy</button>
+          <button class="btn btn-primary" onclick="saveGallery()">
+            <i class="fas fa-save"></i> Lưu
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- News Modal -->
+    <div class="modal-overlay" id="newsModal">
+      <div class="modal" style="max-width: 800px;">
+        <div class="modal-header">
+          <h3><i class="fas fa-newspaper"></i> <span id="newsModalTitle">Thêm Tin Tức</span></h3>
+          <button class="modal-close" onclick="closeModal('newsModal')">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="newsId" />
+          <form id="newsForm">
+            <div class="form-group">
+              <label for="newsTitle">Tiêu Đề <span style="color: red;">*</span></label>
+              <input type="text" id="newsTitle" class="form-input" placeholder="Nhập tiêu đề tin tức" required />
+            </div>
+            
+            <div class="form-group">
+              <label for="newsSlug">Slug (URL) <span style="color: red;">*</span></label>
+              <input type="text" id="newsSlug" class="form-input" placeholder="tu-dong-tao-hoac-nhap-slug" required />
+              <small style="color: #666;">Slug sẽ tự động tạo từ tiêu đề, hoặc bạn có thể tự nhập</small>
+            </div>
+            
+            <div class="form-group">
+              <label for="newsExcerpt">Tóm Tắt <span style="color: red;">*</span></label>
+              <textarea id="newsExcerpt" class="form-input" rows="2" placeholder="Tóm tắt ngắn gọn về bài viết" required></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="newsContent">Nội Dung <span style="color: red;">*</span></label>
+              <textarea id="newsContent" class="form-input" rows="8" placeholder="Nội dung chi tiết bài viết (hỗ trợ HTML)" required></textarea>
+              <small style="color: #666;">Có thể sử dụng HTML tags: &lt;p&gt;, &lt;h3&gt;, &lt;strong&gt;, &lt;ul&gt;, &lt;li&gt;, etc.</small>
+            </div>
+            
+            <div class="form-group">
+              <label for="newsImageUrl">URL Hình Ảnh <span style="color: red;">*</span></label>
+              <input type="url" id="newsImageUrl" class="form-input" placeholder="https://example.com/image.jpg" required />
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+              <div class="form-group">
+                <label for="newsCategory">Danh Mục <span style="color: red;">*</span></label>
+                <select id="newsCategory" class="form-input" required>
+                  <option value="">-- Chọn danh mục --</option>
+                  <option value="tips">Mẹo chăm hoa</option>
+                  <option value="opening">Lễ khai trương</option>
+                  <option value="story">Câu chuyện</option>
+                  <option value="proposal">Lời cầu hôn</option>
+                  <option value="wedding">Đám cưới</option>
+                  <option value="birthday">Sinh nhật</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="newsAuthor">Tác Giả</label>
+                <input type="text" id="newsAuthor" class="form-input" placeholder="Nhập tên tác giả" value="Admin" />
+              </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+              <div class="form-group">
+                <label for="newsPublishedDate">Ngày Đăng</label>
+                <input type="datetime-local" id="newsPublishedDate" class="form-input" />
+              </div>
+              
+              <div class="form-group">
+                <label>
+                  <input type="checkbox" id="newsPublished" checked />
+                  <span>Xuất bản ngay</span>
+                </label>
+              </div>
+            </div>
+            
+            <!-- Preview image -->
+            <div class="form-group" id="newsPreviewContainer" style="display: none;">
+              <label>Xem Trước Ảnh:</label>
+              <img id="newsPreview" style="max-width: 100%; border-radius: 8px; margin-top: 10px;" />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="closeModal('newsModal')">Hủy</button>
+          <button class="btn btn-primary" onclick="saveNews()">
+            <i class="fas fa-save"></i> Lưu
+          </button>
+        </div>
+      </div>
+    </div>
 
     <!-- ============================================
          JAVASCRIPT - Sẽ thêm ở Bước 10
@@ -2546,6 +2779,8 @@
           customers: "Quản Lý Khách Hàng",
           coupons: "Quản Lý Mã Giảm Giá",
           contacts: "Quản Lý Liên Hệ",
+          gallery: "Quản Lý Gallery",
+          news: "Quản Lý Tin Tức",
           analytics: "Thống Kê & Báo Cáo",
           settings: "Cài Đặt Hệ Thống",
         };
@@ -2553,6 +2788,13 @@
         const pageTitle = document.getElementById("pageTitle");
         if (pageTitle && titles[sectionId]) {
           pageTitle.textContent = titles[sectionId];
+        }
+        
+        // Load data for specific sections
+        if (sectionId === 'gallery') {
+          loadGalleries();
+        } else if (sectionId === 'news') {
+          loadNews();
         }
       }
 
@@ -2642,7 +2884,10 @@
           if (!response.ok) throw new Error("Failed to load statistics");
 
           const result = await response.json();
+          console.log("📊 Statistics API Response:", result);
           const data = result.data || result;
+          console.log("📊 Statistics Data:", data);
+          console.log("💰 Total Revenue:", data.totalRevenue, typeof data.totalRevenue);
 
           // Update stat cards
           document.getElementById("statTotalOrders").textContent = formatNumber(
@@ -2909,17 +3154,13 @@
       // Load top products
       async function loadTopProducts() {
         try {
-          const response = await fetch(contextPath + "/admin/api/products");
-          if (!response.ok) throw new Error("Failed to load products");
+          const response = await fetch(contextPath + "/admin/api/products/top?limit=5");
+          if (!response.ok) throw new Error("Failed to load top products");
 
           const result = await response.json();
-          const allProducts = result.data || result;
-          // Sort by soldCount and take top 5
-          const products = Array.isArray(allProducts)
-            ? allProducts
-                .sort((a, b) => (b.soldCount || 0) - (a.soldCount || 0))
-                .slice(0, 5)
-            : [];
+          console.log("📦 Top Products Response:", result);
+          
+          const products = result.data || [];
           const tbody = document.querySelector("#topProductsTable tbody");
 
           if (!products || products.length === 0) {
@@ -2930,18 +3171,20 @@
 
           tbody.innerHTML = products
             .map((product) => {
+              const soldCount = product.soldCount || 0;
+              const price = product.price || 0;
+              const revenue = soldCount * price;
+              
               return (
                 "<tr>" +
                 "<td>" +
-                product.name +
+                (product.name || 'N/A') +
                 "</td>" +
                 "<td>" +
-                formatNumber(product.soldCount || 0) +
+                formatNumber(soldCount) +
                 "</td>" +
                 "<td>" +
-                formatCurrency(
-                  (product.soldCount || 0) * (product.price || 0)
-                ) +
+                formatCurrency(revenue) +
                 "</td>" +
                 "</tr>"
               );
@@ -4968,6 +5211,448 @@
         link.click();
         
         showNotification("Thành công", "Đã xuất file Excel", "success");
+      }
+      
+      // ============================================
+      //  GALLERY MANAGEMENT FUNCTIONS
+      // ============================================
+      
+      // Load all galleries
+      async function loadGalleries() {
+        try {
+          const response = await fetch(contextPath + '/api/gallery/all');
+          const result = await response.json();
+          
+          const tbody = document.getElementById('galleryTableBody');
+          
+          if (result.success && result.data && result.data.length > 0) {
+            tbody.innerHTML = result.data.map(gallery => '<tr>' +
+              '<td>' + gallery.id + '</td>' +
+              '<td><img src="' + gallery.imageUrl + '" alt="' + gallery.caption + '" style="width: 80px; height: 60px; object-fit: cover; border-radius: 4px;" onerror="this.src=\'https://via.placeholder.com/80x60?text=Error\'" /></td>' +
+              '<td>' + gallery.caption + '</td>' +
+              '<td>' + (gallery.description || '-') + '</td>' +
+              '<td>' + gallery.displayOrder + '</td>' +
+              '<td>' + (gallery.active ? '<span class="badge badge-success">Hiển thị</span>' : '<span class="badge badge-secondary">Ẩn</span>') + '</td>' +
+              '<td>' +
+                '<button class="btn btn-sm btn-secondary" onclick="editGallery(' + gallery.id + ')" title="Sửa"><i class="fas fa-edit"></i></button> ' +
+                '<button class="btn btn-sm btn-' + (gallery.active ? 'warning' : 'success') + '" onclick="toggleGalleryStatus(' + gallery.id + ', ' + !gallery.active + ')" title="' + (gallery.active ? 'Ẩn' : 'Hiện') + '"><i class="fas fa-eye' + (gallery.active ? '-slash' : '') + '"></i></button> ' +
+                '<button class="btn btn-sm btn-danger" onclick="deleteGallery(' + gallery.id + ')" title="Xóa"><i class="fas fa-trash"></i></button>' +
+              '</td>' +
+            '</tr>').join('');
+          } else {
+            tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 40px; color: #999;">Chưa có hình ảnh nào</td></tr>';
+          }
+        } catch (error) {
+          console.error('Error loading galleries:', error);
+          document.getElementById('galleryTableBody').innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 40px; color: red;">Lỗi khi tải dữ liệu</td></tr>';
+        }
+      }
+      
+      // Open gallery modal for adding
+      function openGalleryModal() {
+        document.getElementById('galleryModalTitle').textContent = 'Thêm Ảnh Gallery';
+        document.getElementById('galleryId').value = '';
+        document.getElementById('galleryForm').reset();
+        document.getElementById('galleryActive').checked = true;
+        document.getElementById('galleryPreviewContainer').style.display = 'none';
+        openModal('galleryModal');
+      }
+      
+      // Edit gallery
+      async function editGallery(id) {
+        try {
+          const response = await fetch(contextPath + '/api/gallery/' + id);
+          const result = await response.json();
+          
+          if (result.success && result.data) {
+            const gallery = result.data;
+            document.getElementById('galleryModalTitle').textContent = 'Sửa Ảnh Gallery';
+            document.getElementById('galleryId').value = gallery.id;
+            document.getElementById('galleryImageUrl').value = gallery.imageUrl;
+            document.getElementById('galleryCaption').value = gallery.caption;
+            document.getElementById('galleryDescription').value = gallery.description || '';
+            document.getElementById('galleryOrder').value = gallery.displayOrder;
+            document.getElementById('galleryActive').checked = gallery.active;
+            
+            // Show preview
+            document.getElementById('galleryPreview').src = gallery.imageUrl;
+            document.getElementById('galleryPreviewContainer').style.display = 'block';
+            
+            openModal('galleryModal');
+          }
+        } catch (error) {
+          console.error('Error loading gallery:', error);
+          showNotification('Lỗi', 'Không thể tải thông tin gallery', 'error');
+        }
+      }
+      
+      // Save gallery
+      async function saveGallery() {
+        const id = document.getElementById('galleryId').value;
+        const imageUrl = document.getElementById('galleryImageUrl').value.trim();
+        const caption = document.getElementById('galleryCaption').value.trim();
+        const description = document.getElementById('galleryDescription').value.trim();
+        const displayOrder = document.getElementById('galleryOrder').value;
+        const isActive = document.getElementById('galleryActive').checked;
+        
+        if (!imageUrl || !caption) {
+          showNotification('Lỗi', 'Vui lòng nhập đầy đủ thông tin bắt buộc', 'error');
+          return;
+        }
+        
+        const formData = new URLSearchParams();
+        formData.append('action', id ? 'update' : 'add');
+        if (id) formData.append('id', id);
+        formData.append('imageUrl', imageUrl);
+        formData.append('caption', caption);
+        formData.append('description', description);
+        formData.append('displayOrder', displayOrder);
+        formData.append('isActive', isActive);
+        
+        try {
+          const response = await fetch(contextPath + '/api/gallery', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: formData
+          });
+          
+          const result = await response.json();
+          
+          if (result.success) {
+            showNotification('Thành công', result.message, 'success');
+            closeModal('galleryModal');
+            loadGalleries();
+          } else {
+            showNotification('Lỗi', result.message, 'error');
+          }
+        } catch (error) {
+          console.error('Error saving gallery:', error);
+          showNotification('Lỗi', 'Không thể lưu gallery', 'error');
+        }
+      }
+      
+      // Toggle gallery status
+      async function toggleGalleryStatus(id, isActive) {
+        const formData = new URLSearchParams();
+        formData.append('action', 'updateStatus');
+        formData.append('id', id);
+        formData.append('isActive', isActive);
+        
+        try {
+          const response = await fetch(contextPath + '/api/gallery', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: formData
+          });
+          
+          const result = await response.json();
+          
+          if (result.success) {
+            showNotification('Thành công', result.message, 'success');
+            loadGalleries();
+          } else {
+            showNotification('Lỗi', result.message, 'error');
+          }
+        } catch (error) {
+          console.error('Error updating status:', error);
+          showNotification('Lỗi', 'Không thể cập nhật trạng thái', 'error');
+        }
+      }
+      
+      // Delete gallery
+      async function deleteGallery(id) {
+        if (!confirm('Bạn có chắc chắn muốn xóa ảnh này?')) return;
+        
+        try {
+          const response = await fetch(contextPath + '/api/gallery/' + id, {
+            method: 'DELETE'
+          });
+          
+          const result = await response.json();
+          
+          if (result.success) {
+            showNotification('Thành công', result.message, 'success');
+            loadGalleries();
+          } else {
+            showNotification('Lỗi', result.message, 'error');
+          }
+        } catch (error) {
+          console.error('Error deleting gallery:', error);
+          showNotification('Lỗi', 'Không thể xóa gallery', 'error');
+        }
+      }
+      
+      // Preview image when URL changes
+      document.addEventListener('DOMContentLoaded', function() {
+        const imageUrlInput = document.getElementById('galleryImageUrl');
+        if (imageUrlInput) {
+          imageUrlInput.addEventListener('blur', function() {
+            const url = this.value.trim();
+            if (url) {
+              document.getElementById('galleryPreview').src = url;
+              document.getElementById('galleryPreviewContainer').style.display = 'block';
+            }
+          });
+        }
+        
+        // News image preview
+        const newsImageUrlInput = document.getElementById('newsImageUrl');
+        if (newsImageUrlInput) {
+          newsImageUrlInput.addEventListener('blur', function() {
+            const url = this.value.trim();
+            if (url) {
+              document.getElementById('newsPreview').src = url;
+              document.getElementById('newsPreviewContainer').style.display = 'block';
+            }
+          });
+        }
+        
+        // Auto generate slug from title
+        const newsTitleInput = document.getElementById('newsTitle');
+        const newsSlugInput = document.getElementById('newsSlug');
+        if (newsTitleInput && newsSlugInput) {
+          newsTitleInput.addEventListener('input', function() {
+            const title = this.value.trim();
+            if (title) {
+              newsSlugInput.value = generateSlug(title);
+            }
+          });
+        }
+      });
+      
+      // ===== NEWS MANAGEMENT FUNCTIONS =====
+      
+      // Load all news
+      async function loadNews() {
+        try {
+          const response = await fetch(contextPath + '/api/news/all');
+          const result = await response.json();
+          
+          const tbody = document.getElementById('newsTableBody');
+          if (!tbody) return;
+          
+          if (result.success && result.data && result.data.length > 0) {
+            tbody.innerHTML = result.data.map(news => {
+              const publishedDate = news.publishedDate ? new Date(news.publishedDate).toLocaleDateString('vi-VN') : 'Chưa đăng';
+              const statusBadge = news.published 
+                ? '<span style="padding: 4px 12px; background: #6a994e; color: white; border-radius: 12px; font-size: 12px;">Đã xuất bản</span>'
+                : '<span style="padding: 4px 12px; background: #999; color: white; border-radius: 12px; font-size: 12px;">Bản nháp</span>';
+              
+              return '<tr>' +
+                '<td>' + news.id + '</td>' +
+                '<td><img src="' + (news.imageUrl || '') + '" style="width: 80px; height: 60px; object-fit: cover; border-radius: 4px;" onerror="this.src=\'https://via.placeholder.com/80x60?text=No+Image\'" /></td>' +
+                '<td style="max-width: 300px;">' + news.title + '</td>' +
+                '<td>' + news.categoryName + '</td>' +
+                '<td>' + (news.author || 'Admin') + '</td>' +
+                '<td>' + (news.views || 0) + '</td>' +
+                '<td>' + statusBadge + '</td>' +
+                '<td>' + publishedDate + '</td>' +
+                '<td>' +
+                  '<button class="btn btn-sm btn-warning" onclick="editNews(' + news.id + ')" title="Sửa">' +
+                    '<i class="fas fa-edit"></i>' +
+                  '</button> ' +
+                  '<button class="btn btn-sm ' + (news.published ? 'btn-secondary' : 'btn-success') + '" onclick="toggleNewsPublish(' + news.id + ', ' + !news.published + ')" title="' + (news.published ? 'Ẩn' : 'Xuất bản') + '">' +
+                    '<i class="fas fa-' + (news.published ? 'eye-slash' : 'eye') + '"></i>' +
+                  '</button> ' +
+                  '<button class="btn btn-sm btn-danger" onclick="deleteNews(' + news.id + ')" title="Xóa">' +
+                    '<i class="fas fa-trash"></i>' +
+                  '</button>' +
+                '</td>' +
+              '</tr>';
+            }).join('');
+          } else {
+            tbody.innerHTML = '<tr><td colspan="9" style="text-align: center; padding: 40px; color: #999;">Chưa có tin tức nào</td></tr>';
+          }
+        } catch (error) {
+          console.error('Error loading news:', error);
+          document.getElementById('newsTableBody').innerHTML = '<tr><td colspan="9" style="text-align: center; padding: 40px; color: #e76f51;">Lỗi khi tải danh sách tin tức</td></tr>';
+        }
+      }
+      
+      // Generate slug from Vietnamese text
+      function generateSlug(str) {
+        str = str.toLowerCase();
+        
+        // Remove Vietnamese accents
+        const from = "àáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ";
+        const to = "aaaaaaaaaaaaaaaaaeeeeeeeeeeeiiiiiooooooooooooooooouuuuuuuuuuuyyyyyd";
+        
+        for (let i = 0; i < from.length; i++) {
+          str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+        }
+        
+        // Remove special characters and replace spaces with hyphens
+        str = str.replace(/[^a-z0-9 -]/g, '')
+                 .replace(/\s+/g, '-')
+                 .replace(/-+/g, '-')
+                 .replace(/^-+|-+$/g, '');
+        
+        return str;
+      }
+      
+      // Open news modal for adding
+      function openNewsModal() {
+        document.getElementById('newsModalTitle').textContent = 'Thêm Tin Tức';
+        document.getElementById('newsId').value = '';
+        document.getElementById('newsForm').reset();
+        document.getElementById('newsAuthor').value = 'Admin';
+        document.getElementById('newsPublished').checked = true;
+        document.getElementById('newsPreviewContainer').style.display = 'none';
+        openModal('newsModal');
+      }
+      
+      // Edit news
+      async function editNews(id) {
+        try {
+          const response = await fetch(contextPath + '/api/news/all');
+          const result = await response.json();
+          
+          if (result.success) {
+            const news = result.data.find(n => n.id === id);
+            if (news) {
+              document.getElementById('newsModalTitle').textContent = 'Sửa Tin Tức';
+              document.getElementById('newsId').value = news.id;
+              document.getElementById('newsTitle').value = news.title;
+              document.getElementById('newsSlug').value = news.slug;
+              document.getElementById('newsExcerpt').value = news.excerpt || '';
+              document.getElementById('newsContent').value = news.content || '';
+              document.getElementById('newsImageUrl').value = news.imageUrl || '';
+              document.getElementById('newsCategory').value = news.category || '';
+              document.getElementById('newsAuthor').value = news.author || 'Admin';
+              document.getElementById('newsPublished').checked = news.published || false;
+              
+              if (news.publishedDate) {
+                const date = new Date(news.publishedDate);
+                const dateStr = date.toISOString().slice(0, 16);
+                document.getElementById('newsPublishedDate').value = dateStr;
+              }
+              
+              if (news.imageUrl) {
+                document.getElementById('newsPreview').src = news.imageUrl;
+                document.getElementById('newsPreviewContainer').style.display = 'block';
+              }
+              
+              openModal('newsModal');
+            }
+          }
+        } catch (error) {
+          console.error('Error loading news:', error);
+          showNotification('Lỗi', 'Không thể tải thông tin tin tức', 'error');
+        }
+      }
+      
+      // Save news (add or update)
+      async function saveNews() {
+        const id = document.getElementById('newsId').value;
+        const title = document.getElementById('newsTitle').value.trim();
+        const slug = document.getElementById('newsSlug').value.trim();
+        const excerpt = document.getElementById('newsExcerpt').value.trim();
+        const content = document.getElementById('newsContent').value.trim();
+        const imageUrl = document.getElementById('newsImageUrl').value.trim();
+        const category = document.getElementById('newsCategory').value;
+        const author = document.getElementById('newsAuthor').value.trim() || 'Admin';
+        const published = document.getElementById('newsPublished').checked;
+        const publishedDate = document.getElementById('newsPublishedDate').value;
+        
+        if (!title || !slug || !excerpt || !content || !imageUrl || !category) {
+          showNotification('Lỗi', 'Vui lòng điền đầy đủ các trường bắt buộc', 'warning');
+          return;
+        }
+        
+        const data = {
+          title: title,
+          slug: slug,
+          excerpt: excerpt,
+          content: content,
+          imageUrl: imageUrl,
+          category: category,
+          author: author,
+          published: published,
+          publishedDate: publishedDate || null
+        };
+        
+        if (id) {
+          data.id = parseInt(id);
+        }
+        
+        try {
+          const action = id ? 'update' : 'add';
+          const response = await fetch(contextPath + '/api/news?action=' + action, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+          
+          const result = await response.json();
+          
+          if (result.success) {
+            showNotification('Thành công', result.message, 'success');
+            closeModal('newsModal');
+            loadNews();
+          } else {
+            showNotification('Lỗi', result.message, 'error');
+          }
+        } catch (error) {
+          console.error('Error saving news:', error);
+          showNotification('Lỗi', 'Không thể lưu tin tức', 'error');
+        }
+      }
+      
+      // Toggle news publish status
+      async function toggleNewsPublish(id, published) {
+        try {
+          const response = await fetch(contextPath + '/api/news?action=updateStatus', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              id: id,
+              published: published
+            })
+          });
+          
+          const result = await response.json();
+          
+          if (result.success) {
+            showNotification('Thành công', published ? 'Đã xuất bản tin tức' : 'Đã ẩn tin tức', 'success');
+            loadNews();
+          } else {
+            showNotification('Lỗi', result.message, 'error');
+          }
+        } catch (error) {
+          console.error('Error toggling news publish:', error);
+          showNotification('Lỗi', 'Không thể cập nhật trạng thái', 'error');
+        }
+      }
+      
+      // Delete news
+      async function deleteNews(id) {
+        if (!confirm('Bạn có chắc chắn muốn xóa tin tức này?')) return;
+        
+        try {
+          const response = await fetch(contextPath + '/api/news?action=delete', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: id })
+          });
+          
+          const result = await response.json();
+          
+          if (result.success) {
+            showNotification('Thành công', result.message, 'success');
+            loadNews();
+          } else {
+            showNotification('Lỗi', result.message, 'error');
+          }
+        } catch (error) {
+          console.error('Error deleting news:', error);
+          showNotification('Lỗi', 'Không thể xóa tin tức', 'error');
+        }
       }
     </script>
   </body>

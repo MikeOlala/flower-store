@@ -895,6 +895,8 @@
     </div>
     
     <script>
+        const contextPath = '${pageContext.request.contextPath}';
+        
         // Sort products
         function applySort(sortValue) {
             if (sortValue) {
@@ -958,8 +960,41 @@
         }
         
         // Toggle wishlist
-        function toggleWishlist(productId) {
-            showToast('Tính năng yêu thích sẽ sớm ra mắt!', 'info');
+        async function toggleWishlist(productId) {
+            try {
+                const response = await fetch('${pageContext.request.contextPath}/api/wishlist', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        action: 'toggle',
+                        productId: parseInt(productId)
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    const btn = document.querySelector('.btn-wishlist[data-product-id="' + productId + '"]');
+                    const icon = btn.querySelector('i');
+                    
+                    if (result.inWishlist) {
+                        icon.className = 'fas fa-heart';
+                        btn.style.color = '#e74c3c';
+                        showToast('Đã thêm vào yêu thích', 'success');
+                    } else {
+                        icon.className = 'far fa-heart';
+                        btn.style.color = '';
+                        showToast('Đã xóa khỏi yêu thích', 'info');
+                    }
+                } else {
+                    showToast(result.message || 'Vui lòng đăng nhập', 'error');
+                }
+            } catch (error) {
+                console.error('Error toggling wishlist:', error);
+                showToast('Có lỗi xảy ra', 'error');
+            }
         }
         
         // Show toast notification

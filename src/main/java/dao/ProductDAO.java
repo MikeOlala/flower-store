@@ -597,6 +597,15 @@ public class ProductDAO {
         product.setActive(rs.getBoolean("is_active"));
         product.setViewCount(rs.getInt("view_count"));
         product.setSoldCount(rs.getInt("sold_count"));
+        
+        // Map rating fields nếu có
+        try {
+            product.setAverageRating(rs.getBigDecimal("average_rating"));
+            product.setReviewCount(rs.getInt("review_count"));
+        } catch (SQLException ignored) {
+            // Columns không tồn tại, bỏ qua
+        }
+        
         product.setCreatedAt(rs.getTimestamp("created_at"));
         product.setUpdatedAt(rs.getTimestamp("updated_at"));
         
@@ -653,5 +662,43 @@ public class ProductDAO {
             logSQLError("toggle active product", e);
         }
         return false;
+    }
+    
+    /**
+     * Lấy danh sách sản phẩm bán chạy nhất
+     * Tính dựa trên tổng số lượng đã bán từ order_items
+     */
+    public List<Product> getTopSellingProducts(int limit) {
+        List<Product> products = new ArrayList<>();
+        String sql = "SELECT p.*, c.name as category_name, c.slug as category_slug, " +
+                    "COALESCE(SUM(oi.quantity), 0) as sold_count " +
+                    "FROM products p " +
+                    "LEFT JOIN categories c ON p.category_id = c.id " +
+                    "LEFT JOIN order_items oi ON p.id = oi.product_id " +
+                    "LEFT JOIN orders o ON oi.order_id = o.id " +
+                    "WHERE o.order_status != 'cancelled' OR o.id IS NULL " +
+                    "GROUP BY p.id " +
+                    "ORDER BY sold_count DESC, p.created_at DESC " +
+                    "LIMIT ?";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setInt(1, limit);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Product product = mapResultSetToProduct(rs, true);
+                // Set soldCount from the aggregated value
+                product.setSoldCount(rs.getInt("sold_count"));
+                products.add(product);
+            }
+            
+            System.out.println("[ProductDAO] Found " + products.size() + " top selling products");
+        } catch (SQLException e) {
+            logSQLError("lấy top selling products", e);
+            e.printStackTrace();
+        }
+        return products;
     }
 }

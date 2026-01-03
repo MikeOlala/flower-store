@@ -1599,6 +1599,175 @@
             margin-bottom: 1.5rem;
         }
         
+        /* Wishlist Styles */
+        .wishlist-container {
+            min-height: 300px;
+        }
+        
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .wishlist-item {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .wishlist-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+        
+        .wishlist-item-image {
+            position: relative;
+            padding-top: 100%;
+            overflow: hidden;
+            background: var(--bg-light);
+        }
+        
+        .wishlist-item-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .wishlist-remove-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            color: var(--error);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            z-index: 10;
+        }
+        
+        .wishlist-remove-btn:hover {
+            background: var(--error);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .wishlist-item-content {
+            padding: 1rem;
+        }
+        
+        .wishlist-item-name {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--brown-main);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .wishlist-item-name a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .wishlist-item-name a:hover {
+            color: var(--primary);
+        }
+        
+        .wishlist-item-price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        
+        .wishlist-item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .wishlist-add-cart {
+            flex: 1;
+            padding: 0.6rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .wishlist-add-cart:hover {
+            background: var(--primary-dark);
+        }
+        
+        .wishlist-add-cart:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .wishlist-view-detail {
+            padding: 0.6rem;
+            background: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .wishlist-view-detail:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .loading-state {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--primary-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-state p {
+            color: var(--text-muted);
+        }
+        
         /* Responsive */
         @media (max-width: 992px) {
             .profile-grid {
@@ -1707,6 +1876,11 @@
                     <li>
                         <a href="#" onclick="showSection('address'); return false;" data-section="address">
                             <i class="fas fa-map-marker-alt"></i> Sổ địa chỉ
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showSection('wishlist'); return false;" data-section="wishlist">
+                            <i class="fas fa-heart"></i> Yêu thích
                         </a>
                     </li>
                     <li>
@@ -1830,6 +2004,22 @@
                             <p class="bio-content ${empty sessionScope.user.bio ? 'placeholder' : ''}" id="bioValue">
                                 ${not empty sessionScope.user.bio ? sessionScope.user.bio : 'Hãy viết vài dòng giới thiệu về bạn...'}
                             </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section 1.5: Wishlist -->
+            <div class="content-section" id="section-wishlist">
+                <div class="content-card">
+                    <div class="profile-body">
+                        <h3 class="section-title"><i class="fas fa-heart"></i> Danh sách yêu thích</h3>
+                        
+                        <div class="wishlist-container" id="wishlistContainer">
+                            <div class="loading-state" id="wishlistLoading">
+                                <div class="loading-spinner"></div>
+                                <p>Đang tải danh sách yêu thích...</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2060,6 +2250,8 @@
                 loadOrderHistory();
             } else if (sectionName === 'address') {
                 loadAddressBook();
+            } else if (sectionName === 'wishlist') {
+                loadWishlist();
             }
         }
         
@@ -3007,10 +3199,165 @@
         // Check URL hash on page load
         document.addEventListener('DOMContentLoaded', function() {
             const hash = window.location.hash.replace('#', '');
-            if (hash && ['profile', 'orders', 'address', 'password'].includes(hash)) {
+            if (hash && ['profile', 'orders', 'address', 'wishlist', 'password'].includes(hash)) {
                 showSection(hash);
             }
         });
+        
+        // ==================== Wishlist Functions ====================
+        async function loadWishlist() {
+            const container = document.getElementById('wishlistContainer');
+            const loading = document.getElementById('wishlistLoading');
+            
+            try {
+                const response = await fetch(contextPath + '/api/wishlist');
+                const result = await response.json();
+                
+                loading.style.display = 'none';
+                
+                if (!result.success) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <h4>${result.message}</h4>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                if (result.data && result.data.length > 0) {
+                    const grid = document.createElement('div');
+                    grid.className = 'wishlist-grid';
+                    
+                    result.data.forEach(item => {
+                        const product = item.product;
+                        const price = product.salePrice && product.salePrice < product.price 
+                            ? product.salePrice 
+                            : product.price;
+                        const inStock = product.quantity > 0;
+                        
+                        const card = document.createElement('div');
+                        card.className = 'wishlist-item';
+                        card.innerHTML = `
+                            <div class="wishlist-item-image">
+                                <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300?text=No+Image'" />
+                                <button class="wishlist-remove-btn" onclick="removeFromWishlist(${product.id})">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="wishlist-item-content">
+                                <h4 class="wishlist-item-name">
+                                    <a href="${contextPath}/product/${product.slug}">${product.name}</a>
+                                </h4>
+                                <div class="wishlist-item-price">${formatCurrency(price)}</div>
+                                <div class="wishlist-item-actions">
+                                    <button class="wishlist-add-cart" onclick="addToCartFromWishlist(${product.id})" ${!inStock ? 'disabled' : ''}>
+                                        <i class="fas fa-shopping-cart"></i> ${inStock ? 'Thêm giỏ' : 'Hết hàng'}
+                                    </button>
+                                    <a href="${contextPath}/product/${product.slug}" class="wishlist-view-detail">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        `;
+                        grid.appendChild(card);
+                    });
+                    
+                    container.appendChild(grid);
+                } else {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">
+                                <i class="far fa-heart"></i>
+                            </div>
+                            <h4>Danh sách yêu thích trống</h4>
+                            <p>Bạn chưa có sản phẩm nào trong danh sách yêu thích</p>
+                            <a href="${contextPath}/products" class="btn btn-primary">
+                                <i class="fas fa-shopping-bag"></i> Khám phá sản phẩm
+                            </a>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading wishlist:', error);
+                loading.style.display = 'none';
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <h4>Có lỗi xảy ra</h4>
+                        <p>Không thể tải danh sách yêu thích</p>
+                    </div>
+                `;
+            }
+        }
+        
+        async function removeFromWishlist(productId) {
+            if (!confirm('Bạn có chắc chắn muốn xóa sản phẩm khỏi danh sách yêu thích?')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(contextPath + '/api/wishlist', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        action: 'remove',
+                        productId: productId
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showToast('Đã xóa khỏi yêu thích', 'success');
+                    // Reload wishlist
+                    document.getElementById('wishlistContainer').innerHTML = `
+                        <div class="loading-state" id="wishlistLoading">
+                            <div class="loading-spinner"></div>
+                            <p>Đang tải danh sách yêu thích...</p>
+                        </div>
+                    `;
+                    loadWishlist();
+                } else {
+                    showToast(result.message, 'error');
+                }
+            } catch (error) {
+                console.error('Error removing from wishlist:', error);
+                showToast('Có lỗi xảy ra', 'error');
+            }
+        }
+        
+        async function addToCartFromWishlist(productId) {
+            try {
+                const response = await fetch(contextPath + '/api/cart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        productId: productId,
+                        quantity: 1
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showToast('Đã thêm vào giỏ hàng', 'success');
+                } else {
+                    showToast(result.message || 'Không thể thêm vào giỏ hàng', 'error');
+                }
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+                showToast('Có lỗi xảy ra', 'error');
+            }
+        }
     </script>
     <%@ include file="partials/footer.jsp" %>
 </body>

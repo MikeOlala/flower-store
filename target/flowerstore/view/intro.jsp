@@ -1310,93 +1310,11 @@
             </p>
           </div>
 
-          <div class="gallery-grid">
-            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
-              <img
-                src="https://cdn.hstatic.net/files/200000846175/file/caf51f824f9dc2c39b8c.jpg"
-                alt="Bó hoa pastel"
-              />
-
-              <div class="gallery-overlay">
-                <span class="gallery-caption">Bó hoa pastel dịu dàng</span>
-              </div>
-            </div>
-
-            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
-              <img
-                src="https://product.hstatic.net/200000846175/product/w6_57fe7e7ee65f4097aef741ba053a4609.jpg"
-                alt="Kệ hoa khai trương"
-              />
-
-              <div class="gallery-overlay">
-                <span class="gallery-caption">Kệ hoa khai trương</span>
-              </div>
-            </div>
-
-            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
-              <img
-                src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=400"
-                alt="Hoa cưới"
-              />
-
-              <div class="gallery-overlay">
-                <span class="gallery-caption">Bó hoa cưới Lãng mạn</span>
-              </div>
-            </div>
-
-            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
-              <img
-                src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=400"
-                alt="Bó hoa sinh nhật"
-              />
-
-              <div class="gallery-overlay">
-                <span class="gallery-caption">Bó hoa sinh nhật</span>
-              </div>
-            </div>
-
-            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
-              <img
-                src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400"
-                alt="Hoa tulip"
-              />
-
-              <div class="gallery-overlay">
-                <span class="gallery-caption">Tulip tươi sắc</span>
-              </div>
-            </div>
-
-            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
-              <img
-                src="https://images.unsplash.com/photo-1455659817273-f96807779a8a?w=400"
-                alt="Hoa hồng"
-              />
-
-              <div class="gallery-overlay">
-                <span class="gallery-caption">Hồng đỏ cổ điển</span>
-              </div>
-            </div>
-
-            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
-              <img
-                src="https://images.unsplash.com/photo-1487070183336-b863922373d4?w=400"
-                alt="Bó hoa cầm tay"
-              />
-
-              <div class="gallery-overlay">
-                <span class="gallery-caption">Bó hoa cầm tay</span>
-              </div>
-            </div>
-
-            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
-              <img
-                src="https://images.unsplash.com/photo-1591886960571-74d43a9d4166?w=400"
-                alt="Hoa tươi"
-              />
-
-              <div class="gallery-overlay">
-                <span class="gallery-caption">Hoa tươi mỗi ngày</span>
-              </div>
+          <div class="gallery-grid" id="galleryGrid">
+            <!-- Gallery items will be loaded dynamically -->
+            <div class="loading-gallery" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: #999;">
+              <i class="fas fa-spinner fa-spin" style="font-size: 32px; margin-bottom: 16px;"></i>
+              <p>Đang tải hình ảnh...</p>
             </div>
           </div>
         </div>
@@ -1737,6 +1655,53 @@
       function asyncCall() {
         resolveAfter5Seconds();
       }
+      
+      // Load gallery from database
+      async function loadGallery() {
+        const galleryGrid = document.getElementById('galleryGrid');
+        
+        try {
+          const response = await fetch('${pageContext.request.contextPath}/api/gallery/list');
+          const result = await response.json();
+          
+          if (result.success && result.data && result.data.length > 0) {
+            galleryGrid.innerHTML = '';
+            result.data.forEach((item, index) => {
+              const delay = (index % 4) * 100 + 100;
+              const galleryItem = document.createElement('div');
+              galleryItem.className = 'gallery-item';
+              galleryItem.setAttribute('data-aos', 'zoom-in');
+              galleryItem.setAttribute('data-aos-delay', delay);
+              
+              galleryItem.innerHTML = '<img src="' + item.imageUrl + '" alt="' + item.caption + '" onerror="this.src=\'https://via.placeholder.com/400x300?text=No+Image\'" />' +
+                '<div class="gallery-overlay">' +
+                  '<span class="gallery-caption">' + item.caption + '</span>' +
+                '</div>';
+              
+              galleryGrid.appendChild(galleryItem);
+            });
+            
+            // Reinitialize AOS for new elements
+            if (typeof AOS !== 'undefined') {
+              AOS.refresh();
+            }
+          } else {
+            galleryGrid.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: #999;">' +
+              '<p>Chưa có hình ảnh nào</p>' +
+              '</div>';
+          }
+        } catch (error) {
+          console.error('Error loading gallery:', error);
+          galleryGrid.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: #999;">' +
+            '<p>Không thể tải hình ảnh</p>' +
+            '</div>';
+        }
+      }
+      
+      // Load gallery when page loads
+      document.addEventListener('DOMContentLoaded', function() {
+        loadGallery();
+      });
     </script>
 
     <script

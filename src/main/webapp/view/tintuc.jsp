@@ -1,4 +1,6 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 
@@ -1542,6 +1544,9 @@
             alert("Đang chuyển đến bài viết: " + title);
           });
         });
+        
+        // Load news from database
+        loadNewsFromDB();
 
         // Initialize AOS if available
 
@@ -1555,6 +1560,84 @@
           });
         }
       });
+      
+      // Load news function
+      async function loadNewsFromDB() {
+        try {
+          const response = await fetch('${pageContext.request.contextPath}/api/news/list');
+          const result = await response.json();
+          
+          if (result.success && result.data && result.data.length > 0) {
+            const newsGrid = document.getElementById('newsGrid');
+            newsGrid.innerHTML = '';
+            
+            result.data.forEach(news => {
+              const article = document.createElement('article');
+              article.className = 'news-card';
+              article.setAttribute('data-category', news.category);
+              
+              const publishedDate = new Date(news.publishedDate);
+              const formattedDate = publishedDate.toLocaleDateString('vi-VN');
+              
+              article.innerHTML = '<div class="news-image-wrapper">' +
+                '<img class="news-thumb" src="' + news.imageUrl + '" alt="' + news.title + '" onerror="this.src=\'https://via.placeholder.com/400x300?text=No+Image\'" />' +
+                '<div class="news-overlay"></div>' +
+                '</div>' +
+                '<div class="news-content">' +
+                  '<div class="news-meta">' +
+                    '<span class="news-category">' + getCategoryName(news.category) + '</span>' +
+                    '<span class="news-date">' + formattedDate + '</span>' +
+                  '</div>' +
+                  '<h2 class="news-heading">' + news.title + '</h2>' +
+                  '<p class="news-excerpt">' + (news.excerpt || '') + '</p>' +
+                  '<a href="${pageContext.request.contextPath}/news/' + news.slug + '" class="news-link">Xem chi tiết</a>' +
+                '</div>';
+              
+              newsGrid.appendChild(article);
+            });
+            
+            // Re-attach filter events
+            filterButtons = document.querySelectorAll(".filter-btn");
+            newsCards = document.querySelectorAll(".news-card");
+            attachFilterEvents();
+          }
+        } catch (error) {
+          console.error('Error loading news:', error);
+        }
+      }
+      
+      function getCategoryName(category) {
+        const categories = {
+          'tips': 'Tips chọn hoa',
+          'opening': 'Khai trương',
+          'story': 'Câu chuyện',
+          'proposal': 'Cầu hôn',
+          'wedding': 'Đám cưới',
+          'birthday': 'Sinh nhật'
+        };
+        return categories[category] || category;
+      }
+      
+      function attachFilterEvents() {
+        filterButtons.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            filterButtons.forEach((b) => b.classList.remove("active"));
+            this.classList.add("active");
+
+            const filter = this.getAttribute("data-filter");
+
+            newsCards.forEach((card) => {
+              const category = card.getAttribute("data-category");
+
+              if (filter === "all" || category === filter) {
+                card.style.display = "block";
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        });
+      }
 
       // Async loading
 

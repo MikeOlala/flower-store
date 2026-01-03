@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -186,6 +187,16 @@ public class AdminServlet extends HttpServlet {
                 List<User> users = userDAO.findAll();
                 result.put("success", true);
                 result.put("data", users);
+            } else if (pathInfo.equals("/api/products/top")) {
+                // API cho top sản phẩm bán chạy
+                int limit = 5;
+                String limitParam = request.getParameter("limit");
+                if (limitParam != null && !limitParam.isEmpty()) {
+                    limit = Integer.parseInt(limitParam);
+                }
+                List<Product> topProducts = productDAO.getTopSellingProducts(limit);
+                result.put("success", true);
+                result.put("data", topProducts);
             } else if (pathInfo.equals("/api/products")) {
                 List<Product> products = productDAO.findAllIncludeInactive();
                 result.put("success", true);
@@ -200,6 +211,16 @@ public class AdminServlet extends HttpServlet {
                     result.put("success", false);
                     result.put("message", "Không tìm thấy sản phẩm");
                 }
+            } else if (pathInfo.equals("/api/orders/recent")) {
+                // API cho đơn hàng gần đây
+                int limit = 10;
+                String limitParam = request.getParameter("limit");
+                if (limitParam != null && !limitParam.isEmpty()) {
+                    limit = Integer.parseInt(limitParam);
+                }
+                List<Order> orders = orderDAO.getRecentOrders(limit);
+                result.put("success", true);
+                result.put("data", orders);
             } else if (pathInfo.equals("/api/orders")) {
                 List<Order> orders = orderDAO.findAll();
                 result.put("success", true);
@@ -264,10 +285,21 @@ public class AdminServlet extends HttpServlet {
                 }
             } else if (pathInfo.equals("/api/stats")) {
                 Map<String, Object> stats = new HashMap<>();
-                stats.put("totalUsers", userDAO.getTotalUsers());
-                stats.put("totalProducts", productDAO.getTotalProducts());
-                stats.put("totalOrders", orderDAO.getTotalOrders());
-                stats.put("totalRevenue", orderDAO.getTotalRevenue());
+                int totalUsers = userDAO.getTotalUsers();
+                int totalProducts = productDAO.getTotalProducts();
+                int totalOrders = orderDAO.getTotalOrders();
+                BigDecimal totalRevenue = orderDAO.getTotalRevenue();
+                
+                System.out.println("[AdminServlet] Stats API called");
+                System.out.println("  Total Users: " + totalUsers);
+                System.out.println("  Total Products: " + totalProducts);
+                System.out.println("  Total Orders: " + totalOrders);
+                System.out.println("  Total Revenue: " + totalRevenue);
+                
+                stats.put("totalUsers", totalUsers);
+                stats.put("totalProducts", totalProducts);
+                stats.put("totalOrders", totalOrders);
+                stats.put("totalRevenue", totalRevenue);
                 stats.put("totalCoupons", couponDAO.getTotalCoupons());
                 stats.put("totalContacts", contactDAO.getTotalContacts());
                 stats.put("pendingOrders", orderDAO.countByStatus("pending"));
@@ -278,6 +310,38 @@ public class AdminServlet extends HttpServlet {
                 stats.put("newContacts", contactDAO.countByStatus("new"));
                 result.put("success", true);
                 result.put("data", stats);
+            } else if (pathInfo.equals("/api/revenue")) {
+                // API cho biểu đồ doanh thu
+                String period = request.getParameter("period");
+                if (period == null) period = "week";
+                
+                List<Map<String, Object>> revenueData = new ArrayList<>();
+                java.time.LocalDate today = java.time.LocalDate.now();
+                
+                if ("week".equals(period)) {
+                    // 7 ngày gần đây
+                    for (int i = 6; i >= 0; i--) {
+                        java.time.LocalDate date = today.minusDays(i);
+                        BigDecimal revenue = orderDAO.getRevenueByDate(java.sql.Date.valueOf(date));
+                        Map<String, Object> dayData = new HashMap<>();
+                        dayData.put("date", date.toString());
+                        dayData.put("revenue", revenue != null ? revenue : BigDecimal.ZERO);
+                        revenueData.add(dayData);
+                    }
+                } else if ("month".equals(period)) {
+                    // 30 ngày gần đây
+                    for (int i = 29; i >= 0; i--) {
+                        java.time.LocalDate date = today.minusDays(i);
+                        BigDecimal revenue = orderDAO.getRevenueByDate(java.sql.Date.valueOf(date));
+                        Map<String, Object> dayData = new HashMap<>();
+                        dayData.put("date", date.toString());
+                        dayData.put("revenue", revenue != null ? revenue : BigDecimal.ZERO);
+                        revenueData.add(dayData);
+                    }
+                }
+                
+                result.put("success", true);
+                result.put("data", revenueData);
             } else {
                 result.put("success", false);
                 result.put("message", "API không tồn tại: " + pathInfo);
@@ -516,10 +580,26 @@ public class AdminServlet extends HttpServlet {
             
             String name = request.getParameter("name");
             String slug = request.getParameter("slug");
+            if (slug == null || slug.isEmpty()) {
+                // Tự động tạo slug từ name nếu không có
+                slug = name.toLowerCase()
+                    .replaceAll("\\s+", "-")
+                    .replaceAll("[àáạảãâầấậẩẫăằắặẳẵ]", "a")
+                    .replaceAll("[èéẹẻẽêềếệểễ]", "e")
+                    .replaceAll("[ìíịỉĩ]", "i")
+                    .replaceAll("[òóọỏõôồốộổỗơờớợởỡ]", "o")
+                    .replaceAll("[ùúụủũưừứựửữ]", "u")
+                    .replaceAll("[ỳýỵỷỹ]", "y")
+                    .replaceAll("[đ]", "d")
+                    .replaceAll("[^a-z0-9-]", "");
+            }
             String description = request.getParameter("description");
             String image = request.getParameter("image");
             String parentIdStr = request.getParameter("parentId");
+            String displayOrderStr = request.getParameter("displayOrder");
+            
             Integer parentId = (parentIdStr != null && !parentIdStr.isEmpty()) ? Integer.parseInt(parentIdStr) : null;
+            Integer displayOrder = (displayOrderStr != null && !displayOrderStr.isEmpty()) ? Integer.parseInt(displayOrderStr) : 0;
             
             category.setName(name);
             category.setSlug(slug);
@@ -528,12 +608,16 @@ public class AdminServlet extends HttpServlet {
                 category.setImage(image);
             }
             category.setParentId(parentId);
+            category.setDisplayOrder(displayOrder);
+            
+            System.out.println("[AdminServlet] Updating category: id=" + id + ", name=" + name + ", displayOrder=" + displayOrder);
             
             boolean success = categoryDAO.update(category);
             result.put("success", success);
             result.put("message", success ? "Cập nhật danh mục thành công" : "Cập nhật danh mục thất bại");
         } catch (Exception e) {
             System.err.println("[AdminServlet] Error updating category: " + e.getMessage());
+            e.printStackTrace();
             result.put("success", false);
             result.put("message", "Lỗi: " + e.getMessage());
         }

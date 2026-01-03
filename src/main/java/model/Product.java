@@ -22,6 +22,8 @@ public class Product {
     private boolean isActive;
     private int viewCount;
     private int soldCount;
+    private BigDecimal averageRating; // Điểm đánh giá trung bình
+    private int reviewCount; // Số lượng đánh giá
     private Timestamp createdAt;
     private Timestamp updatedAt;
     
@@ -107,6 +109,12 @@ public class Product {
     
     public int getSoldCount() { return soldCount; }
     public void setSoldCount(int soldCount) { this.soldCount = soldCount; }
+    
+    public BigDecimal getAverageRating() { return averageRating; }
+    public void setAverageRating(BigDecimal averageRating) { this.averageRating = averageRating; }
+    
+    public int getReviewCount() { return reviewCount; }
+    public void setReviewCount(int reviewCount) { this.reviewCount = reviewCount; }
     
     public Timestamp getCreatedAt() { return createdAt; }
     public void setCreatedAt(Timestamp createdAt) { this.createdAt = createdAt; }
