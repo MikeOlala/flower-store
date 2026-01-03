@@ -198,6 +198,46 @@ public class ContactDAO {
     }
     
     /**
+     * Đếm tổng số liên hệ
+     */
+    public int getTotalContacts() {
+        String sql = "SELECT COUNT(*) FROM contacts";
+        
+        try (Connection conn = dbConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
+    /**
+     * Đếm số liên hệ theo status
+     */
+    public int countByStatus(String status) {
+        String sql = "SELECT COUNT(*) FROM contacts WHERE status = ?";
+        
+        try (Connection conn = dbConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setString(1, status);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
+    /**
      * Map ResultSet to Contact object
      */
     private Contact mapResultSetToContact(ResultSet rs) throws SQLException {
@@ -209,7 +249,13 @@ public class ContactDAO {
         contact.setSubject(rs.getString("subject"));
         contact.setMessage(rs.getString("message"));
         contact.setStatus(rs.getString("status"));
-        contact.setAdminNote(rs.getString("admin_note"));
+        
+        // Xử lý admin_note nếu có
+        try {
+            contact.setAdminNote(rs.getString("admin_note"));
+        } catch (SQLException e) {
+            // Column không tồn tại, bỏ qua
+        }
         
         int userId = rs.getInt("user_id");
         if (!rs.wasNull()) {
