@@ -1,7 +1,18 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page buffer="256kb" autoFlush="true" %>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+    // Security check
+    response.setCharacterEncoding("UTF-8");
+    request.setCharacterEncoding("UTF-8");
+    
+    if (session == null || session.getAttribute("user") == null) {
+        response.sendRedirect(request.getContextPath() + "/view/login_1.jsp");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -576,6 +587,8 @@
             align-items: center !important;
             justify-content: center !important;
             z-index: 99999 !important;
+            padding: 20px !important;
+            overflow-y: auto !important;
         }
         
         #modalOverlay.active {
@@ -588,8 +601,8 @@
             background: white !important;
             border-radius: var(--radius-lg) !important;
             width: 90% !important;
-            max-width: 550px !important;
-            max-height: 85vh !important;
+            max-width: 650px !important;
+            max-height: 90vh !important;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
             position: relative !important;
             z-index: 100000 !important;
@@ -598,6 +611,7 @@
             visibility: visible !important;
             opacity: 1 !important;
             overflow: hidden !important;
+            margin: auto !important;
         }
         
         #modalOverlay.active #editModal {
@@ -663,6 +677,7 @@
             visibility: visible !important;
             opacity: 1 !important;
             min-height: 100px !important;
+            max-height: calc(90vh - 200px) !important;
             overflow-y: auto !important;
             overflow-x: hidden !important;
             background: white !important;
@@ -780,13 +795,27 @@
             visibility: visible !important;
             opacity: 1 !important;
             flex-shrink: 0 !important;
+            min-height: 70px !important;
+            align-items: center !important;
         }
         
         /* Responsive Grid for Address Form */
         @media (max-width: 768px) {
             #editModal {
                 width: 95% !important;
-                max-height: 90vh !important;
+                max-width: 95% !important;
+                max-height: 85vh !important;
+            }
+            
+            #editModal .modal-footer {
+                flex-direction: column !important;
+                gap: 0.5rem !important;
+                padding: 1rem !important;
+            }
+            
+            #editModal .btn {
+                width: 100% !important;
+                justify-content: center !important;
             }
             
             #modalBody [style*="grid-template-columns: 1fr 1fr"] {
@@ -944,9 +973,13 @@
             transition: var(--transition) !important;
             display: inline-flex !important;
             align-items: center !important;
+            justify-content: center !important;
             gap: 0.5rem !important;
             visibility: visible !important;
             opacity: 1 !important;
+            white-space: nowrap !important;
+            min-width: fit-content !important;
+            border: none !important;
         }
         
         #editModal .btn-secondary,
@@ -954,6 +987,7 @@
             background: white !important;
             border: 2px solid var(--border-color) !important;
             color: var(--brown-soft) !important;
+            z-index: 1 !important;
         }
         
         #editModal .btn-secondary:hover,
@@ -968,6 +1002,7 @@
             border: none !important;
             color: white !important;
             box-shadow: 0 4px 15px rgba(201,147,102,0.3) !important;
+            z-index: 1 !important;
         }
         
         #editModal .btn-primary:hover,
@@ -1599,6 +1634,175 @@
             margin-bottom: 1.5rem;
         }
         
+        /* Wishlist Styles */
+        .wishlist-container {
+            min-height: 300px;
+        }
+        
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .wishlist-item {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .wishlist-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+        
+        .wishlist-item-image {
+            position: relative;
+            padding-top: 100%;
+            overflow: hidden;
+            background: var(--bg-light);
+        }
+        
+        .wishlist-item-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .wishlist-remove-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            color: var(--error);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            z-index: 10;
+        }
+        
+        .wishlist-remove-btn:hover {
+            background: var(--error);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .wishlist-item-content {
+            padding: 1rem;
+        }
+        
+        .wishlist-item-name {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--brown-main);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .wishlist-item-name a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .wishlist-item-name a:hover {
+            color: var(--primary);
+        }
+        
+        .wishlist-item-price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        
+        .wishlist-item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .wishlist-add-cart {
+            flex: 1;
+            padding: 0.6rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .wishlist-add-cart:hover {
+            background: var(--primary-dark);
+        }
+        
+        .wishlist-add-cart:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .wishlist-view-detail {
+            padding: 0.6rem;
+            background: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .wishlist-view-detail:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .loading-state {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--primary-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-state p {
+            color: var(--text-muted);
+        }
+        
         /* Responsive */
         @media (max-width: 992px) {
             .profile-grid {
@@ -1687,11 +1891,12 @@
                             <img src="${sessionScope.user.avatar}" alt="Avatar" class="sidebar-avatar">
                         </c:when>
                         <c:otherwise>
-                            <img src="https://ui-avatars.com/api/?name=${sessionScope.user.fullname}&background=c99366&color=fff&size=80" alt="Avatar" class="sidebar-avatar">
+                            <c:set var="displayName" value="${not empty sessionScope.user.fullname ? sessionScope.user.fullname : 'User'}" />
+                            <img src="https://ui-avatars.com/api/?name=${displayName}&background=c99366&color=fff&size=80" alt="Avatar" class="sidebar-avatar">
                         </c:otherwise>
                     </c:choose>
-                    <div class="sidebar-name">${sessionScope.user.fullname}</div>
-                    <div class="sidebar-email">${sessionScope.user.email}</div>
+                    <div class="sidebar-name">${not empty sessionScope.user.fullname ? sessionScope.user.fullname : 'Chưa cập nhật'}</div>
+                    <div class="sidebar-email">${not empty sessionScope.user.email ? sessionScope.user.email : 'Chưa cập nhật'}</div>
                 </div>
                 <ul class="sidebar-menu">
                     <li>
@@ -1707,6 +1912,11 @@
                     <li>
                         <a href="#" onclick="showSection('address'); return false;" data-section="address">
                             <i class="fas fa-map-marker-alt"></i> Sổ địa chỉ
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="showSection('wishlist'); return false;" data-section="wishlist">
+                            <i class="fas fa-heart"></i> Yêu thích
                         </a>
                     </li>
                     <li>
@@ -1732,15 +1942,16 @@
                                     <img src="${sessionScope.user.avatar}" alt="Avatar" class="avatar" id="avatarImg">
                                 </c:when>
                                 <c:otherwise>
-                                    <img src="https://ui-avatars.com/api/?name=${sessionScope.user.fullname}&background=c99366&color=fff&size=130" alt="Avatar" class="avatar" id="avatarImg">
+                                    <c:set var="profileName" value="${not empty sessionScope.user.fullname ? sessionScope.user.fullname : 'User'}" />
+                                    <img src="https://ui-avatars.com/api/?name=${profileName}&background=c99366&color=fff&size=130" alt="Avatar" class="avatar" id="avatarImg">
                                 </c:otherwise>
                             </c:choose>
                             <button class="avatar-edit" onclick="openModal('avatar')">
                                 <i class="fas fa-camera"></i>
                             </button>
                         </div>
-                        <h2 class="profile-name" id="displayName">${sessionScope.user.fullname}</h2>
-                        <p class="profile-email">${sessionScope.user.email}</p>
+                        <h2 class="profile-name" id="displayName">${not empty sessionScope.user.fullname ? sessionScope.user.fullname : 'Chưa cập nhật'}</h2>
+                        <p class="profile-email">${not empty sessionScope.user.email ? sessionScope.user.email : 'Chưa cập nhật'}</p>
                     </div>
                     
                     <div class="profile-body">
@@ -1755,7 +1966,7 @@
                                         <i class="fas fa-pen"></i>
                                     </button>
                                 </div>
-                                <div class="info-card-value" id="fullnameValue">${sessionScope.user.fullname}</div>
+                                <div class="info-card-value ${empty sessionScope.user.fullname ? 'placeholder' : ''}" id="fullnameValue">${not empty sessionScope.user.fullname ? sessionScope.user.fullname : 'Chưa cập nhật'}</div>
                             </div>
                             
                             <!-- Số điện thoại -->
@@ -1811,7 +2022,7 @@
                             <div class="info-row-locked">
                                 <div>
                                     <span class="info-card-label"><i class="fas fa-envelope"></i> Email</span>
-                                    <div class="info-card-value">${sessionScope.user.email}</div>
+                                    <div class="info-card-value">${not empty sessionScope.user.email ? sessionScope.user.email : 'Chưa cập nhật'}</div>
                                 </div>
                                 <span class="locked-badge"><i class="fas fa-lock"></i> Không thể thay đổi</span>
                             </div>
@@ -1830,6 +2041,22 @@
                             <p class="bio-content ${empty sessionScope.user.bio ? 'placeholder' : ''}" id="bioValue">
                                 ${not empty sessionScope.user.bio ? sessionScope.user.bio : 'Hãy viết vài dòng giới thiệu về bạn...'}
                             </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Section 1.5: Wishlist -->
+            <div class="content-section" id="section-wishlist">
+                <div class="content-card">
+                    <div class="profile-body">
+                        <h3 class="section-title"><i class="fas fa-heart"></i> Danh sách yêu thích</h3>
+                        
+                        <div class="wishlist-container" id="wishlistContainer">
+                            <div class="loading-state" id="wishlistLoading">
+                                <div class="loading-spinner"></div>
+                                <p>Đang tải danh sách yêu thích...</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1934,67 +2161,6 @@
             </div>
         </div>
     </div>
-                            <!-- Address cards will be loaded here -->
-                        </div>
-                        <div class="add-address-btn" onclick="openModal('newAddress')">
-                            <i class="fas fa-plus"></i>
-                            <span>Thêm địa chỉ mới</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Section 4: Đổi mật khẩu -->
-            <div class="content-section" id="section-password">
-                <div class="password-card">
-                    <h3 class="section-title"><i class="fas fa-lock"></i> Đổi mật khẩu</h3>
-                    <form class="password-form" onsubmit="changePassword(event)">
-                        <div class="form-group">
-                            <label class="form-label">Mật khẩu hiện tại</label>
-                            <div class="password-input-wrapper">
-                                <input type="password" class="form-control" id="currentPassword" placeholder="Nhập mật khẩu hiện tại" required>
-                                <button type="button" class="password-toggle" onclick="togglePassword('currentPassword')">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Mật khẩu mới</label>
-                            <div class="password-input-wrapper">
-                                <input type="password" class="form-control" id="newPassword" placeholder="Nhập mật khẩu mới" required oninput="checkPasswordStrength()">
-                                <button type="button" class="password-toggle" onclick="togglePassword('newPassword')">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Xác nhận mật khẩu mới</label>
-                            <div class="password-input-wrapper">
-                                <input type="password" class="form-control" id="confirmPassword" placeholder="Nhập lại mật khẩu mới" required>
-                                <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="password-requirements">
-                            <h5>Yêu cầu mật khẩu:</h5>
-                            <ul>
-                                <li id="req-length"><i class="fas fa-circle"></i> Ít nhất 8 ký tự</li>
-                                <li id="req-upper"><i class="fas fa-circle"></i> Ít nhất 1 chữ hoa</li>
-                                <li id="req-lower"><i class="fas fa-circle"></i> Ít nhất 1 chữ thường</li>
-                                <li id="req-number"><i class="fas fa-circle"></i> Ít nhất 1 số</li>
-                            </ul>
-                        </div>
-                        <div style="margin-top: 1.5rem;">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save"></i> Đổi mật khẩu
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     
     <!-- Modal Overlay -->
     <div class="modal-overlay" id="modalOverlay">
@@ -2060,6 +2226,8 @@
                 loadOrderHistory();
             } else if (sectionName === 'address') {
                 loadAddressBook();
+            } else if (sectionName === 'wishlist') {
+                loadWishlist();
             }
         }
         
@@ -2441,6 +2609,21 @@
             document.getElementById('modalTitle').innerHTML = '<i class="fas fa-edit"></i> Chỉnh sửa địa chỉ';
             document.getElementById('modalBody').innerHTML = getAddressFormHtml(address);
             
+            // Show modal footer with save button - set onclick để submit form
+            const modalFooter = document.querySelector('#editModal .modal-footer');
+            if (modalFooter) {
+                modalFooter.style.display = 'flex';
+                const saveBtn = modalFooter.querySelector('.btn-primary');
+                if (saveBtn) {
+                    saveBtn.onclick = function() {
+                        const form = document.getElementById('addressForm');
+                        if (form) {
+                            form.requestSubmit();
+                        }
+                    };
+                }
+            }
+            
             document.getElementById('modalOverlay').classList.add('active');
         }
         
@@ -2449,6 +2632,36 @@
             
             document.getElementById('modalTitle').innerHTML = '<i class="fas fa-plus"></i> Thêm địa chỉ mới';
             document.getElementById('modalBody').innerHTML = getAddressFormHtml(null);
+            
+            // Show modal footer with save button - thay đổi onclick để gọi saveAddress
+            const modalFooter = document.querySelector('#editModal .modal-footer');
+            console.log('Modal footer found:', modalFooter);
+            
+            if (modalFooter) {
+                // Đảm bảo hiển thị
+                modalFooter.style.display = 'flex';
+                modalFooter.style.visibility = 'visible';
+                modalFooter.style.opacity = '1';
+                
+                const saveBtn = modalFooter.querySelector('.btn-primary');
+                console.log('Save button found:', saveBtn);
+                
+                if (saveBtn) {
+                    // Thay đổi onclick để submit form thay vì gọi saveChanges
+                    saveBtn.onclick = function() {
+                        console.log('Save button clicked');
+                        const form = document.getElementById('addressForm');
+                        if (form) {
+                            console.log('Submitting form...');
+                            form.requestSubmit();
+                        } else {
+                            console.error('Form not found!');
+                        }
+                    };
+                }
+            } else {
+                console.error('Modal footer not found!');
+            }
             
             document.getElementById('modalOverlay').classList.add('active');
         }
@@ -2719,7 +2932,7 @@
                     <div class="form-group">
                         <label class="form-label">Họ và tên</label>
                         <input type="text" class="form-control" id="inputFullname" 
-                               value="${sessionScope.user.fullname}" 
+                               value="${sessionScope.user.fullname != null ? sessionScope.user.fullname : ''}" 
                                placeholder="Nhập họ và tên">
                     </div>
                 `
@@ -2879,7 +3092,11 @@
                     value = document.getElementById('inputPhone').value.trim();
                     break;
                 case 'gender':
-                    value = document.getElementById('inputGender').value;
+                    value = document.getElementById('inputGender').value.trim();
+                    if (!value) {
+                        showToast('Vui lòng chọn giới tính', 'error');
+                        return;
+                    }
                     break;
                 case 'birthday':
                     value = document.getElementById('inputBirthday').value;
@@ -2940,9 +3157,10 @@
                     break;
                 case 'gender':
                     const genderEl = document.getElementById('genderValue');
-                    const genderMap = { 'male': 'Nam', 'female': 'Nữ', 'other': 'Khác' };
-                    genderEl.textContent = genderMap[value] || 'Chưa cập nhật';
-                    genderEl.classList.toggle('placeholder', !value);
+                    const genderMap = { 'male': 'Nam', 'female': 'Nữ', 'other': 'Khác', 'Male': 'Nam', 'Female': 'Nữ', 'Other': 'Khác' };
+                    const displayGender = genderMap[value] || (value ? value : 'Chưa cập nhật');
+                    genderEl.textContent = displayGender;
+                    genderEl.classList.toggle('placeholder', !value || value === '');
                     break;
                 case 'birthday':
                     const birthdayEl = document.getElementById('birthdayValue');
@@ -3007,10 +3225,196 @@
         // Check URL hash on page load
         document.addEventListener('DOMContentLoaded', function() {
             const hash = window.location.hash.replace('#', '');
-            if (hash && ['profile', 'orders', 'address', 'password'].includes(hash)) {
+            if (hash && ['profile', 'orders', 'address', 'wishlist', 'password'].includes(hash)) {
                 showSection(hash);
             }
         });
+        
+        // ==================== Wishlist Functions ====================
+        async function loadWishlist() {
+            const container = document.getElementById('wishlistContainer');
+            const loading = document.getElementById('wishlistLoading');
+            
+            try {
+                const response = await fetch(contextPath + '/api/wishlist');
+                const result = await response.json();
+                
+                console.log('=== WISHLIST DEBUG ===');
+                console.log('Full response:', result);
+                console.log('Success:', result.success);
+                console.log('Data length:', result.data ? result.data.length : 0);
+                
+                // Clear container first
+                container.innerHTML = '';
+                
+                if (!result.success) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <h4>${result.message || 'Không thể tải wishlist'}</h4>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                if (result.data && result.data.length > 0) {
+                    console.log('Rendering wishlist items...');
+                    
+                    const gridHTML = result.data.map(function(item, index) {
+                        console.log('Item ' + index + ':', item);
+                        
+                        const product = item.product;
+                        if (!product) {
+                            console.error('Product not found in wishlist item:', item);
+                            return '';
+                        }
+                        
+                        console.log('Product ' + index + ':', {
+                            id: product.id,
+                            name: product.name,
+                            price: product.price,
+                            salePrice: product.salePrice,
+                            image: product.image,
+                            slug: product.slug,
+                            quantity: product.quantity
+                        });
+                        
+                        // Format giá tiền
+                        const price = product.salePrice && product.salePrice < product.price 
+                            ? product.salePrice 
+                            : product.price;
+                        const formattedPrice = new Intl.NumberFormat('vi-VN').format(price);
+                        const inStock = product.quantity > 0;
+                        
+                        // Xử lý image path
+                        const imagePath = product.image || contextPath + '/uploads/product/default.jpg';
+                        
+                        console.log('Image path ' + index + ':', imagePath);
+                        
+                        return '<div class="wishlist-item">' +
+                            '<div class="wishlist-item-image">' +
+                                '<img src="' + imagePath + '" alt="' + (product.name || 'Product') + '" onerror="this.src=\'' + contextPath + '/uploads/product/default.jpg\'" />' +
+                                '<button class="wishlist-remove-btn" onclick="removeFromWishlist(' + product.id + ')">' +
+                                    '<i class="fas fa-times"></i>' +
+                                '</button>' +
+                            '</div>' +
+                            '<div class="wishlist-item-content">' +
+                                '<h4 class="wishlist-item-name">' +
+                                    '<a href="' + contextPath + '/san-pham/' + (product.slug || '') + '">' + (product.name || 'Unnamed Product') + '</a>' +
+                                '</h4>' +
+                                '<div class="wishlist-item-price">' + formattedPrice + ' ₫</div>' +
+                                '<div class="wishlist-item-actions">' +
+                                    '<button class="wishlist-add-cart" onclick="addToCartFromWishlist(' + product.id + ')" ' + (!inStock ? 'disabled' : '') + '>' +
+                                        '<i class="fas fa-shopping-cart"></i> ' + (inStock ? 'Thêm giỏ' : 'Hết hàng') +
+                                    '</button>' +
+                                    '<a href="' + contextPath + '/san-pham/' + (product.slug || '') + '" class="wishlist-view-detail">' +
+                                        '<i class="fas fa-eye"></i>' +
+                                    '</a>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>';
+                    }).join('');
+                    
+                    container.innerHTML = '<div class="wishlist-grid">' + gridHTML + '</div>';
+                    console.log('Wishlist rendered successfully!');
+                } else {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">
+                                <i class="far fa-heart"></i>
+                            </div>
+                            <h4>Danh sách yêu thích trống</h4>
+                            <p>Bạn chưa có sản phẩm nào trong danh sách yêu thích</p>
+                            <a href="${contextPath}/san-pham" class="btn btn-primary">
+                                <i class="fas fa-shopping-bag"></i> Khám phá sản phẩm
+                            </a>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading wishlist:', error);
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <h4>Có lỗi xảy ra</h4>
+                        <p>Không thể tải danh sách yêu thích</p>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+        
+        async function removeFromWishlist(productId) {
+            if (!confirm('Bạn có chắc chắn muốn xóa sản phẩm khỏi danh sách yêu thích?')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(contextPath + '/api/wishlist', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        action: 'remove',
+                        productId: productId
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showToast('Đã xóa khỏi yêu thích', 'success');
+                    // Reload wishlist
+                    document.getElementById('wishlistContainer').innerHTML = `
+                        <div class="loading-state" id="wishlistLoading">
+                            <div class="loading-spinner"></div>
+                            <p>Đang tải danh sách yêu thích...</p>
+                        </div>
+                    `;
+                    loadWishlist();
+                } else {
+                    showToast(result.message, 'error');
+                }
+            } catch (error) {
+                console.error('Error removing from wishlist:', error);
+                showToast('Có lỗi xảy ra', 'error');
+            }
+        }
+        
+        async function addToCartFromWishlist(productId) {
+            try {
+                const response = await fetch(contextPath + '/api/cart/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        productId: productId,
+                        quantity: 1
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showToast('Đã thêm vào giỏ hàng', 'success');
+                    // Cập nhật cart count nếu có
+                    if (result.cartItemCount) {
+                        updateCartCount(result.cartItemCount);
+                    }
+                } else {
+                    showToast(result.message || 'Không thể thêm vào giỏ hàng', 'error');
+                }
+            } catch (error) {
+                console.error('Error adding to cart:', error);
+                showToast('Có lỗi xảy ra', 'error');
+            }
+        }
     </script>
     <%@ include file="partials/footer.jsp" %>
 </body>

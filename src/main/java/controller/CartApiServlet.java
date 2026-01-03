@@ -1,18 +1,23 @@
 package controller;
 
-import dao.CartDAO;
-import model.CartItem;
-import model.User;
-
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+
+import dao.CartDAO;
+import model.CartItem;
+import model.User;
 
 /**
  * API Servlet để quản lý giỏ hàng
@@ -92,8 +97,33 @@ public class CartApiServlet extends HttpServlet {
         
         try {
             User user = (User) session.getAttribute("user");
-            int productId = Integer.parseInt(request.getParameter("productId"));
-            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            
+            // Kiểm tra xem có phải là path /add hay không
+            String pathInfo = request.getPathInfo();
+            
+            int productId;
+            int quantity;
+            
+            // Đọc dữ liệu từ JSON body
+            if (pathInfo != null && pathInfo.equals("/add")) {
+                // Đọc JSON từ body
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = request.getReader().readLine()) != null) {
+                    sb.append(line);
+                }
+                
+                String jsonString = sb.toString();
+                System.out.println("Received JSON: " + jsonString);
+                
+                JsonObject jsonRequest = gson.fromJson(jsonString, JsonObject.class);
+                productId = jsonRequest.get("productId").getAsInt();
+                quantity = jsonRequest.has("quantity") ? jsonRequest.get("quantity").getAsInt() : 1;
+            } else {
+                // Đọc từ parameters (backward compatibility)
+                productId = Integer.parseInt(request.getParameter("productId"));
+                quantity = Integer.parseInt(request.getParameter("quantity"));
+            }
             
             if (quantity <= 0) {
                 quantity = 1;
@@ -105,12 +135,13 @@ public class CartApiServlet extends HttpServlet {
                 int cartCount = cartDAO.getTotalQuantity(user.getId());
                 jsonResponse.addProperty("success", true);
                 jsonResponse.addProperty("message", "Đã thêm vào giỏ hàng");
-                jsonResponse.addProperty("cartCount", cartCount);
+                jsonResponse.addProperty("cartItemCount", cartCount);
             } else {
                 jsonResponse.addProperty("success", false);
                 jsonResponse.addProperty("message", "Không thể thêm vào giỏ hàng");
             }
         } catch (Exception e) {
+            e.printStackTrace();
             jsonResponse.addProperty("success", false);
             jsonResponse.addProperty("message", "Lỗi: " + e.getMessage());
         }
