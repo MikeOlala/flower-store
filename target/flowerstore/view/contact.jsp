@@ -113,11 +113,13 @@
       /* ===== HERO SECTION ===== */
       .contact-hero {
         position: relative;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
+         background: linear-gradient(
+            135deg,
+            rgba(201, 147, 102, 0.95) 0%,
+            rgba(170, 106, 63, 0.95) 100%
+          ),
+          url("https://images.unsplash.com/photo-1487070183336-b863922373d4?w=1200")
+            center/cover;
         padding: 100px 20px 140px;
         text-align: center;
         overflow: hidden;

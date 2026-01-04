@@ -47,7 +47,13 @@
         }
         
         body {
-            background: var(--bg-page);
+            background: linear-gradient(
+            135deg,
+            rgba(201, 147, 102, 0.95) 0%,
+            rgba(170, 106, 63, 0.95) 100%
+            ),
+            url("https://images.unsplash.com/photo-1487070183336-b863922373d4?w=1200")
+            center/cover;
             font-family: 'Crimson Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             margin: 0;
             padding: 0;
@@ -71,7 +77,13 @@
         
         /* HERO */
         .product-hero {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            background: linear-gradient(
+            135deg,
+            rgba(201, 147, 102, 0.95) 0%,
+            rgba(170, 106, 63, 0.95) 100%
+            ),
+            url("https://images.unsplash.com/photo-1487070183336-b863922373d4?w=1200")
+            center/cover;
             color: #fff;
             padding: 4rem 1.5rem 3rem;
             text-align: center;

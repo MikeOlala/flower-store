@@ -82,30 +82,6 @@
             padding: 24px 16px 48px;
         }
         
-        /* Breadcrumb */
-        .breadcrumb {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .breadcrumb a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        
-        .breadcrumb a:hover {
-            color: var(--accent-dark);
-        }
-        
-        .breadcrumb span {
-            color: var(--text-main);
-        }
-        
         /* Card chi tiết sản phẩm */
         .product-card {
             background-color: var(--card-bg);
@@ -936,21 +912,6 @@
     
     <main>
         <div class="page-wrapper">
-            <!-- Breadcrumb -->
-            <nav class="breadcrumb">
-                <a href="${pageContext.request.contextPath}/view/home.jsp">
-                    <i class="fas fa-home"></i> Trang chủ
-                </a>
-                <span>/</span>
-                <a href="${pageContext.request.contextPath}/products">Sản phẩm</a>
-                <c:if test="${category != null}">
-                    <span>/</span>
-                    <a href="${pageContext.request.contextPath}/products/category/${category.slug}">${category.name}</a>
-                </c:if>
-                <span>/</span>
-                <span>${product.name}</span>
-            </nav>
-            
             <!-- Card chi tiết sản phẩm -->
             <section class="product-card">
                 <!-- Ảnh sản phẩm -->

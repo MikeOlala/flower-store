@@ -99,7 +99,13 @@
            ============================================ */
       .sidebar {
         width: var(--sidebar-width);
-        background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+        background: linear-gradient(
+            135deg,
+            rgba(201, 147, 102, 0.95) 0%,
+            rgba(170, 106, 63, 0.95) 100%
+          ),
+          url("https://images.unsplash.com/photo-1487070183336-b863922373d4?w=1200")
+            center/cover;
         color: white;
         height: 100vh;
         position: fixed;
@@ -5210,24 +5216,76 @@
       let revenueByDayChart = null;
       let orderStatusChartInstance = null;
 
-      function loadAnalytics() {
+      async function loadAnalytics() {
         console.log("🔄 Loading analytics...");
         
-        // Check if elements exist
-        const revenueEl = document.getElementById("analyticsRevenue");
-        const ordersEl = document.getElementById("analyticsOrders");
+        const dateRange = document.getElementById("analyticsDateRange");
+        const days = dateRange ? dateRange.value : "7";
         
-        console.log("Revenue element:", revenueEl);
-        console.log("Orders element:", ordersEl);
-        
-        if (!revenueEl || !ordersEl) {
-          console.error("❌ Analytics elements not found!");
-          setTimeout(() => loadAnalytics(), 500);
-          return;
+        try {
+          const response = await fetch(contextPath + "/admin/api/analytics?days=" + days);
+          if (!response.ok) throw new Error("Failed to load analytics");
+          
+          const result = await response.json();
+          console.log("📊 Analytics API Response:", result);
+          
+          if (!result.success) {
+            throw new Error(result.message || "Failed to load analytics data");
+          }
+          
+          const data = result.data;
+          console.log("📊 Analytics Data:", data);
+          
+          // Update stats
+          document.getElementById("analyticsRevenue").textContent = formatCurrency(data.totalRevenue || 0);
+          document.getElementById("analyticsOrders").textContent = formatNumber(data.totalOrders || 0);
+          document.getElementById("analyticsAvgOrder").textContent = formatCurrency(data.avgOrderValue || 0);
+          document.getElementById("analyticsCompleteRate").textContent = (data.completeRate || 0) + "%";
+          
+          // Note: Change indicators are set to 0 since we don't have comparison data yet
+          updateChangeIndicator("analyticsRevenueChange", 0);
+          updateChangeIndicator("analyticsOrdersChange", 0);
+          updateChangeIndicator("analyticsAvgChange", 0);
+          updateChangeIndicator("analyticsRateChange", 0);
+          
+          // Load charts
+          if (data.revenueByDay) {
+            const chartData = data.revenueByDay.map(item => ({
+              date: formatDateShort(item.date),
+              revenue: item.revenue
+            }));
+            loadRevenueByDayChart(chartData);
+          }
+          
+          if (data.orderStatus) {
+            loadOrderStatusChartData(data.orderStatus);
+          }
+          
+          // Load top products
+          if (data.topProducts) {
+            loadAnalyticsTopProducts(data.topProducts);
+          }
+          
+          // Load sample categories (API doesn't have this yet)
+          const sampleCategories = [
+            {name: "Hoa Tươi", productCount: 45, revenue: 12000000},
+            {name: "Hoa Khai Trương", productCount: 32, revenue: 8500000},
+            {name: "Hoa Sinh Nhật", productCount: 28, revenue: 7200000},
+            {name: "Hoa Cưới", productCount: 15, revenue: 6800000},
+            {name: "Hoa Chia Buồn", productCount: 12, revenue: 4500000}
+          ];
+          loadAnalyticsTopCategories(sampleCategories);
+          
+          console.log("✅ Analytics loaded successfully!");
+        } catch (error) {
+          console.error("❌ Error loading analytics:", error);
+          showNotification("Lỗi", "Không thể tải thống kê: " + error.message, "error");
         }
-        
-        console.log("✅ Elements found, loading sample data...");
-        loadSampleAnalytics();
+      }
+      
+      function formatDateShort(dateStr) {
+        const date = new Date(dateStr);
+        return (date.getDate()) + "/" + (date.getMonth() + 1);
       }
 
       function updateChangeIndicator(elementId, change) {
@@ -5244,8 +5302,8 @@
           revenueByDayChart.destroy();
         }
 
-        const labels = data.map(item => item.date || item.label);
-        const revenues = data.map(item => item.revenue || item.value);
+        const labels = data.map(item => item.date);
+        const revenues = data.map(item => parseFloat(item.revenue) || 0);
 
         revenueByDayChart = new Chart(ctx, {
           type: "line",
@@ -5379,10 +5437,12 @@
         }
 
         tbody.innerHTML = products.slice(0, 5).map(product => {
+          const soldCount = product.soldCount || product.sold || product.quantity || 0;
+          const revenue = product.revenue || (product.price && soldCount ? product.price * soldCount : 0);
           return '<tr>' +
             '<td>' + (product.name || product.productName) + '</td>' +
-            '<td>' + formatNumber(product.soldCount || product.quantity) + '</td>' +
-            '<td><strong>' + formatCurrency(product.revenue || 0) + '</strong></td>' +
+            '<td>' + formatNumber(soldCount) + '</td>' +
+            '<td><strong>' + formatCurrency(revenue) + '</strong></td>' +
           '</tr>';
         }).join('');
       }

@@ -548,4 +548,51 @@ public class OrderDAO {
         }
         return orders;
     }
+    
+    /**
+     * Đếm số đơn hàng trong khoảng thời gian
+     */
+    public int countOrdersByDateRange(java.sql.Date startDate, java.sql.Date endDate) {
+        String sql = "SELECT COUNT(*) FROM orders WHERE DATE(created_at) BETWEEN ? AND ?";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setDate(1, startDate);
+            ps.setDate(2, endDate);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi đếm orders theo date range: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
+    /**
+     * Đếm số đơn hàng theo trạng thái và khoảng thời gian
+     */
+    public int countByStatusAndDateRange(String status, java.sql.Date startDate, java.sql.Date endDate) {
+        String sql = "SELECT COUNT(*) FROM orders WHERE order_status = ? AND DATE(created_at) BETWEEN ? AND ?";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setString(1, status);
+            ps.setDate(2, startDate);
+            ps.setDate(3, endDate);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi đếm orders theo status và date range: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

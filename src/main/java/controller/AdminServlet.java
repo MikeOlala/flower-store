@@ -342,6 +342,77 @@ public class AdminServlet extends HttpServlet {
                 
                 result.put("success", true);
                 result.put("data", revenueData);
+            } else if (pathInfo.equals("/api/analytics")) {
+                // API cho thống kê và báo cáo chi tiết
+                String daysParam = request.getParameter("days");
+                int days = daysParam != null ? Integer.parseInt(daysParam) : 7;
+                
+                Map<String, Object> analyticsData = new HashMap<>();
+                java.time.LocalDate today = java.time.LocalDate.now();
+                java.time.LocalDate startDate = today.minusDays(days - 1);
+                
+                // Tính tổng doanh thu và đơn hàng trong khoảng thời gian
+                BigDecimal totalRevenue = BigDecimal.ZERO;
+                int totalOrders = 0;
+                
+                List<Map<String, Object>> dailyRevenue = new ArrayList<>();
+                for (int i = days - 1; i >= 0; i--) {
+                    java.time.LocalDate date = today.minusDays(i);
+                    BigDecimal revenue = orderDAO.getRevenueByDate(java.sql.Date.valueOf(date));
+                    if (revenue != null) {
+                        totalRevenue = totalRevenue.add(revenue);
+                    }
+                    Map<String, Object> dayData = new HashMap<>();
+                    dayData.put("date", date.toString());
+                    dayData.put("revenue", revenue != null ? revenue : BigDecimal.ZERO);
+                    dailyRevenue.add(dayData);
+                }
+                
+                // Lấy số đơn hàng trong kỳ
+                totalOrders = orderDAO.countOrdersByDateRange(
+                    java.sql.Date.valueOf(startDate), 
+                    java.sql.Date.valueOf(today)
+                );
+                
+                // Tính giá trị trung bình
+                BigDecimal avgOrderValue = totalOrders > 0 
+                    ? totalRevenue.divide(new BigDecimal(totalOrders), 0, java.math.RoundingMode.HALF_UP)
+                    : BigDecimal.ZERO;
+                
+                // Tỷ lệ hoàn thành
+                int deliveredOrders = orderDAO.countByStatusAndDateRange(
+                    "delivered",
+                    java.sql.Date.valueOf(startDate),
+                    java.sql.Date.valueOf(today)
+                );
+                double completeRate = totalOrders > 0 
+                    ? (double) deliveredOrders / totalOrders * 100 
+                    : 0;
+                
+                // Thống kê theo trạng thái
+                Map<String, Integer> statusStats = new HashMap<>();
+                statusStats.put("pending", orderDAO.countByStatusAndDateRange("pending", 
+                    java.sql.Date.valueOf(startDate), java.sql.Date.valueOf(today)));
+                statusStats.put("shipping", orderDAO.countByStatusAndDateRange("shipping", 
+                    java.sql.Date.valueOf(startDate), java.sql.Date.valueOf(today)));
+                statusStats.put("delivered", deliveredOrders);
+                statusStats.put("cancelled", orderDAO.countByStatusAndDateRange("cancelled", 
+                    java.sql.Date.valueOf(startDate), java.sql.Date.valueOf(today)));
+                
+                // Top sản phẩm bán chạy
+                List<Product> topProducts = productDAO.getTopSellingProducts(5);
+                
+                // Đóng gói dữ liệu
+                analyticsData.put("totalRevenue", totalRevenue);
+                analyticsData.put("totalOrders", totalOrders);
+                analyticsData.put("avgOrderValue", avgOrderValue);
+                analyticsData.put("completeRate", Math.round(completeRate * 10) / 10.0);
+                analyticsData.put("revenueByDay", dailyRevenue);
+                analyticsData.put("orderStatus", statusStats);
+                analyticsData.put("topProducts", topProducts);
+                
+                result.put("success", true);
+                result.put("data", analyticsData);
             } else {
                 result.put("success", false);
                 result.put("message", "API không tồn tại: " + pathInfo);
