@@ -3,13 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
-
 <html lang="vi">
   <head>
     <title>Tin Tức - La Vie Est Belle - Flower & Gift</title>
-
     <!-- Google Tag Manager -->
-
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];

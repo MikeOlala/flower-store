@@ -7,16 +7,12 @@
     <meta charset="UTF-8" />
 
     <title>Quên mật khẩu</title>
-
     <!-- Bootstrap Icons (cho icon email) -->
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-
     <!-- CSS riêng -->
-
     <link rel="stylesheet" href="ForgotPassword.css" />
   </head>
 
