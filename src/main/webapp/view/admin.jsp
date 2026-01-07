@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <%
     // Check admin access
     model.User user = (model.User) session.getAttribute("user");
