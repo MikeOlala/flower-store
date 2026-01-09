@@ -8,13 +8,11 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Đặt hàng thành công - Tiệm Hoa nhà tớ</title>
-
     <link
       rel="shortcut icon"
       href="//cdn.hstatic.net/themes/200000846175/1001403720/14/favicon.png?v=245"
       type="image/x-icon"
     />
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,13 +20,11 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
-
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
     <!-- Main Site CSS -->
     <link
       href="//cdn.hstatic.net/themes/200000846175/1001403720/14/plugin-style.css?v=245"
@@ -77,13 +73,11 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       .fab {
         font-family: "Font Awesome 6 Brands" !important;
       }
-
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
-
       body {
         font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
           sans-serif;
@@ -96,7 +90,6 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         line-height: 1.6;
         min-height: 100vh;
       }
-
       .success-container {
         max-width: 700px;
         margin: 0 auto;
