@@ -105,14 +105,12 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         overflow: hidden;
         text-align: center;
       }
-
       /* Success Header */
       .success-header {
         background: linear-gradient(135deg, var(--success) 0%, #2ecc71 100%);
         padding: 3rem 2rem;
         color: white;
       }
-
       .success-icon {
         width: 100px;
         height: 100px;
@@ -124,7 +122,6 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         margin: 0 auto 1.5rem;
         animation: scaleIn 0.5s ease;
       }
-
       .success-icon i {
         font-size: 3rem;
         animation: checkmark 0.5s ease 0.3s both;
