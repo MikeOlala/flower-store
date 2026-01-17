@@ -79,7 +79,6 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         >
       </div>
     </div>
-
     <script>
       document
         .getElementById("resetPasswordForm")
@@ -92,7 +91,6 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
           btn.textContent = "Đang xử lý...";
 
           const formData = new FormData(this);
-
           fetch("${pageContext.request.contextPath}/reset-password", {
             method: "POST",
             body: new URLSearchParams(formData),

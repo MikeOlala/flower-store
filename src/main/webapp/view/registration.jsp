@@ -9,8 +9,6 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <title>Đăng ký thành viên</title>
 
-    <!-- MDB & Bootstrap Icons -->
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
