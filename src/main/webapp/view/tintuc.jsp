@@ -21,11 +21,8 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-W8R4GL2");
     </script>
-
     <!-- End Google Tag Manager -->
-
     <!-- Google Tag Manager -->
-
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
