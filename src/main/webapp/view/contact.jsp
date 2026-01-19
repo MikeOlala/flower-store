@@ -7,7 +7,6 @@
     <title>Liên hệ - Tiệm Hoa nhà tớ</title>
 
     <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
-
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Crimson+Text:wght@400;600;700&display=swap"
