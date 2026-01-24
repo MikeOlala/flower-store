@@ -126,7 +126,6 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         font-size: 3rem;
         animation: checkmark 0.5s ease 0.3s both;
       }
-
       @keyframes scaleIn {
         from {
           transform: scale(0);
