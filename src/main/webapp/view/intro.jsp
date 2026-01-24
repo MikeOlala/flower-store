@@ -5,9 +5,7 @@
 <html lang="vi">
   <head>
     <title>Giới thiệu</title>
-
     <!-- Google Tag Manager -->
-
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
