@@ -133,9 +133,7 @@
 
         line-height: 1.6;
       }
-
       /* Hero Section */
-
       .news-hero {
          background: linear-gradient(
             135deg,
