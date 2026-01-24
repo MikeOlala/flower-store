@@ -43,7 +43,6 @@
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --height-head: 72px;
         }
-        
         /* Font Awesome fix */
         .fas, .far, .fab, .fa {
             font-family: "Font Awesome 6 Free" !important;
@@ -51,7 +50,6 @@
         }
         .far { font-weight: 400; }
         .fab { font-family: "Font Awesome 6 Brands" !important; }
-        
         * {
             margin: 0;
             padding: 0;
