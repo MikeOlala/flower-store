@@ -17,6 +17,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard - Tiệm Hoa nhà tớ</title>
+    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="${csrfToken}">
+    <script>window.csrfToken = '${csrfToken}';</script>
 
     <!-- Font Awesome -->
     <link
@@ -1363,6 +1367,12 @@
         font-size: 0.95rem;
       }
     </style>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <!-- CSRF Token Helper -->
+    <script src="${pageContext.request.contextPath}/fileJS/csrf-token.js"></script>
   </head>
   <body>
     <!-- ============================================
@@ -3965,9 +3975,13 @@
           if (note) params.append("note", note);
 
           const response = await fetch(
-            contextPath + "/admin/api/order/update-status?" + params.toString(),
+            contextPath + "/admin/api/order/update-status",
             {
               method: "POST",
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              body: params.toString()
             }
           );
 
@@ -4467,8 +4481,12 @@
           if (image) params.append("image", image);
           if (description) params.append("description", description);
 
-          const response = await fetch(url + "?" + params.toString(), {
+          const response = await fetch(url, {
             method: "POST",
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: params.toString()
           });
 
           const result = await response.json();
@@ -4818,8 +4836,12 @@
             contextPath + "/admin/api/category/update" :
             contextPath + "/admin/api/category/add";
 
-          const response = await fetch(url + "?" + params.toString(), {
-            method: "POST"
+          const response = await fetch(url, {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: params.toString()
           });
 
           const result = await response.json();
@@ -4985,8 +5007,12 @@
             contextPath + "/admin/api/coupon/update" :
             contextPath + "/admin/api/coupon/add";
 
-          const response = await fetch(url + "?" + params.toString(), {
-            method: "POST"
+          const response = await fetch(url, {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: params.toString()
           });
 
           const result = await response.json();

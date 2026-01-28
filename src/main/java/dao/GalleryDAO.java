@@ -38,7 +38,6 @@ public class GalleryDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error getting active galleries: " + e.getMessage());
-            e.printStackTrace();
         }
         return galleries;
     }
@@ -59,7 +58,6 @@ public class GalleryDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error getting all galleries: " + e.getMessage());
-            e.printStackTrace();
         }
         return galleries;
     }
@@ -81,7 +79,6 @@ public class GalleryDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error getting gallery by id: " + e.getMessage());
-            e.printStackTrace();
         }
         return null;
     }
@@ -112,7 +109,6 @@ public class GalleryDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error adding gallery: " + e.getMessage());
-            e.printStackTrace();
         }
         return -1;
     }
@@ -137,7 +133,6 @@ public class GalleryDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Error updating gallery: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -155,7 +150,6 @@ public class GalleryDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Error deleting gallery: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -175,7 +169,6 @@ public class GalleryDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Error updating gallery status: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -195,7 +188,6 @@ public class GalleryDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Error updating display order: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }

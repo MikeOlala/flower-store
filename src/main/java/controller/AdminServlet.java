@@ -198,7 +198,37 @@ public class AdminServlet extends HttpServlet {
                 result.put("success", true);
                 result.put("data", topProducts);
             } else if (pathInfo.equals("/api/products")) {
-                List<Product> products = productDAO.findAllIncludeInactive();
+                // API cho sản phẩm với tìm kiếm và filter
+                String search = request.getParameter("search");
+                String categoryIdStr = request.getParameter("categoryId");
+                String statusStr = request.getParameter("status");
+                
+                List<Product> products;
+                
+                if (search != null && !search.trim().isEmpty()) {
+                    // Có tìm kiếm, dùng search method (nhưng cần bao gồm cả inactive cho admin)
+                    products = productDAO.searchIncludeInactive(search);
+                } else if (categoryIdStr != null && !categoryIdStr.trim().isEmpty()) {
+                    // Filter theo category
+                    try {
+                        int categoryId = Integer.parseInt(categoryIdStr);
+                        products = productDAO.findByCategoryIncludeInactive(categoryId);
+                    } catch (NumberFormatException e) {
+                        products = productDAO.findAllIncludeInactive();
+                    }
+                } else {
+                    // Không có filter, lấy tất cả
+                    products = productDAO.findAllIncludeInactive();
+                }
+                
+                // Filter theo status nếu có
+                if (statusStr != null && !statusStr.trim().isEmpty()) {
+                    boolean isActive = "active".equals(statusStr);
+                    products = products.stream()
+                        .filter(p -> p.isActive() == isActive)
+                        .collect(java.util.stream.Collectors.toList());
+                }
+                
                 result.put("success", true);
                 result.put("data", products);
             } else if (pathInfo.startsWith("/api/product/")) {
@@ -222,7 +252,42 @@ public class AdminServlet extends HttpServlet {
                 result.put("success", true);
                 result.put("data", orders);
             } else if (pathInfo.equals("/api/orders")) {
-                List<Order> orders = orderDAO.findAll();
+                // API cho đơn hàng với tìm kiếm và filter
+                String search = request.getParameter("search");
+                String status = request.getParameter("status");
+                String dateFromStr = request.getParameter("dateFrom");
+                String dateToStr = request.getParameter("dateTo");
+                
+                java.sql.Date dateFrom = null;
+                java.sql.Date dateTo = null;
+                
+                if (dateFromStr != null && !dateFromStr.isEmpty()) {
+                    try {
+                        dateFrom = java.sql.Date.valueOf(dateFromStr);
+                    } catch (IllegalArgumentException e) {
+                        System.err.println("Invalid dateFrom: " + dateFromStr);
+                    }
+                }
+                
+                if (dateToStr != null && !dateToStr.isEmpty()) {
+                    try {
+                        dateTo = java.sql.Date.valueOf(dateToStr);
+                    } catch (IllegalArgumentException e) {
+                        System.err.println("Invalid dateTo: " + dateToStr);
+                    }
+                }
+                
+                List<Order> orders;
+                if ((search != null && !search.trim().isEmpty()) || 
+                    (status != null && !status.trim().isEmpty()) ||
+                    dateFrom != null || dateTo != null) {
+                    // Có filter hoặc search, dùng searchWithFilters
+                    orders = orderDAO.searchWithFilters(search, status, dateFrom, dateTo);
+                } else {
+                    // Không có filter, lấy tất cả
+                    orders = orderDAO.findAll();
+                }
+                
                 result.put("success", true);
                 result.put("data", orders);
             } else if (pathInfo.startsWith("/api/order/")) {
@@ -423,7 +488,6 @@ public class AdminServlet extends HttpServlet {
             result.put("message", "ID không hợp lệ");
         } catch (Exception e) {
             System.err.println("[AdminServlet] Error in handleApiGet: " + e.getMessage());
-            e.printStackTrace();
             result.put("success", false);
             result.put("message", "Lỗi server: " + e.getMessage());
         }
@@ -512,7 +576,6 @@ public class AdminServlet extends HttpServlet {
             result.put("message", "Tham số không hợp lệ");
         } catch (Exception e) {
             System.err.println("[AdminServlet] Error in handleApiPost: " + e.getMessage());
-            e.printStackTrace();
             result.put("success", false);
             result.put("message", "Lỗi server: " + e.getMessage());
         }
@@ -688,7 +751,6 @@ public class AdminServlet extends HttpServlet {
             result.put("message", success ? "Cập nhật danh mục thành công" : "Cập nhật danh mục thất bại");
         } catch (Exception e) {
             System.err.println("[AdminServlet] Error updating category: " + e.getMessage());
-            e.printStackTrace();
             result.put("success", false);
             result.put("message", "Lỗi: " + e.getMessage());
         }
@@ -839,7 +901,6 @@ public class AdminServlet extends HttpServlet {
             result.put("message", "ID không hợp lệ");
         } catch (Exception e) {
             System.err.println("[AdminServlet] Error in handleApiDelete: " + e.getMessage());
-            e.printStackTrace();
             result.put("success", false);
             result.put("message", "Lỗi server: " + e.getMessage());
         }

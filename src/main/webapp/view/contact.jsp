@@ -5,6 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Liên hệ - Tiệm Hoa nhà tớ</title>
+    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="${csrfToken}">
+    <script>window.csrfToken = '${csrfToken}';</script>
 
     <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
 
@@ -702,6 +706,9 @@
         }
       }
     </style>
+    
+    <!-- CSRF Token Helper -->
+    <script src="${pageContext.request.contextPath}/fileJS/csrf-token.js"></script>
   </head>
 
   <body id="wandave-theme" class="index" data-theme="tbag-fashion">

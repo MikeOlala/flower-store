@@ -504,13 +504,13 @@
           <p>Hoặc đăng nhập bằng:</p>
 
           <div class="social-icons">
-            <i class="bi bi-facebook"></i>
+            <a href="${pageContext.request.contextPath}/oauth/facebook" title="Đăng nhập bằng Facebook" style="text-decoration: none;">
+              <i class="bi bi-facebook"></i>
+            </a>
 
-            <i class="bi bi-google"></i>
-
-            <i class="bi bi-twitter"></i>
-
-            <i class="bi bi-github"></i>
+            <a href="${pageContext.request.contextPath}/oauth/google" title="Đăng nhập bằng Google" style="text-decoration: none;">
+              <i class="bi bi-google"></i>
+            </a>
           </div>
         </div>
 

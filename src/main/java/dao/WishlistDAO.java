@@ -32,7 +32,6 @@ public class WishlistDAO {
             return rows > 0;
             
         } catch (SQLException e) {
-            e.printStackTrace();
             return false;
         }
     }
@@ -53,7 +52,6 @@ public class WishlistDAO {
             return rows > 0;
             
         } catch (SQLException e) {
-            e.printStackTrace();
             return false;
         }
     }
@@ -76,7 +74,6 @@ public class WishlistDAO {
             }
             
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         
         return false;
@@ -105,7 +102,6 @@ public class WishlistDAO {
             }
             
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         
         return wishlist;
@@ -154,7 +150,6 @@ public class WishlistDAO {
             }
             
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         
         return wishlist;
@@ -177,7 +172,6 @@ public class WishlistDAO {
             }
             
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         
         return 0;
@@ -197,7 +191,6 @@ public class WishlistDAO {
             return true;
             
         } catch (SQLException e) {
-            e.printStackTrace();
             return false;
         }
     }
@@ -220,7 +213,6 @@ public class WishlistDAO {
             }
             
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         
         return productIds;

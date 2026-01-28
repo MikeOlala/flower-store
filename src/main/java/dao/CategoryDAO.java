@@ -37,7 +37,6 @@ public class CategoryDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi lấy danh sách categories: " + e.getMessage());
-            e.printStackTrace();
         }
         return categories;
     }
@@ -58,7 +57,6 @@ public class CategoryDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi lấy danh sách categories: " + e.getMessage());
-            e.printStackTrace();
         }
         return categories;
     }
@@ -79,7 +77,6 @@ public class CategoryDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi lấy parent categories: " + e.getMessage());
-            e.printStackTrace();
         }
         return categories;
     }
@@ -102,7 +99,6 @@ public class CategoryDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi lấy child categories: " + e.getMessage());
-            e.printStackTrace();
         }
         return categories;
     }
@@ -124,7 +120,6 @@ public class CategoryDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi tìm category theo ID: " + e.getMessage());
-            e.printStackTrace();
         }
         return null;
     }
@@ -146,7 +141,6 @@ public class CategoryDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi tìm category theo slug: " + e.getMessage());
-            e.printStackTrace();
         }
         return null;
     }
@@ -183,7 +177,6 @@ public class CategoryDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi thêm category: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -214,7 +207,6 @@ public class CategoryDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Lỗi cập nhật category: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -232,7 +224,6 @@ public class CategoryDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Lỗi xóa category: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -254,7 +245,6 @@ public class CategoryDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi đếm products: " + e.getMessage());
-            e.printStackTrace();
         }
         return 0;
     }
@@ -286,7 +276,6 @@ public class CategoryDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi lấy featured categories: " + e.getMessage());
-            e.printStackTrace();
         }
         return categories;
     }

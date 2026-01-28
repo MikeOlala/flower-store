@@ -118,7 +118,6 @@ public class ImageUploadServlet extends HttpServlet {
         } catch (Exception e) {
             result.addProperty("success", false);
             result.addProperty("message", "Lỗi upload: " + e.getMessage());
-            e.printStackTrace();
         }
         
         out.print(gson.toJson(result));

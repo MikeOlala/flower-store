@@ -455,8 +455,26 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
           <div class="success-icon">
             <i class="fas fa-check"></i>
           </div>
-          <h1>Đặt hàng thành công!</h1>
-          <p>Cảm ơn bạn đã tin tưởng Tiệm Hoa nhà tớ</p>
+          <h1>
+            <c:choose>
+              <c:when test="${param.payment == 'success'}">
+                Thanh toán thành công!
+              </c:when>
+              <c:otherwise>
+                Đặt hàng thành công!
+              </c:otherwise>
+            </c:choose>
+          </h1>
+          <p>
+            <c:choose>
+              <c:when test="${param.payment == 'success'}">
+                Đơn hàng của bạn đã được thanh toán và xác nhận thành công
+              </c:when>
+              <c:otherwise>
+                Cảm ơn bạn đã tin tưởng Tiệm Hoa nhà tớ
+              </c:otherwise>
+            </c:choose>
+          </p>
         </div>
 
         <!-- Order Info -->
@@ -486,6 +504,14 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                 <span class="detail-label">Phương thức thanh toán</span>
                 <span class="detail-value">${order.paymentMethodText}</span>
               </div>
+              <c:if test="${param.payment == 'success'}">
+                <div class="detail-row">
+                  <span class="detail-label">Trạng thái thanh toán</span>
+                  <span class="detail-value" style="color: var(--success); font-weight: 600;">
+                    <i class="fas fa-check-circle"></i> Đã thanh toán
+                  </span>
+                </div>
+              </c:if>
               <div class="detail-row">
                 <span class="detail-label">Tổng tiền</span>
                 <span class="detail-value total">

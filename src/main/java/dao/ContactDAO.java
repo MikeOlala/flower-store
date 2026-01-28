@@ -55,7 +55,6 @@ public class ContactDAO {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return -1;
     }
@@ -75,7 +74,6 @@ public class ContactDAO {
                 contacts.add(mapResultSetToContact(rs));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return contacts;
     }
@@ -97,7 +95,6 @@ public class ContactDAO {
                 contacts.add(mapResultSetToContact(rs));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return contacts;
     }
@@ -118,7 +115,6 @@ public class ContactDAO {
                 return mapResultSetToContact(rs);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return null;
     }
@@ -137,7 +133,6 @@ public class ContactDAO {
             
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return false;
     }
@@ -156,7 +151,6 @@ public class ContactDAO {
             
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return false;
     }
@@ -173,7 +167,6 @@ public class ContactDAO {
             ps.setInt(1, id);
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return false;
     }
@@ -192,7 +185,6 @@ public class ContactDAO {
                 return rs.getInt(1);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return 0;
     }
@@ -211,7 +203,6 @@ public class ContactDAO {
                 return rs.getInt(1);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return 0;
     }
@@ -232,7 +223,6 @@ public class ContactDAO {
                 return rs.getInt(1);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return 0;
     }

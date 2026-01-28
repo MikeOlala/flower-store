@@ -14,7 +14,7 @@ COLLATE utf8mb4_unicode_ci;
 
 USE flowerstore;
 
--- Bảng Users
+-- Bảng Users (với email verification)
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -27,9 +27,11 @@ CREATE TABLE users (
     gender ENUM('Nam', 'Nữ', 'Khác'),
     birthday DATE,
     role ENUM('customer', 'admin') DEFAULT 'customer',
-    status ENUM('active', 'inactive', 'banned') DEFAULT 'active',
+    status ENUM('pending', 'active', 'inactive', 'banned') DEFAULT 'active',
+    verification_token VARCHAR(255) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_verification_token (verification_token)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Bảng Categories
@@ -234,6 +236,20 @@ CREATE TABLE news (
     INDEX idx_category (category),
     INDEX idx_published (is_published, published_date),
     INDEX idx_slug (slug)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Bảng Password Reset Tokens
+DROP TABLE IF EXISTS password_reset_tokens;
+CREATE TABLE password_reset_tokens (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    token VARCHAR(255) NOT NULL UNIQUE,
+    expires_at TIMESTAMP NOT NULL,
+    used BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_email (email),
+    INDEX idx_token (token),
+    INDEX idx_expires (expires_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================

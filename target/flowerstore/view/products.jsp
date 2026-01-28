@@ -10,6 +10,10 @@
     <title>${pageTitle != null ? pageTitle : 'Sản phẩm'} - Tiệm Hoa nhà tớ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="${csrfToken}">
+    <script>window.csrfToken = '${csrfToken}';</script>
+    
     <link rel="shortcut icon" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/favicon.png?v=245" type="image/x-icon" />
     
     <!-- Font -->
@@ -333,15 +337,19 @@
             overflow: hidden;
             box-shadow: 0 6px 20px rgba(160,130,100,0.18);
             border: 1px solid rgba(210,180,160,0.4);
-            cursor: pointer;
             transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-            text-decoration: none;
         }
         
         .product-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 28px rgba(150,120,90,0.26);
             border-color: rgba(201,147,102,0.9);
+        }
+        
+        .product-card > a {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .product-image-wrap {
@@ -402,6 +410,7 @@
             line-height: 1.3;
             display: -webkit-box;
             -webkit-line-clamp: 2;
+            line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -701,6 +710,12 @@
             }
         }
     </style>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <!-- CSRF Token Helper -->
+    <script src="${pageContext.request.contextPath}/fileJS/csrf-token.js"></script>
 </head>
 
 <body id="wandave-theme" class="index">
@@ -757,19 +772,21 @@
                             <c:otherwise>Tất cả sản phẩm</c:otherwise>
                         </c:choose>
                     </h2>
-                    <p>Tìm thấy ${totalProducts != null ? totalProducts : products.size()} sản phẩm</p>
+                    <p>Tìm thấy ${totalProducts != null ? totalProducts : (products != null ? products.size() : 0)} sản phẩm</p>
                 </div>
                 
                 <div class="collection-tabs">
                     <a href="${pageContext.request.contextPath}/products" class="tab-btn ${category == null && searchKeyword == null ? 'active' : ''}">
                         Tất cả
                     </a>
+                    <c:if test="${not empty parentCategories}">
                     <c:forEach var="parentCat" items="${parentCategories}">
                         <a href="${pageContext.request.contextPath}/products/category/${parentCat.slug}" 
-                           class="tab-btn ${category != null && category.id == parentCat.id ? 'active' : ''}">
+                           class="tab-btn ${not empty category && category.id eq parentCat.id ? 'active' : ''}">
                             ${parentCat.name}
                         </a>
                     </c:forEach>
+                    </c:if>
                 </div>
             </div>
             
@@ -826,47 +843,58 @@
                 <c:otherwise>
                     <div class="products-grid">
                         <c:forEach var="product" items="${products}">
-                            <article class="product-card" onclick="window.location.href='${pageContext.request.contextPath}/products/${product.slug}'">
-                                <div class="product-image-wrap">
-                                    <img class="product-image" 
-                                         src="${product.image != null ? product.image : 'https://via.placeholder.com/300x300?text=No+Image'}" 
-                                         alt="${product.name}"
-                                         onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'" />
-                                    
-                                    <c:if test="${product.onSale}">
-                                        <span class="product-badge">-${product.discountPercent}%</span>
-                                    </c:if>
-                                    <c:if test="${product.featured && !product.onSale}">
-                                        <span class="product-badge featured">Nổi bật</span>
-                                    </c:if>
-                                </div>
-                                
-                                <div class="product-body">
-                                    <c:if test="${product.category != null}">
-                                        <div class="product-category">${product.category.name}</div>
-                                    </c:if>
-                                    
-                                    <h3 class="product-name">${product.name}</h3>
-                                    
-                                    <div class="product-price-wrap">
-                                        <span class="product-price">
-                                            <fmt:formatNumber value="${product.displayPrice}" pattern="#,###"/> ₫
-                                        </span>
+                            <article class="product-card">
+                                <a href="${pageContext.request.contextPath}/products/${product.slug}" style="text-decoration: none; color: inherit; display: block;">
+                                    <div class="product-image-wrap">
+                                        <img class="product-image" 
+                                             src="${product.image != null ? product.image : 'https://via.placeholder.com/300x300?text=No+Image'}" 
+                                             alt="${product.name}"
+                                             onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'" />
+                                        
                                         <c:if test="${product.onSale}">
-                                            <span class="product-original-price">
-                                                <fmt:formatNumber value="${product.price}" pattern="#,###"/> ₫
-                                            </span>
+                                            <span class="product-badge">-${product.discountPercent}%</span>
+                                        </c:if>
+                                        <c:if test="${product.featured && !product.onSale}">
+                                            <span class="product-badge featured">Nổi bật</span>
                                         </c:if>
                                     </div>
                                     
-                                    <div class="product-actions" onclick="event.stopPropagation();">
-                                        <button class="btn-add-cart" data-product-id="${product.id}" onclick="addToCart(this.dataset.productId, 1)">
-                                            <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
-                                        </button>
-                                        <button class="btn-wishlist" data-product-id="${product.id}" onclick="toggleWishlist(this.dataset.productId)">
-                                            <i class="far fa-heart"></i>
-                                        </button>
+                                    <div class="product-body">
+                                        <c:if test="${product.category != null}">
+                                            <div class="product-category">${product.category.name}</div>
+                                        </c:if>
+                                        
+                                        <h3 class="product-name">${product.name}</h3>
+                                        
+                                        <div class="product-price-wrap">
+                                            <c:choose>
+                                                <c:when test="${product.displayPrice != null}">
+                                                    <span class="product-price">
+                                                        <fmt:formatNumber value="${product.displayPrice}" pattern="#,###"/> ₫
+                                                    </span>
+                                                </c:when>
+                                                <c:when test="${product.price != null}">
+                                                    <span class="product-price">
+                                                        <fmt:formatNumber value="${product.price}" pattern="#,###"/> ₫
+                                                    </span>
+                                                </c:when>
+                                            </c:choose>
+                                            <c:if test="${product.onSale && product.price != null && product.displayPrice != null}">
+                                                <span class="product-original-price">
+                                                    <fmt:formatNumber value="${product.price}" pattern="#,###"/> ₫
+                                                </span>
+                                            </c:if>
+                                        </div>
                                     </div>
+                                </a>
+                                
+                                <div class="product-actions" style="padding: 0 16px 16px;">
+                                    <button class="btn-add-cart" data-product-id="${product.id}" onclick="event.preventDefault(); addToCart('${product.id}', 1);">
+                                        <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                                    </button>
+                                    <button class="btn-wishlist" data-product-id="${product.id}" onclick="event.preventDefault(); toggleWishlist('${product.id}');">
+                                        <i class="far fa-heart"></i>
+                                    </button>
                                 </div>
                             </article>
                         </c:forEach>
@@ -874,20 +902,22 @@
                     
                     <!-- PAGINATION -->
                     <c:if test="${totalPages != null && totalPages > 1}">
-                        <div class="pagination-container">
+                        <div class="pagination-container" id="pagination">
+                            <c:set var="prevPage" value="${currentPage - 1}" />
+                            <c:set var="nextPage" value="${currentPage + 1}" />
                             <c:if test="${currentPage > 1}">
-                                <a href="?page=${currentPage - 1}${param.sort != null ? '&sort='.concat(param.sort) : ''}" class="page-btn">
+                                <a href="#" onclick="loadPage(${prevPage}); return false;" class="page-btn">
                                     <i class="fas fa-chevron-left"></i> Trước
                                 </a>
                             </c:if>
                             
                             <c:forEach begin="1" end="${totalPages}" var="i">
-                                <a href="?page=${i}${param.sort != null ? '&sort='.concat(param.sort) : ''}" 
+                                <a href="#" onclick="loadPage(${i}); return false;" 
                                    class="page-number ${currentPage == i ? 'active' : ''}">${i}</a>
                             </c:forEach>
                             
                             <c:if test="${currentPage < totalPages}">
-                                <a href="?page=${currentPage + 1}${param.sort != null ? '&sort='.concat(param.sort) : ''}" class="page-btn">
+                                <a href="#" onclick="loadPage(${nextPage}); return false;" class="page-btn">
                                     Sau <i class="fas fa-chevron-right"></i>
                                 </a>
                             </c:if>
@@ -907,14 +937,206 @@
     </div>
     
     <script>
+        // Context path và các biến từ server
         const contextPath = '${pageContext.request.contextPath}';
+        <c:choose>
+            <c:when test="${currentPage != null}">
+                let currentPage = ${currentPage};
+            </c:when>
+            <c:otherwise>
+                let currentPage = 1;
+            </c:otherwise>
+        </c:choose>
+        <c:choose>
+            <c:when test="${param.sort != null}">
+                let currentSort = '${param.sort}';
+            </c:when>
+            <c:otherwise>
+                let currentSort = '';
+            </c:otherwise>
+        </c:choose>
+        <c:choose>
+            <c:when test="${param.category != null}">
+                let currentCategory = '${param.category}';
+            </c:when>
+            <c:otherwise>
+                let currentCategory = '';
+            </c:otherwise>
+        </c:choose>
+        
+        /**
+         * Load trang mới bằng AJAX
+         */
+        function loadPage(page) {
+            // Hiển thị loading
+            const productsGrid = document.querySelector('.products-grid');
+            if (productsGrid) {
+                productsGrid.style.opacity = '0.5';
+                productsGrid.style.pointerEvents = 'none';
+            }
+            
+            // Tạo URL với params
+            const params = new URLSearchParams();
+            params.append('ajax', 'true');
+            params.append('page', page);
+            if (currentSort) params.append('sort', currentSort);
+            if (currentCategory) params.append('category', currentCategory);
+            
+            // Gọi AJAX
+            fetch(contextPath + '/products?' + params.toString())
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Cập nhật sản phẩm
+                        renderProducts(data.products);
+                        
+                        // Cập nhật pagination
+                        renderPagination(data.currentPage, data.totalPages);
+                        
+                        // Cập nhật current page
+                        currentPage = data.currentPage;
+                        
+                        // Scroll to top
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        showToast('Lỗi tải dữ liệu: ' + data.error, 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showToast('Có lỗi xảy ra khi tải trang!', 'error');
+                })
+                .finally(() => {
+                    // Ẩn loading
+                    if (productsGrid) {
+                        productsGrid.style.opacity = '1';
+                        productsGrid.style.pointerEvents = 'auto';
+                    }
+                });
+        }
+        
+        /**
+         * Escape HTML để tránh XSS
+         */
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+        
+        /**
+         * Render danh sách sản phẩm
+         */
+        function renderProducts(products) {
+            const productsGrid = document.querySelector('.products-grid');
+            if (!productsGrid) return;
+            
+            let html = '';
+            products.forEach(product => {
+                const productName = escapeHtml(product.name);
+                const productSlug = escapeHtml(product.slug);
+                const productImage = product.image || 'https://via.placeholder.com/300x300?text=No+Image';
+                
+                // Tạo HTML cho giá
+                let priceHtml = '';
+                if (product.salePrice && product.salePrice > 0) {
+                    // Có giá sale
+                    priceHtml = '<div class="product-price-wrap">' +
+                        '<span class="product-price">' + formatPrice(product.salePrice) + ' ₫</span>' +
+                        '<span class="product-original-price">' + formatPrice(product.price) + ' ₫</span>' +
+                    '</div>';
+                } else {
+                    // Giá bình thường
+                    priceHtml = '<div class="product-price-wrap">' +
+                        '<span class="product-price">' + formatPrice(product.price) + ' ₫</span>' +
+                    '</div>';
+                }
+                
+                html += '<article class="product-card">' +
+                    '<a href="' + contextPath + '/products/' + productSlug + '" style="text-decoration: none; color: inherit; display: block;">' +
+                        '<div class="product-image-wrap">' +
+                            '<img class="product-image" ' +
+                                 'src="' + productImage + '" ' +
+                                 'alt="' + productName + '" ' +
+                                 'onerror="this.src=\'https://via.placeholder.com/300x300?text=No+Image\'" />' +
+                        '</div>' +
+                        '<div class="product-body">' +
+                            '<h3 class="product-name">' + productName + '</h3>' +
+                            priceHtml +
+                        '</div>' +
+                    '</a>' +
+                    '<div class="product-actions" style="padding: 0 16px 16px;">' +
+                        '<button class="btn-add-cart" data-product-id="' + product.id + '" ' +
+                                'onclick="event.preventDefault(); addToCart(' + product.id + ', 1);">' +
+                            '<i class="fas fa-shopping-cart"></i> Thêm vào giỏ' +
+                        '</button>' +
+                        '<button class="btn-wishlist" data-product-id="' + product.id + '" ' +
+                                'onclick="event.preventDefault(); toggleWishlist(' + product.id + ');">' +
+                            '<i class="far fa-heart"></i>' +
+                        '</button>' +
+                    '</div>' +
+                '</article>';
+            });
+            
+            productsGrid.innerHTML = html;
+        }
+        
+        /**
+         * Render pagination
+         */
+        function renderPagination(currentPage, totalPages) {
+            const paginationContainer = document.getElementById('pagination');
+            if (!paginationContainer || totalPages <= 1) {
+                if (paginationContainer) paginationContainer.style.display = 'none';
+                return;
+            }
+            
+            paginationContainer.style.display = 'flex';
+            
+            let html = '';
+            
+            // Nút Previous
+            if (currentPage > 1) {
+                html += '<a href="#" onclick="loadPage(' + (currentPage - 1) + '); return false;" class="page-btn">' +
+                    '<i class="fas fa-chevron-left"></i> Trước' +
+                '</a>';
+            }
+            
+            // Các số trang
+            for (let i = 1; i <= totalPages; i++) {
+                const activeClass = currentPage === i ? 'active' : '';
+                html += '<a href="#" ' +
+                            'onclick="loadPage(' + i + '); return false;" ' +
+                            'class="page-number ' + activeClass + '">' + i + '</a>';
+            }
+            
+            // Nút Next
+            if (currentPage < totalPages) {
+                html += '<a href="#" onclick="loadPage(' + (currentPage + 1) + '); return false;" class="page-btn">' +
+                    'Sau <i class="fas fa-chevron-right"></i>' +
+                '</a>';
+            }
+            
+            paginationContainer.innerHTML = html;
+        }
+        
+        /**
+         * Format giá tiền
+         */
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN').format(price);
+        }
         
         // Sort products
         function applySort(sortValue) {
             if (sortValue) {
-                const url = new URL(window.location.href);
-                url.searchParams.set('sort', sortValue);
-                window.location.href = url.toString();
+                currentSort = sortValue;
+                loadPage(1); // Load lại trang 1 với sort mới
             }
         }
         
@@ -941,7 +1163,7 @@
         
         // Add to cart
         function addToCart(productId, quantity) {
-            fetch('${pageContext.request.contextPath}/api/cart', {
+            fetch(contextPath + '/api/cart', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -959,7 +1181,7 @@
                     }
                 } else {
                     if (data.message.includes('đăng nhập')) {
-                        window.location.href = '${pageContext.request.contextPath}/login';
+                        window.location.href = contextPath + '/login';
                     } else {
                         showToast(data.message, 'error');
                     }
@@ -974,7 +1196,7 @@
         // Toggle wishlist
         async function toggleWishlist(productId) {
             try {
-                const response = await fetch('${pageContext.request.contextPath}/api/wishlist', {
+                const response = await fetch(contextPath + '/api/wishlist', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

@@ -2,53 +2,35 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
-
+import dao.PasswordResetDAO;
 import dao.UserDAO;
 import model.User;
+import service.EmailService;
 
 /**
- * Servlet xử lý quên mật khẩu
+ * Servlet xử lý quên mật khẩu với email service
  */
 @WebServlet(urlPatterns = {"/forgot-password", "/reset-password"})
 public class ForgotPasswordServlet extends HttpServlet {
     
     private UserDAO userDAO;
-    private Gson gson;
-    
-    // Lưu token tạm (trong production nên dùng database hoặc Redis)
-    private static final Map<String, TokenData> resetTokens = new HashMap<>();
-    
-    private static class TokenData {
-        String email;
-        long expireTime;
-        
-        TokenData(String email, long expireTime) {
-            this.email = email;
-            this.expireTime = expireTime;
-        }
-        
-        boolean isExpired() {
-            return System.currentTimeMillis() > expireTime;
-        }
-    }
+    private PasswordResetDAO resetDAO;
+    private EmailService emailService;
     
     @Override
     public void init() throws ServletException {
         userDAO = new UserDAO();
-        gson = new Gson();
+        resetDAO = new PasswordResetDAO();
+        emailService = EmailService.getInstance();
     }
+    
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -66,9 +48,9 @@ public class ForgotPasswordServlet extends HttpServlet {
                 return;
             }
             
-            // Kiểm tra token
-            TokenData tokenData = resetTokens.get(token);
-            if (tokenData == null || tokenData.isExpired()) {
+            // Kiểm tra token từ database
+            String email = resetDAO.validateToken(token);
+            if (email == null) {
                 request.setAttribute("error", "Token đã hết hạn hoặc không tồn tại");
                 request.getRequestDispatcher("/view/ForgotPassword.jsp").forward(request, response);
                 return;
@@ -76,7 +58,7 @@ public class ForgotPasswordServlet extends HttpServlet {
             
             // Token hợp lệ, chuyển đến trang reset password
             request.setAttribute("token", token);
-            request.setAttribute("email", tokenData.email);
+            request.setAttribute("email", email);
             request.getRequestDispatcher("/view/ResetPassword.jsp").forward(request, response);
         } else {
             // Hiển thị trang forgot password
@@ -127,31 +109,29 @@ public class ForgotPasswordServlet extends HttpServlet {
             return;
         }
         
-        // Tạo token
-        String token = UUID.randomUUID().toString();
-        long expireTime = System.currentTimeMillis() + (30 * 60 * 1000); // 30 phút
-        resetTokens.put(token, new TokenData(email.trim(), expireTime));
+        // Tạo token trong database
+        String token = resetDAO.createResetToken(email.trim());
         
-        // Trong production: gửi email với link reset
-        // Để demo, trả về link trong response
-        String resetLink = request.getScheme() + "://" + 
-                          request.getServerName() + ":" + 
-                          request.getServerPort() + 
-                          request.getContextPath() + 
-                          "/reset-password?token=" + token;
+        if (token == null) {
+            out.write("{\"success\": false, \"message\": \"Có lỗi xảy ra, vui lòng thử lại\"}");
+            return;
+        }
         
-        System.out.println("=== RESET PASSWORD LINK ===");
-        System.out.println("Email: " + email);
-        System.out.println("Link: " + resetLink);
-        System.out.println("Token expires in 30 minutes");
-        System.out.println("===========================");
-        
-        // Response thành công
-        String jsonResponse = String.format(
-            "{\"success\": true, \"message\": \"Vui lòng kiểm tra console để lấy link đặt lại mật khẩu (trong production sẽ gửi qua email)\", \"resetLink\": \"%s\"}",
-            resetLink
+        // Gửi email với link reset
+        boolean emailSent = emailService.sendPasswordResetEmail(
+            email.trim(), 
+            user.getFullname(), 
+            token
         );
-        out.write(jsonResponse);
+        
+        if (emailSent) {
+            System.out.println("✓ Email reset password đã được gửi đến: " + email);
+            out.write("{\"success\": true, \"message\": \"Vui lòng kiểm tra email để đặt lại mật khẩu\"}");
+        } else {
+            System.err.println("✗ Không thể gửi email đến: " + email);
+            // Vẫn trả về success để không tiết lộ email có tồn tại
+            out.write("{\"success\": true, \"message\": \"Nếu email tồn tại, chúng tôi đã gửi hướng dẫn đặt lại mật khẩu\"}");
+        }
     }
     
     /**
@@ -183,29 +163,22 @@ public class ForgotPasswordServlet extends HttpServlet {
             return;
         }
         
-        // Kiểm tra token
-        TokenData tokenData = resetTokens.get(token);
-        if (tokenData == null || tokenData.isExpired()) {
+        // Kiểm tra token từ database
+        String email = resetDAO.validateToken(token);
+        if (email == null) {
             out.write("{\"success\": false, \"message\": \"Token đã hết hạn hoặc không tồn tại\"}");
             return;
         }
         
         // Đặt lại mật khẩu
-        boolean success = userDAO.resetPassword(tokenData.email, newPassword);
+        boolean success = userDAO.resetPassword(email, newPassword);
         
         if (success) {
-            // Xóa token đã sử dụng
-            resetTokens.remove(token);
+            // Đánh dấu token đã sử dụng
+            resetDAO.markTokenAsUsed(token);
             out.write("{\"success\": true, \"message\": \"Đặt lại mật khẩu thành công. Vui lòng đăng nhập.\"}");
         } else {
             out.write("{\"success\": false, \"message\": \"Có lỗi xảy ra. Vui lòng thử lại.\"}");
         }
-    }
-    
-    /**
-     * Task để xóa token hết hạn (chạy định kỳ)
-     */
-    public static void cleanupExpiredTokens() {
-        resetTokens.entrySet().removeIf(entry -> entry.getValue().isExpired());
     }
 }

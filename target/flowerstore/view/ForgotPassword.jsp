@@ -7,6 +7,10 @@
     <meta charset="UTF-8" />
 
     <title>Quên mật khẩu</title>
+    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="${csrfToken}">
+    <script>window.csrfToken = '${csrfToken}';</script>
 
     <!-- Bootstrap Icons (cho icon email) -->
 
@@ -18,6 +22,12 @@
     <!-- CSS riêng -->
 
     <link rel="stylesheet" href="ForgotPassword.css" />
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <!-- CSRF Token Helper -->
+    <script src="${pageContext.request.contextPath}/fileJS/csrf-token.js"></script>
   </head>
 
   <body>

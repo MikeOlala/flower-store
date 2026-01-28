@@ -38,7 +38,6 @@ public class CouponDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi lấy danh sách coupons: " + e.getMessage());
-            e.printStackTrace();
         }
         return coupons;
     }
@@ -62,7 +61,6 @@ public class CouponDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi lấy active coupons: " + e.getMessage());
-            e.printStackTrace();
         }
         return coupons;
     }
@@ -84,7 +82,6 @@ public class CouponDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi tìm coupon theo code: " + e.getMessage());
-            e.printStackTrace();
         }
         return null;
     }
@@ -106,7 +103,6 @@ public class CouponDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi tìm coupon theo ID: " + e.getMessage());
-            e.printStackTrace();
         }
         return null;
     }
@@ -169,7 +165,6 @@ public class CouponDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi thêm coupon: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -227,7 +222,6 @@ public class CouponDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Lỗi cập nhật coupon: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -245,7 +239,6 @@ public class CouponDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Lỗi xóa coupon: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -263,7 +256,6 @@ public class CouponDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Lỗi toggle active coupon: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -281,7 +273,6 @@ public class CouponDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Lỗi increment used count: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }

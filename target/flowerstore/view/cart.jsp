@@ -8,6 +8,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="vi">
   <head>
     <title>Giỏ hàng - Tiệm Hoa nhà tớ</title>
+    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="${csrfToken}">
+    <script>window.csrfToken = '${csrfToken}';</script>
 
     <!-- Google Tag Manager -->
 
@@ -321,11 +325,48 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
         border-radius: 999px;
 
-        padding: 8px 14px;
+        padding: 4px 8px;
 
         font-weight: 700;
 
         gap: 8px;
+      }
+      
+      .qty-btn {
+        width: 28px;
+        height: 28px;
+        border: none;
+        background: var(--rose-100);
+        color: var(--rose-600);
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+        user-select: none;
+      }
+      
+      .qty-btn:hover {
+        background: var(--rose-200);
+        transform: scale(1.1);
+      }
+      
+      .qty-btn:active {
+        transform: scale(0.95);
+      }
+      
+      .qty-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      
+      .qty-number {
+        min-width: 30px;
+        text-align: center;
+        font-size: 15px;
       }
 
       .price {
@@ -1147,6 +1188,46 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         box-shadow: 0 8px 20px rgba(169, 113, 85, 0.28);
 
         transition: all 0.3s;
+        
+        font-size: 14px;
+      }
+
+      .ai-btn.primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        
+        font-size: 16px;
+        
+        padding: 14px 24px;
+      }
+      
+      .ai-btn.primary:hover {
+        transform: translateY(-2px);
+        
+        box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+      }
+      
+      @keyframes slideIn {
+        from {
+          transform: translateX(400px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      
+      @keyframes slideOut {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(400px);
+          opacity: 0;
+        }
       }
 
       .ai-btn:hover {
@@ -1245,24 +1326,18 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       media="(max-width: 480px)"
     />
 
-    <link
-      href="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"
-      rel="preload"
-      as="script"
-      type="text/javascript"
-    />
-
+    <!-- jQuery từ CDN đáng tin cậy -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <!-- CSRF Token Helper - Tự động thêm token vào fetch/AJAX -->
+    <script src="${pageContext.request.contextPath}/fileJS/csrf-token.js"></script>
+    
     <link
       href="//cdn.hstatic.net/themes/200000846175/1001403720/14/main-scripts.js?v=245"
       rel="preload"
       as="script"
       type="text/javascript"
     />
-
-    <script
-      type="text/javascript"
-      src="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"
-    ></script>
 
     <!-- Tất cả biến khởi tạo, check sử dụng-->
 
@@ -1614,7 +1689,18 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           <div class="sum-row muted">
             <span>Giảm giá</span>
 
-            <span id="discount">0đ</span>
+            <span id="discount" style="color: #27ae60;">0đ</span>
+          </div>
+          
+          <div id="appliedCouponInfo" style="display: none; margin: 10px 0; padding: 10px; background: #e8f5e9; border-radius: 8px; border-left: 3px solid #27ae60;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: #27ae60; font-weight: 500;">
+                <i class="fas fa-check-circle"></i> Mã <strong id="appliedCouponCode"></strong>
+              </span>
+              <button onclick="removeCoupon()" style="background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 14px;">
+                <i class="fas fa-times"></i> Xóa
+              </button>
+            </div>
           </div>
 
           <div class="sum-total">
@@ -1773,7 +1859,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             </div>
 
             <div class="ai-field">
-              <label>Lời nhắn thá»§ công (tùy chọn)</label>
+              <label>Lời nhắn thành công (tùy chọn)</label>
 
               <textarea
                 id="aiManual"
@@ -1793,18 +1879,18 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             </div>
 
             <div class="ai-actions">
-              <button class="ai-btn" onclick="generateMessage()">
-                Sinh lời chúc
-              </button>
-
-              <button class="ai-btn secondary" onclick="renderCard()">
-                Tạo thiệp
+              <button class="ai-btn primary" onclick="createNewCard()">
+                🎨 Tạo thiệp mới
               </button>
 
               <button class="ai-btn secondary" onclick="downloadCard()">
-                Tải PNG
+                📥 Tải PNG
               </button>
             </div>
+            
+            <p class="ai-hint" style="margin-top: 8px; font-size: 13px;">
+              💡 Mẹo: Nhấn "Tạo thiệp mới" để AI sinh câu chúc và tạo ảnh thiệp đẹp tự động!
+            </p>
           </div>
 
           <!-- RIGHT: canvas preview -->
@@ -1820,7 +1906,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             </div>
 
             <p class="ai-hint" style="margin-top: 8px">
-              Thiệp dùng tông nâu ấm của trang, kèm hoa 🌸·ðŸŒ·.<br />Hình xuất
+              Thiệp dùng tông nâu ấm của trang, kèm hoa 🌸.<br />Hình xuất
               PNG 900×600.
             </p>
           </div>
@@ -1834,6 +1920,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       // Cart data from API
       let cartItems = [];
       let discountAmount = 0;
+      let appliedCouponCode = null;
       const shippingFee = 0;
       const contextPath = '${pageContext.request.contextPath}';
 
@@ -1873,6 +1960,13 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
           currency: "VND",
         }).format(price);
+      }
+      
+      function formatCurrency(amount) {
+        return new Intl.NumberFormat("vi-VN", {
+          style: "currency",
+          currency: "VND",
+        }).format(amount);
       }
 
       function renderCart() {
@@ -1926,7 +2020,11 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
           <div>
 
-            <div class="qty-pill">${dollar}{item.quantity}</div>
+            <div class="qty-pill">
+              <button class="qty-btn" onclick="decreaseQuantity(${dollar}{item.id})" title="Giảm số lượng">−</button>
+              <span class="qty-number">${dollar}{item.quantity}</span>
+              <button class="qty-btn" onclick="increaseQuantity(${dollar}{item.id})" title="Tăng số lượng">+</button>
+            </div>
 
           </div>
 
@@ -1963,7 +2061,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           formatPrice(shippingFee);
 
         document.getElementById("discount").textContent =
-          formatPrice(discountAmount);
+          "-" + formatPrice(discountAmount);
 
         document.getElementById("total").textContent = formatPrice(total);
       }
@@ -1994,33 +2092,102 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           renderCart();
         });
       }
+      
+      function increaseQuantity(id) {
+        const item = cartItems.find((item) => item.id === id);
+        if (item) {
+          item.quantity++;
+          renderCart();
+          
+          // Call API to update quantity
+          fetch(contextPath + '/api/cart', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'productId=' + id + '&quantity=1'
+          }).catch(error => console.error('Error updating quantity:', error));
+        }
+      }
+      
+      function decreaseQuantity(id) {
+        const item = cartItems.find((item) => item.id === id);
+        if (item && item.quantity > 1) {
+          item.quantity--;
+          renderCart();
+          
+          // Call API to update quantity
+          fetch(contextPath + '/api/cart', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'productId=' + id + '&quantity=-1'
+          }).catch(error => console.error('Error updating quantity:', error));
+        } else if (item && item.quantity === 1) {
+          // Nếu số lượng = 1, hỏi người dùng có muốn xóa không
+          if (confirm('Bạn có muốn xóa sản phẩm này khỏi giỏ hàng?')) {
+            removeItem(id);
+          }
+        }
+      }
 
-      function applyDiscount() {
-        const code = document
-          .getElementById("discountCode")
-          .value.trim()
-          .toUpperCase();
+      // Apply discount coupon using API
+      async function applyDiscount() {
+        const code = document.getElementById("discountCode").value.trim();
 
-        if (code === "LAVIE10") {
-          const subtotal = cartItems.reduce(
-            (sum, item) => sum + item.price * item.quantity,
-            0
-          );
-
-          discountAmount = subtotal * 0.1;
-
-          alert("✅ Áp dụng mã giảm giá 10% thành công!");
-        } else if (code === "LAVIE50K") {
-          discountAmount = 50000;
-
-          alert("✅ Áp dụng mã giảm 50.000đ thành công!");
-        } else if (code) {
-          alert("❌ Mã giảm giá không hợp lệ!");
-
-          discountAmount = 0;
+        if (!code) {
+          alert("❌ Vui lòng nhập mã giảm giá!");
+          return;
         }
 
+        const subtotal = cartItems.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0
+        );
+
+        try {
+          const response = await axios.post(contextPath + "/api/coupon/validate", {
+            code: code,
+            subtotal: subtotal
+          });
+
+          if (response.data.success) {
+            discountAmount = parseFloat(response.data.discountAmount);
+            appliedCouponCode = code.toUpperCase();
+            
+            // Show applied coupon info
+            document.getElementById("appliedCouponInfo").style.display = "block";
+            document.getElementById("appliedCouponCode").textContent = appliedCouponCode;
+            document.getElementById("discountCode").value = "";
+            document.getElementById("discountCode").disabled = true;
+            
+            updateSummary();
+            alert("✅ Áp dụng mã giảm giá thành công! Giảm " + formatCurrency(discountAmount));
+          } else {
+            alert("❌ " + (response.data.message || "Mã giảm giá không hợp lệ!"));
+            discountAmount = 0;
+            updateSummary();
+          }
+        } catch (error) {
+          console.error("Error validating coupon:", error);
+          alert("❌ Không thể kiểm tra mã giảm giá. Vui lòng thử lại!");
+          discountAmount = 0;
+          updateSummary();
+        }
+      }
+
+      // Remove applied coupon
+      function removeCoupon() {
+        discountAmount = 0;
+        appliedCouponCode = null;
+        
+        document.getElementById("appliedCouponInfo").style.display = "none";
+        document.getElementById("discountCode").disabled = false;
+        document.getElementById("discountCode").value = "";
+        
         updateSummary();
+        alert("✅ Đã hủy mã giảm giá!");
       }
 
       function continueShopping() {
@@ -2121,7 +2288,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             .map(
               (item) => `
 
-            <div class="invoice-item">
+                <div class="invoice-item">
 
               <div class="invoice-item-info">
 
@@ -2159,7 +2326,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
           </div>
 
-        `
+          `
             : ""
         }
 
@@ -2194,7 +2361,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               <span>-${dollar}{formatPrice(discountAmount)}</span>
 
             </div>
-
+              
           `
               : ""
           }
@@ -2414,35 +2581,318 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         return text;
       }
 
-      function generateMessage() {
-        currentMessage = buildMessage();
+      /**
+       * Hàm chính: Tạo thiệp mới - tự động sinh lời chúc và tạo ảnh
+       */
+      async function createNewCard() {
+        console.log("🎨 createNewCard() called!");
+        
+        // Lấy thông tin từ form
+        const recipient = document.getElementById("aiTo").value.trim() || "Bạn";
+        const occasion = document.getElementById("aiOccasion").value;
+        const tone = document.getElementById("aiTone").value;
+        const customMessage = document.getElementById("aiManual").value.trim();
+        const length = document.getElementById("aiLength").value;
+        
+        console.log("Form data:", { recipient, occasion, tone, customMessage, length });
+        
+        // Hiển thị loading
+        const canvas = document.getElementById("aiCanvas");
+        if (!canvas) {
+          console.error("❌ Canvas not found!");
+          alert("Không tìm thấy canvas. Vui lòng thử lại.");
+          return;
+        }
+        
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#f0f0f0";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#333";
+        ctx.font = "20px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText("⏳ Đang tạo thiệp mới...", canvas.width/2, canvas.height/2 - 20);
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#666";
+        ctx.fillText("Bước 1/2: Đang sinh lời chúc...", canvas.width/2, canvas.height/2 + 20);
+        
+        let usingAI = false;
+        
+        try {
+          // Bước 1: Thử gọi AI để sinh lời chúc
+          console.log("📡 Step 1: Calling AI API...");
+          const aiResponse = await fetch("${pageContext.request.contextPath}/api/ai-card-generate", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              recipient: recipient,
+              occasion: occasion,
+              tone: tone,
+              customMessage: customMessage,
+              length: length
+            })
+          });
+          
+          console.log("Response status:", aiResponse.status);
+          const aiResult = await aiResponse.json();
+          console.log("AI Result:", aiResult);
+          
+          if (aiResult.success && aiResult.message && aiResult.source === "gemini-ai") {
+            currentMessage = aiResult.message;
+            usingAI = true;
+            console.log("✓ Bước 1: AI generated message successfully");
+          } else {
+            // AI không hoạt động, dùng fallback
+            console.warn("AI not available, using fallback message");
+            console.log("📝 Calling buildMessage()...");
+            currentMessage = buildMessage();
+            console.log("Generated message:", currentMessage);
+          }
+          
+        } catch (error) {
+          // Lỗi network, dùng fallback
+          console.error("Error calling AI API:", error);
+          console.log("📝 Calling buildMessage() after error...");
+          currentMessage = buildMessage();
+          console.log("Generated message:", currentMessage);
+        }
+        
+        // Nếu không có message, dùng fallback
+        if (!currentMessage) {
+          console.warn("⚠️ No message generated, using fallback");
+          currentMessage = buildMessage();
+          console.log("Fallback message:", currentMessage);
+        }
+        
+        console.log("📸 Step 2: Creating card image...");
+        
+        // Hiển thị loading bước 2
+        ctx.fillStyle = "#f0f0f0";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#333";
+        ctx.font = "20px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText("⏳ Đang tạo thiệp mới...", canvas.width/2, canvas.height/2 - 20);
+        ctx.font = "16px Arial";
+        ctx.fillStyle = "#666";
+        ctx.fillText("Bước 2/2: Đang tạo hình ảnh thiệp đẹp...", canvas.width/2, canvas.height/2 + 20);
+        
+        // Bước 2: Tạo ảnh thiệp từ message
+        try {
+          const imageResponse = await fetch("${pageContext.request.contextPath}/api/generate-card-image", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              message: currentMessage,
+              occasion: occasion
+            })
+          });
+          
+          console.log("Image response status:", imageResponse.status);
+          const imageResult = await imageResponse.json();
+          console.log("Image Result:", imageResult);
+          
+          if (imageResult.success && imageResult.imageData) {
+            // Hiển thị ảnh trên canvas
+            const img = new Image();
+            img.onload = function() {
+              canvas.width = img.width;
+              canvas.height = img.height;
+              ctx.drawImage(img, 0, 0);
+              console.log("✓ Bước 2: Card image generated successfully");
+              
+              // Hiển thị thông báo thành công
+              if (usingAI) {
+                showSuccessMessage("🎉 Thiệp đã được tạo bằng AI thành công! Bạn có thể tải xuống hoặc tiếp tục mua sắm.");
+              } else {
+                showSuccessMessage("✨ Thiệp đã được tạo thành công! (Lời chúc tự động vì AI đang bảo trì)");
+              }
+            };
+            img.src = imageResult.imageData;
+            
+          } else {
+            // Fallback: vẽ bằng canvas như trước
+            console.warn("Image generation failed, using canvas fallback");
+            drawCard(currentMessage, true);
+            showSuccessMessage("✅ Thiệp đã được tạo thành công!");
+          }
+          
+        } catch (error) {
+          console.error("Error generating card image:", error);
+          // Fallback: vẽ bằng canvas như trước
+          drawCard(currentMessage, true);
+          showSuccessMessage("✅ Thiệp đã được tạo thành công!");
+        }
+      }
+      
+      /**
+       * Hiển thị thông báo thành công
+       */
+      function showSuccessMessage(message) {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+          position: fixed;
+          top: 80px;
+          right: 20px;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 15px 25px;
+          border-radius: 10px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+          z-index: 10000;
+          font-size: 14px;
+          max-width: 350px;
+          animation: slideIn 0.3s ease-out;
+        `;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+          notification.style.animation = 'slideOut 0.3s ease-out';
+          setTimeout(() => notification.remove(), 300);
+        }, 4000);
+      }
 
+      async function generateMessage() {
+        // Lấy thông tin từ form
+        const recipient = document.getElementById("aiRecipient").value.trim();
+        const occasion = document.getElementById("aiOccasion").value;
+        const tone = document.getElementById("aiTone").value;
+        const customMessage = document.getElementById("aiCustomMessage").value.trim();
+        const length = document.getElementById("aiLength").value;
+        
+        // Hiển thị loading
+        const canvas = document.getElementById("aiCanvas");
+        const ctx = canvas.getContext("2d");
+        const loadingText = "Đang tạo lời chúc bằng AI...\n\n🤖 Vui lòng đợi trong giây lát...";
+        drawCard(loadingText, false);
+        
+        try {
+          // Gọi AI API
+          const response = await fetch("${pageContext.request.contextPath}/api/ai-card-generate", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              recipient: recipient,
+              occasion: occasion,
+              tone: tone,
+              customMessage: customMessage,
+              length: length
+            })
+          });
+          
+          const result = await response.json();
+          
+          if (result.success && result.message) {
+            // AI thành công
+            currentMessage = result.message;
+            console.log("✓ AI generated message successfully");
+          } else {
+            // AI thất bại, dùng fallback
+            console.warn("AI failed, using fallback:", result.error);
+            currentMessage = buildMessage();
+          }
+          
+        } catch (error) {
+          // Lỗi network hoặc server, dùng fallback
+          console.error("Error calling AI API:", error);
+          currentMessage = buildMessage();
+        }
+        
+        // Vẽ lại card với message
         drawCard(currentMessage, false);
       }
 
-      function renderCard() {
+      async function renderCard() {
         if (!currentMessage) currentMessage = buildMessage();
-
-        drawCard(currentMessage, true);
+        
+        // Lấy occasion để tạo ảnh đẹp
+        const occasion = document.getElementById("aiOccasion").value;
+        
+        // Hiển thị loading
+        const canvas = document.getElementById("aiCanvas");
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#f0f0f0";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#333";
+        ctx.font = "20px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText("Đang tạo thiệp ảnh đẹp...", canvas.width/2, canvas.height/2);
+        
+        try {
+          // Gọi API tạo ảnh PNG
+          const response = await fetch("${pageContext.request.contextPath}/api/generate-card-image", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              message: currentMessage,
+              occasion: occasion
+            })
+          });
+          
+          const result = await response.json();
+          
+          if (result.success && result.imageData) {
+            // Hiển thị ảnh trên canvas
+            const img = new Image();
+            img.onload = function() {
+              canvas.width = img.width;
+              canvas.height = img.height;
+              ctx.drawImage(img, 0, 0);
+            };
+            img.src = result.imageData;
+            
+            console.log("✓ Card image generated successfully");
+          } else {
+            // Fallback: vẽ bằng canvas như trước
+            drawCard(currentMessage, true);
+          }
+          
+        } catch (error) {
+          console.error("Error generating card image:", error);
+          // Fallback: vẽ bằng canvas như trước
+          drawCard(currentMessage, true);
+        }
       }
 
-      function downloadCard() {
+      async function downloadCard() {
+        // Nếu đã có ảnh PNG từ server, download trực tiếp
+        try {
+          const response = await fetch("${pageContext.request.contextPath}/api/download-card");
+          if (response.ok) {
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            const stamp = new Date().toISOString().slice(0, 10);
+            link.download = `thiep_${dollar}{stamp}.png`;
+            link.href = url;
+            link.click();
+            window.URL.revokeObjectURL(url);
+            return;
+          }
+        } catch (error) {
+          console.log("Downloading from server failed, using canvas fallback");
+        }
+        
+        // Fallback: download từ canvas
         const canvas = document.getElementById("aiCanvas");
-
         const link = document.createElement("a");
-
         const stamp = new Date().toISOString().slice(0, 10);
-
         link.download = `thiep_${dollar}{stamp}.png`;
-
         link.href = canvas.toDataURL("image/png");
-
         link.click();
       }
 
       function initializeCanvas() {
         drawCard(
-          'Gõ thông tin ở trái, bấm "Sinh lời chúc" rồi "Tạo thiệp" để xem trước.\n\n🌼 Gợi ý: nhập Người nhận, chọn Dịp & Giọng điệu.',
+          '🎨 Nhập thông tin bên trái và nhấn "Tạo thiệp mới"\n\n💡 AI sẽ tự động sinh lời chúc và tạo thiệp đẹp cho bạn!\n\n✨ Gợi ý: Chọn Người nhận, Dịp & Giọng điệu phù hợp.',
           false
         );
       }

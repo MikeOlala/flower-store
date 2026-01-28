@@ -28,6 +28,59 @@ public class UserDAO {
     }
     
     /**
+     * Đăng ký user mới với verification token
+     */
+    public boolean registerWithVerification(User user, String verificationToken) {
+        String sql = "INSERT INTO users (email, password, fullname, phone, role, status, verification_token) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            
+            // Hash password trước khi lưu
+            String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+            
+            ps.setString(1, user.getEmail());
+            ps.setString(2, hashedPassword);
+            ps.setString(3, user.getFullname());
+            ps.setString(4, user.getPhone());
+            ps.setString(5, user.getRole() != null ? user.getRole() : "customer");
+            ps.setString(6, user.getStatus() != null ? user.getStatus() : "pending");
+            ps.setString(7, verificationToken);
+            
+            int rows = ps.executeUpdate();
+            
+            if (rows > 0) {
+                ResultSet rs = ps.getGeneratedKeys();
+                if (rs.next()) {
+                    user.setId(rs.getInt(1));
+                }
+                return true;
+            }
+        } catch (SQLException e) {
+            logSQLError("đăng ký user với verification", e);
+        }
+        return false;
+    }
+    
+    /**
+     * Xác thực email bằng token
+     */
+    public boolean verifyEmail(String token) {
+        String sql = "UPDATE users SET status = 'active', verification_token = NULL WHERE verification_token = ? AND status = 'pending'";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setString(1, token);
+            int rows = ps.executeUpdate();
+            return rows > 0;
+        } catch (SQLException e) {
+            logSQLError("xác thực email", e);
+        }
+        return false;
+    }
+    
+    /**
      * Đăng ký user mới
      */
     public boolean register(User user) {
