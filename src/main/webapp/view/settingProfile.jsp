@@ -94,6 +94,8 @@
         
         .main-container i.far {
             font-weight: 400 !important;
+        }
+        
         body {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: linear-gradient(135deg, #faf5ef 0%, #fff9f5 50%, #f5ebe1 100%);
@@ -101,6 +103,8 @@
             color: var(--brown-main);
             line-height: 1.6;
             min-height: 100vh;
+        }
+        
         body::before {
             content: '';
             position: fixed;

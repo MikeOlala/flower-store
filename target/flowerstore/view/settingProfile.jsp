@@ -105,7 +105,6 @@
             min-height: 100vh;
         }
         
-        /* Animated background pattern */
         body::before {
             content: '';
             position: fixed;
@@ -134,7 +133,6 @@
             text-decoration: none;
             transition: var(--transition);
         }
-        
         .breadcrumb a:hover {
             color: white;
         }

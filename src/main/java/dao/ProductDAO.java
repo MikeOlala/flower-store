@@ -582,13 +582,18 @@ public class ProductDAO {
     public boolean delete(int id) {
         String sql = "UPDATE products SET is_active = FALSE, updated_at = CURRENT_TIMESTAMP WHERE id = ?";
         
+        System.out.println("[ProductDAO] Attempting to delete product ID: " + id);
+        
         try (Connection conn = getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             
             ps.setInt(1, id);
-            return ps.executeUpdate() > 0;
+            int rowsAffected = ps.executeUpdate();
+            System.out.println("[ProductDAO] Rows affected: " + rowsAffected);
+            return rowsAffected > 0;
         } catch (SQLException e) {
             logSQLError("xóa product", e);
+            e.printStackTrace();
         }
         return false;
     }

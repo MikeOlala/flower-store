@@ -868,7 +868,9 @@ public class AdminServlet extends HttpServlet {
         try {
             if (pathInfo.startsWith("/api/product/")) {
                 int productId = Integer.parseInt(pathInfo.substring("/api/product/".length()));
+                System.out.println("[AdminServlet] Deleting product ID: " + productId);
                 boolean success = productDAO.delete(productId);
+                System.out.println("[AdminServlet] Delete result: " + success);
                 result.put("success", success);
                 result.put("message", success ? "Xóa sản phẩm thành công" : "Không thể xóa sản phẩm");
             } else if (pathInfo.startsWith("/api/user/")) {
@@ -901,10 +903,13 @@ public class AdminServlet extends HttpServlet {
             result.put("message", "ID không hợp lệ");
         } catch (Exception e) {
             System.err.println("[AdminServlet] Error in handleApiDelete: " + e.getMessage());
+            e.printStackTrace();
             result.put("success", false);
             result.put("message", "Lỗi server: " + e.getMessage());
         }
         
-        response.getWriter().write(gson.toJson(result));
+        String jsonResponse = gson.toJson(result);
+        System.out.println("[AdminServlet] Sending response: " + jsonResponse);
+        response.getWriter().write(jsonResponse);
     }
 }
