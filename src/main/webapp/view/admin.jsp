@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <%
     // Check admin access
     model.User user = (model.User) session.getAttribute("user");
@@ -10,7 +9,6 @@
         return;
     }
 %>
-
 <!DOCTYPE html>
 <html lang="vi">
   <head>
@@ -27,10 +25,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-
     <style>
       /* ============================================
            CSS VARIABLES & RESET
@@ -4467,6 +4463,9 @@
         }
 
         try {
+          // Get CSRF token
+          const csrfToken = window.csrfToken || document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+          
           const url = productId
             ? contextPath + "/admin/api/product/update"
             : contextPath + "/admin/api/product/add";
@@ -4481,15 +4480,27 @@
           if (image) params.append("image", image);
           if (description) params.append("description", description);
 
+          console.log("Saving product to:", url, "with CSRF token:", csrfToken);
+
           const response = await fetch(url, {
             method: "POST",
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded',
+              'X-CSRF-Token': csrfToken
             },
             body: params.toString()
           });
 
+          console.log("Response status:", response.status);
+          
+          if (!response.ok) {
+            const errorText = await response.text();
+            console.error("Response error:", errorText);
+            throw new Error(`Server error: ${response.status}`);
+          }
+
           const result = await response.json();
+          console.log("Save result:", result);
 
           if (!result.success) {
             throw new Error(result.message || "Failed to save product");
@@ -4524,14 +4535,32 @@
         const productId = document.getElementById("deleteProductId").value;
 
         try {
+          // Get CSRF token
+          const csrfToken = window.csrfToken || document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+          
+          console.log("Deleting product:", productId, "with CSRF token:", csrfToken);
+          
           const response = await fetch(
             contextPath + "/admin/api/product/" + productId,
             {
               method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-Token": csrfToken
+              }
             }
           );
 
+          console.log("Response status:", response.status);
+          
+          if (!response.ok) {
+            const errorText = await response.text();
+            console.error("Response error:", errorText);
+            throw new Error(`Server error: ${response.status} - ${errorText}`);
+          }
+
           const result = await response.json();
+          console.log("Delete result:", result);
 
           if (!result.success) {
             throw new Error(result.message || "Failed to delete product");

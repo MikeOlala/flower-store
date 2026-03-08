@@ -1,9 +1,7 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <!DOCTYPE html>
-
 <html lang="vi">
   <head>
     <title>Tin Tức - La Vie Est Belle - Flower & Gift</title>
@@ -13,7 +11,6 @@
     <script>window.csrfToken = '${csrfToken}';</script>
 
     <!-- Google Tag Manager -->
-
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -29,11 +26,8 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-W8R4GL2");
     </script>
-
     <!-- End Google Tag Manager -->
-
     <!-- Google Tag Manager -->
-
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -144,9 +138,7 @@
 
         line-height: 1.6;
       }
-
       /* Hero Section */
-
       .news-hero {
          background: linear-gradient(
             135deg,

@@ -11,7 +11,6 @@
     <script>window.csrfToken = '${csrfToken}';</script>
 
     <!-- Google Tag Manager -->
-
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
