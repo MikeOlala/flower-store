@@ -3,9 +3,18 @@ bin-debug/
 bin-release/
 [Oo]bj/
 [Bb]in/
+target/
+WEB-INF/classes/
+*.war
 
 # Other files and folders
 .settings/
+.idea/
+.vscode/
+
+# Logs and temp files
+*.log
+*.tmp
 
 # Executables
 *.swf
