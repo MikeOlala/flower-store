@@ -17,7 +17,6 @@ import com.google.gson.JsonObject;
 import dao.AddressDAO;
 import model.Address;
 import model.User;
-
 /**
  * Servlet xử lý sổ địa chỉ
  */
@@ -32,7 +31,6 @@ public class AddressServlet extends HttpServlet {
         addressDAO = new AddressDAO();
         gson = new Gson();
     }
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -47,7 +45,6 @@ public class AddressServlet extends HttpServlet {
             sendJsonError(response, "Vui lòng đăng nhập");
             return;
         }
-        
         String pathInfo = request.getPathInfo();
         
         if (pathInfo == null || pathInfo.equals("/") || pathInfo.equals("/list")) {
