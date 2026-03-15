@@ -49,7 +49,6 @@ public class ReviewDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error adding review: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -92,7 +91,6 @@ public class ReviewDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error getting reviews: " + e.getMessage());
-            e.printStackTrace();
         }
         
         return reviews;

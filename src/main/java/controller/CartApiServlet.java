@@ -141,7 +141,6 @@ public class CartApiServlet extends HttpServlet {
                 jsonResponse.addProperty("message", "Không thể thêm vào giỏ hàng");
             }
         } catch (Exception e) {
-            e.printStackTrace();
             jsonResponse.addProperty("success", false);
             jsonResponse.addProperty("message", "Lỗi: " + e.getMessage());
         }

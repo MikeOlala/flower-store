@@ -10,20 +10,28 @@ import java.sql.SQLException;
  */
 public class DBConnection {
     
-    // Cấu hình database - thay đổi theo môi trường của bạn
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/flowerstore?useSSL=false&serverTimezone=Asia/Ho_Chi_Minh&allowPublicKeyRetrieval=true&characterEncoding=UTF-8";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = ""; // Để trống nếu không có password
+    // Đọc cấu hình từ application.properties thay vì hard-code
+    private final AppConfig config = AppConfig.getInstance();
+    private final String DB_URL;
+    private final String DB_USER;
+    private final String DB_PASSWORD;
     
     // Singleton instance
     private static DBConnection instance;
     
     // Constructor private để ngăn tạo instance từ bên ngoài
     private DBConnection() {
+        // Đọc config từ application.properties
+        this.DB_URL = config.getDbUrl();
+        this.DB_USER = config.getDbUsername();
+        this.DB_PASSWORD = config.getDbPassword();
+        
         try {
             // Load MySQL JDBC Driver
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("MySQL JDBC Driver đã được load thành công!");
+            System.out.println("Database URL: " + DB_URL);
+            System.out.println("Database User: " + DB_USER);
         } catch (ClassNotFoundException e) {
             System.err.println("Lỗi: Không tìm thấy MySQL JDBC Driver!");
             System.err.println("Chi tiết lỗi: " + e.getClass().getName() + ": " + e.getMessage());

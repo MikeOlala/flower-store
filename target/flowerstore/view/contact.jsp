@@ -5,9 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Liên hệ - Tiệm Hoa nhà tớ</title>
+    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="${csrfToken}">
+    <script>window.csrfToken = '${csrfToken}';</script>
 
     <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon" />
-
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Crimson+Text:wght@400;600;700&display=swap"
@@ -702,6 +705,9 @@
         }
       }
     </style>
+    
+    <!-- CSRF Token Helper -->
+    <script src="${pageContext.request.contextPath}/fileJS/csrf-token.js"></script>
   </head>
 
   <body id="wandave-theme" class="index" data-theme="tbag-fashion">

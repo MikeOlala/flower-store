@@ -19,6 +19,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cài đặt tài khoản - Tiệm Hoa nhà tớ</title>
+    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="${csrfToken}">
+    <script>window.csrfToken = '${csrfToken}';</script>
     <link rel="shortcut icon" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/favicon.png?v=245" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -101,7 +105,6 @@
             min-height: 100vh;
         }
         
-        /* Animated background pattern */
         body::before {
             content: '';
             position: fixed;
@@ -130,7 +133,6 @@
             text-decoration: none;
             transition: var(--transition);
         }
-        
         .breadcrumb a:hover {
             color: white;
         }
@@ -1877,6 +1879,12 @@
             }
         }
     </style>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <!-- CSRF Token Helper -->
+    <script src="${pageContext.request.contextPath}/fileJS/csrf-token.js"></script>
 </head>
 <body>
     <%@ include file="partials/header.jsp" %>

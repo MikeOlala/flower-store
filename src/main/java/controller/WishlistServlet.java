@@ -74,7 +74,6 @@ public class WishlistServlet extends HttpServlet {
                 sendError(out, "Endpoint không hợp lệ");
             }
         } catch (Exception e) {
-            e.printStackTrace();
             sendError(out, "Lỗi server: " + e.getMessage());
         }
     }
@@ -134,7 +133,6 @@ public class WishlistServlet extends HttpServlet {
             }
             
         } catch (Exception e) {
-            e.printStackTrace();
             sendError(out, "Lỗi server: " + e.getMessage());
         }
     }
@@ -166,7 +164,6 @@ public class WishlistServlet extends HttpServlet {
                 sendError(out, "ID sản phẩm không hợp lệ");
             }
         } catch (Exception e) {
-            e.printStackTrace();
             sendError(out, "Lỗi server: " + e.getMessage());
         }
     }

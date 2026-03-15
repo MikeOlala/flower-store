@@ -96,7 +96,6 @@ public class GalleryServlet extends HttpServlet {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
             jsonResponse.addProperty("success", false);
             jsonResponse.addProperty("message", "Error: " + e.getMessage());
         }
@@ -186,7 +185,6 @@ public class GalleryServlet extends HttpServlet {
             }
             
         } catch (Exception e) {
-            e.printStackTrace();
             jsonResponse.addProperty("success", false);
             jsonResponse.addProperty("message", "Error: " + e.getMessage());
         }
@@ -221,7 +219,6 @@ public class GalleryServlet extends HttpServlet {
                 jsonResponse.addProperty("message", "Invalid gallery ID");
             }
         } catch (Exception e) {
-            e.printStackTrace();
             jsonResponse.addProperty("success", false);
             jsonResponse.addProperty("message", "Error: " + e.getMessage());
         }

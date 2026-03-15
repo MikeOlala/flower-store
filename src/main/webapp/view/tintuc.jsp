@@ -1,15 +1,16 @@
 ﻿<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <!DOCTYPE html>
-
 <html lang="vi">
   <head>
     <title>Tin Tức - La Vie Est Belle - Flower & Gift</title>
+    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="${csrfToken}">
+    <script>window.csrfToken = '${csrfToken}';</script>
 
     <!-- Google Tag Manager -->
-
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -25,11 +26,8 @@
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-W8R4GL2");
     </script>
-
     <!-- End Google Tag Manager -->
-
     <!-- Google Tag Manager -->
-
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -140,9 +138,7 @@
 
         line-height: 1.6;
       }
-
       /* Hero Section */
-
       .news-hero {
          background: linear-gradient(
             135deg,
@@ -887,10 +883,8 @@
       href="//cdn.hstatic.net/themes/200000846175/1001403720/14/logo.png?v=245"
     />
 
-    <script
-      type="text/javascript"
-      src="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"
-    ></script>
+    <!-- jQuery từ CDN đáng tin cậy -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <script>
       localStorage.setItem("shop_id", "themes/200000846175/1001403720");
@@ -974,6 +968,9 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- CSRF Token Helper -->
+    <script src="${pageContext.request.contextPath}/fileJS/csrf-token.js"></script>
   </head>
 
   <body id="wandave-theme" class="index" data-theme="tbag-fashion">

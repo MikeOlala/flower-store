@@ -130,7 +130,6 @@ public class ContactServlet extends HttpServlet {
             }
             
         } catch (Exception e) {
-            e.printStackTrace();
             jsonResponse.addProperty("success", false);
             jsonResponse.addProperty("message", "Lỗi hệ thống: " + e.getMessage());
         }

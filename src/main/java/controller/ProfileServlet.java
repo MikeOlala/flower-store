@@ -157,7 +157,6 @@ public class ProfileServlet extends HttpServlet {
             }
             
         } catch (Exception e) {
-            e.printStackTrace();
             out.write("{\"success\": false, \"message\": \"Lỗi: " + e.getMessage() + "\"}");
         }
     }

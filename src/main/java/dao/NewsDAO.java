@@ -34,7 +34,6 @@ public class NewsDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error getting published news: " + e.getMessage());
-            e.printStackTrace();
         }
         return newsList;
     }
@@ -57,7 +56,6 @@ public class NewsDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error getting news by category: " + e.getMessage());
-            e.printStackTrace();
         }
         return newsList;
     }
@@ -82,7 +80,6 @@ public class NewsDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error getting news by slug: " + e.getMessage());
-            e.printStackTrace();
         }
         return null;
     }
@@ -104,7 +101,6 @@ public class NewsDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error getting news by id: " + e.getMessage());
-            e.printStackTrace();
         }
         return null;
     }
@@ -125,7 +121,6 @@ public class NewsDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error getting all news: " + e.getMessage());
-            e.printStackTrace();
         }
         return newsList;
     }
@@ -152,7 +147,6 @@ public class NewsDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error searching news: " + e.getMessage());
-            e.printStackTrace();
         }
         return newsList;
     }
@@ -189,7 +183,6 @@ public class NewsDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error adding news: " + e.getMessage());
-            e.printStackTrace();
         }
         return -1;
     }
@@ -219,7 +212,6 @@ public class NewsDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Error updating news: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -237,7 +229,6 @@ public class NewsDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Error deleting news: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -257,7 +248,6 @@ public class NewsDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Error updating publish status: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -296,7 +286,6 @@ public class NewsDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error getting popular news: " + e.getMessage());
-            e.printStackTrace();
         }
         return newsList;
     }
@@ -322,7 +311,6 @@ public class NewsDAO {
             }
         } catch (SQLException e) {
             System.err.println("Error getting related news: " + e.getMessage());
-            e.printStackTrace();
         }
         return newsList;
     }

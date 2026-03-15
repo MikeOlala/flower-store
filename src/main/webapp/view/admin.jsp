@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <%
     // Check admin access
     model.User user = (model.User) session.getAttribute("user");
@@ -10,23 +9,24 @@
         return;
     }
 %>
-
 <!DOCTYPE html>
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard - Tiệm Hoa nhà tớ</title>
+    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="${csrfToken}">
+    <script>window.csrfToken = '${csrfToken}';</script>
 
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-
     <style>
       /* ============================================
            CSS VARIABLES & RESET
@@ -1363,6 +1363,12 @@
         font-size: 0.95rem;
       }
     </style>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <!-- CSRF Token Helper -->
+    <script src="${pageContext.request.contextPath}/fileJS/csrf-token.js"></script>
   </head>
   <body>
     <!-- ============================================
@@ -3965,9 +3971,13 @@
           if (note) params.append("note", note);
 
           const response = await fetch(
-            contextPath + "/admin/api/order/update-status?" + params.toString(),
+            contextPath + "/admin/api/order/update-status",
             {
               method: "POST",
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              body: params.toString()
             }
           );
 
@@ -4453,6 +4463,9 @@
         }
 
         try {
+          // Get CSRF token
+          const csrfToken = window.csrfToken || document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+          
           const url = productId
             ? contextPath + "/admin/api/product/update"
             : contextPath + "/admin/api/product/add";
@@ -4467,11 +4480,27 @@
           if (image) params.append("image", image);
           if (description) params.append("description", description);
 
-          const response = await fetch(url + "?" + params.toString(), {
+          console.log("Saving product to:", url, "with CSRF token:", csrfToken);
+
+          const response = await fetch(url, {
             method: "POST",
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+              'X-CSRF-Token': csrfToken
+            },
+            body: params.toString()
           });
 
+          console.log("Response status:", response.status);
+          
+          if (!response.ok) {
+            const errorText = await response.text();
+            console.error("Response error:", errorText);
+            throw new Error(`Server error: ${response.status}`);
+          }
+
           const result = await response.json();
+          console.log("Save result:", result);
 
           if (!result.success) {
             throw new Error(result.message || "Failed to save product");
@@ -4506,14 +4535,32 @@
         const productId = document.getElementById("deleteProductId").value;
 
         try {
+          // Get CSRF token
+          const csrfToken = window.csrfToken || document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+          
+          console.log("Deleting product:", productId, "with CSRF token:", csrfToken);
+          
           const response = await fetch(
             contextPath + "/admin/api/product/" + productId,
             {
               method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-Token": csrfToken
+              }
             }
           );
 
+          console.log("Response status:", response.status);
+          
+          if (!response.ok) {
+            const errorText = await response.text();
+            console.error("Response error:", errorText);
+            throw new Error(`Server error: ${response.status} - ${errorText}`);
+          }
+
           const result = await response.json();
+          console.log("Delete result:", result);
 
           if (!result.success) {
             throw new Error(result.message || "Failed to delete product");
@@ -4818,8 +4865,12 @@
             contextPath + "/admin/api/category/update" :
             contextPath + "/admin/api/category/add";
 
-          const response = await fetch(url + "?" + params.toString(), {
-            method: "POST"
+          const response = await fetch(url, {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: params.toString()
           });
 
           const result = await response.json();
@@ -4985,8 +5036,12 @@
             contextPath + "/admin/api/coupon/update" :
             contextPath + "/admin/api/coupon/add";
 
-          const response = await fetch(url + "?" + params.toString(), {
-            method: "POST"
+          const response = await fetch(url, {
+            method: "POST",
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: params.toString()
           });
 
           const result = await response.json();

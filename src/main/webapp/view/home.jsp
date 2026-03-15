@@ -3,13 +3,15 @@ isELIgnored="false"%><%@taglib prefix="c"
 uri="http://java.sun.com/jsp/jstl/core"%><%@taglib prefix="fmt"
 uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
+    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="${csrfToken}">
+    <script>window.csrfToken = '${csrfToken}';</script>
 
     <!-- Google Tag Manager -->
-
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -882,7 +884,13 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
 
         font-size: 1rem;
 
+        color: #333;
+
         outline: none;
+      }
+      
+      .newsletter-form input::placeholder {
+        color: #999;
       }
 
       .newsletter-form button {
@@ -1109,13 +1117,12 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
       media="(max-width: 480px)"
     />
 
-    <link
-      href="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"
-      rel="preload"
-      as="script"
-      type="text/javascript"
-    />
-
+    <!-- jQuery từ CDN đáng tin cậy -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <!-- CSRF Token Helper - Tự động thêm token vào fetch/AJAX -->
+    <script src="${pageContext.request.contextPath}/fileJS/csrf-token.js"></script>
+    
     <link
       href="//cdn.hstatic.net/themes/200000846175/1001403720/14/main-scripts.js?v=245"
       rel="preload"
@@ -1124,11 +1131,6 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
     />
 
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <script
-      type="text/javascript"
-      src="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"
-    ></script>
 
     <!-- Tất cả biến khởi tạo, check sử dụng-->
 
@@ -2195,21 +2197,54 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
       });
 
       // Newsletter form
-
       const newsletterForm = document.querySelector(".newsletter-form");
 
       if (newsletterForm) {
-        newsletterForm.addEventListener("submit", function (e) {
+        newsletterForm.addEventListener("submit", async function (e) {
           e.preventDefault();
 
-          const email = this.querySelector('input[type="email"]').value;
+          const emailInput = this.querySelector('input[type="email"]');
+          const email = emailInput.value.trim();
+          const submitBtn = this.querySelector('button');
 
-          if (email) {
-            showNotification(
-              "Đăng ký thành công! Kiểm tra email để nhận mã giảm giá."
-            );
+          if (!email) {
+            showNotification("Vui lòng nhập email");
+            return;
+          }
 
-            this.reset();
+          // Validate email
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            showNotification("Email không hợp lệ");
+            return;
+          }
+
+          try {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Đang gửi...';
+
+            const response = await fetch('${pageContext.request.contextPath}/api/newsletter/subscribe', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+              body: 'email=' + encodeURIComponent(email)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+              showNotification("Đăng ký thành công! Kiểm tra email để nhận mã giảm giá.");
+              this.reset();
+            } else {
+              showNotification(result.message || "Đăng ký thất bại");
+            }
+          } catch (error) {
+            console.error('Newsletter error:', error);
+            showNotification("Có lỗi xảy ra. Vui lòng thử lại sau.");
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Đăng ký ngay';
           }
         });
       }

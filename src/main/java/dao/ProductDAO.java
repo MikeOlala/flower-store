@@ -104,6 +104,56 @@ public class ProductDAO {
     }
     
     /**
+     * Lấy sản phẩm theo danh mục với phân trang
+     */
+    public List<Product> findByCategoryWithPagination(int categoryId, int page, int limit) {
+        List<Product> products = new ArrayList<>();
+        String sql = "SELECT p.*, c.name as category_name, c.slug as category_slug " +
+                    "FROM products p " +
+                    "LEFT JOIN categories c ON p.category_id = c.id " +
+                    "WHERE p.is_active = TRUE AND p.category_id = ? " +
+                    "ORDER BY p.created_at DESC " +
+                    "LIMIT ? OFFSET ?";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setInt(1, categoryId);
+            ps.setInt(2, limit);
+            ps.setInt(3, (page - 1) * limit);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                products.add(mapResultSetToProduct(rs, true));
+            }
+        } catch (SQLException e) {
+            logSQLError("lấy products theo category với phân trang", e);
+        }
+        return products;
+    }
+    
+    /**
+     * Đếm số sản phẩm theo danh mục
+     */
+    public int countByCategory(int categoryId) {
+        String sql = "SELECT COUNT(*) FROM products WHERE is_active = TRUE AND category_id = ?";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setInt(1, categoryId);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            logSQLError("đếm products theo category", e);
+        }
+        return 0;
+    }
+    
+    /**
      * Lấy sản phẩm theo danh mục
      */
     public List<Product> findByCategory(int categoryId) {
@@ -125,6 +175,32 @@ public class ProductDAO {
             }
         } catch (SQLException e) {
             logSQLError("lấy products theo category", e);
+        }
+        return products;
+    }
+    
+    /**
+     * Lấy sản phẩm theo danh mục (bao gồm cả inactive - cho Admin)
+     */
+    public List<Product> findByCategoryIncludeInactive(int categoryId) {
+        List<Product> products = new ArrayList<>();
+        String sql = "SELECT p.*, c.name as category_name, c.slug as category_slug " +
+                    "FROM products p " +
+                    "LEFT JOIN categories c ON p.category_id = c.id " +
+                    "WHERE p.category_id = ? " +
+                    "ORDER BY p.created_at DESC";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            ps.setInt(1, categoryId);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                products.add(mapResultSetToProduct(rs, true));
+            }
+        } catch (SQLException e) {
+            logSQLError("lấy products theo category include inactive", e);
         }
         return products;
     }
@@ -337,6 +413,34 @@ public class ProductDAO {
     }
     
     /**
+     * Tìm kiếm sản phẩm bao gồm cả inactive (cho Admin)
+     */
+    public List<Product> searchIncludeInactive(String keyword) {
+        List<Product> products = new ArrayList<>();
+        String sql = "SELECT p.*, c.name as category_name, c.slug as category_slug " +
+                    "FROM products p " +
+                    "LEFT JOIN categories c ON p.category_id = c.id " +
+                    "WHERE p.name LIKE ? OR p.description LIKE ? " +
+                    "ORDER BY p.name";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            String searchPattern = "%" + keyword + "%";
+            ps.setString(1, searchPattern);
+            ps.setString(2, searchPattern);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                products.add(mapResultSetToProduct(rs, true));
+            }
+        } catch (SQLException e) {
+            logSQLError("tìm kiếm products include inactive", e);
+        }
+        return products;
+    }
+    
+    /**
      * Tìm kiếm sản phẩm với giới hạn số lượng (cho live search)
      */
     public List<Product> searchWithLimit(String keyword, int limit) {
@@ -478,13 +582,18 @@ public class ProductDAO {
     public boolean delete(int id) {
         String sql = "UPDATE products SET is_active = FALSE, updated_at = CURRENT_TIMESTAMP WHERE id = ?";
         
+        System.out.println("[ProductDAO] Attempting to delete product ID: " + id);
+        
         try (Connection conn = getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             
             ps.setInt(1, id);
-            return ps.executeUpdate() > 0;
+            int rowsAffected = ps.executeUpdate();
+            System.out.println("[ProductDAO] Rows affected: " + rowsAffected);
+            return rowsAffected > 0;
         } catch (SQLException e) {
             logSQLError("xóa product", e);
+            e.printStackTrace();
         }
         return false;
     }
@@ -697,7 +806,6 @@ public class ProductDAO {
             System.out.println("[ProductDAO] Found " + products.size() + " top selling products");
         } catch (SQLException e) {
             logSQLError("lấy top selling products", e);
-            e.printStackTrace();
         }
         return products;
     }

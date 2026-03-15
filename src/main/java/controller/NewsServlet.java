@@ -145,7 +145,6 @@ public class NewsServlet extends HttpServlet {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
             jsonResponse.addProperty("success", false);
             jsonResponse.addProperty("message", "Error: " + e.getMessage());
         }
@@ -244,7 +243,6 @@ public class NewsServlet extends HttpServlet {
             }
             
         } catch (Exception e) {
-            e.printStackTrace();
             jsonResponse.addProperty("success", false);
             jsonResponse.addProperty("message", "Error: " + e.getMessage());
         }
@@ -279,7 +277,6 @@ public class NewsServlet extends HttpServlet {
                 jsonResponse.addProperty("message", "Invalid news ID");
             }
         } catch (Exception e) {
-            e.printStackTrace();
             jsonResponse.addProperty("success", false);
             jsonResponse.addProperty("message", "Error: " + e.getMessage());
         }

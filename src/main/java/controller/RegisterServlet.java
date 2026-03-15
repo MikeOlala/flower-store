@@ -1,12 +1,18 @@
 package controller;
 
+import java.io.IOException;
+import java.util.UUID;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import dao.UserDAO;
 import model.User;
-
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
-import java.io.IOException;
+import service.EmailService;
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
@@ -83,22 +89,41 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
-        // Tạo user mới
+        // Tạo user mới với status = pending (chờ xác thực)
         User newUser = new User();
         newUser.setFullname(fullname.trim());
         newUser.setEmail(email.trim());
         newUser.setPassword(password);
         newUser.setPhone(phone != null ? phone.trim() : null);
         newUser.setRole("customer");
-        newUser.setStatus("active");
+        newUser.setStatus("pending"); // Đặt pending cho đến khi xác thực email
+
+        // Tạo verification token
+        String verificationToken = UUID.randomUUID().toString();
 
         // Lưu vào database
-        boolean success = userDAO.register(newUser);
+        boolean success = userDAO.registerWithVerification(newUser, verificationToken);
         
         if (success) {
-            // Đăng ký thành công
-            request.setAttribute("success", "Đăng ký thành công! Vui lòng đăng nhập.");
-            request.getRequestDispatcher("/view/login_1.jsp").forward(request, response);
+            // Gửi email xác thực
+            try {
+                EmailService emailService = EmailService.getInstance();
+                String verificationLink = request.getScheme() + "://" + 
+                                         request.getServerName() + ":" + 
+                                         request.getServerPort() + 
+                                         request.getContextPath() + 
+                                         "/verify-email?token=" + verificationToken;
+                
+                emailService.sendVerificationEmail(email.trim(), fullname.trim(), verificationLink);
+                
+                // Đăng ký thành công
+                request.setAttribute("success", "Đăng ký thành công! Vui lòng kiểm tra email để xác thực tài khoản.");
+                request.getRequestDispatcher("/view/login_1.jsp").forward(request, response);
+            } catch (Exception e) {
+                // Vẫn cho đăng ký thành công nhưng thông báo lỗi email
+                request.setAttribute("success", "Đăng ký thành công nhưng không gửi được email xác thực. Vui lòng liên hệ admin.");
+                request.getRequestDispatcher("/view/login_1.jsp").forward(request, response);
+            }
         } else {
             sendError(request, response, "Đăng ký thất bại! Vui lòng thử lại.", fullname, email);
         }

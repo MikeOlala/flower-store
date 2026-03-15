@@ -65,7 +65,6 @@ public class AddressDAO {
                 return mapResultSetToAddress(rs);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return null;
     }
@@ -86,7 +85,6 @@ public class AddressDAO {
                 return mapResultSetToAddress(rs);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return null;
     }
@@ -157,7 +155,6 @@ public class AddressDAO {
             
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return false;
     }
@@ -176,7 +173,6 @@ public class AddressDAO {
             
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return false;
     }

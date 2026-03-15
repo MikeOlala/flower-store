@@ -53,7 +53,6 @@ public class CartDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi lấy cart: " + e.getMessage());
-            e.printStackTrace();
         }
         return items;
     }
@@ -83,7 +82,6 @@ public class CartDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Lỗi thêm vào cart: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -109,7 +107,6 @@ public class CartDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Lỗi cập nhật cart: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -129,7 +126,6 @@ public class CartDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Lỗi xóa khỏi cart: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -147,7 +143,6 @@ public class CartDAO {
             return ps.executeUpdate() >= 0;
         } catch (SQLException e) {
             System.err.println("Lỗi xóa cart: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -170,7 +165,6 @@ public class CartDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi tìm cart item: " + e.getMessage());
-            e.printStackTrace();
         }
         return null;
     }

@@ -5,9 +5,12 @@
 <html lang="vi">
   <head>
     <title>Giới thiệu</title>
+    
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="${csrfToken}">
+    <script>window.csrfToken = '${csrfToken}';</script>
 
     <!-- Google Tag Manager -->
-
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -974,10 +977,8 @@
       type="text/css"
     />
 
-    <script
-      type="text/javascript"
-      src="//cdn.hstatic.net/themes/200000846175/1001403720/14/jquery-script.js?v=245"
-    ></script>
+    <!-- jQuery từ CDN đáng tin cậy -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <script>
       localStorage.setItem("shop_id", "themes/200000846175/1001403720");
@@ -1061,6 +1062,9 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- CSRF Token Helper -->
+    <script src="${pageContext.request.contextPath}/fileJS/csrf-token.js"></script>
   </head>
 
   <body id="wandave-theme" class="index" data-theme="tbag-fashion">

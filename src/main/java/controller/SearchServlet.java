@@ -97,7 +97,6 @@ public class SearchServlet extends HttpServlet {
             jsonResponse.addProperty("query", query.trim());
             
         } catch (Exception e) {
-            e.printStackTrace();
             jsonResponse.addProperty("success", false);
             jsonResponse.addProperty("message", "Lỗi: " + e.getMessage());
         }

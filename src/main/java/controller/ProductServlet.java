@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -47,8 +48,8 @@ public class ProductServlet extends HttpServlet {
         
         String pathInfo = request.getPathInfo();
         
-        // Nếu là API request
-        if (request.getParameter("ajax") != null) {
+        // Nếu là AJAX request - trả về JSON
+        if ("true".equals(request.getParameter("ajax"))) {
             handleAjaxRequest(request, response);
             return;
         }
@@ -78,69 +79,162 @@ public class ProductServlet extends HttpServlet {
     }
     
     /**
+     * Xử lý AJAX request - trả về JSON
+     */
+    private void handleAjaxRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        
+        try {
+            // Lấy tham số phân trang
+            int page = 1;
+            try {
+                String pageParam = request.getParameter("page");
+                if (pageParam != null) {
+                    page = Integer.parseInt(pageParam);
+                }
+            } catch (NumberFormatException e) {
+                page = 1;
+            }
+            
+            // Lấy tham số sắp xếp
+            String sort = request.getParameter("sort");
+            String categorySlug = request.getParameter("category");
+            
+            // Lấy sản phẩm
+            List<Product> products;
+            int totalProducts;
+            
+            if (categorySlug != null && !categorySlug.isEmpty()) {
+                // Lấy theo danh mục
+                Category category = categoryDAO.findBySlug(categorySlug);
+                if (category != null) {
+                    products = productDAO.findByCategoryWithPagination(category.getId(), page, PRODUCTS_PER_PAGE);
+                    totalProducts = productDAO.countByCategory(category.getId());
+                } else {
+                    products = productDAO.findWithPagination(page, PRODUCTS_PER_PAGE);
+                    totalProducts = productDAO.countAll();
+                }
+            } else {
+                // Lấy tất cả
+                products = productDAO.findWithPagination(page, PRODUCTS_PER_PAGE);
+                totalProducts = productDAO.countAll();
+            }
+            
+            // Sắp xếp nếu cần
+            if (sort != null) {
+                sortProducts(products, sort);
+            }
+            
+            // Tính tổng số trang
+            int totalPages = (int) Math.ceil((double) totalProducts / PRODUCTS_PER_PAGE);
+            
+            // Tạo JSON response
+            JsonObject jsonResponse = new JsonObject();
+            jsonResponse.addProperty("success", true);
+            jsonResponse.addProperty("currentPage", page);
+            jsonResponse.addProperty("totalPages", totalPages);
+            jsonResponse.addProperty("totalProducts", totalProducts);
+            jsonResponse.add("products", gson.toJsonTree(products));
+            
+            PrintWriter out = response.getWriter();
+            out.print(gson.toJson(jsonResponse));
+            out.flush();
+            
+        } catch (IOException e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            JsonObject errorResponse = new JsonObject();
+            errorResponse.addProperty("success", false);
+            errorResponse.addProperty("error", e.getMessage());
+            
+            try {
+                PrintWriter out = response.getWriter();
+                out.print(gson.toJson(errorResponse));
+                out.flush();
+            } catch (IOException ex) {
+                // Log error if needed
+            }
+        }
+    }
+    
+    /**
      * Hiển thị tất cả sản phẩm
      */
     private void showAllProducts(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        // Lấy tham số phân trang
-        int page = 1;
         try {
-            String pageParam = request.getParameter("page");
-            if (pageParam != null) {
-                page = Integer.parseInt(pageParam);
+            // Lấy tham số phân trang
+            int page = 1;
+            try {
+                String pageParam = request.getParameter("page");
+                if (pageParam != null) {
+                    page = Integer.parseInt(pageParam);
+                }
+            } catch (NumberFormatException e) {
+                page = 1;
             }
-        } catch (NumberFormatException e) {
-            page = 1;
+            
+            // Lấy tham số sắp xếp
+            String sort = request.getParameter("sort");
+            
+            // Lấy tham số lọc giá
+            String minPriceStr = request.getParameter("minPrice");
+            String maxPriceStr = request.getParameter("maxPrice");
+            
+            // Lấy sản phẩm
+            List<Product> products;
+            int totalProducts;
+            
+            if (minPriceStr != null && maxPriceStr != null) {
+                BigDecimal minPrice = new BigDecimal(minPriceStr);
+                BigDecimal maxPrice = new BigDecimal(maxPriceStr);
+                products = productDAO.findByPriceRange(minPrice, maxPrice);
+                if (products == null) products = new ArrayList<>();
+                totalProducts = products.size();
+            } else {
+                products = productDAO.findWithPagination(page, PRODUCTS_PER_PAGE);
+                if (products == null) products = new ArrayList<>();
+                totalProducts = productDAO.countAll();
+            }
+            
+            // Sắp xếp nếu cần
+            if (sort != null) {
+                sortProducts(products, sort);
+            }
+            
+            // Tính tổng số trang
+            int totalPages = (int) Math.ceil((double) totalProducts / PRODUCTS_PER_PAGE);
+            
+            // Lấy danh mục cho sidebar/filter
+            List<Category> categories = categoryDAO.findAll();
+            if (categories == null) categories = new ArrayList<>();
+            
+            List<Category> parentCategories = categoryDAO.findParentCategories();
+            if (parentCategories == null) parentCategories = new ArrayList<>();
+            
+            // Lấy sản phẩm nổi bật cho sidebar
+            List<Product> featuredProducts = productDAO.findFeatured(4);
+            if (featuredProducts == null) featuredProducts = new ArrayList<>();
+            
+            // Set attributes
+            request.setAttribute("products", products);
+            request.setAttribute("categories", categories);
+            request.setAttribute("parentCategories", parentCategories);
+            request.setAttribute("featuredProducts", featuredProducts);
+            request.setAttribute("currentPage", page);
+            request.setAttribute("totalPages", totalPages);
+            request.setAttribute("totalProducts", totalProducts);
+            request.setAttribute("pageTitle", "Tất cả sản phẩm");
+            
+            request.getRequestDispatcher("/view/products.jsp").forward(request, response);
+        } catch (ServletException | IOException e) {
+            throw e;
+        } catch (RuntimeException e) {
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Lỗi khi tải trang sản phẩm: " + e.getMessage());
         }
-        
-        // Lấy tham số sắp xếp
-        String sort = request.getParameter("sort");
-        
-        // Lấy tham số lọc giá
-        String minPriceStr = request.getParameter("minPrice");
-        String maxPriceStr = request.getParameter("maxPrice");
-        
-        // Lấy sản phẩm
-        List<Product> products;
-        int totalProducts;
-        
-        if (minPriceStr != null && maxPriceStr != null) {
-            BigDecimal minPrice = new BigDecimal(minPriceStr);
-            BigDecimal maxPrice = new BigDecimal(maxPriceStr);
-            products = productDAO.findByPriceRange(minPrice, maxPrice);
-            totalProducts = products.size();
-        } else {
-            products = productDAO.findWithPagination(page, PRODUCTS_PER_PAGE);
-            totalProducts = productDAO.countAll();
-        }
-        
-        // Sắp xếp nếu cần
-        if (sort != null) {
-            sortProducts(products, sort);
-        }
-        
-        // Tính tổng số trang
-        int totalPages = (int) Math.ceil((double) totalProducts / PRODUCTS_PER_PAGE);
-        
-        // Lấy danh mục cho sidebar/filter
-        List<Category> categories = categoryDAO.findAll();
-        List<Category> parentCategories = categoryDAO.findParentCategories();
-        
-        // Lấy sản phẩm nổi bật cho sidebar
-        List<Product> featuredProducts = productDAO.findFeatured(4);
-        
-        // Set attributes
-        request.setAttribute("products", products);
-        request.setAttribute("categories", categories);
-        request.setAttribute("parentCategories", parentCategories);
-        request.setAttribute("featuredProducts", featuredProducts);
-        request.setAttribute("currentPage", page);
-        request.setAttribute("totalPages", totalPages);
-        request.setAttribute("totalProducts", totalProducts);
-        request.setAttribute("pageTitle", "Tất cả sản phẩm");
-        
-        request.getRequestDispatcher("/view/products.jsp").forward(request, response);
     }
     
     /**
@@ -149,44 +243,58 @@ public class ProductServlet extends HttpServlet {
     private void showProductsByCategory(HttpServletRequest request, HttpServletResponse response, String categorySlug)
             throws ServletException, IOException {
         
-        // Tìm category
-        Category category = categoryDAO.findBySlug(categorySlug);
-        
-        if (category == null) {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Danh mục không tồn tại");
-            return;
+        try {
+            // Tìm category
+            Category category = categoryDAO.findBySlug(categorySlug);
+            
+            if (category == null) {
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Danh mục không tồn tại");
+                return;
+            }
+            
+            // Lấy sản phẩm theo category
+            List<Product> products = productDAO.findByCategorySlug(categorySlug);
+            if (products == null) products = new ArrayList<>();
+            
+            // Lấy sản phẩm của các danh mục con (nếu có)
+            List<Category> childCategories = categoryDAO.findByParentId(category.getId());
+            if (childCategories == null) childCategories = new ArrayList<>();
+            
+            for (Category child : childCategories) {
+                List<Product> childProducts = productDAO.findByCategory(child.getId());
+                if (childProducts != null) {
+                    products.addAll(childProducts);
+                }
+            }
+            
+            // Lấy tham số sắp xếp
+            String sort = request.getParameter("sort");
+            if (sort != null) {
+                sortProducts(products, sort);
+            }
+            
+            // Lấy danh mục cho sidebar
+            List<Category> categories = categoryDAO.findAll();
+            if (categories == null) categories = new ArrayList<>();
+            
+            List<Category> parentCategories = categoryDAO.findParentCategories();
+            if (parentCategories == null) parentCategories = new ArrayList<>();
+            
+            // Set attributes
+            request.setAttribute("products", products);
+            request.setAttribute("category", category);
+            request.setAttribute("childCategories", childCategories);
+            request.setAttribute("categories", categories);
+            request.setAttribute("parentCategories", parentCategories);
+            request.setAttribute("totalProducts", products.size());
+            request.setAttribute("pageTitle", category.getName());
+            
+            request.getRequestDispatcher("/view/products.jsp").forward(request, response);
+        } catch (ServletException | IOException e) {
+            throw e;
+        } catch (RuntimeException e) {
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Lỗi khi tải danh mục sản phẩm: " + e.getMessage());
         }
-        
-        // Lấy sản phẩm theo category
-        List<Product> products = productDAO.findByCategorySlug(categorySlug);
-        
-        // Lấy sản phẩm của các danh mục con (nếu có)
-        List<Category> childCategories = categoryDAO.findByParentId(category.getId());
-        for (Category child : childCategories) {
-            List<Product> childProducts = productDAO.findByCategory(child.getId());
-            products.addAll(childProducts);
-        }
-        
-        // Lấy tham số sắp xếp
-        String sort = request.getParameter("sort");
-        if (sort != null) {
-            sortProducts(products, sort);
-        }
-        
-        // Lấy danh mục cho sidebar
-        List<Category> categories = categoryDAO.findAll();
-        List<Category> parentCategories = categoryDAO.findParentCategories();
-        
-        // Set attributes
-        request.setAttribute("products", products);
-        request.setAttribute("category", category);
-        request.setAttribute("childCategories", childCategories);
-        request.setAttribute("categories", categories);
-        request.setAttribute("parentCategories", parentCategories);
-        request.setAttribute("totalProducts", products.size());
-        request.setAttribute("pageTitle", category.getName());
-        
-        request.getRequestDispatcher("/view/products.jsp").forward(request, response);
     }
     
     /**
@@ -195,28 +303,38 @@ public class ProductServlet extends HttpServlet {
     private void searchProducts(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String keyword = request.getParameter("q");
-        
-        List<Product> products;
-        if (keyword != null && !keyword.trim().isEmpty()) {
-            products = productDAO.search(keyword.trim());
-        } else {
-            products = productDAO.findAll();
+        try {
+            String keyword = request.getParameter("q");
+            
+            List<Product> products;
+            if (keyword != null && !keyword.trim().isEmpty()) {
+                products = productDAO.search(keyword.trim());
+            } else {
+                products = productDAO.findAll();
+            }
+            if (products == null) products = new ArrayList<>();
+            
+            // Lấy danh mục cho sidebar
+            List<Category> categories = categoryDAO.findAll();
+            if (categories == null) categories = new ArrayList<>();
+            
+            List<Category> parentCategories = categoryDAO.findParentCategories();
+            if (parentCategories == null) parentCategories = new ArrayList<>();
+            
+            // Set attributes
+            request.setAttribute("products", products);
+            request.setAttribute("categories", categories);
+            request.setAttribute("parentCategories", parentCategories);
+            request.setAttribute("searchKeyword", keyword);
+            request.setAttribute("totalProducts", products.size());
+            request.setAttribute("pageTitle", "Kết quả tìm kiếm: " + keyword);
+            
+            request.getRequestDispatcher("/view/products.jsp").forward(request, response);
+        } catch (ServletException | IOException e) {
+            throw e;
+        } catch (RuntimeException e) {
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Lỗi khi tìm kiếm sản phẩm: " + e.getMessage());
         }
-        
-        // Lấy danh mục cho sidebar
-        List<Category> categories = categoryDAO.findAll();
-        List<Category> parentCategories = categoryDAO.findParentCategories();
-        
-        // Set attributes
-        request.setAttribute("products", products);
-        request.setAttribute("categories", categories);
-        request.setAttribute("parentCategories", parentCategories);
-        request.setAttribute("searchKeyword", keyword);
-        request.setAttribute("totalProducts", products.size());
-        request.setAttribute("pageTitle", "Kết quả tìm kiếm: " + keyword);
-        
-        request.getRequestDispatcher("/view/products.jsp").forward(request, response);
     }
     
     /**
@@ -271,132 +389,62 @@ public class ProductServlet extends HttpServlet {
     }
     
     /**
-     * Xử lý AJAX request
-     */
-    private void handleAjaxRequest(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
-        
-        response.setContentType("application/json; charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        JsonObject jsonResponse = new JsonObject();
-        
-        String action = request.getParameter("action");
-        
-        try {
-            switch (action) {
-                case "featured":
-                    int limitFeatured = getIntParam(request, "limit", 8);
-                    List<Product> featuredProducts = productDAO.findFeatured(limitFeatured);
-                    jsonResponse.addProperty("success", true);
-                    jsonResponse.add("products", gson.toJsonTree(featuredProducts));
-                    break;
-                    
-                case "latest":
-                    int limitLatest = getIntParam(request, "limit", 8);
-                    List<Product> latestProducts = productDAO.findLatest(limitLatest);
-                    jsonResponse.addProperty("success", true);
-                    jsonResponse.add("products", gson.toJsonTree(latestProducts));
-                    break;
-                    
-                case "bestsellers":
-                    int limitBest = getIntParam(request, "limit", 8);
-                    List<Product> bestProducts = productDAO.findBestSellers(limitBest);
-                    jsonResponse.addProperty("success", true);
-                    jsonResponse.add("products", gson.toJsonTree(bestProducts));
-                    break;
-                    
-                case "onsale":
-                    int limitSale = getIntParam(request, "limit", 8);
-                    List<Product> saleProducts = productDAO.findOnSale(limitSale);
-                    jsonResponse.addProperty("success", true);
-                    jsonResponse.add("products", gson.toJsonTree(saleProducts));
-                    break;
-                    
-                case "category":
-                    String categorySlug = request.getParameter("slug");
-                    if (categorySlug != null) {
-                        List<Product> catProducts = productDAO.findByCategorySlug(categorySlug);
-                        jsonResponse.addProperty("success", true);
-                        jsonResponse.add("products", gson.toJsonTree(catProducts));
-                    } else {
-                        jsonResponse.addProperty("success", false);
-                        jsonResponse.addProperty("message", "Missing category slug");
-                    }
-                    break;
-                    
-                case "search":
-                    String keyword = request.getParameter("q");
-                    if (keyword != null && !keyword.trim().isEmpty()) {
-                        List<Product> searchResults = productDAO.search(keyword.trim());
-                        jsonResponse.addProperty("success", true);
-                        jsonResponse.add("products", gson.toJsonTree(searchResults));
-                    } else {
-                        jsonResponse.addProperty("success", false);
-                        jsonResponse.addProperty("message", "Missing search keyword");
-                    }
-                    break;
-                    
-                case "detail":
-                    int productId = getIntParam(request, "id", 0);
-                    if (productId > 0) {
-                        Product product = productDAO.findById(productId);
-                        if (product != null) {
-                            jsonResponse.addProperty("success", true);
-                            jsonResponse.add("product", gson.toJsonTree(product));
-                        } else {
-                            jsonResponse.addProperty("success", false);
-                            jsonResponse.addProperty("message", "Product not found");
-                        }
-                    }
-                    break;
-                    
-                default:
-                    jsonResponse.addProperty("success", false);
-                    jsonResponse.addProperty("message", "Unknown action");
-            }
-        } catch (Exception e) {
-            jsonResponse.addProperty("success", false);
-            jsonResponse.addProperty("message", e.getMessage());
-        }
-        
-        out.print(gson.toJson(jsonResponse));
-    }
-    
-    /**
      * Sắp xếp danh sách sản phẩm
      */
     private void sortProducts(List<Product> products, String sort) {
+        if (products == null || products.isEmpty() || sort == null) {
+            return;
+        }
+        
         switch (sort) {
             case "price-asc":
-                products.sort((a, b) -> a.getDisplayPrice().compareTo(b.getDisplayPrice()));
+                products.sort((a, b) -> {
+                    BigDecimal priceA = a.getDisplayPrice();
+                    BigDecimal priceB = b.getDisplayPrice();
+                    if (priceA == null) return 1;
+                    if (priceB == null) return -1;
+                    return priceA.compareTo(priceB);
+                });
                 break;
             case "price-desc":
-                products.sort((a, b) -> b.getDisplayPrice().compareTo(a.getDisplayPrice()));
+                products.sort((a, b) -> {
+                    BigDecimal priceA = a.getDisplayPrice();
+                    BigDecimal priceB = b.getDisplayPrice();
+                    if (priceA == null) return 1;
+                    if (priceB == null) return -1;
+                    return priceB.compareTo(priceA);
+                });
                 break;
             case "name-asc":
-                products.sort((a, b) -> a.getName().compareToIgnoreCase(b.getName()));
+                products.sort((a, b) -> {
+                    String nameA = a.getName();
+                    String nameB = b.getName();
+                    if (nameA == null) return 1;
+                    if (nameB == null) return -1;
+                    return nameA.compareToIgnoreCase(nameB);
+                });
                 break;
             case "name-desc":
-                products.sort((a, b) -> b.getName().compareToIgnoreCase(a.getName()));
+                products.sort((a, b) -> {
+                    String nameA = a.getName();
+                    String nameB = b.getName();
+                    if (nameA == null) return 1;
+                    if (nameB == null) return -1;
+                    return nameB.compareToIgnoreCase(nameA);
+                });
                 break;
             case "newest":
-                products.sort((a, b) -> b.getCreatedAt().compareTo(a.getCreatedAt()));
+                products.sort((a, b) -> {
+                    java.sql.Timestamp timeA = a.getCreatedAt();
+                    java.sql.Timestamp timeB = b.getCreatedAt();
+                    if (timeA == null) return 1;
+                    if (timeB == null) return -1;
+                    return timeB.compareTo(timeA);
+                });
                 break;
             case "bestselling":
                 products.sort((a, b) -> Integer.compare(b.getSoldCount(), a.getSoldCount()));
                 break;
         }
-    }
-    
-    private int getIntParam(HttpServletRequest request, String name, int defaultValue) {
-        try {
-            String value = request.getParameter(name);
-            if (value != null) {
-                return Integer.parseInt(value);
-            }
-        } catch (NumberFormatException e) {
-            // Ignore
-        }
-        return defaultValue;
     }
 }

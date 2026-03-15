@@ -9,6 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thanh toán - Tiệm Hoa nhà tớ</title>
     
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="${csrfToken}">
+    <script>window.csrfToken = '${csrfToken}';</script>
+    
     <link rel="shortcut icon" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/favicon.png?v=245" type="image/x-icon">
     <link rel="icon" href="//cdn.hstatic.net/themes/200000846175/1001403720/14/favicon.png?v=245" type="image/png">
     
@@ -904,6 +908,9 @@
             }
         }
     </style>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Header -->
@@ -1039,6 +1046,42 @@
                                             <textarea name="note" class="form-control" 
                                                       placeholder="Ghi chú thêm (thời gian giao, hướng dẫn giao hàng...)"></textarea>
                                         </div>
+                                        
+                                        <!-- Greeting Card Option -->
+                                        <%
+                                            byte[] cardImage = (byte[]) session.getAttribute("greetingCardImage");
+                                            String cardMessage = (String) session.getAttribute("greetingCardMessage");
+                                            boolean hasGreetingCard = (cardImage != null && cardMessage != null);
+                                        %>
+                                        <% if (hasGreetingCard) { %>
+                                        <div class="form-group mt-4">
+                                            <div class="greeting-card-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; color: white;">
+                                                <div style="display: flex; align-items: center; gap: 15px;">
+                                                    <i class="fas fa-envelope-open-text" style="font-size: 40px;"></i>
+                                                    <div style="flex: 1;">
+                                                        <h5 style="margin: 0; color: white;">🎁 Bạn đã tạo thiệp chúc mừng AI!</h5>
+                                                        <p style="margin: 5px 0 0 0; opacity: 0.9; font-size: 14px;">Thiệp đẹp đã được tạo từ AI với nội dung cá nhân hóa</p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-check mt-3" style="background: rgba(255,255,255,0.15); padding: 15px; border-radius: 8px;">
+                                                    <input type="checkbox" class="form-check-input" id="attachGreetingCard" name="attachGreetingCard" checked style="width: 20px; height: 20px;">
+                                                    <label class="form-check-label" for="attachGreetingCard" style="cursor: pointer; margin-left: 10px; color: white; font-weight: 500;">
+                                                        ✨ Đính kèm thiệp này vào email xác nhận đơn hàng
+                                                    </label>
+                                                </div>
+                                                <div class="form-check mt-2" style="background: rgba(255,255,255,0.15); padding: 15px; border-radius: 8px;">
+                                                    <input type="checkbox" class="form-check-input" id="printGreetingCard" name="printGreetingCard" style="width: 20px; height: 20px;">
+                                                    <label class="form-check-label" for="printGreetingCard" style="cursor: pointer; margin-left: 10px; color: white; font-weight: 500;">
+                                                        🌸 Kèm thiệp in khi nhận hoa (Admin sẽ nhận thông báo)
+                                                    </label>
+                                                </div>
+                                                <small style="display: block; margin-top: 10px; opacity: 0.8;">
+                                                    💌 Email: Thiệp đính kèm email ngay lập tức<br>
+                                                    🖨️ In thiệp: Admin sẽ in thiệp và gửi kèm hoa đến người nhận
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <% } %>
                                     </div>
                                 </div>
                             </div>
@@ -1219,6 +1262,10 @@
     
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"></script>
+    
+    <!-- CSRF Token Helper - Phải load SAU axios -->
+    <script src="${pageContext.request.contextPath}/fileJS/csrf-token.js"></script>
+    
     <script>
         // Variables
         let provinces = [];
@@ -1445,8 +1492,17 @@
                 console.log('Response:', response.data);
                 
                 if (response.data.success) {
-                    // Redirect to success page via servlet
-                    window.location.href = '${pageContext.request.contextPath}/order-success?orderCode=' + response.data.orderCode;
+                    // Check if need to redirect to payment gateway
+                    if (response.data.redirectUrl) {
+                        // VNPay or MoMo payment - redirect to payment page
+                        showToast(response.data.message || 'Đang chuyển đến trang thanh toán...', 'success');
+                        setTimeout(() => {
+                            window.location.href = response.data.redirectUrl;
+                        }, 1000);
+                    } else {
+                        // COD or Bank Transfer - redirect to success page
+                        window.location.href = '${pageContext.request.contextPath}/order-success?orderCode=' + response.data.orderCode;
+                    }
                 } else {
                     showToast(response.data.message || 'Có lỗi xảy ra, vui lòng thử lại', 'error');
                 }

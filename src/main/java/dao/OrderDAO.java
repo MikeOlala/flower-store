@@ -101,7 +101,6 @@ public class OrderDAO {
             
         } catch (SQLException e) {
             System.err.println("Lỗi tạo order: " + e.getMessage());
-            e.printStackTrace();
             if (conn != null) {
                 try {
                     conn.rollback();
@@ -115,7 +114,6 @@ public class OrderDAO {
                     conn.setAutoCommit(true);
                     conn.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
                 }
             }
         }
@@ -141,7 +139,6 @@ public class OrderDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi tìm order: " + e.getMessage());
-            e.printStackTrace();
         }
         return null;
     }
@@ -165,7 +162,6 @@ public class OrderDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi tìm order theo code: " + e.getMessage());
-            e.printStackTrace();
         }
         return null;
     }
@@ -190,7 +186,6 @@ public class OrderDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi lấy orders của user: " + e.getMessage());
-            e.printStackTrace();
         }
         return orders;
     }
@@ -211,7 +206,6 @@ public class OrderDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi lấy all orders: " + e.getMessage());
-            e.printStackTrace();
         }
         return orders;
     }
@@ -235,7 +229,6 @@ public class OrderDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi lấy orders phân trang: " + e.getMessage());
-            e.printStackTrace();
         }
         return orders;
     }
@@ -258,7 +251,6 @@ public class OrderDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi lấy orders theo status: " + e.getMessage());
-            e.printStackTrace();
         }
         return orders;
     }
@@ -295,7 +287,6 @@ public class OrderDAO {
             return rowsUpdated > 0;
         } catch (SQLException e) {
             System.err.println("Lỗi cập nhật order status: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -315,7 +306,6 @@ public class OrderDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Lỗi cập nhật payment status: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -336,7 +326,6 @@ public class OrderDAO {
             return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Lỗi hủy order: " + e.getMessage());
-            e.printStackTrace();
         }
         return false;
     }
@@ -359,7 +348,6 @@ public class OrderDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi lấy order items: " + e.getMessage());
-            e.printStackTrace();
         }
         return items;
     }
@@ -567,7 +555,6 @@ public class OrderDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi đếm orders theo date range: " + e.getMessage());
-            e.printStackTrace();
         }
         return 0;
     }
@@ -591,8 +578,105 @@ public class OrderDAO {
             }
         } catch (SQLException e) {
             System.err.println("Lỗi đếm orders theo status và date range: " + e.getMessage());
-            e.printStackTrace();
         }
         return 0;
+    }
+    
+    /**
+     * Tìm kiếm đơn hàng theo từ khóa (mã đơn, tên khách hàng, SĐT, email)
+     */
+    public List<Order> search(String keyword) {
+        List<Order> orders = new ArrayList<>();
+        String sql = "SELECT DISTINCT o.* FROM orders o " +
+                    "LEFT JOIN users u ON o.user_id = u.id " +
+                    "WHERE o.order_code LIKE ? " +
+                    "OR o.receiver_name LIKE ? " +
+                    "OR o.receiver_phone LIKE ? " +
+                    "OR o.receiver_email LIKE ? " +
+                    "OR u.fullname LIKE ? " +
+                    "OR u.email LIKE ? " +
+                    "ORDER BY o.created_at DESC";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            String searchPattern = "%" + keyword + "%";
+            ps.setString(1, searchPattern);
+            ps.setString(2, searchPattern);
+            ps.setString(3, searchPattern);
+            ps.setString(4, searchPattern);
+            ps.setString(5, searchPattern);
+            ps.setString(6, searchPattern);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                orders.add(mapResultSetToOrder(rs));
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi tìm kiếm orders: " + e.getMessage());
+        }
+        return orders;
+    }
+    
+    /**
+     * Tìm kiếm đơn hàng có filter theo status
+     */
+    public List<Order> searchWithFilters(String keyword, String status, java.sql.Date dateFrom, java.sql.Date dateTo) {
+        List<Order> orders = new ArrayList<>();
+        StringBuilder sql = new StringBuilder(
+            "SELECT DISTINCT o.* FROM orders o " +
+            "LEFT JOIN users u ON o.user_id = u.id WHERE 1=1"
+        );
+        
+        List<Object> params = new ArrayList<>();
+        
+        // Thêm điều kiện tìm kiếm
+        if (keyword != null && !keyword.trim().isEmpty()) {
+            sql.append(" AND (o.order_code LIKE ? OR o.receiver_name LIKE ? OR o.receiver_phone LIKE ? " +
+                      "OR o.receiver_email LIKE ? OR u.fullname LIKE ? OR u.email LIKE ?)");
+            String searchPattern = "%" + keyword.trim() + "%";
+            params.add(searchPattern);
+            params.add(searchPattern);
+            params.add(searchPattern);
+            params.add(searchPattern);
+            params.add(searchPattern);
+            params.add(searchPattern);
+        }
+        
+        // Thêm điều kiện status
+        if (status != null && !status.trim().isEmpty()) {
+            sql.append(" AND o.order_status = ?");
+            params.add(status);
+        }
+        
+        // Thêm điều kiện dateFrom
+        if (dateFrom != null) {
+            sql.append(" AND DATE(o.created_at) >= ?");
+            params.add(dateFrom);
+        }
+        
+        // Thêm điều kiện dateTo
+        if (dateTo != null) {
+            sql.append(" AND DATE(o.created_at) <= ?");
+            params.add(dateTo);
+        }
+        
+        sql.append(" ORDER BY o.created_at DESC");
+        
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql.toString())) {
+            
+            for (int i = 0; i < params.size(); i++) {
+                ps.setObject(i + 1, params.get(i));
+            }
+            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                orders.add(mapResultSetToOrder(rs));
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi tìm kiếm orders với filters: " + e.getMessage());
+        }
+        return orders;
     }
 }

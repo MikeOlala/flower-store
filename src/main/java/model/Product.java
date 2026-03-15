@@ -150,7 +150,7 @@ public class Product {
         if (!isOnSale()) return 0;
         return price.subtract(salePrice)
                    .multiply(new BigDecimal(100))
-                   .divide(price, 0, BigDecimal.ROUND_HALF_UP)
+                   .divide(price, 0, java.math.RoundingMode.HALF_UP)
                    .intValue();
     }
     
