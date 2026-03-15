@@ -165,6 +165,18 @@
                     <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
                 </configuration>
             </plugin>
+            <!-- Tomcat Maven Plugin - deploy trực tiếp lên Tomcat local -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <!-- URL của Tomcat Manager (phải enable manager trong Tomcat) -->
+                    <url>http://localhost:8080/manager/text</url>
+                    <server>TomcatServer</server>
+                    <path>/flowerstore</path>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
